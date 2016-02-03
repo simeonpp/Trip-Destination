@@ -48,6 +48,13 @@ article.centered
 article.bigPadding
   padding 50px 15px !important
 
+article.padding
+  padding-top 25px !important
+  padding-bottom 25px !important
+
+article.topBottomPadding
+  padding 27px 0 !important
+
 article.noLeftAndRightPadding
   padding-left 0 !important
   padding-right 0 !important
@@ -88,18 +95,35 @@ h3
   text-transform uppercase
   margin-bottom 20px !important
 
+h5
+  font-size 1.3rem !important
+  text-transform uppercase
+  font-weight bold !important
+  margin-top 40px !important
+  text-align center
+
+h6
+  color #bdbdbd !important
+  font-weight normal !important
+  margin-top -5px !important
+  text-align center
+  margin-bottom 25px !important
+
 .baseButton
   border-width 1px
   border-style solid
   text-transform none
-  padding 7px 60px
+  padding 7px 20px
+  text-align center
   border-radius 4px
   transition(300ms)
+  cursor pointer
 
 .button
   border-color #aa152b
   background #aa152b
   color white
+  text-transform uppercase
   @extends .baseButton
 
   &:hover
@@ -110,6 +134,7 @@ h3
   border-color #aa152b
   background #ffffff
   color #aa152b
+  text-transform uppercase
   @extends .baseButton
 
   &:hover
@@ -319,6 +344,9 @@ a
   margin-right 0 !important
   margin-left 0 !important
 
+.leftRight
+  float right
+
 // Triplist
 ul.tripsList
   @extends .ulClear
@@ -439,7 +467,7 @@ ul.statsUl
       font-size 1.5rem
       @extends .centeredBlockText
 
-// Info
+// Info bordered
 ul.infoBorderedUl
   @extends .ulClear
 
@@ -448,6 +476,28 @@ ul.infoBorderedUl
     display block
     border-bottom 1px solid #dfdfdf
     padding 10px 20px
+
+    &:last-child
+      border-bottom none
+
+    .labelInfo
+      color #bdbdbd
+
+    .textInfo
+      color black
+      margin-top -1px
+      font-size 1.2rem
+      line-height 1.3rem
+
+// Info
+// Info
+ul.infoUl
+  @extends .ulClear
+
+  li
+    width 100%
+    display block
+    padding 5px 5px
 
     &:last-child
       border-bottom none
@@ -536,6 +586,69 @@ ul.carImagesUl
 
     &:last-child
       margin-bottom 0
+
+// Passengers
+ul.passengersUl
+  width 100%
+  @extends .clearFix
+  @extends .ulClear
+
+  li
+    width 26.66%
+    float left
+    margin-right 10%
+
+    &:nth-child(3n)
+      margin-right 0
+
+    a
+
+    .image
+      width 100px
+      height @width
+      border-radius 50%
+      margin 0 auto
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: top center
+
+    .firstName
+      color black
+      margin-top 10px
+      @extends .centeredBlockText
+
+    .lastName
+      color #aa152b
+      font-weight bold
+      text-transform uppercase
+      margin-top -5px
+      @extends .centeredBlockText
+
+#topHead
+  width 100%
+  text-align center
+  display block
+  color #ffffff
+  font-weight bold
+  text-transform uppercase
+
+  #directions
+    font-size 2rem
+    line-height 2rem
+    letter-spacing 0.2rem
+
+  #dateOfLeaving
+    font-size 1.2rem
+    line-height 1.2rem
+
+.likeButton
+  width 94px
+  height 41px
+  background-image url("../images/like-button.png")
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: top center
+  cursor pointer
 
 //=============================
 // NAVIGATION
@@ -800,6 +913,68 @@ ul.carImagesUl
 
     textarea
       max-width 100%
+
+//=============================
+// TRIP DETAILS
+//=============================
+#tripDetails
+
+  #tripSummarySection
+
+    ul.statsUl
+      li
+        margin-bottom 20px
+
+    #descriptionWrap
+      margin-top 15px
+
+    #buttonsAction
+      margin-top 35px
+      margin-bottom 15px
+
+  #driverDetailsSection
+    #loadMoreUserComment
+      margin-top 25px !important
+
+  section#driverDetailsSection
+    .image
+      width 100%
+
+      img
+        width 100%
+
+    .names
+      font-size 1.5rem
+      color #aa152b
+
+      #lastName
+        text-transform: uppercase
+
+    ul.infoUl
+      ul.ratingUl
+        li
+          width auto !important
+          float left !important
+          margin-right 3px !important
+
+  section#carDetailsSection
+    #carTitle
+      width 100%
+      display block
+      text-align center
+      font-size 1.6rem
+      text-transform uppercase
+      color #aa152b
+      margin-bottom 15px
+
+    #carPhotosWrap
+      margin-top 15px
+
+ul.commentsUl
+  li
+    .image
+      width 50px
+      height @width
 
 //=============================
 // STATISTICS
