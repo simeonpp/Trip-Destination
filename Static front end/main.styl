@@ -52,6 +52,18 @@ article.noLeftAndRightPadding
   padding-left 0 !important
   padding-right 0 !important
 
+article.redBG
+  background-color #AA152B !important
+
+article.noPadding
+  padding 0 !important
+
+article.noMargin
+  margin 0 !important
+
+article.noBG
+  background-color rgba(0, 0, 0, 0) !important
+
 h1
   width 100% !important
   display block !important
@@ -163,52 +175,48 @@ a
             width 100%
             display table
             margin-bottom 30px
+            cursor pointer
 
             &:last-child
               margin-bottom 0
 
-            a
-              width 100%
-              display table
-              text-decoration none
+            &:hover .radioButtonWrap .circleBox
+              background url("../images/cover-circle-active.png")
 
-              &:hover .radioButtonWrap .circleBox
-                background url("../images/cover-circle-active.png")
+            .imgAndTextWrap
+              display table-cell
 
-              .imgAndTextWrap
-                display table-cell
+              .icon
+                width 23px
+                height 21px
+                margin 0 auto
+                display block
+                background url("../images/person-icon.png")
 
-                .icon
-                  width 23px
-                  height 21px
-                  margin 0 auto
-                  display block
-                  background url("../images/person-icon.png")
+              .destinationsName
+                width 100%
+                margin-top 5px
+                display block
+                color white
+                text-align center
+                font-weight bold
+                text-transform uppercase
 
-                .destinationsName
-                  width 100%
-                  margin-top 5px
-                  display block
-                  color white
-                  text-align center
-                  font-weight bold
-                  text-transform uppercase
+            .radioButtonWrap
+              width 20px
+              padding 0 0 0 15px
+              display table-cell
+              vertical-align middle
 
-              .radioButtonWrap
+              .circleBox
                 width 20px
-                padding 0 0 0 15px
-                display table-cell
-                vertical-align middle
+                height 20px
+                background url("../images/cover-circle.png")
 
-                .circleBox
-                  width 20px
-                  height 20px
-                  background url("../images/cover-circle.png")
-
-                .circleBoxActive
-                  width 20px
-                  height 20px
-                  background url("../images/cover-circle-active.png")
+              .circleBoxActive
+                width 20px
+                height 20px
+                background url("../images/cover-circle-active.png")
 
       #socialLinksWrap
         width 100%
@@ -348,6 +356,7 @@ ul.tripsList
 
       .timeOfLeaving
         margin-top -5px
+        color black
         @extends .centeredBlockText
 
       .driver
@@ -431,16 +440,17 @@ ul.statsUl
       @extends .centeredBlockText
 
 // Info
-ul.infoUl
+ul.infoBorderedUl
   @extends .ulClear
 
   li
     width 100%
     display block
-    border 1px solid #dfdfdf
-    border-right 0
-    border-left 0
+    border-bottom 1px solid #dfdfdf
     padding 10px 20px
+
+    &:last-child
+      border-bottom none
 
     .labelInfo
       color #bdbdbd
@@ -597,6 +607,177 @@ ul.carImagesUl
       text-align left !important
 
 //=============================
+// TRIP LIST
+//=============================
+#tripList
+
+  article#filterArticleWrap
+    height 246px
+
+  #tripDateCalendarWrap
+    background white
+    padding 0 0 0 30px
+    height 246px
+    @extends .clearFix
+
+    #dateWrap
+      float left
+      color #aa152b
+      font-weight bold
+      padding-top 10px
+
+      #currentDay
+        font-size 7rem
+        line-height 7rem
+
+      #currentMonth
+        font-size 7rem
+        line-height 7rem
+        margin-top -2.3rem
+        margin-left -0.5rem
+        text-transform uppercase
+
+      #foundTripsCount
+        color black
+        text-transform uppercase
+        font-size 2rem
+        line-height 2rem
+        margin-top -1rem
+
+    #weekDaysWrap
+      float right
+
+      ul.weekDaysUl
+        @extends .ulClear
+        @extends .clearFix
+
+        li
+          padding-left 13px
+
+          &:first-child
+            a
+              border-top none
+
+          a
+            width 39px
+            height 35px
+            border 1px solid #aa152b
+            border-bottom none
+            display table-cell
+            vertical-align middle
+            text-align center
+            border-bottom none !important
+            font-weight bold
+            transition(200ms)
+
+            &:last-child
+              border-bottom 1px solid #aa152b
+
+            &:hover
+              text-decoration none
+              background #aa152b
+              color #ffffff !important
+
+        li.active
+          a
+            background #aa152b
+            color #ffffff !important
+
+  form#tripFilterForm
+    margin-top 12px
+    color white
+
+    label
+      margin-bottom 0 !important
+
+    input, select
+      margin-bottom 6px
+
+    .col-lg-12
+      padding-left 0 !important
+      padding-right 0 !important
+
+    #filterButtonWrap
+      margin-top 8px
+
+  #orderSection
+    #sortDirectionWrap
+      position relative
+      @extends .clearFix
+
+      .sortDirectionBtn
+        width 150px
+        padding 8px 0
+        border-radius 2px
+        float left
+        text-align center
+        margin-right 5px
+        cursor pointer
+        color #ffffff
+        text-transform uppercase
+
+        a
+          color #ffffff !important
+
+
+      #sortDirectionAscending
+        border 1px solid #7b1221
+        background #aa152b
+
+      #sortDirectionDescending
+        margin-right 0
+
+      #sortDirectionSeparator
+        width 30px
+        height @width
+        position absolute
+        top 4px
+        left 152px
+        padding-top 0.5rem
+        border-radius 50%
+        text-align center
+        color black
+        font-size 0.8rem
+        text-transform uppercase
+        background #dfdfdf
+        border 1px solid #c8c8c8
+
+      .active
+        background #0d6fa2
+        border 1px solid #0a4a6b
+
+  ul.tripsList
+    li
+      width 32%
+      margin 0 2% 2% 0
+      float left
+      background white
+      @extends .boxSizing
+
+      &:nth-child(2n)
+        margin 0 2% 0 0
+
+      &:nth-child(3n)
+        margin-right 0 !important
+
+      &:nth-last-child(-n+3)
+        margin-bottom 0 !important
+
+  #paginatorWrap
+    width 100%
+    text-align center
+
+    a
+      color black !important
+
+    .pagination
+      .active
+        a
+          background #aa152b
+          color #ffffff !important
+          border-color #7b1221
+
+//=============================
 // TRIP CREATE
 //=============================
 #tripCreate
@@ -604,6 +785,9 @@ ul.carImagesUl
   ul.statsUl
     li
       margin-bottom 35px
+
+      &:nth-last-child(-n+2)
+        margin-bottom 0
 
   form#tripCreateForm
     .col-lg-12
@@ -727,6 +911,9 @@ ul.carImagesUl
     li
       margin-bottom 35px
 
+      &:nth-last-child(-n+2)
+        margin-bottom 0
+
 // Trips list
 table.tripsTable
   .date
@@ -753,16 +940,16 @@ table.tripsTable
     font-weight bold
 
   .statusFinished
-    color green
+    color #00C659
 
   .statusInProgress
-    color red
+    color #FF4600
 
   .statusOpen
-    color orange
+    color #FF9F00
 
   .statusReadyToGo
-    color blue
+    color #0094FF
 
 //=============================
 // PAGE 404
