@@ -553,7 +553,7 @@ ul.commentsUl
         background-position: top center
 
       .names
-        font-size 1.2rem
+        font-size 1.2rem !important
 
         a
           color black !important
@@ -932,6 +932,14 @@ ul.passengersUl
       margin-top 35px
       margin-bottom 15px
 
+      #tripMessage
+        width 100%
+        display block
+        text-align center
+
+      .joined
+        color greenyellow
+
   #driverDetailsSection
     #loadMoreUserComment
       margin-top 25px !important
@@ -975,6 +983,35 @@ ul.commentsUl
     .image
       width 50px
       height @width
+
+//=============================
+// TRIP EDIT
+//=============================
+#tripEdit
+  section#editTripSection
+    form#editTripFrom
+
+      label
+        margin-bottom 0 !important
+
+      input, select
+        margin-bottom 15px
+
+      .col-lg-12
+        padding-left 0 !important
+        padding-right 0 !important
+
+      .removePassengerButton
+        width 100%
+        display block
+        text-align center
+        margin-top 5px
+        text-decoration underline
+        color #aa152b
+        cursor pointer
+
+      #buttonsFromWrap
+        margin-top 35px
 
 //=============================
 // STATISTICS
