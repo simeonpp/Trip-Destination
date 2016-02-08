@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{4C2CF454-1E9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Web.MVC", "Web\TripDestination.Web.MVC\TripDestination.Web.MVC.csproj", "{A16879D7-7784-4D2A-AC5B-51807A5436A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CBDE8CAA-5919-48D5-AADD-9FD3E2D77769}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
