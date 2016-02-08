@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using TripDestination.Web.MVC.Models;
+using TripDestination.Common.Infrastructure.Constants;
 
 namespace TripDestination.Web.MVC
 {
@@ -53,11 +54,11 @@ namespace TripDestination.Web.MVC
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequiredLength = UserConstants.RequiredLength,
+                RequireNonLetterOrDigit = UserConstants.RequireNonLetterOrDigit,
+                RequireDigit = UserConstants.RequireDigit,
+                RequireLowercase = UserConstants.RequireLowercase,
+                RequireUppercase = UserConstants.RequireUppercase,
             };
 
             // Configure user lockout defaults
