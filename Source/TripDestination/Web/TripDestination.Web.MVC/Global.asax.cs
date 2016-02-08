@@ -12,6 +12,7 @@ namespace TripDestination.Web.MVC
     {
         protected void Application_Start()
         {
+            DatabaseConfig.Register();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

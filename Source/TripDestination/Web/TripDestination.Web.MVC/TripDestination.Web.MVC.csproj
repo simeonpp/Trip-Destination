@@ -200,6 +200,7 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -213,7 +214,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -287,6 +287,18 @@
     <ProjectReference Include="..\..\Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj">
       <Project>{004c665e-6ec8-4c05-a312-ca577a55adb8}</Project>
       <Name>TripDestination.Common.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\TripDestination.Data.Data\TripDestination.Data.Data.csproj">
+      <Project>{91fbcb19-8874-4e89-b649-ba95f8912d87}</Project>
+      <Name>TripDestination.Data.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\TripDestination.Data.Models\TripDestination.Data.Models.csproj">
+      <Project>{a490582c-4615-49f0-9f2b-152e48044e65}</Project>
+      <Name>TripDestination.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\TripDestination.Services\TripDestination.Services.csproj">
+      <Project>{946ce469-34e0-4b54-92c7-18185e4ebb29}</Project>
+      <Name>TripDestination.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

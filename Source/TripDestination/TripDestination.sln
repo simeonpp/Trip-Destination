@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Common.Infrastructure", "Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj", "{004C665E-6EC8-4C05-A312-CA577A55ADB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Data.Data", "Data\TripDestination.Data.Data\TripDestination.Data.Data.csproj", "{91FBCB19-8874-4E89-B649-BA95F8912D87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Data.Models", "Data\TripDestination.Data.Models\TripDestination.Data.Models.csproj", "{A490582C-4615-49F0-9F2B-152E48044E65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,14 @@ Global
 		{004C665E-6EC8-4C05-A312-CA577A55ADB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{004C665E-6EC8-4C05-A312-CA577A55ADB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{004C665E-6EC8-4C05-A312-CA577A55ADB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91FBCB19-8874-4E89-B649-BA95F8912D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91FBCB19-8874-4E89-B649-BA95F8912D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91FBCB19-8874-4E89-B649-BA95F8912D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91FBCB19-8874-4E89-B649-BA95F8912D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A490582C-4615-49F0-9F2B-152E48044E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A490582C-4615-49F0-9F2B-152E48044E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A490582C-4615-49F0-9F2B-152E48044E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A490582C-4615-49F0-9F2B-152E48044E65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +57,7 @@ Global
 		{85AB4CDF-39EA-4AC2-939D-09E51EC80A5A} = {3432B3B4-FEA8-4B78-BA0B-D66946F06B83}
 		{946CE469-34E0-4B54-92C7-18185E4EBB29} = {6A65B084-53DF-41D6-83EF-4A4153846677}
 		{004C665E-6EC8-4C05-A312-CA577A55ADB8} = {231A8F93-845B-4AA9-AC17-D532EE7A252A}
+		{91FBCB19-8874-4E89-B649-BA95F8912D87} = {0C99945B-B000-4119-ABB7-5678E852D75F}
+		{A490582C-4615-49F0-9F2B-152E48044E65} = {0C99945B-B000-4119-ABB7-5678E852D75F}
 	EndGlobalSection
 EndGlobal
