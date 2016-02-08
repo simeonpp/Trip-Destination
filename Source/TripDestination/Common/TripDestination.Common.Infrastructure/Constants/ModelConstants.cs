@@ -36,5 +36,25 @@
         // Comment
         public const int CommentTextMinLength = 5;
         public const int CommenttextMaxLength = 1000;
+
+        // Newsletter
+        public const int NewsletterEmailMinLength = 6;
+        public const int NewsletterEmailMaxLength = 100;
+
+        public const int NewsletterIpMinLength = 11;
+        public const int NewsletterIpMaxLength = 45;
+
+        public const int NewsletterUserAgenMinLength = 200;
+        public const int NewsletterUserAgentMaxLength = 2000;
+
+        // Notification
+        public const int NotificationTitleMinLength = 5;
+        public const int NotificationTitleMaxLength = 150;
+
+        public const int NotificationMessageMinLength = 10;
+        public const int NotificationMessageMaxLength = 500;
+
+        // Notification type
+        public const int NotificationTypeDescriptionMaxLength = 500;
     }
 }
