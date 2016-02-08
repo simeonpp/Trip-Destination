@@ -32,5 +32,9 @@
 
         public const int CarDescriptionMinLength = 20;
         public const int CarDescriptionMaxLength = 1000;
+
+        // Comment
+        public const int CommentTextMinLength = 5;
+        public const int CommenttextMaxLength = 1000;
     }
 }
