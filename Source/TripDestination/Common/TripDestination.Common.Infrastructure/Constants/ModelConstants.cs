@@ -56,5 +56,13 @@
 
         // Notification type
         public const int NotificationTypeDescriptionMaxLength = 500;
+
+        // Rating
+        public const double RatingValueMin = 0.0;
+        public const double RatingValueMax = 5.0;
+
+        // Town
+        public const int TownNameMinLength = 4;
+        public const int TownNameMaxLength = 50;
     }
 }
