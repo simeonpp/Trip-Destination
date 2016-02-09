@@ -211,6 +211,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +225,7 @@
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
+    <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\Trip\InputVIewModel.cs" />
     <Compile Include="ViewModels\Trip\TripLstViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripViewModel.cs" />
@@ -284,6 +286,7 @@
     <Content Include="Views\Trip\Create.cshtml" />
     <Content Include="Views\Trip\Detailed.cshtml" />
     <Content Include="Views\Trip\List.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

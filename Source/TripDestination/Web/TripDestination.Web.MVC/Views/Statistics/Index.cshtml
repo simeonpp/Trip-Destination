@@ -1,0 +1,26 @@
+﻿@using TripDestination.Web.MVC.ViewModels.Statistics
+@model StatisticsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>General Statistics</h2>
+<ul>
+    <li>@Model.TripsCount</li>
+    <li>@Model.TopDestination</li>
+    <li>@Model.UsersCount</li>
+    <li>@Model.DriversCount</li>
+    <li>@Model.AverageTripRating</li>
+    <li>@Model.TripViews</li>
+</ul>
+
+<h2>Today statistics</h2>
+<ul>
+    <li>@Model.TodayCreatedTrips</li>
+    <li>@Model.TodayInProgressTrips</li>
+    <li>@Model.TodayFinishedTrips</li>
+    <li>@Model.TodayTopDestinationTown</li>
+</ul>
+
+

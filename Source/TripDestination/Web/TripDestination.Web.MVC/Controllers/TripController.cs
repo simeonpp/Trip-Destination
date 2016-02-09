@@ -34,7 +34,7 @@
                     })
                     .ToList();
 
-            InputVIewModel model = new InputVIewModel()
+            InputVIewModel viewModel = new InputVIewModel()
             {
                 Towns = towns,
                 TodayCreatedTrips = this.StatisticsServices.TripsGetTodayCreatedCount(),
@@ -43,7 +43,7 @@
                 TodayTopDestinationTown = this.StatisticsServices.TripsGetTodayTopDestination()
             };
 
-            return this.View(model);
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -83,13 +83,13 @@
                 .ProjectTo<TripListViewModel>(MapperConfiguration)
                 .ToList();
 
-            TripLstViewModel model = new TripLstViewModel()
+            TripLstViewModel viewModel = new TripLstViewModel()
             {
                 Date = day,
                 Trips = trips
             };
 
-            return this.View(model);
+            return this.View(viewModel);
         }
 
         public ActionResult Detailed()
