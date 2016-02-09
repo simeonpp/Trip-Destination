@@ -7,7 +7,7 @@
     using Services.Contracts;
     using Ninject;
     using Data.Models;
-    using AutoMapper;
+
     public class TripController : BaseController
     {
         [Inject]
@@ -36,33 +36,27 @@
                 return this.View(trip);
             }
             
-            string userId = this.CurrentUser.GetUserId();
+            string currentUserId = this.CurrentUser.GetUserId();
 
-            Trip dbTripToBeSaved;
+            Trip dbtrip = this.TripServices.Create(
+                    trip.FromId,
+                    trip.ToId,
+                    trip.DateOfLeaving,
+                    trip.AvailableSeats,
+                    trip.PlaceOfLeaving,
+                    trip.PickUpFromAddress,
+                    trip.Description,
+                    trip.ETA,
+                    trip.Price,
+                    currentUserId
+                );
 
-            //Mapper.CreateMap<>
-            
-
-
-            //Mapper.Map(trip, dbTripToBeSaved);
-
-            int a = this.TripServices.GetMe();
-
-            //TODO: call service to save the trip in the Db
-            return this.RedirectToAction("List", "Trip");
+            return this.RedirectToAction("Detailed", "Trip");
         }
 
-        private IEnumerable<SelectListItem> GetTowns()
+        public ActionResult Detailed()
         {
-            var towns = new List<SelectListItem>()
-            {
-                new SelectListItem() { Text = "Sofia", Value = "1" },
-                new SelectListItem() { Text = "Tervel", Value = "12" },
-                new SelectListItem() { Text = "Ruse", Value = "15" },
-                new SelectListItem() { Text = "Septemvri", Value = "25" },
-            };
-
-            return towns;
+            return this.View();
         }
     }
 }

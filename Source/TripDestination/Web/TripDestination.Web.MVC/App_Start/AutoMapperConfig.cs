@@ -7,7 +7,7 @@
     using System.Reflection;
     using System.Linq;
     using System.Collections.Generic;
-
+    using Common.Infrastructure.Mapping;
     public static class AutoMapperConfig
     {
         private static IMapper mapper;

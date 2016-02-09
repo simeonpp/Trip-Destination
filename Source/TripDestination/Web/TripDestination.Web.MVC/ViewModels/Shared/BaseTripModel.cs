@@ -4,7 +4,9 @@
     using System.ComponentModel.DataAnnotations;
     using Common.Infrastructure.Constants;
     using Data.Models;
-    public abstract class BaseTripModel
+    using Common.Infrastructure.Mapping;
+
+    public abstract class BaseTripModel : IMapFrom<Trip>
     {       
         [Required]
         //[MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "From town name can no be less than 4 symbols long.")]

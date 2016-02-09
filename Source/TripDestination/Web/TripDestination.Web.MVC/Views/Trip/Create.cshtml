@@ -13,54 +13,45 @@
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div>
-        From
         @Html.DropDownListFor(m => m.FromId, Model.Towns)
     </div>
 
     <div>
-        Available seats
-        @Html.DisplayFor(m => m.AvailableSeats)
+        @Html.DisplayNameFor(m => m.AvailableSeats)
         @Html.EditorFor(m => m.AvailableSeats)
     </div>
 
     <div>
-        Price
-        @Html.DisplayFor(m => m.Price)
+        @Html.DisplayNameFor(m => m.Price)
         @Html.EditorFor(m => m.Price)
     </div>
 
     <div>
-        Description
-        @Html.DisplayFor(m => m.Description)
+        @Html.DisplayNameFor(m => m.Description)
         @Html.EditorFor(m => m.Description)
     </div>
 
     <div>
-        To
         @Html.DropDownListFor(m => m.ToId, Model.Towns)
     </div>
 
     <div>
-        Date of leaving
-        @Html.DisplayFor(m => m.DateOfLeaving)
+        @Html.DisplayNameFor(m => m.DateOfLeaving)
         @Html.EditorFor(m => m.DateOfLeaving)
     </div>
 
     <div>
-        ETA
-        @Html.DisplayFor(m => m.ETA)
+        @Html.DisplayNameFor(m => m.ETA)
         @Html.EditorFor(m => m.ETA)
     </div>
 
     <div>
-        Place of leaving
-        @Html.DisplayFor(m => m.PlaceOfLeaving)
+        @Html.DisplayNameFor(m => m.PlaceOfLeaving)
         @Html.EditorFor(m => m.PlaceOfLeaving)
     </div>
 
     <div>
-        Pick up from address
-        @Html.DisplayFor(m => m.PickUpFromAddress)
+        @Html.DisplayNameFor(m => m.PickUpFromAddress)
         @Html.EditorFor(m => m.PickUpFromAddress)
     </div>
 
