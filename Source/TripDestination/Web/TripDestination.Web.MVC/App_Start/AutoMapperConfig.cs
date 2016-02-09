@@ -1,56 +1,86 @@
 ﻿namespace TripDestination.Web.MVC
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-
     using AutoMapper;
-    using Common.Infrastructure.Mapping;
+    using Models;
+    using ViewModels;
+    using System.Reflection;
+    using System.Linq;
+    using System.Collections.Generic;
 
-    public class AutoMapperConfig
+    public static class AutoMapperConfig
     {
+        private static IMapper mapper;
+
+        private static MapperConfiguration configuration;
+
+        private static object syncRoot = new Object();
+
+        public static IMapper GetMapper
+        {
+            get
+            {
+                if (mapper == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (mapper == null)
+                            Register();
+                    }
+                }
+
+                return mapper;
+            }
+        }
+
+
         public static void Register()
         {
             var types = Assembly.GetExecutingAssembly().GetExportedTypes();
 
             LoadStandardMappings(types);
-
             LoadCustomMappings(types);
+            mapper = configuration.CreateMapper();
         }
 
         private static void LoadStandardMappings(IEnumerable<Type> types)
         {
-            var maps = (from t in types
-                        from i in t.GetInterfaces()
-                        where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(Common.Infrastructure.Mapping.IMapFrom<>) &&
-                              !t.IsAbstract &&
-                              !t.IsInterface
-                        select new
-                        {
-                            Source = i.GetGenericArguments()[0],
-                            Destination = t
-                        }).ToArray();
+            var maps = types
+                .Where(t => !t.IsInterface && !t.IsAbstract && t.GetInterfaces()
+                    .Any(i => i.IsGenericType && (
+                        i.GetGenericTypeDefinition() == typeof(IMapFrom<>) || i.GetGenericTypeDefinition() == typeof(IMapTo<>)
+                    ))
+                )
+                .Select(t => new
+                {
+                    Source = t.GetInterfaces()
+                                .Where(i => i.GetGenericTypeDefinition() == typeof(IMapFrom<>) || i.GetGenericTypeDefinition() == typeof(IMapTo<>))
+                                .FirstOrDefault()
+                                .GetGenericArguments()[0],
+                    Destination = t
+                })
+                .ToList();
 
-            foreach (var map in maps)
-            {
-                Mapper.CreateMap(map.Source, map.Destination);
-            }
+            configuration = new MapperConfiguration(cfg =>
+                maps.ForEach(
+                    m => cfg.CreateMap(m.Source, m.Destination))
+            );
         }
 
         private static void LoadCustomMappings(IEnumerable<Type> types)
         {
-            var maps = (from t in types
-                        from i in t.GetInterfaces()
-                        where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
-                              !t.IsAbstract &&
-                              !t.IsInterface
-                        select (IHaveCustomMappings)Activator.CreateInstance(t)).ToArray();
+            var maps = types
+                    .Where(t => !t.IsAbstract && !t.IsInterface && t.GetInterfaces()
+                        .Any(i => typeof(IHaveCustomMappings).IsAssignableFrom(t))
+                    )
+                    .Select(t => (IHaveCustomMappings)Activator.CreateInstance(t))
+                    .ToList();
 
             foreach (var map in maps)
             {
-                map.CreateMappings(Mapper.Configuration);
+                map.CreateMappings(configuration);
             }
         }
+
     }
 }
