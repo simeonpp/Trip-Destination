@@ -48,6 +48,7 @@
     <Compile Include="Constants\ModelConstants.cs" />
     <Compile Include="Constants\RoleConstants.cs" />
     <Compile Include="Constants\UserConstants.cs" />
+    <Compile Include="Constants\WebApplicationConstants.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
     <Compile Include="Mapping\IMapTo.cs" />

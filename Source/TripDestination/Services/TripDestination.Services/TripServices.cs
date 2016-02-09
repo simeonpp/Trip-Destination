@@ -42,9 +42,46 @@
         {
             var trips = this.tripRepos
                 .All()
-                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == day);
+                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == day
+                            && t.Status == TripStatus.Open
+                            && t.AvailableSeats >= 1)
+                .OrderByDescending(t => t.DateOfLeaving);
 
             return trips;
+        }
+
+        public IQueryable<Trip> GetLatest(int count)
+        {
+            var trips = this.tripRepos
+                .All()
+                .OrderByDescending(t => t.CreatedOn)
+                .Take(count);
+
+            return trips;
+        }
+
+        public IQueryable<Trip> GetTodayTrips(int count)
+        {
+            var trips = this.tripRepos
+                .All()
+                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == DateTime.Today)
+                .OrderByDescending(t => t.CreatedOn)
+                .Take(count);
+
+            return trips;
+        }
+
+        public IQueryable<string> GetTopTownsDestination(bool townsFrom = true, int count = 2)
+        {
+            var towns = tripRepos
+               .All()
+               .GroupBy(t => townsFrom == true ? t.From.Name : t.To.Name)
+               .Select(group => new { TownName = group.Key, Count = group.Count() })
+               .OrderByDescending(e => e.Count)
+               .Take(count)
+               .Select(t => t.TownName);
+
+            return towns;
         }
     }
 }

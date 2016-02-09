@@ -19,5 +19,11 @@
             string driverId);
         
         IQueryable<Trip> GetForDay(DateTime day);
+
+        IQueryable<Trip> GetLatest(int count);
+
+        IQueryable<Trip> GetTodayTrips(int count);
+
+        IQueryable<string> GetTopTownsDestination(bool townsTo = true, int count = 2);
     }
 }
