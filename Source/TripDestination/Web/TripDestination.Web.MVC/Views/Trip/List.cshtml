@@ -1,0 +1,32 @@
+﻿@using TripDestination.Web.MVC.ViewModels.Trip
+@model TripLstViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List</h1>
+
+@if (Model.Trips.Count() > 0)
+{
+    <ul>
+        @foreach (var trip in Model.Trips)
+        {
+            <li>
+                @trip.From.Name - @trip.To.Name
+                @trip.DateOfLeaving
+                @trip.DriverFirstName
+                @trip.AvailableSeats
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <text>
+        No found trips for @Model.Date
+    </text>
+}
+
+
+

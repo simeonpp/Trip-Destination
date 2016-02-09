@@ -16,7 +16,7 @@
 
         private static object syncRoot = new Object();
 
-        public static IMapper GetMapper
+        public static IMapper Mapper
         {
             get
             {
@@ -30,6 +30,14 @@
                 }
 
                 return mapper;
+            }
+        }
+
+        public static MapperConfiguration Configuration
+        {
+            get
+            {
+                return configuration;
             }
         }
 

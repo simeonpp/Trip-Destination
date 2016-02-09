@@ -225,6 +225,7 @@
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
     <Compile Include="ViewModels\Trip\InputVIewModel.cs" />
+    <Compile Include="ViewModels\Trip\TripLstViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +283,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
     <Content Include="Views\Trip\Detailed.cshtml" />
+    <Content Include="Views\Trip\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

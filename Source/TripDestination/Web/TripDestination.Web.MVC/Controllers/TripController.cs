@@ -1,6 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
-    using System.Collections.Generic;
+    using System;
     using System.Web.Mvc;
     using ViewModels.Trip;
     using Microsoft.AspNet.Identity;
@@ -8,7 +8,8 @@
     using Ninject;
     using Data.Models;
     using System.Linq;
-
+    using AutoMapper.QueryableExtensions;
+    using ViewModels.Shared;
     public class TripController : BaseController
     {
         [Inject]
@@ -16,6 +17,9 @@
             
         [Inject]
         public ITownsServices TownServices { get; set; }
+
+        [Inject]
+        public IStatisticsServices StatisticsServices { get; set; }
 
         [HttpGet]
         [Authorize]
@@ -33,10 +37,10 @@
             InputVIewModel model = new InputVIewModel()
             {
                 Towns = towns,
-                TodayCreatedTrips = this.TripServices.GetTodayCreatedCount(),
-                TodayInProgressTrips = this.TripServices.GetTodayInProgressCount(),
-                TodayFinishedTrips = this.TripServices.GetTodayFinishedCount(),
-                TodayTopDestinationTown = this.TripServices.GetTodayTopDestination()
+                TodayCreatedTrips = this.StatisticsServices.TripsGetTodayCreatedCount(),
+                TodayInProgressTrips = this.StatisticsServices.TripsGetTodayInProgressCount(),
+                TodayFinishedTrips = this.StatisticsServices.TripsGetTodayFinishedCount(),
+                TodayTopDestinationTown = this.StatisticsServices.TripsGetTodayTopDestination()
             };
 
             return this.View(model);
@@ -68,6 +72,24 @@
                 );
 
             return this.RedirectToAction("Detailed", "Trip");
+        }
+
+        [HttpGet]
+        public ActionResult List()
+        {
+            var day = DateTime.Today;
+            var trips = this.TripServices
+                .GetForDay(day)
+                .ProjectTo<TripListViewModel>(MapperConfiguration)
+                .ToList();
+
+            TripLstViewModel model = new TripLstViewModel()
+            {
+                Date = day,
+                Trips = trips
+            };
+
+            return this.View(model);
         }
 
         public ActionResult Detailed()

@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using TripDestination.Data.Models;
 
-    public abstract class BaseTripViewModel : IMapFrom<Trip>, IHaveCustomMappings
+    public abstract class BaseTripViewModel : BaseTripModel, IMapFrom<Trip>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -14,12 +14,12 @@
         public string DriverLastName { get; set; }
 
         public string DriverImageSrc { get; set; }
+        
+        //public IEnumerable<View> Views { get; set; }
 
-        public int Views { get; set; }
+        //public IEnumerable<Like> Likes { get; set; }
 
-        public IEnumerable<Like> Likes { get; set; }
-
-        public IEnumerable<Comment> Comments { get; set; }
+        //public IEnumerable<Comment> Comments { get; set; }
 
         public virtual void CreateMappings(IConfiguration configuration)
         {

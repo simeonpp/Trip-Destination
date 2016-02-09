@@ -10,9 +10,7 @@
     public class TripServices : ITripServices
     {
         private IRepository<Trip> tripRepos;
-
-        private DateTime today = DateTime.Today;
-
+        
         public TripServices(IRepository<Trip> tripRepos)
         {
             this.tripRepos = tripRepos;
@@ -39,54 +37,14 @@
 
             return trip;
         }
-
-        public int GetTodayCreatedCount()
+        
+        public IQueryable<Trip> GetForDay(DateTime day)
         {
-            int count = tripRepos
+            var trips = this.tripRepos
                 .All()
-                .Where(t => DbFunctions.TruncateTime(t.CreatedOn) == this.today)
-                .Count();
+                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == day);
 
-            return count;
-        }
-
-        public int GetTodayFinishedCount()
-        {
-            int count = tripRepos
-                .All()
-                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == this.today && t.Status == TripStatus.Finished)
-                .Count();
-
-            return count;
-        }
-
-        public int GetTodayInProgressCount()
-        {
-            int count = tripRepos
-                .All()
-                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == this.today && t.Status == TripStatus.InProgress)
-                .Count();
-
-            return count;
-        }
-
-        public string GetTodayTopDestination()
-        {
-            var town = tripRepos
-                .All()
-                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == this.today)
-                .GroupBy(t => t.To.Name)
-                .Select(group => new { TownName = group.Key, Count = group.Count() })
-                .OrderByDescending(e => e.Count)
-                .FirstOrDefault();
-
-            if (town == null)
-            {
-                return String.Empty;
-            }
-
-            string townAsString = town.TownName;
-            return townAsString;
+            return trips;
         }
     }
 }

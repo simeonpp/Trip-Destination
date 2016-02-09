@@ -2,6 +2,7 @@
 {
     using System;
     using TripDestination.Data.Models;
+    using System.Linq;
 
     public interface ITripServices
     {
@@ -16,14 +17,7 @@
             DateTime ETA,
             decimal price,
             string driverId);
-
-        int GetTodayCreatedCount();
-
-        int GetTodayInProgressCount();
-
-        int GetTodayFinishedCount();
-
-        string GetTodayTopDestination();
-
+        
+        IQueryable<Trip> GetForDay(DateTime day);
     }
 }
