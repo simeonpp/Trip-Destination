@@ -11,7 +11,10 @@ namespace TripDestination.Web.MVC.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
-
+    using System.Reflection;
+    using System.IO;
+    using Services.Contracts;
+    using Services;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -62,10 +65,12 @@ namespace TripDestination.Web.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            
+            kernel.Bind<ITripServices>().To<TripServices>();
+
+            //var servicesAssemblyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
 
             //kernel.Bind(b => b
-            //  .From(System.Configuration.Assemblies.DataService)
+            //  .FromAssembliesMatching(new string[] { "Services" })
             //  .SelectAllClasses()
             //  .BindDefaultInterface());
         }        

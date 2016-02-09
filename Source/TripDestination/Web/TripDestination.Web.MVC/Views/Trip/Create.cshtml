@@ -1,0 +1,73 @@
+﻿@using TripDestination.Web.MVC.ViewModels.Trip
+@model InputVIewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create new trip</h1>
+
+@using (Html.BeginForm("Create", "Trip", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div>
+        From
+        @Html.DropDownListFor(m => m.FromId, Model.Towns)
+    </div>
+
+    <div>
+        Available seats
+        @Html.DisplayFor(m => m.AvailableSeats)
+        @Html.EditorFor(m => m.AvailableSeats)
+    </div>
+
+    <div>
+        Price
+        @Html.DisplayFor(m => m.Price)
+        @Html.EditorFor(m => m.Price)
+    </div>
+
+    <div>
+        Description
+        @Html.DisplayFor(m => m.Description)
+        @Html.EditorFor(m => m.Description)
+    </div>
+
+    <div>
+        To
+        @Html.DropDownListFor(m => m.ToId, Model.Towns)
+    </div>
+
+    <div>
+        Date of leaving
+        @Html.DisplayFor(m => m.DateOfLeaving)
+        @Html.EditorFor(m => m.DateOfLeaving)
+    </div>
+
+    <div>
+        ETA
+        @Html.DisplayFor(m => m.ETA)
+        @Html.EditorFor(m => m.ETA)
+    </div>
+
+    <div>
+        Place of leaving
+        @Html.DisplayFor(m => m.PlaceOfLeaving)
+        @Html.EditorFor(m => m.PlaceOfLeaving)
+    </div>
+
+    <div>
+        Pick up from address
+        @Html.DisplayFor(m => m.PickUpFromAddress)
+        @Html.EditorFor(m => m.PickUpFromAddress)
+    </div>
+
+    <input type="submit" value="Create trip" />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -24,7 +24,7 @@
             this.likes = new HashSet<Like>();
             this.views = new HashSet<View>();
 
-            this.CreateOn = DateTime.Now;
+            this.CreateOn = DateTime.UtcNow;
             this.PickUpFromAddress = false;
             this.Status = TripStatus.Open;
             this.Price = 0;
