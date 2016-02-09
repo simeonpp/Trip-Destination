@@ -7,17 +7,29 @@
     using Services.Contracts;
     using Ninject;
     using Data.Models;
+    using System.Linq;
 
     public class TripController : BaseController
     {
         [Inject]
         public ITripServices TripServices { get; set; }
+            
+        [Inject]
+        public ITownsServices TownServices { get; set; }
 
         [HttpGet]
         [Authorize]
         public ActionResult Create()
         {
-            var towns = this.GetTowns();
+            var towns = this.TownServices
+                    .GetAll()
+                    .Select(t => new SelectListItem
+                    {
+                        Value = t.Id.ToString(),
+                        Text = t.Name
+                    })
+                    .ToList();
+
             InputVIewModel model = new InputVIewModel()
             {
                 Towns = towns
