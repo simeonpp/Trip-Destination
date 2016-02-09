@@ -24,7 +24,7 @@
             this.likes = new HashSet<Like>();
             this.views = new HashSet<View>();
 
-            this.CreateOn = DateTime.UtcNow;
+            this.CreatedOn = DateTime.UtcNow;
             this.PickUpFromAddress = false;
             this.Status = TripStatus.Open;
             this.Price = 0;
@@ -49,7 +49,7 @@
         public User Driver { get; set; }
 
         [Required]
-        public DateTime CreateOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         [MinLength(ModelConstants.TripDescriptionMinLength, ErrorMessage = "Trip description can not be less than 10 symbols long.")]
         [MaxLength(ModelConstants.TripDescriptionMaxLength, ErrorMessage = "Trip description can not be more than 1000 symbols long.")]

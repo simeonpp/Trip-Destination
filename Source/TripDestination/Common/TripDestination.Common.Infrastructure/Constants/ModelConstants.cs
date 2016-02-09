@@ -74,5 +74,25 @@
 
         // Notification type
         public const int NotificationTypeDescriptionMaxLength = 500;
+
+        // Page
+        public const int PageHeadingMinLength = 5;
+        public const int PageHeadingMaxLength = 50;
+
+        public const int PageSubHeadingMinLength = 5;
+        public const int PageSubHeadingMaxLength = 50;
+
+        // Page paragraph
+        public const int PageParagraphMainHeadingMinLength = 5;
+        public const int PageParagraphMainHeadingMaxLength = 50;
+
+        public const int PageParagraphMainSubHeadingMinLength = 5;
+        public const int PageParagraphMainSubHeadingMaxLength = 50;
+
+        public const int PageParagraphHeadingMinLength = 5;
+        public const int PageParagraphHeadingMaxLength = 50;
+
+        public const int PageParagraphTextMinLength = 10;
+        public const int PageParagraphTextMaxLength = 1000;
     }
 }

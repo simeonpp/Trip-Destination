@@ -56,5 +56,9 @@
         public virtual IDbSet<Trip> Trips { get; set; }
 
         public virtual IDbSet<View> Views { get; set; }
+
+        public virtual IDbSet<Page> Pages { get; set; }
+
+        public virtual IDbSet<PageParagraph> PageParagraphs { get; set; }
     }
 }

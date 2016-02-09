@@ -64,6 +64,9 @@
     <Compile Include="Notification.cs" />
     <Compile Include="NotificationKey.cs" />
     <Compile Include="NotificationType.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="PageParagraph.cs" />
+    <Compile Include="PageParagraphType.cs" />
     <Compile Include="PassengerTrip.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

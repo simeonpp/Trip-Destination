@@ -44,7 +44,7 @@
             
 
 
-            Mapper.Map(trip, dbTripToBeSaved);
+            //Mapper.Map(trip, dbTripToBeSaved);
 
             int a = this.TripServices.GetMe();
 
