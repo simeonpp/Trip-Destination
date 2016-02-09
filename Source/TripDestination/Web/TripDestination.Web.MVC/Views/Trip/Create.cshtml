@@ -58,6 +58,23 @@
     <input type="submit" value="Create trip" />
 }
 
+<h2>Stats</h2>
+<div>
+    TodayCreatedTrips - @Model.TodayCreatedTrips
+</div>
+
+<div>
+    TodayInProgressTrips - @Model.TodayCreatedTrips
+</div>
+
+<div>
+    TodayFinishedTrips - @Model.TodayFinishedTrips
+</div>
+
+<div>
+    TodayTopDestinationTown - @Model.TodayTopDestinationTown
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -2,10 +2,10 @@
 {
     public enum SpaceForLugage
     {
-        None,
-        Small,
-        Normal,
-        Big,
-        Large
+        None = 1,
+        Small = 2,
+        Normal = 3,
+        Big = 4,
+        Large = 5
     }
 }

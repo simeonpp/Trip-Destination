@@ -2,9 +2,9 @@
 {
     public enum TripStatus
     {
-        Open,
-        Closed,
-        InProgress,
-        Finished
+        Open = 1,
+        Closed = 2,
+        InProgress = 3,
+        Finished = 4
     }
 }

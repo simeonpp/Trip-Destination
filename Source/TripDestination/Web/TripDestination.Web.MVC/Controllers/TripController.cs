@@ -32,7 +32,11 @@
 
             InputVIewModel model = new InputVIewModel()
             {
-                Towns = towns
+                Towns = towns,
+                TodayCreatedTrips = this.TripServices.GetTodayCreatedCount(),
+                TodayInProgressTrips = this.TripServices.GetTodayInProgressCount(),
+                TodayFinishedTrips = this.TripServices.GetTodayFinishedCount(),
+                TodayTopDestinationTown = this.TripServices.GetTodayTopDestination()
             };
 
             return this.View(model);

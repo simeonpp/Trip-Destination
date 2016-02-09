@@ -17,5 +17,13 @@
             decimal price,
             string driverId);
 
+        int GetTodayCreatedCount();
+
+        int GetTodayInProgressCount();
+
+        int GetTodayFinishedCount();
+
+        string GetTodayTopDestination();
+
     }
 }
