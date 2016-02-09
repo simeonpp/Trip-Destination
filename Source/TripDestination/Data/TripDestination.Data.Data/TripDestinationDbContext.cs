@@ -3,8 +3,9 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
-    public class TripDestinationDbContext : IdentityDbContext<User>
+    public class TripDestinationDbContext : IdentityDbContext<User>, ITripDestinationDbContext
     {
         public TripDestinationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
