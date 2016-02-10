@@ -300,6 +300,7 @@
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Page\_ParagraphNormalPartial.cshtml" />
     <Content Include="Views\Page\_ParagraphDoublePartial.cshtml" />
+    <Content Include="Views\Page\_ParagraphFAQPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

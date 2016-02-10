@@ -61,5 +61,7 @@
         public virtual IDbSet<Page> Pages { get; set; }
 
         public virtual IDbSet<PageParagraph> PageParagraphs { get; set; }
+
+        public virtual IDbSet<ContactForm> ContactForms { get; set; }
     }
 }

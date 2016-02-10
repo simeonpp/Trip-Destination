@@ -94,5 +94,18 @@
 
         public const int PageParagraphTextMinLength = 10;
         public const int PageParagraphTextMaxLength = 1000;
+
+        // Contact form
+        public const int ContactFormNameMinLength = 4;
+        public const int ContactFormNameMaxLength = 50;
+
+        public const int ContactFormSubjectMinLength = 4;
+        public const int ContactFormSubjectMaxLength = 50;
+
+        public const int ContactFormMessageMinLength = 10;
+        public const int ContactFormMessageMaxLength = 500;
+
+        public const int ContactFormIpMinLength = 11;
+        public const int ContactFormIpMaxLength = 45;
     }
 }
