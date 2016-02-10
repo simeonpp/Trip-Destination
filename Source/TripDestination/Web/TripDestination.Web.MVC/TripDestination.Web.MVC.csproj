@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -294,6 +295,7 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\_ContactFormPartial.cshtml" />
     <Content Include="Views\Contact\EditorTemplates\ContactFormViewModel.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
