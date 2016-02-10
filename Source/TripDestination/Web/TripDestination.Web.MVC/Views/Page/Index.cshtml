@@ -1,7 +1,32 @@
-﻿@{
+﻿@using TripDestination.Web.MVC.ViewModels.Page
+@model PageViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Page #@this.ViewBag.Id</h1>
+@if (Model.Paragraphs.Count() > 0)
+{
+    foreach (var paragraph in Model.Paragraphs)
+    {
+        <section>
+            <h1>@paragraph.MainHeading</h1>
+            <h2>@paragraph.MainSubHeading</h2>
+            @if (paragraph.Type == TripDestination.Data.Models.PageParagraphType.Normal)
+            {
+                Html.RenderPartial("_ParagraphNormalPartial", paragraph);
+            }
+            else if (paragraph.Type == TripDestination.Data.Models.PageParagraphType.Double)
+            {
+                Html.RenderPartial("_ParagraphDoublePartial", paragraph);
+            }
+            else if (paragraph.Type == TripDestination.Data.Models.PageParagraphType.FAQ)
+            {
+                Html.RenderPartial("_ParagraphFAQPartial", paragraph);
+            }
+        </section>
+    }
+}
+
 
 

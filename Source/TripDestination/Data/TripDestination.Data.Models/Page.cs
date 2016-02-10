@@ -1,11 +1,19 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using System.Collections.Generic;
     using Common.Infrastructure.Constants;
-    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     public class Page
     {
+        private IEnumerable<PageParagraph> paragraphs;
+
+        public Page()
+        {
+            this.paragraphs = new HashSet<PageParagraph>();
+        }
+
         [Index]
         public int Id { get; set; }
 
@@ -20,5 +28,11 @@
         public string SubHeading { get; set; }
 
         public string Slug { get; set; }
+
+        public virtual IEnumerable<PageParagraph> Paragraphs
+        {
+            get { return this.paragraphs; }
+            set { this.paragraphs = value; }
+        }
     }
 }

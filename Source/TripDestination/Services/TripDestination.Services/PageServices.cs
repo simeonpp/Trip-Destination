@@ -4,6 +4,7 @@
     using Data.Data.Repositories;
     using Data.Models;
     using System.Linq;
+    using System;
 
     public class PageServices : IPageServices
     {
@@ -25,6 +26,15 @@
                 .FirstOrDefault();
 
             return page;
+        }
+
+        public IQueryable<PageParagraph> GetParagraphsByPage(Page page)
+        {
+            var paragraphs = this.pageParagraphRepos
+                .All()
+                .Where(pp => pp.PageId == page.Id);
+
+            return paragraphs;
         }
     }
 }

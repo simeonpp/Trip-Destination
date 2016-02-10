@@ -45,5 +45,10 @@
         [MinLength(ModelConstants.PageParagraphTextMinLength, ErrorMessage = "Page paragraph additional text can no be less than 5 symbols long.")]
         [MaxLength(ModelConstants.PageParagraphTextMaxLength, ErrorMessage = "Page paragraph additional text can no be more than 50 symbols long.")]
         public string AdditionalText { get; set; }
+
+        [Required]
+        public int PageId { get; set; }
+
+        public virtual Page Page { get; set; }
     }
 }

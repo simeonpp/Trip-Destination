@@ -225,6 +225,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Contact\ContactFormViewModel.cs" />
     <Compile Include="ViewModels\Home\HomepageViewModel.cs" />
+    <Compile Include="ViewModels\Page\PageParagraphViewModel.cs" />
+    <Compile Include="ViewModels\Page\PageViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripExtentendedModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
@@ -296,6 +298,8 @@
     <Content Include="Views\Contact\_ContactFormPartial.cshtml" />
     <Content Include="Views\Contact\EditorTemplates\ContactFormViewModel.cshtml" />
     <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Page\_ParagraphNormalPartial.cshtml" />
+    <Content Include="Views\Page\_ParagraphDoublePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

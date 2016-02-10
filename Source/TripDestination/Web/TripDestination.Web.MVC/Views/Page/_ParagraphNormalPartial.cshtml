@@ -1,0 +1,9 @@
+﻿@using TripDestination.Web.MVC.ViewModels.Page
+@model PageParagraphViewModel
+
+<article class="centered">
+    <div class="wrapper row">
+        <h3>@Model.Heading</h3>
+        <p>@Html.Raw(Model.Text)</p>
+    </div>
+</article>

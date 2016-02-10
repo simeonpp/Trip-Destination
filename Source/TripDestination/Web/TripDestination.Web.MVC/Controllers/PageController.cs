@@ -4,6 +4,9 @@
     using Services.Contracts;
     using System.Web.Mvc;
     using Data.Models;
+    using AutoMapper.QueryableExtensions;
+    using ViewModels.Page;
+    using System.Linq;
 
     public class PageController : BaseController
     {
@@ -19,8 +22,17 @@
                 return this.View("Error");
             }
 
-            this.ViewBag.Id = page.Heading;
-            return this.View();
+            var paragraphs = this.PageServices
+                .GetParagraphsByPage(page)
+                .ProjectTo<PageParagraphViewModel>(this.MapperConfiguration)
+                .ToList();
+
+            PageViewModel videModel = new PageViewModel()
+            {
+                Paragraphs = paragraphs
+            };
+            
+            return this.View(videModel);
         }
     }
 }
