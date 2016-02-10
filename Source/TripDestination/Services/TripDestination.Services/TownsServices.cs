@@ -18,7 +18,11 @@
 
         public IQueryable<Town> GetAll()
         {
-            return this.townRepos.All();
+            var towns = this.townRepos
+                .All()
+                .OrderBy(t => t.Name);
+
+            return towns;
         }
     }
 }

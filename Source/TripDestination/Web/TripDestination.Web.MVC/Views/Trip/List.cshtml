@@ -12,12 +12,7 @@
     <ul>
         @foreach (var trip in Model.Trips)
         {
-            <li>
-                @trip.From.Name - @trip.To.Name
-                @trip.DateOfLeaving
-                @trip.DriverFirstName
-                @trip.AvailableSeats
-            </li>
+            Html.RenderPartial("_TripListLiPartial", trip);
         }
     </ul>
 }

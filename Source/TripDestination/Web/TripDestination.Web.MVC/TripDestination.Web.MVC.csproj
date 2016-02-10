@@ -288,6 +288,7 @@
     <Content Include="Views\Trip\Detailed.cshtml" />
     <Content Include="Views\Trip\List.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Shared\_TripListLiPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

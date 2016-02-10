@@ -22,19 +22,14 @@
     <ul>
         @foreach (var trip in Model.TodayTrips)
         {
-            <li>
-                @trip.From.Name - @trip.To.Name
-                @trip.DateOfLeaving
-                @trip.DriverFirstName
-                @trip.AvailableSeats
-            </li>
+            Html.RenderPartial("_TripListLiPartial", trip);
         }
     </ul>
 }
 else
 {
     <text>
-        No found trips for today.
+        No trips were added today.
     </text>
 }
 
@@ -44,12 +39,7 @@ else
     <ul>
         @foreach (var trip in Model.LatestTrips)
         {
-            <li>
-                @trip.From.Name - @trip.To.Name
-                @trip.DateOfLeaving
-                @trip.DriverFirstName
-                @trip.AvailableSeats
-            </li>
+            Html.RenderPartial("_TripListLiPartial", trip);
         }
     </ul>
 }
