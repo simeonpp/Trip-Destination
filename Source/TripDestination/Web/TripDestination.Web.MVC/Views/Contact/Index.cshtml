@@ -5,6 +5,10 @@
 <h2>Social links</h2>
 
 <h2>Contact form</h2>
+@if (this.ViewBag.SuccessMessage != null)
+{
+    <h3>@this.ViewBag.SuccessMessage</h3>
+}
 @Html.Partial("_ContactFormPartial")
 
 

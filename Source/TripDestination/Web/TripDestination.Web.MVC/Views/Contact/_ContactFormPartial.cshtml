@@ -1,7 +1,12 @@
 ﻿@using TripDestination.Web.MVC.ViewModels.Contact
 @model ContactFormViewModel
 
-@using (Html.BeginForm("ContactForm", "Contact", FormMethod.Post))
+@using (Html.BeginForm("Index", "Contact", FormMethod.Post))
 {
-    
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel();
+
+    <input type="submit" value="Send" />
 }
