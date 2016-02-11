@@ -10,7 +10,10 @@
     {
         protected IIdentity CurrentUser { get; set; }
 
+        protected IMapper Mapper { get; private set; }
+
         protected MapperConfiguration MapperConfiguration { get; set; }
+
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -18,6 +21,7 @@
 
             this.CurrentUser = this.User.Identity;
             this.MapperConfiguration = AutoMapperConfig.Configuration;
+            this.Mapper = AutoMapperConfig.Mapper;
         }
 
     }

@@ -18,10 +18,6 @@
 
         public ActionResult Index()
         {
-            var trip = this.TripServices.GetById(3);
-
-            TripListViewModel tripList = Common.Infrastructure.Mapping.AutoMapperConfig.Mapper.Map<TripListViewModel>(trip);
-
             var topDesinations = this.GetTopDestinations();
 
             var todayTrips = this.TripServices.GetTodayTrips(WebApplicationConstants.HomepageTripsPerSection)
