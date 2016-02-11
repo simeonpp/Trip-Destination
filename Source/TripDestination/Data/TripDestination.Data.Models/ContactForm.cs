@@ -21,6 +21,7 @@
         public string Name { get; set; }
 
         [Required]
+        [MaxLength(ModelConstants.ContactFormEmailMaxLength, ErrorMessage = "Message can no be more than 100 symbols long.")]
         [RegularExpression(
             @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
             ErrorMessage = "Invalid E-mail")]
