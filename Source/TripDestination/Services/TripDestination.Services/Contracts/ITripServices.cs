@@ -17,7 +17,9 @@
             DateTime ETA,
             decimal price,
             string driverId);
-        
+
+        Trip GetById(int id);
+
         IQueryable<Trip> GetForDay(DateTime day);
 
         IQueryable<Trip> GetLatest(int count);

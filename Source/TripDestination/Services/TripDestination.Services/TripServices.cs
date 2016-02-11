@@ -37,6 +37,16 @@
 
             return trip;
         }
+
+        public Trip GetById(int id)
+        {
+            Trip trip = this.tripRepos
+                .All()
+                .Where(t => t.Id == id)
+                .FirstOrDefault();
+
+            return trip;
+        }
         
         public IQueryable<Trip> GetForDay(DateTime day)
         {

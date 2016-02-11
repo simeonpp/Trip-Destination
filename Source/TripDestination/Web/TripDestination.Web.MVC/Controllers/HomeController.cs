@@ -18,25 +18,28 @@
 
         public ActionResult Index()
         {
-            //var topDesinations = this.GetTopDestinations();
+            var trip = this.TripServices.GetById(3);
 
-            //var todayTrips = this.TripServices.GetTodayTrips(WebApplicationConstants.HomepageTripsPerSection)
-            //    .ProjectTo<TripListViewModel>(this.MapperConfiguration)
-            //    .ToList();
+            TripListViewModel tripList = Common.Infrastructure.Mapping.AutoMapperConfig.Mapper.Map<TripListViewModel>(trip);
 
-            //var latestTrips = this.TripServices.GetLatest(WebApplicationConstants.HomepageTripsPerSection)
-            //    .ProjectTo<TripListViewModel>(this.MapperConfiguration)
-            //    .ToList();
+            var topDesinations = this.GetTopDestinations();
 
-            //HomepageViewModel viewModel = new HomepageViewModel()
-            //{
-            //    TopDestinations = topDesinations,
-            //    TodayTrips = todayTrips,
-            //    LatestTrips = latestTrips
-            //};
+            var todayTrips = this.TripServices.GetTodayTrips(WebApplicationConstants.HomepageTripsPerSection)
+                .ProjectTo<TripListViewModel>(this.MapperConfiguration)
+                .ToList();
 
-            //return View(viewModel);
-            return View();
+            var latestTrips = this.TripServices.GetLatest(WebApplicationConstants.HomepageTripsPerSection)
+                .ProjectTo<TripListViewModel>(this.MapperConfiguration)
+                .ToList();
+
+            HomepageViewModel viewModel = new HomepageViewModel()
+            {
+                TopDestinations = topDesinations,
+                TodayTrips = todayTrips,
+                LatestTrips = latestTrips
+            };
+
+            return View(viewModel);
         }
 
         private IEnumerable<Tuple<string, string>> GetTopDestinations()

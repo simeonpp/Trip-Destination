@@ -23,12 +23,12 @@
 
         public virtual void CreateMappings(IConfiguration configuration)
         {
-            //configuration.CreateMap<Data.Models.Trip, BaseTripModel>("DriverFirstName")
-            //    .ForMember(m => m.DriverFirstName, opt => opt.MapFrom(t => t.Driver.FirstName));
-            //configuration.CreateMap<Data.Models.Trip, BaseTripModel>("DriverLastName")
-            //    .ForMember(m => m.DriverLastName, opt => opt.MapFrom(t => t.Driver.LastName));
+            configuration.CreateMap<Data.Models.Trip, BaseTripViewModel>("DriverFirstName")
+                .ForMember(m => m.DriverFirstName, opt => opt.MapFrom(t => t.Driver.FirstName));
+            configuration.CreateMap<Data.Models.Trip, BaseTripViewModel>("DriverLastName")
+                .ForMember(m => m.DriverLastName, opt => opt.MapFrom(t => t.Driver.LastName));
 
-            //// TODO: Implement avatar photos
+            // TODO: Implement avatar photos
             //configuration.CreateMap<Data.Models.Trip, BaseTripModel>("DriverImageSrc")
             //    .ForMember(m => m.DriverImageSrc, opt => opt.MapFrom(t => t.Driver.Id));
         }

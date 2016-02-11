@@ -4,6 +4,7 @@
     using Data.Models;
     using System.Security.Principal;
     using System.Web.Mvc;
+    using Common.Infrastructure.Mapping;
 
     public abstract class BaseController : Controller
     {
