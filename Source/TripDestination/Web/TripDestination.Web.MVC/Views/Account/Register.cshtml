@@ -60,13 +60,12 @@
             @{
                 var rolesSelectList = new List<SelectListItem>()
                 {
-                    new SelectListItem() { Text = RoleConstants.DriverRole, Value = RoleConstants.DriverRole },
-                    new SelectListItem() { Text = RoleConstants.PassengerRole, Value = RoleConstants.PassengerRole },
+                    new SelectListItem() { Text = RoleConstants.PassengerRole, Value = RoleConstants.PassengerRole, Selected = true  },
+                    new SelectListItem() { Text = RoleConstants.DriverRole, Value = RoleConstants.DriverRole }                    
                 };
             }
 
             @Html.DropDownListFor(m => m.Role, rolesSelectList)
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
         </div>
     </div>
 }

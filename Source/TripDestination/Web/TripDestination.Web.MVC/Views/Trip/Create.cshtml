@@ -13,47 +13,47 @@
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div>
-        @Html.DisplayNameFor(m => m.FromId)
+        @Html.LabelFor(m => m.FromId)
         @Html.DropDownListFor(m => m.FromId, Model.Towns)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.AvailableSeats)
+        @Html.LabelFor(m => m.AvailableSeats)
         @Html.EditorFor(m => m.AvailableSeats)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.Price)
+        @Html.LabelFor(m => m.Price)
         @Html.EditorFor(m => m.Price)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.Description)
+        @Html.LabelFor(m => m.Description)
         @Html.EditorFor(m => m.Description)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.ToId)
+        @Html.LabelFor(m => m.ToId)
         @Html.DropDownListFor(m => m.ToId, Model.Towns)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.DateOfLeaving)
+        @Html.LabelFor(m => m.DateOfLeaving)
         @Html.EditorFor(m => m.DateOfLeaving)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.ETA)
+        @Html.LabelFor(m => m.ETA)
         @Html.EditorFor(m => m.ETA)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.PlaceOfLeaving)
+        @Html.LabelFor(m => m.PlaceOfLeaving)
         @Html.EditorFor(m => m.PlaceOfLeaving)
     </div>
 
     <div>
-        @Html.DisplayNameFor(m => m.PickUpFromAddress)
+        @Html.LabelFor(m => m.PickUpFromAddress)
         @Html.EditorFor(m => m.PickUpFromAddress)
     </div>
 
