@@ -140,6 +140,11 @@ namespace TripDestination.Web.MVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var rolesSelectList = new System.Collections.Generic.List<SelectListItem>()
+            {
+                new SelectListItem()
+            };
+
             return View();
         }
 

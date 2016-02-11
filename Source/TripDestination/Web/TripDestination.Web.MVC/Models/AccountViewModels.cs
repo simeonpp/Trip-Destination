@@ -94,6 +94,9 @@ namespace TripDestination.Web.MVC.Models
         [MinLength(ModelConstants.UserDescriptionMinLength, ErrorMessage = "Description can not be less than 20 symbols long.")]
         [MaxLength(ModelConstants.UserDescriptionMaxLength, ErrorMessage = "Description can not be more than 1000 symbols long.")]
         public string Description { get; set; }
+
+        [Required]
+        public string Role { get; set; }
     }
 
     public class ResetPasswordViewModel

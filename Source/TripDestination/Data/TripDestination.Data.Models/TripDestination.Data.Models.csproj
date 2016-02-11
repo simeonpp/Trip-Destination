@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="ContactForm.cs" />
     <Compile Include="Like.cs" />
     <Compile Include="Newsletter.cs" />
     <Compile Include="Notification.cs" />
