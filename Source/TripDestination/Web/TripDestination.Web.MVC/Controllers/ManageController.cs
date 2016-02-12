@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TripDestination.Web.MVC.Models;
+using TripDestination.Web.MVC.ViewModels.Manage;
 
 namespace TripDestination.Web.MVC.Controllers
 {
