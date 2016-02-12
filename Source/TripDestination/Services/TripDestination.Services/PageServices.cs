@@ -1,9 +1,10 @@
-﻿namespace TripDestination.Services
+﻿namespace TripDestination.Data.Services
 {
-    using Contracts;
-    using Data.Models;
     using System.Linq;
-    using Data.Common;
+
+    using Common;
+    using Models;
+    using TripDestination.Services.Data.Contracts;
 
     public class PageServices : IPageServices
     {

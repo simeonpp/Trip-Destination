@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{0C99945B-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{231A8F93-845B-4AA9-AC17-D532EE7A252A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Services", "Services\TripDestination.Services\TripDestination.Services.csproj", "{946CE469-34E0-4B54-92C7-18185E4EBB29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Services.Data", "Services\TripDestination.Services\TripDestination.Services.Data.csproj", "{946CE469-34E0-4B54-92C7-18185E4EBB29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Common.Infrastructure", "Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj", "{004C665E-6EC8-4C05-A312-CA577A55ADB8}"
 EndProject

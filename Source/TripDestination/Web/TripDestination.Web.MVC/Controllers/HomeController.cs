@@ -6,9 +6,9 @@
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
     using TripDestination.Common.Infrastructure.Constants;
-    using TripDestination.Services.Contracts;
     using TripDestination.Web.MVC.ViewModels.Home;
     using ViewModels.Shared;
+    using Services.Data.Contracts;
 
     public class HomeController : BaseController
     {

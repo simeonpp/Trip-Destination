@@ -1,8 +1,7 @@
-﻿namespace TripDestination.Services.Contracts
+﻿namespace TripDestination.Services.Data.Contracts
 {
-    using Data.Models;
-    using System.Collections.Generic;
     using System.Linq;
+    using TripDestination.Data.Models;
 
     public interface ITownsServices
     {

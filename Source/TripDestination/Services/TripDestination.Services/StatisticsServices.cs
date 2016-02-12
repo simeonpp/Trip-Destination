@@ -1,15 +1,15 @@
-﻿namespace TripDestination.Services
+﻿namespace TripDestination.Data.Services
 {
-    using Common.Infrastructure.Constants;
-    using Contracts;
-    using Data.Common;
-    using Data.Data;
-    using Data.Models;
+    using Common;
+    using Data;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using TripDestination.Common.Infrastructure.Constants;
+    using TripDestination.Services.Data.Contracts;
 
     public class StatisticsServices : IStatisticsServices
     {

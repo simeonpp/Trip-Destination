@@ -1,11 +1,11 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
-    using Services.Contracts;
     using System.Web.Mvc;
     using Data.Models;
     using AutoMapper.QueryableExtensions;
     using ViewModels.Page;
     using System.Linq;
+    using Services.Data.Contracts;
 
     public class PageController : BaseController
     {

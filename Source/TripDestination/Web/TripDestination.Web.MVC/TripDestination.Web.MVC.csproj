@@ -314,9 +314,9 @@
       <Project>{a490582c-4615-49f0-9f2b-152e48044e65}</Project>
       <Name>TripDestination.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Services\TripDestination.Services\TripDestination.Services.csproj">
+    <ProjectReference Include="..\..\Services\TripDestination.Services\TripDestination.Services.Data.csproj">
       <Project>{946ce469-34e0-4b54-92c7-18185e4ebb29}</Project>
-      <Name>TripDestination.Services</Name>
+      <Name>TripDestination.Services.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

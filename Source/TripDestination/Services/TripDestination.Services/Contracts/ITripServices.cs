@@ -1,4 +1,4 @@
-﻿namespace TripDestination.Services.Contracts
+﻿namespace TripDestination.Services.Data.Contracts
 {
     using System;
     using TripDestination.Data.Models;

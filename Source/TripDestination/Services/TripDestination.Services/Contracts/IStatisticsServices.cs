@@ -1,4 +1,4 @@
-﻿namespace TripDestination.Services.Contracts
+﻿namespace TripDestination.Services.Data.Contracts
 {
 
     public interface IStatisticsServices

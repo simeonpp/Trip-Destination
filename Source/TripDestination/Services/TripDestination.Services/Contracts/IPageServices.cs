@@ -1,7 +1,7 @@
-﻿namespace TripDestination.Services.Contracts
+﻿namespace TripDestination.Services.Data.Contracts
 {
     using System.Linq;
-    using Data.Models;
+    using TripDestination.Data.Models;
 
     public interface IPageServices
     {

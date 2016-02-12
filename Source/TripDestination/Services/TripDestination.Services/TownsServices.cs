@@ -1,9 +1,9 @@
-﻿namespace TripDestination.Services
+﻿namespace TripDestination.Data.Services
 {
-    using Contracts;
-    using Data.Models;
+    using Common;
+    using Models;
     using System.Linq;
-    using Data.Common;
+    using TripDestination.Services.Data.Contracts;
 
     public class TownsServices : ITownsServices
     {

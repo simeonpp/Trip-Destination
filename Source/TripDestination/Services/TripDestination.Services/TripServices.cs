@@ -1,11 +1,12 @@
-﻿namespace TripDestination.Services
+﻿namespace TripDestination.Data.Services
 {
     using System;
-    using Contracts;
-    using Data.Models;
     using System.Linq;
     using System.Data.Entity;
-    using Data.Common;
+    using TripDestination.Services.Data.Contracts;
+    using Common;
+    using Models;
+
     public class TripServices : ITripServices
     {
         private IDbRepository<Trip> tripRepos;

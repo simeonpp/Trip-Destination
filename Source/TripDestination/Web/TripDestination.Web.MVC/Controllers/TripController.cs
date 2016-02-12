@@ -4,12 +4,11 @@
     using System.Web.Mvc;
     using ViewModels.Trip;
     using Microsoft.AspNet.Identity;
-    using Services.Contracts;
     using Data.Models;
     using System.Linq;
     using AutoMapper.QueryableExtensions;
     using ViewModels.Shared;
-
+    using Services.Data.Contracts;
     public class TripController : BaseController
     {
         public ITripServices TripServices { get; set; }

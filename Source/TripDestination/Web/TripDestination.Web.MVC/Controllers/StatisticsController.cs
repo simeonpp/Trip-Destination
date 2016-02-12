@@ -1,6 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
-    using Services.Contracts;
+    using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels.Statistics;
 

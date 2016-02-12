@@ -12,7 +12,7 @@
     using Data.Common;
 
     using Data.Data;
-    using Services.Contracts;
+    using Services.Data.Contracts;
 
     public static class AutofacConfig
     {
