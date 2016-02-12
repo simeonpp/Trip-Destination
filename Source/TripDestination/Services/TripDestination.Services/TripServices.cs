@@ -3,15 +3,14 @@
     using System;
     using Contracts;
     using Data.Models;
-    using Data.Data.Repositories;
     using System.Linq;
     using System.Data.Entity;
-
+    using Data.Common;
     public class TripServices : ITripServices
     {
-        private IRepository<Trip> tripRepos;
+        private IDbRepository<Trip> tripRepos;
         
-        public TripServices(IRepository<Trip> tripRepos)
+        public TripServices(IDbRepository<Trip> tripRepos)
         {
             this.tripRepos = tripRepos;
         }
@@ -33,7 +32,7 @@
             };
 
             this.tripRepos.Add(trip);
-            this.tripRepos.SaveChanges();
+            this.tripRepos.Save();
 
             return trip;
         }

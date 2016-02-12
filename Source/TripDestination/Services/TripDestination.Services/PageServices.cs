@@ -1,18 +1,17 @@
 ﻿namespace TripDestination.Services
 {
     using Contracts;
-    using Data.Data.Repositories;
     using Data.Models;
     using System.Linq;
-    using System;
+    using Data.Common;
 
     public class PageServices : IPageServices
     {
-        private IRepository<Page> pageRepos;
+        private IDbRepository<Page> pageRepos;
 
-        private IRepository<PageParagraph> pageParagraphRepos;
+        private IDbRepository<PageParagraph> pageParagraphRepos;
 
-        public PageServices(IRepository<Page> pageRepos, IRepository<PageParagraph> pageParagraphRepos)
+        public PageServices(IDbRepository<Page> pageRepos, IDbRepository<PageParagraph> pageParagraphRepos)
         {
             this.pageRepos = pageRepos;
             this.pageParagraphRepos = pageParagraphRepos;

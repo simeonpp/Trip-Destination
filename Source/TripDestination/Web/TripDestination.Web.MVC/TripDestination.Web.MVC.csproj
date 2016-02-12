@@ -310,6 +310,10 @@
       <Project>{004c665e-6ec8-4c05-a312-ca577a55adb8}</Project>
       <Name>TripDestination.Common.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Data\TripDestination.Data.Common\TripDestination.Data.Common.csproj">
+      <Project>{0303707b-f60a-44e8-ad58-f77c8a702ff4}</Project>
+      <Name>TripDestination.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\TripDestination.Data.Data\TripDestination.Data.Data.csproj">
       <Project>{91fbcb19-8874-4e89-b649-ba95f8912d87}</Project>
       <Name>TripDestination.Data.Data</Name>

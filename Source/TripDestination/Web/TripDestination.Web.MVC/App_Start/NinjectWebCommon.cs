@@ -12,8 +12,9 @@ namespace TripDestination.Web.MVC.App_Start
     using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
     using Data.Data;
-    using Data.Data.Repositories;
     using Common.Infrastructure.Constants;
+    using Data.Common;
+    using System.Data.Entity;
 
     public static class NinjectWebCommon 
     {
@@ -65,8 +66,8 @@ namespace TripDestination.Web.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(ITripDestinationDbContext)).To(typeof(TripDestinationDbContext));
-            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind(typeof(DbContext)).To(typeof(TripDestinationDbContext));
+            kernel.Bind(typeof(IDbRepository<>)).To(typeof(DbRepository<>));
 
             kernel.Bind(b => b.From(AssembliesConstants.Services)
                                .SelectAllClasses()

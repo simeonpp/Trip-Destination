@@ -2,8 +2,8 @@
 {
     using Common.Infrastructure.Constants;
     using Contracts;
+    using Data.Common;
     using Data.Data;
-    using Data.Data.Repositories;
     using Data.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -13,18 +13,18 @@
 
     public class StatisticsServices : IStatisticsServices
     {
-        private IRepository<Trip> tripRepos;
+        private IDbRepository<Trip> tripRepos;
 
-        private IRepository<User> userRepos;
+        //private IDbRepository<User> userRepos;
 
         private ITripDestinationDbContext tripDestinationDbContext;
 
         private DateTime today = DateTime.Today;
 
-        public StatisticsServices(IRepository<Trip> tripRepos, IRepository<User> userRepos, ITripDestinationDbContext TripDestinationDbContext)
+        public StatisticsServices(IDbRepository<Trip> tripRepos, ITripDestinationDbContext TripDestinationDbContext)
         {
             this.tripRepos = tripRepos;
-            this.userRepos = userRepos;
+            //this.userRepos = userRepos;
             this.tripDestinationDbContext = TripDestinationDbContext;
         }
 
@@ -57,12 +57,14 @@
         }
 
         public int GetUserCount()
-        {
-            int count = this.userRepos
-                .All()
-                .Count();
+        {            
+            //int count = this.userRepos
+            //    .All()
+            //    .Count();
 
-            return count;
+            //return count;
+
+            throw new NotImplementedException();
         }
 
         public int GetDriversCount()

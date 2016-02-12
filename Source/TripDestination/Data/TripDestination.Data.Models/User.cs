@@ -6,6 +6,7 @@
     using System.Security.Claims;
     using Microsoft.AspNet.Identity;
     using TripDestination.Common.Infrastructure.Constants;
+    using Common.Models;
 
     public class User : IdentityUser
     {
