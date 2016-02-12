@@ -10,7 +10,7 @@
     public class TripServices : ITripServices
     {
         private IDbRepository<Trip> tripRepos;
-        
+
         public TripServices(IDbRepository<Trip> tripRepos)
         {
             this.tripRepos = tripRepos;

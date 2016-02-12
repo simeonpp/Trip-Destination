@@ -25,6 +25,5 @@
             this.MapperConfiguration = AutoMapperConfig.Configuration;
             this.Mapper = AutoMapperConfig.Mapper;
         }
-
     }
 }

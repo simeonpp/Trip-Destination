@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Tests.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Services.Data", "Services\TripDestination.Services.Data\TripDestination.Services.Data.csproj", "{946CE469-34E0-4B54-92C7-18185E4EBB29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Tests.Web.MVC.Controllers", "Tests\TripDestination.Tests.Web.MVC.Controllers\TripDestination.Tests.Web.MVC.Controllers.csproj", "{CD495831-6559-43F7-A460-1F1BDD9B740A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{946CE469-34E0-4B54-92C7-18185E4EBB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{946CE469-34E0-4B54-92C7-18185E4EBB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{946CE469-34E0-4B54-92C7-18185E4EBB29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD495831-6559-43F7-A460-1F1BDD9B740A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD495831-6559-43F7-A460-1F1BDD9B740A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD495831-6559-43F7-A460-1F1BDD9B740A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD495831-6559-43F7-A460-1F1BDD9B740A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{23B9986C-4889-4365-B91F-6976B81F417A} = {6A65B084-53DF-41D6-83EF-4A4153846677}
 		{0513F235-7353-4707-B894-BE4AE587585B} = {C0E00898-C258-48F7-963A-B9D4A169E803}
 		{946CE469-34E0-4B54-92C7-18185E4EBB29} = {6A65B084-53DF-41D6-83EF-4A4153846677}
+		{CD495831-6559-43F7-A460-1F1BDD9B740A} = {C0E00898-C258-48F7-963A-B9D4A169E803}
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,5 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using AutoMapper.QueryableExtensions;
@@ -10,6 +8,8 @@
     using ViewModels.Shared;
     using Services.Data.Contracts;
     using Services.Web.Helpers.Contracts;
+    using TripDestination.Common.Infrastructure.Mapping;
+
     public class HomeController : BaseController
     {
         public HomeController(ITripServices tripServices, ITripHelper tripHelper)
@@ -33,15 +33,23 @@
                         FromTown = t.Item1,
                         ToTown = t.Item2
                     }),
-                60 * 15);
+                CacheTimeConstants.HomeTopDestination);
 
-            var todayTrips = this.TripServices.GetTodayTrips(WebApplicationConstants.HomepageTripsPerSection)
-                .ProjectTo<TripListViewModel>(this.MapperConfiguration)
-                .ToList();
+            var todayTrips = this.Cache.Get(
+                "todayTrips",
+                () => this.TripServices
+                    .GetTodayTrips(WebApplicationConstants.HomepageTripsPerSectionCount)
+                    .To<TripListViewModel>()
+                    .ToList(),
+                CacheTimeConstants.HomeTodayTrips);
 
-            var latestTrips = this.TripServices.GetLatest(WebApplicationConstants.HomepageTripsPerSection)
-                .ProjectTo<TripListViewModel>(this.MapperConfiguration)
-                .ToList();
+            var latestTrips = this.Cache.Get(
+                "latestTrips",
+                () => this.TripServices
+                    .GetLatest(WebApplicationConstants.HomepageTripsPerSectionCount)
+                    .To<TripListViewModel>()
+                    .ToList(),
+                CacheTimeConstants.HomeLatestTrips);
 
             HomepageViewModel viewModel = new HomepageViewModel()
             {
