@@ -12,7 +12,7 @@
     using Data.Common;
 
     using Data.Data;
-    using Services.Data.Contracts;
+    using TripDestination.Services.Data.Contracts;
 
     public static class AutofacConfig
     {
