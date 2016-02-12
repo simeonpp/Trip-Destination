@@ -47,6 +47,7 @@
     <Compile Include="Constants\AssembliesConstants.cs" />
     <Compile Include="Constants\ModelConstants.cs" />
     <Compile Include="Constants\RoleConstants.cs" />
+    <Compile Include="Constants\ServicesWebConstants.cs" />
     <Compile Include="Constants\UserConstants.cs" />
     <Compile Include="Constants\ViewModelConstants.cs" />
     <Compile Include="Constants\WebApplicationConstants.cs" />

@@ -41,6 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Contracts\IIdentifierProvider.cs" />
+    <Compile Include="Providers\IdentifierProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\Contracts\" />
+    <Folder Include="Services\Contracts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj">
+      <Project>{004c665e-6ec8-4c05-a312-ca577a55adb8}</Project>
+      <Name>TripDestination.Common.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
