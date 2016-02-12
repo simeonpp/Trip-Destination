@@ -11,6 +11,7 @@
         {
             DatabaseConfig.Register();
             ViewEnginesConfig.Register(ViewEngines.Engines);
+            AutofacConfig.Register();
             AutoMapperConfig.Register(Assembly.GetExecutingAssembly());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

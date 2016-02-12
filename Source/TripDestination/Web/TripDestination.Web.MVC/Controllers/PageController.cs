@@ -1,6 +1,5 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
-    using Ninject;
     using Services.Contracts;
     using System.Web.Mvc;
     using Data.Models;
@@ -10,8 +9,12 @@
 
     public class PageController : BaseController
     {
-        [Inject]
         public IPageServices PageServices { get; set; }
+
+        public PageController(IPageServices pageServices)
+        {
+            this.PageServices = pageServices;
+        }
 
         public ActionResult Index(int id)
         {

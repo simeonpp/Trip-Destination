@@ -1,13 +1,17 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
-    using Ninject;
     using Services.Contracts;
     using System.Web.Mvc;
     using ViewModels.Statistics;
+
     public class StatisticsController : BaseController
     {
-        [Inject]
         public IStatisticsServices StatisticsServices { get; set; }
+
+        public StatisticsController(IStatisticsServices statisticsServices)
+        {
+            this.StatisticsServices = statisticsServices;
+        }
 
         public ActionResult Index()
         {

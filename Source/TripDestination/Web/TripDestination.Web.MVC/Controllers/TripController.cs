@@ -5,21 +5,25 @@
     using ViewModels.Trip;
     using Microsoft.AspNet.Identity;
     using Services.Contracts;
-    using Ninject;
     using Data.Models;
     using System.Linq;
     using AutoMapper.QueryableExtensions;
     using ViewModels.Shared;
+
     public class TripController : BaseController
     {
-        [Inject]
         public ITripServices TripServices { get; set; }
             
-        [Inject]
         public ITownsServices TownServices { get; set; }
-
-        [Inject]
+        
         public IStatisticsServices StatisticsServices { get; set; }
+
+        public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices)
+        {
+            this.TripServices = tripServices;
+            this.TownServices = townServices;
+            this.StatisticsServices = statisticsServices;
+        }
 
         [HttpGet]
         [Authorize]

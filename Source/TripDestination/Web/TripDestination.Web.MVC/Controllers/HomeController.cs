@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Ninject;
     using AutoMapper.QueryableExtensions;
     using TripDestination.Common.Infrastructure.Constants;
     using TripDestination.Services.Contracts;
@@ -13,8 +12,12 @@
 
     public class HomeController : BaseController
     {
-        [Inject]
         public ITripServices TripServices { get; set; }
+
+        public HomeController(ITripServices tripServices)
+        {
+            this.TripServices = tripServices;
+        }
 
         public ActionResult Index()
         {
