@@ -7,8 +7,8 @@
     <ProjectGuid>{946CE469-34E0-4B54-92C7-18185E4EBB29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TripDestination.Services</RootNamespace>
-    <AssemblyName>TripDestination.Services</AssemblyName>
+    <RootNamespace>TripDestination.Services.Data</RootNamespace>
+    <AssemblyName>TripDestination.Services.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
