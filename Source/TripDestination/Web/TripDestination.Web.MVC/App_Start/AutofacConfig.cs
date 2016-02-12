@@ -53,16 +53,16 @@
             builder.Register(x => new TripDestinationDbContext())
                 .As<DbContext>()
                 .InstancePerRequest();
-            
-            //builder.Register(x => new HttpCacheService())
+
+            // builder.Register(x => new HttpCacheService())
             //    .As<ICacheService>()
             //    .InstancePerRequest();
-            //builder.Register(x => new IdentifierProvider())
+            // builder.Register(x => new IdentifierProvider())
             //    .As<IIdentifierProvider>()
-            //    .InstancePerRequest();
+            // .InstancePerRequest();
 
             var servicesAssembly = Assembly.GetAssembly(typeof(ITripServices));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();            
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();

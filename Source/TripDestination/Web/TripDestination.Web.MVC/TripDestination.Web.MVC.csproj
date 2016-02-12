@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>TripDestination.Web.MVC.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>TripDestination.Web.MVC.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -301,6 +303,7 @@
     <Content Include="Views\Page\_ParagraphNormalPartial.cshtml" />
     <Content Include="Views\Page\_ParagraphDoublePartial.cshtml" />
     <Content Include="Views\Page\_ParagraphFAQPartial.cshtml" />
+    <Content Include="TripDestination.Web.MVC.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using Shared;
     using System;
+
     public class HomepageViewModel
     {
         public IEnumerable<Tuple<string, string>> TopDestinations { get; set; }

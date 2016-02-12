@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TripDestination.Common.Infrastructure.Constants;
-
-namespace TripDestination.Web.MVC.ViewModels.Contact
+﻿namespace TripDestination.Web.MVC.ViewModels.Contact
 {
+    using System.ComponentModel.DataAnnotations;
+    using TripDestination.Common.Infrastructure.Constants;
+
     public class ContactFormViewModel
     {
         [Required]

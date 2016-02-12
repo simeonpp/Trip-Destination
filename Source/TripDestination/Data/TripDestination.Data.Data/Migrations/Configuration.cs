@@ -14,15 +14,15 @@ namespace TripDestination.Data.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(TripDestinationDbContext context)
         {
-            SeedRolesAndAdmins(context);
-            SeedNotificationTypes(context);
-            SeedTowns(context);
+            this.SeedRolesAndAdmins(context);
+            this.SeedNotificationTypes(context);
+            this.SeedTowns(context);
         }
 
         private void SeedRolesAndAdmins(TripDestinationDbContext context)

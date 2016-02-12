@@ -9,6 +9,7 @@
     using AutoMapper.QueryableExtensions;
     using ViewModels.Shared;
     using Services.Data.Contracts;
+
     public class TripController : BaseController
     {
         public ITripServices TripServices { get; set; }
@@ -83,7 +84,7 @@
             var day = DateTime.Today;
             var trips = this.TripServices
                 .GetForDay(day)
-                .ProjectTo<TripListViewModel>(MapperConfiguration)
+                .ProjectTo<TripListViewModel>(this.MapperConfiguration)
                 .ToList();
 
             TripLstViewModel viewModel = new TripLstViewModel()

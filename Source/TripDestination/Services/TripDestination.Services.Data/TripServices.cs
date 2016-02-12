@@ -83,7 +83,7 @@
 
         public IQueryable<string> GetTopTownsDestination(bool townsFrom = true, int count = 2)
         {
-            var towns = tripRepos
+            var towns = this.tripRepos
                .All()
                .GroupBy(t => townsFrom == true ? t.From.Name : t.To.Name)
                .Select(group => new { TownName = group.Key, Count = group.Count() })

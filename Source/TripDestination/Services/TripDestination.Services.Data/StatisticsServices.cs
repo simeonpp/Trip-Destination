@@ -15,20 +15,19 @@
     {
         private IDbRepository<Trip> tripRepos;
 
-        //private IDbRepository<User> userRepos;
+        // private IDbRepository<User> userRepos;
 
         private ITripDestinationDbContext tripDestinationDbContext;
 
         private DateTime today = DateTime.Today;
 
-        public StatisticsServices(IDbRepository<Trip> tripRepos, ITripDestinationDbContext TripDestinationDbContext)
+        public StatisticsServices(IDbRepository<Trip> tripRepos, ITripDestinationDbContext tripDestinationDbContext)
         {
             this.tripRepos = tripRepos;
-            //this.userRepos = userRepos;
-            this.tripDestinationDbContext = TripDestinationDbContext;
+            // this.userRepos = userRepos;
+            this.tripDestinationDbContext = tripDestinationDbContext;
         }
 
-#region general stats#
         public int GetTotalTripsCount()
         {
             int count = this.tripRepos
@@ -40,7 +39,7 @@
 
         public string GetTopDestination()
         {
-            var town = tripRepos
+            var town = this.tripRepos
                .All()
                .GroupBy(t => t.To.Name)
                .Select(group => new { TownName = group.Key, Count = group.Count() })
@@ -49,7 +48,7 @@
 
             if (town == null)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             string townAsString = town.TownName;
@@ -58,11 +57,11 @@
 
         public int GetUserCount()
         {            
-            //int count = this.userRepos
+            // int count = this.userRepos
             //    .All()
             //    .Count();
 
-            //return count;
+            // return count;
 
             throw new NotImplementedException();
         }
@@ -97,12 +96,10 @@
 
             return views;
         }
-#endregion
 
-        #region today stats #
         public int TripsGetTodayCreatedCount()
         {
-            int count = tripRepos
+            int count = this.tripRepos
                 .All()
                 .Where(t => DbFunctions.TruncateTime(t.CreatedOn) == this.today)
                 .Count();
@@ -112,7 +109,7 @@
 
         public int TripsGetTodayFinishedCount()
         {
-            int count = tripRepos
+            int count = this.tripRepos
                 .All()
                 .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == this.today && t.Status == TripStatus.Finished)
                 .Count();
@@ -122,7 +119,7 @@
 
         public int TripsGetTodayInProgressCount()
         {
-            int count = tripRepos
+            int count = this.tripRepos
                 .All()
                 .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == this.today && t.Status == TripStatus.InProgress)
                 .Count();
@@ -132,7 +129,7 @@
 
         public string TripsGetTodayTopDestination()
         {
-            var town = tripRepos
+            var town = this.tripRepos
                 .All()
                 .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == this.today)
                 .GroupBy(t => t.To.Name)
@@ -148,6 +145,5 @@
             string townAsString = town.TownName;
             return townAsString;
         }
-#endregion#
     }
 }

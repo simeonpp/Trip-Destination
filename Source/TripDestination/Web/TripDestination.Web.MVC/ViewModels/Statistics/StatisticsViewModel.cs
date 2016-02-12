@@ -1,7 +1,7 @@
 ﻿namespace TripDestination.Web.MVC.ViewModels.Statistics
 {
-    using Data.Models;
     using System.Collections.Generic;
+    using Data.Models;
 
     public class StatisticsViewModel
     {

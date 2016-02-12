@@ -19,6 +19,12 @@
             return new TripDestinationDbContext();
         }
 
+        public override int SaveChanges()
+        {
+            this.ApplyAuditInfoRules();
+            return base.SaveChanges();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -34,12 +40,6 @@
                         .WithMany(t => t.ToTrips)
                         .HasForeignKey(m => m.ToId)
                         .WillCascadeOnDelete(false);
-        }
-
-        public override int SaveChanges()
-        {
-            this.ApplyAuditInfoRules();
-            return base.SaveChanges();
         }
 
         private void ApplyAuditInfoRules()

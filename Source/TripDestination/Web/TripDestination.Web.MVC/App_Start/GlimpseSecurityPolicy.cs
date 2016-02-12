@@ -1,12 +1,12 @@
 
 // Uncomment this class to provide custom runtime policy for Glimpse
 
-using Glimpse.AspNet.Extensions;
-using Glimpse.Core.Extensibility;
-using TripDestination.Common.Infrastructure.Constants;
-
 namespace TripDestination.Web.MVC
 {
+    using Glimpse.AspNet.Extensions;
+    using Glimpse.Core.Extensibility;
+    using TripDestination.Common.Infrastructure.Constants;
+
     public class GlimpseSecurityPolicy:IRuntimePolicy
     {
         public RuntimePolicy Execute(IRuntimePolicyContext policyContext)

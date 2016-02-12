@@ -6,12 +6,12 @@
 
     public class StatisticsController : BaseController
     {
-        public IStatisticsServices StatisticsServices { get; set; }
-
         public StatisticsController(IStatisticsServices statisticsServices)
         {
             this.StatisticsServices = statisticsServices;
         }
+
+        public IStatisticsServices StatisticsServices { get; set; }
 
         public ActionResult Index()
         {
