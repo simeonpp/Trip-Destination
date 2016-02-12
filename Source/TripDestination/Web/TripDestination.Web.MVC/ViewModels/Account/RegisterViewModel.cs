@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.ViewModels.Account
 {
+    using Common.Infrastructure.Constants;
     using System.ComponentModel.DataAnnotations;
 
     public class RegisterViewModel
