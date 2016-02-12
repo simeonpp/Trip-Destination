@@ -21,6 +21,7 @@
 
         public ITripHelper TripHelper { get; set; }
 
+        [HttpGet]
         public ActionResult Index()
         {
             var topDestinations = this.Cache.Get(
