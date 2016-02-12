@@ -1,14 +1,12 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using Common.Infrastructure.Constants;
+    using Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using TripDestination.Common.Infrastructure.Constants;
 
-    public class Comment
+    public class Comment : BaseModel<int>
     {
-        [Index]
-        public int Id { get; set; }
-
         [Required]
         public int TripId { get; set; }
 

@@ -1,20 +1,13 @@
 ﻿namespace TripDestination.Data.Models
 {
     using System;
-    using Common.Infrastructure.Constants;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Common.Models;
+    using TripDestination.Common.Infrastructure.Constants;
 
-    public class ContactForm
+    public class ContactForm : BaseModel<int>
     {
-        public ContactForm()
-        {
-            this.CreatedOn = DateTime.UtcNow;
-        }
-
-        [Index]
-        public int Id { get; set; }
-
         [Required]
         [MinLength(ModelConstants.ContactFormNameMinLength, ErrorMessage = "Name can no be less tha 4 symbols long.")]
         [MaxLength(ModelConstants.ContactFormNameMaxLength, ErrorMessage = "Name can no be more than 50 symbols long.")]
@@ -36,9 +29,6 @@
         [MinLength(ModelConstants.ContactFormMessageMinLength, ErrorMessage = "Message can no be less tha 10 symbols long.")]
         [MaxLength(ModelConstants.ContactFormMessageMaxLength, ErrorMessage = "Message can no be more than 500 symbols long.")]
         public string Message { get; set; }
-
-        [Required]
-        public DateTime CreatedOn { get; set; }
 
         [Required]
         [MinLength(ModelConstants.ContactFormIpMinLength, ErrorMessage = "Contact form ip can no be less than 11 symbols long.")]

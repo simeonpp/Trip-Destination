@@ -1,11 +1,12 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using Common.Models;
     using System.Collections.Generic;
-    using Common.Infrastructure.Constants;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using TripDestination.Common.Infrastructure.Constants;
 
-    public class Page
+    public class Page : BaseModel<int>
     {
         private IEnumerable<PageParagraph> paragraphs;
 
@@ -13,10 +14,7 @@
         {
             this.paragraphs = new HashSet<PageParagraph>();
         }
-
-        [Index]
-        public int Id { get; set; }
-
+        
         [Required]
         [MinLength(ModelConstants.PageHeadingMinLength, ErrorMessage = "Page heading can no be less than 5 symbols long.")]
         [MaxLength(ModelConstants.PageHeadingMaxLength, ErrorMessage = "Page heading can no be more than 50 symbols long.")]

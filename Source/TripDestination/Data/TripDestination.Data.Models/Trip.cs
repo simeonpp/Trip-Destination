@@ -1,13 +1,12 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using Common.Infrastructure.Constants;
+    using Common.Models;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    using TripDestination.Common.Infrastructure.Constants;
 
-    public class Trip
+    public class Trip : BaseModel<int>
     {
         private IEnumerable<Rating> ratings;
 
@@ -23,15 +22,11 @@
             this.comments = new HashSet<Comment>();
             this.likes = new HashSet<Like>();
             this.views = new HashSet<View>();
-
-            this.CreatedOn = DateTime.UtcNow;
+            
             this.PickUpFromAddress = false;
             this.Status = TripStatus.Open;
             this.Price = 0;
         }
-
-        [Index]
-        public int Id { get; set; }
 
         [Required]
         public DateTime DateOfLeaving { get; set; }
@@ -47,10 +42,7 @@
         public string DriverId { get; set; }
 
         public User Driver { get; set; }
-
-        [Required]
-        public DateTime CreatedOn { get; set; }
-
+        
         [MinLength(ModelConstants.TripDescriptionMinLength, ErrorMessage = "Trip description can not be less than 10 symbols long.")]
         [MaxLength(ModelConstants.TripDescriptionMaxLength, ErrorMessage = "Trip description can not be more than 1000 symbols long.")]
         public string Description { get; set; }

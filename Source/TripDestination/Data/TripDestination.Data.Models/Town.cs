@@ -1,11 +1,12 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using Common.Infrastructure.Constants;
+    using Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using TripDestination.Common.Infrastructure.Constants;
 
-    public class Town
+    public class Town : BaseModel<int>
     {
         private ICollection<Trip> fromTrips;
 
@@ -16,9 +17,6 @@
             this.fromTrips = new HashSet<Trip>();
             this.toTrips = new HashSet<Trip>();
         }
-
-        [Index]
-        public int Id { get; set; }
 
         [Required]
         [MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "Town name can no be less than 4 symbols long.")]

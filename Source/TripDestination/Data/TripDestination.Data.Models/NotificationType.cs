@@ -1,14 +1,12 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using Common.Infrastructure.Constants;
-    using System;
+    using Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    public class NotificationType
-    {
-        [Index]
-        public int Id { get; set; }
+    using TripDestination.Common.Infrastructure.Constants;
 
+    public class NotificationType : BaseModel<int>
+    {
         [Required]
         public NotificationKey Key { get; set; }
 

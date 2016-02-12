@@ -60,8 +60,6 @@
     <Compile Include="ITripDestinationDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\GenericRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="TripDestinationDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +79,10 @@
     <ProjectReference Include="..\..\Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj">
       <Project>{004c665e-6ec8-4c05-a312-ca577a55adb8}</Project>
       <Name>TripDestination.Common.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TripDestination.Data.Common\TripDestination.Data.Common.csproj">
+      <Project>{0303707b-f60a-44e8-ad58-f77c8a702ff4}</Project>
+      <Name>TripDestination.Data.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\TripDestination.Data.Models\TripDestination.Data.Models.csproj">
       <Project>{a490582c-4615-49f0-9f2b-152e48044e65}</Project>

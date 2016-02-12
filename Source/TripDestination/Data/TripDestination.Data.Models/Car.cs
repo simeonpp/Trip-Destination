@@ -1,12 +1,11 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using System;
-    using Common.Infrastructure.Constants;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel.DataAnnotations;
-    using System.Collections;
     using System.Collections.Generic;
-    public class Car
+    using TripDestination.Common.Infrastructure.Constants;
+    using Common.Models;
+
+    public class Car : BaseModel<int>
     {
         private IEnumerable<Photo> photos;
 
@@ -16,10 +15,7 @@
             this.photos = new HashSet<Photo>();
             this.SpaceForLugage = SpaceForLugage.None;
         }
-
-        [Index]
-        public int Id { get; set; }
-
+        
         [Required]
         [Range(ModelConstants.CarTotalSeatsMinLength, ModelConstants.CarTotalSeatsMaxLength, ErrorMessage = "Car total seat must be between 1 and 5.")]
         public int TotalSeats { get; set; }

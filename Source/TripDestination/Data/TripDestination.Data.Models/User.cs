@@ -2,12 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
-    using Common.Infrastructure.Constants;
-    using System.Collections;
-    using System.Collections.Generic;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Security.Claims;
     using Microsoft.AspNet.Identity;
+    using TripDestination.Common.Infrastructure.Constants;
 
     public class User : IdentityUser
     {

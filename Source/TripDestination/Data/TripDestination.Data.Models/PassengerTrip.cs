@@ -1,20 +1,17 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class PassengerTrip
+    public class PassengerTrip : BaseModel<int>
     {
         public PassengerTrip()
         {
             this.Approved = false;
-            this.RequestDate = DateTime.Now;
         }
-
-        [Index]
-        public int Id { get; set; }
-
+        
         [Required]
         public string UserId { get; set; }
 
@@ -27,8 +24,5 @@
 
         [Required]
         public bool Approved { get; set; }
-
-        [Required]
-        public DateTime RequestDate { get; set; }
     }
 }

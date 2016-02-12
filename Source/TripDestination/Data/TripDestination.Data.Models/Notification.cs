@@ -1,10 +1,11 @@
 ﻿namespace TripDestination.Data.Models
 {
     using System;
-    using Common.Infrastructure.Constants;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    public class Notification
+    using Common.Models;
+    using TripDestination.Common.Infrastructure.Constants;
+
+    public class Notification : BaseModel<int>
     {
         public Notification()
         {
@@ -13,9 +14,6 @@
             this.AvailableAfter = DateTime.Now;
             this.DueTo = DateTime.Now.AddDays(15);
         }
-
-        [Index]
-        public int Id { get; set; }
 
         [Required]
         public NotificationType Type { get; set; }
@@ -37,10 +35,7 @@
         [MinLength(ModelConstants.NotificationMessageMinLength, ErrorMessage = "Notification message can no be less than 10 symbols long.")]
         [MaxLength(ModelConstants.NotificationMessageMaxLength, ErrorMessage = "Notification message can no be more than 500 symbols long.")]
         public string Message { get; set; }
-
-        [Required]
-        public DateTime CreatedOn { get; set; }
-
+        
         [Required]
         public DateTime AvailableAfter { get; set; }
 

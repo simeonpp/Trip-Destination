@@ -1,15 +1,15 @@
 namespace TripDestination.Data.Data.Migrations
 {
-    using Common.Infrastructure.Constants;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using TripDestination.Common.Infrastructure.Constants;
+
     public sealed class Configuration : DbMigrationsConfiguration<TripDestinationDbContext>
     {
         public Configuration()

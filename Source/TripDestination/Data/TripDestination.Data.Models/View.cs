@@ -1,12 +1,10 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using Common.Models;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    public class View
-    {
-        [Index]
-        public int Id { get; set; }
 
+    public class View : BaseModel<int>
+    {
         public int MyProperty { get; set; }
 
         [Required]

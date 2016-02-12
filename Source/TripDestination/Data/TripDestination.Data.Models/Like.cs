@@ -1,16 +1,14 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using Common.Models;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    public class Like
+
+    public class Like : BaseModel<int>
     {
         public Like()
         {
             this.Value = false;
         }
-
-        [Index]
-        public int Id { get; set; }
 
         [Required]
         public int TripId { get; set; }

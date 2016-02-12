@@ -1,10 +1,9 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using Common.Models;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Photo
+    public class Photo : BaseModel<int>
     {
-        [Index]
-        public int Id { get; set; }
     }
 }

@@ -1,19 +1,16 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using Common.Infrastructure.Constants;
-    using System;
+    using Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using TripDestination.Common.Infrastructure.Constants;
 
-    public class PageParagraph
+    public class PageParagraph : BaseModel<int>
     {
         public PageParagraph()
         {
             this.Type = PageParagraphType.Normal;
         }
-
-        [Index]
-        public int Id { get; set; }
 
         [Required]
         [MinLength(ModelConstants.PageParagraphMainHeadingMinLength, ErrorMessage = "Page paragraph main heading can no be less than 5 symbols long.")]
