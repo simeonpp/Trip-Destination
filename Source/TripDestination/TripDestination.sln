@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Data.Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Services.Web", "Services\TripDestination.Services.Web\TripDestination.Services.Web.csproj", "{23B9986C-4889-4365-B91F-6976B81F417A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Tests.Services.Web", "TripDestination.Tests.Services.Web\TripDestination.Tests.Services.Web.csproj", "{77D2B2DC-73B5-46E3-8B47-C85EA4ED6A76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{23B9986C-4889-4365-B91F-6976B81F417A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23B9986C-4889-4365-B91F-6976B81F417A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23B9986C-4889-4365-B91F-6976B81F417A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D2B2DC-73B5-46E3-8B47-C85EA4ED6A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D2B2DC-73B5-46E3-8B47-C85EA4ED6A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D2B2DC-73B5-46E3-8B47-C85EA4ED6A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D2B2DC-73B5-46E3-8B47-C85EA4ED6A76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{A490582C-4615-49F0-9F2B-152E48044E65} = {0C99945B-B000-4119-ABB7-5678E852D75F}
 		{0303707B-F60A-44E8-AD58-F77C8A702FF4} = {0C99945B-B000-4119-ABB7-5678E852D75F}
 		{23B9986C-4889-4365-B91F-6976B81F417A} = {6A65B084-53DF-41D6-83EF-4A4153846677}
+		{77D2B2DC-73B5-46E3-8B47-C85EA4ED6A76} = {C0E00898-C258-48F7-963A-B9D4A169E803}
 	EndGlobalSection
 EndGlobal
