@@ -73,7 +73,8 @@
             builder.RegisterAssemblyTypes(helperssAssembly).AsImplementedInterfaces();
 
             // In order to have ICacheServer in the BaseController
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+            // Here HomeController is used instead of Executable assmebly since Unit test fails
+            builder.RegisterAssemblyTypes(typeof(HomeController).Assembly)
                 .AssignableTo<BaseController>().PropertiesAutowired();
         }
     }

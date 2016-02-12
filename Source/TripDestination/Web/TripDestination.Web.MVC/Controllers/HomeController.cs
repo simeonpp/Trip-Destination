@@ -2,7 +2,6 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using AutoMapper.QueryableExtensions;
     using TripDestination.Common.Infrastructure.Constants;
     using TripDestination.Web.MVC.ViewModels.Home;
     using ViewModels.Shared;
@@ -32,7 +31,8 @@
                     {
                         FromTown = t.Item1,
                         ToTown = t.Item2
-                    }),
+                    })
+                    .ToList(),
                 CacheTimeConstants.HomeTopDestination);
 
             var todayTrips = this.Cache.Get(
