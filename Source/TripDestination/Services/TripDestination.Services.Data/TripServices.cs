@@ -47,7 +47,7 @@
 
             return trip;
         }
-        
+
         public IQueryable<Trip> GetForDay(DateTime day)
         {
             var trips = this.tripRepos

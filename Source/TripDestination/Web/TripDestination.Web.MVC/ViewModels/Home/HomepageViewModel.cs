@@ -6,7 +6,7 @@
 
     public class HomepageViewModel
     {
-        public IEnumerable<Tuple<string, string>> TopDestinations { get; set; }
+        public IEnumerable<TopDestinationVIewModel> TopDestinations { get; set; }
 
         public IEnumerable<TripListViewModel> TodayTrips { get; set; }
 

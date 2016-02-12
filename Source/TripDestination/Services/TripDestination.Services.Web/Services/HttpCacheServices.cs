@@ -5,7 +5,7 @@
     using System.Web.Caching;
     using Contracts;
 
-    public class HttpCacheService : ICacheServices
+    public class HttpCacheServices : ICacheServices
     {
         private static readonly object LockObject = new object();
 

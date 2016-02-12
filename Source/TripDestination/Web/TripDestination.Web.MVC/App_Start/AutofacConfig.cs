@@ -13,7 +13,11 @@
 
     using Data.Data;
     using TripDestination.Services.Data.Contracts;
-
+    using Services.Web.Services;
+    using Services.Web.Services.Contracts;
+    using Services.Web.Providers;
+    using Services.Web.Providers.Contracts;
+    using Services.Web.Helpers.Contracts;
     public static class AutofacConfig
     {
         public static void Register()
@@ -54,15 +58,19 @@
                 .As<DbContext>()
                 .InstancePerRequest();
 
-            // builder.Register(x => new HttpCacheService())
-            //    .As<ICacheService>()
-            //    .InstancePerRequest();
-            // builder.Register(x => new IdentifierProvider())
-            //    .As<IIdentifierProvider>()
-            // .InstancePerRequest();
+            builder.Register(x => new HttpCacheServices())
+                .As<ICacheServices>()
+                .InstancePerRequest();
+
+            builder.Register(x => new IdentifierProvider())
+               .As<IIdentifierProvider>()
+                .InstancePerRequest();
 
             var servicesAssembly = Assembly.GetAssembly(typeof(ITripServices));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+
+            var helperssAssembly = Assembly.GetAssembly(typeof(ITripHelper));
+            builder.RegisterAssemblyTypes(helperssAssembly).AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
