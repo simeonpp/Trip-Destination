@@ -1,6 +1,3 @@
-
-// Uncomment this class to provide custom runtime policy for Glimpse
-
 namespace TripDestination.Web.MVC
 {
     using Glimpse.AspNet.Extensions;

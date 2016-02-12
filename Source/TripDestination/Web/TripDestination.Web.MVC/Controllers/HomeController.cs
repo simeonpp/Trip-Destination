@@ -24,13 +24,16 @@
 
         public ActionResult Index()
         {
-            var topDesinations = this.TripHelper
-                .GetTopDestinations()
-                .Select(t => new TopDestinationVIewModel
-                {
-                    FromTown = t.Item1,
-                    ToTown = t.Item2
-                });
+            var topDestinations = this.Cache.Get(
+                "topDestinations",
+                () => this.TripHelper
+                    .GetTopDestinations()
+                    .Select(t => new TopDestinationVIewModel
+                    {
+                        FromTown = t.Item1,
+                        ToTown = t.Item2
+                    }),
+                60 * 15);
 
             var todayTrips = this.TripServices.GetTodayTrips(WebApplicationConstants.HomepageTripsPerSection)
                 .ProjectTo<TripListViewModel>(this.MapperConfiguration)
@@ -42,7 +45,7 @@
 
             HomepageViewModel viewModel = new HomepageViewModel()
             {
-                TopDestinations = topDesinations,
+                TopDestinations = topDestinations,
                 TodayTrips = todayTrips,
                 LatestTrips = latestTrips
             };

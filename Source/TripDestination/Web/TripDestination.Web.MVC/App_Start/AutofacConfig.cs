@@ -72,6 +72,7 @@
             var helperssAssembly = Assembly.GetAssembly(typeof(ITripHelper));
             builder.RegisterAssemblyTypes(helperssAssembly).AsImplementedInterfaces();
 
+            // In order to have ICacheServer in the BaseController
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
         }
