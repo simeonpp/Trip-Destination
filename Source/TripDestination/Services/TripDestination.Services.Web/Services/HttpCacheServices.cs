@@ -23,7 +23,9 @@
                             data,
                             null,
                             DateTime.Now.AddSeconds(durationInSeconds),
-                            Cache.NoSlidingExpiration);
+                            Cache.NoSlidingExpiration,
+                            CacheItemPriority.Default,
+                            null);
                     }
                 }
             }

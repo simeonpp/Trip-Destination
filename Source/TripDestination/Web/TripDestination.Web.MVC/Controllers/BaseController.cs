@@ -16,7 +16,7 @@
         protected IMapper Mapper { get; private set; }
 
         protected MapperConfiguration MapperConfiguration { get; set; }
-
+        
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
