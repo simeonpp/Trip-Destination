@@ -59,7 +59,7 @@
             {
                 return this.View(trip);
             }
-            
+
             string currentUserId = this.CurrentUser.GetUserId();
 
             Trip dbtrip = this.TripServices.Create(

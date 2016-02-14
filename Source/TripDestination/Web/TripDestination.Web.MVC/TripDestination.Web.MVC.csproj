@@ -245,6 +245,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\kiddolb.css">
+      <DependentUpon>kiddolb.styl</DependentUpon>
+    </Content>
+    <Content Include="Content\kiddolb.min.css">
+      <DependentUpon>kiddolb.css</DependentUpon>
+    </Content>
     <Content Include="Content\reset.css" />
     <Content Include="Content\site.css">
       <DependentUpon>site.styl</DependentUpon>

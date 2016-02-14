@@ -2,8 +2,33 @@
 @model TripListViewModel
 
 <li>
-    @Model.From.Name - @Model.To.Name
-    @Model.DateOfLeaving
-    @*@Model.DriverFirstName*@
-    @Model.AvailableSeats
+    <a href="@Url.Action("Detailed", "Trip", new { area = "" })">
+        <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+        <div class="direction">@Model.From.Name - @Model.To.Name</div>
+        <div class="timeOfLeaving">@Model.DateOfLeaving</div>
+        <div class="driver">Driver: XXX @*@Model.DriverFirstName*@</div>
+        <div class="infoInIconsWrap">
+            <div class="infoIconWrap">
+                <div class="actualInfo">@Model.AvailableSeats</div>
+                <div class="icon"><img src="images/seat-grey-icon.png" alt=""></div>
+                <div class="description">Available seats</div>
+            </div>
+            <div class="infoIconWrap">
+                <div class="actualInfo">XXX</div>
+                <div class="icon"><img src="images/view-grey-icon.png" alt=""></div>
+                <div class="description">Views</div>
+            </div>
+            <div class="infoIconWrap">
+                <div class="actualInfo">XXX</div>
+                <div class="icon"><img src="images/like-grey-icon.png" alt=""></div>
+                <div class="description">Likes</div>
+            </div>
+            <div class="infoIconWrap">
+                <div class="actualInfo">XXX</div>
+                <div class="icon"><img src="images/comment-grey-icon.png" alt=""></div>
+                <div class="description">Comments</div>
+            </div>
+        </div>
+    </a>
 </li>
+
