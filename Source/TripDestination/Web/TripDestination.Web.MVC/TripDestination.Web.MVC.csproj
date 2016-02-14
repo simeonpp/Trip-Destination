@@ -325,6 +325,7 @@
     <Content Include="Views\Home\_TodayTripsPartial.cshtml" />
     <Content Include="Views\Home\_LatestTripsPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Shared\_NavigationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

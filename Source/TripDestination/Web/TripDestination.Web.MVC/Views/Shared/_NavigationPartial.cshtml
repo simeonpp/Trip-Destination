@@ -1,0 +1,36 @@
+﻿<nav class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="@Url.Action("Index", "Home", new { area = "" })">Home <div class="clarification">Welcome</div></a></li>
+                <li><a href="@Url.Action("List", "Trip", new { area = "" })">Discover  <div class="clarification">Trips</div></a></li>
+                <li><a href="@Url.Action("Create", "Trip", new { area = "" })">Create  <div class="clarification">New trip</div></a></li>
+                <li><a href="@Url.Action("Index", "Statistics", new { area = "" })">Statistics  <div class="clarification">Numbers</div></a></li>
+                <li><a href="/trip-destination/about.php">About  <div class="clarification">Who we are</div></a></li>
+                <li><a href="@Url.Action("Index", "Contact", new { area = "" })">Contact  <div class="clarification">Information</div></a></li>
+                <li><a href="/trip-destination/faq.php">FAQ  <div class="clarification">Answers</div></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <!--                <li class="dropdown">-->
+                <!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>-->
+                <!--                    <ul class="dropdown-menu">-->
+                <!--                        <li><a href="#">Trips</a></li>-->
+                <!--                        <li><a href="#">Users</a></li>-->
+                <!--                        <li><a href="#">Towns</a></li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
+                <li><a href="#">Register <div class="clarification">Be part</div> </a></li>
+                <li><a href="#">Login  <div class="clarification">Let's go</div></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
