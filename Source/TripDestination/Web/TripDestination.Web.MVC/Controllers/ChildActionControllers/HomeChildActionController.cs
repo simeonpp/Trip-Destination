@@ -18,7 +18,7 @@
         public ITripServices TripServices { get; set; }
 
         [ChildActionOnly]
-        [OutputCache(Duration = CacheTimeConstants.HomeTodayTrips)]
+        [OutputCache(Duration = CacheTimeConstants.HomeTodayTrips, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult TodayTripsPartial()
         {
             var todayTrips = this.TripServices
@@ -35,7 +35,7 @@
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = CacheTimeConstants.HomeLatestTrips)]
+        [OutputCache(Duration = CacheTimeConstants.HomeLatestTrips, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult LatesTripsPartial()
         {
             var latestTrips = this.TripServices
