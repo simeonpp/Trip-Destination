@@ -4,6 +4,6 @@
 
     public class PageViewModel
     {
-        public IEnumerable<PageParagraphViewModel> Paragraphs { get; set; }
+        public List<PageParagraphViewModel> Paragraphs { get; set; }
     }
 }

@@ -1,14 +1,13 @@
 ﻿@using TripDestination.Web.MVC.ViewModels.Page
 @model PageViewModel
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 @if (Model.Paragraphs.Count() > 0)
 {
-    foreach (var paragraph in Model.Paragraphs)
+    for(int i = 0; i < Model.Paragraphs.Count(); i++)
     {
+        var paragraph = Model.Paragraphs[i];
+        int index = i + 1;
+
         <section>
             <h1>@paragraph.MainHeading</h1>
             <h2>@paragraph.MainSubHeading</h2>
@@ -22,10 +21,16 @@
             }
             else if (paragraph.Type == TripDestination.Data.Models.PageParagraphType.FAQ)
             {
-                Html.RenderPartial("_ParagraphFAQPartial", paragraph);
+                Html.RenderPartial("_ParagraphFAQPartial", paragraph, new ViewDataDictionary { { "index", index } });
             }
         </section>
     }
+}
+else
+{
+   <div>
+       No content added yet. Please try again later.
+   </div>
 }
 
 

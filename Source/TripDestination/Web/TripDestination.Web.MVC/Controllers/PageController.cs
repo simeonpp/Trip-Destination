@@ -34,7 +34,7 @@
             {
                 Paragraphs = paragraphs
             };
-            
+
             return this.View(videModel);
         }
     }

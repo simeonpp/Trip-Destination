@@ -1,10 +1,10 @@
 ﻿@using TripDestination.Web.MVC.ViewModels.Page
 @model PageParagraphViewModel
 
-<article>
+<article class="faq">
     <div class="wrapper row">
-        <div class="faqQuestionNumber">Question 1</div>
+        <div class="faqQuestionNumber">Question @this.ViewData["index"]</div>
         <div class="feqQuqestion">@Model.Heading</div>
-        <p>@Model.Text</p>
+        <p>@Html.Raw(Model.Text)</p>
     </div>
 </article>

@@ -87,13 +87,13 @@
         public const int PageParagraphMainHeadingMaxLength = 50;
 
         public const int PageParagraphMainSubHeadingMinLength = 5;
-        public const int PageParagraphMainSubHeadingMaxLength = 50;
+        public const int PageParagraphMainSubHeadingMaxLength = 150;
 
         public const int PageParagraphHeadingMinLength = 5;
-        public const int PageParagraphHeadingMaxLength = 50;
+        public const int PageParagraphHeadingMaxLength = 150;
 
         public const int PageParagraphTextMinLength = 10;
-        public const int PageParagraphTextMaxLength = 1000;
+        public const int PageParagraphTextMaxLength = 10000;
 
         // Contact form
         public const int ContactFormNameMinLength = 4;

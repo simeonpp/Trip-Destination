@@ -833,6 +833,7 @@ ul.passengersUl li .lastName {
 }
 .homeTripsList .infoText h2 {
   text-align: left !important;
+  padding-bottom: 20px;
 }
 #tripList article#filterArticleWrap {
   height: 246px;
@@ -1160,17 +1161,17 @@ ul.commentsUl li .image {
   font-size: 2rem;
   color: #000;
 }
-#faq .faqQuestionNumber {
+article.faq .faqQuestionNumber {
   color: #bdbdbd;
 }
-#faq .feqQuqestion {
+article.faq .feqQuqestion {
   font-size: 1.3rem;
   font-weight: bold;
   text-transform: uppercase;
   color: #aa152b;
   margin-bottom: 25px;
 }
-#faq p {
+article.faq p {
   margin: 25px 0;
 }
 #contact .socialTextImage img {
