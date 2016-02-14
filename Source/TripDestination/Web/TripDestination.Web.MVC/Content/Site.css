@@ -297,6 +297,16 @@ a.button2 {
   margin: 20px 0;
   text-transform: uppercase;
 }
+.success {
+  color: #36704a;
+  background: #7cffa8;
+  border: 1px solid #36704a;
+  width: 100%;
+  padding: 2%;
+}
+.error {
+  color: #aa152b;
+}
 #coverWrap {
   width: 100%;
   height: 100%;

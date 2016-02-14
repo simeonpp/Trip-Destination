@@ -20,15 +20,19 @@
             <div id="contactFormWrap" class="wrapper row">
                 @if (this.ViewBag.SuccessMessage != null)
                 {
-                    <h3>@this.ViewBag.SuccessMessage</h3>
+                    <h3 class="success">@this.ViewBag.SuccessMessage</h3>
                 }
-
+                
                 @Html.Partial("_ContactFormPartial")
             </div>
         </article>
     </section>
 
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
     
     
 

@@ -1,8 +1,6 @@
 ﻿namespace TripDestination.Data.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
     using TripDestination.Common.Infrastructure.Constants;
 
@@ -14,9 +12,10 @@
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(ModelConstants.ContactFormEmailMaxLength, ErrorMessage = "Message can no be more than 100 symbols long.")]
         [RegularExpression(
-            @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+            @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
             ErrorMessage = "Invalid E-mail")]
         public string Email { get; set; }
 

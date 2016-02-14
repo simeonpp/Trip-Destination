@@ -1,15 +1,15 @@
 ﻿@using TripDestination.Web.MVC.ViewModels.Contact
-@model ContactFormViewModel
+@model ContactFormInputModel
 
 @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "form-horizontal" } ))
 {
     <fieldset>
         <legend>Get in touch with us</legend>
-
+        
         @Html.ValidationSummary(true)
         @Html.AntiForgeryToken()
 
-        @Html.EditorForModel();
+        @Html.EditorForModel()
 
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">

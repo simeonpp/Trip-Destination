@@ -103,11 +103,11 @@
 
         public const int ContactFormSubjectMinLength = 4;
         public const int ContactFormSubjectMaxLength = 50;
-        
+
         public const int ContactFormMessageMinLength = 10;
         public const int ContactFormMessageMaxLength = 500;
 
-        public const int ContactFormIpMinLength = 11;
+        public const int ContactFormIpMinLength = 3;  // in order to store local ip, just for testing, otherwise make this value to 11
         public const int ContactFormIpMaxLength = 45;
     }
 }
