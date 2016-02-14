@@ -1,32 +1,24 @@
 ﻿@model TodaysStatisticsViewModel
 
-<h1>Today's numbers</h1>
-<h2>Trip statistic for today</h2>
-<section>
-    <article>
-        <div class="row">
-            <ul class="statsUl">
-                <li class="col-md-6">
-                    <div class="description">Created</div>
-                    <div class="icon"><img src="images/plus-icon.png" alt="Added icon"></div>
-                    <div class="actualInfo">@Model.TodayCreatedTrips</div>
-                </li>
-                <li class="col-md-6">
-                    <div class="description">In progress</div>
-                    <div class="icon"><img src="images/in-progress-icon.png" alt="In progress icon"></div>
-                    <div class="actualInfo">@Model.TodayInProgressTrips</div>
-                </li>
-                <li class="col-md-6">
-                    <div class="description">Finished</div>
-                    <div class="icon"><img src="images/finish-icon.png" alt="Finish flag icon"></div>
-                    <div class="actualInfo">@Model.TodayFinishedTrips</div>
-                </li>
-                <li class="col-md-6">
-                    <div class="description">Top destination</div>
-                    <div class="icon"><img src="images/destination-icon.png" alt="Destination icon"></div>
-                    <div class="actualInfo">@Model.TodayTopDestinationTown</div>
-                </li>
-            </ul>
-        </div>
-    </article>
-</section>
+<ul class="statsUl">
+    <li class="col-md-@Model.ColMdValue">
+        <div class="description">Created</div>
+        <div class="icon"><img src="images/plus-icon.png" alt="Added icon"></div>
+        <div class="actualInfo">@Model.TodayCreatedTrips</div>
+    </li>
+    <li class="col-md-@Model.ColMdValue">
+        <div class="description">In progress</div>
+        <div class="icon"><img src="images/in-progress-icon.png" alt="In progress icon"></div>
+        <div class="actualInfo">@Model.TodayInProgressTrips</div>
+    </li>
+    <li class="col-md-@Model.ColMdValue">
+        <div class="description">Finished</div>
+        <div class="icon"><img src="images/finish-icon.png" alt="Finish flag icon"></div>
+        <div class="actualInfo">@Model.TodayFinishedTrips</div>
+    </li>
+    <li class="col-md-@Model.ColMdValue">
+        <div class="description">Top destination</div>
+        <div class="icon"><img src="images/destination-icon.png" alt="Destination icon"></div>
+        <div class="actualInfo">@Model.TodayTopDestinationTown</div>
+    </li>
+</ul>

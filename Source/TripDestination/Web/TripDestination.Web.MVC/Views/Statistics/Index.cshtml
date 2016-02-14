@@ -50,28 +50,7 @@
         <article>
             <div class="wrapper row">
                 <div class="col-md-8 col-md-offset-2">
-                    <ul class="statsUl">
-                        <li class="col-md-3">
-                            <div class="description">Created</div>
-                            <div class="icon"><img src="images/plus-icon.png" alt="Add icon"></div>
-                            <div class="actualInfo">@Model.TodayCreatedTrips</div>
-                        </li>
-                        <li class="col-md-3">
-                            <div class="description">In progress</div>
-                            <div class="icon"><img src="images/in-progress-icon.png" alt="In progress icon"></div>
-                            <div class="actualInfo">@Model.TodayInProgressTrips</div>
-                        </li>
-                        <li class="col-md-3">
-                            <div class="description">Finished</div>
-                            <div class="icon"><img src="images/finish-icon.png" alt="Flag finish icon"></div>
-                            <div class="actualInfo">@Model.TodayFinishedTrips</div>
-                        </li>
-                        <li class="col-md-3">
-                            <div class="description">Top destination</div>
-                            <div class="icon"><img src="images/destination-icon.png" alt="Road icon"></div>
-                            <div class="actualInfo">@Model.TodayTopDestinationTown</div>
-                        </li>
-                    </ul>
+                    @Html.Action("TodaysStats", "StatisticsChildAction", new { itemsPerRow = 4 })
                 </div>
             </div>
         </article>

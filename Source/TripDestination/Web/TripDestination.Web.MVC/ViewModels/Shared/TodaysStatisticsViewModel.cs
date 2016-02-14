@@ -2,6 +2,8 @@
 {
     public class TodaysStatisticsViewModel
     {
+        public int ColMdValue { get; set; }
+
         public int TodayCreatedTrips { get; set; }
 
         public int TodayInProgressTrips { get; set; }

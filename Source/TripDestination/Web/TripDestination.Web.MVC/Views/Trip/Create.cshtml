@@ -12,8 +12,15 @@
             </div>
 
             <div class="col-md-4">
-                @Html.Action("TodaysStats", "StatisticsChildAction")
-            </div>
+                <h1>Today's numbers</h1>
+                <h2>Trip statistic for today</h2>
+                <section>
+                    <article>
+                        <div class="row">
+                            @Html.Action("TodaysStats", "StatisticsChildAction")
+                        </div>
+                    </article>
+                </section>
 
             </div>
     </section>
@@ -37,20 +44,20 @@
         @Html.EditorFor(m => m.AvailableSeats)
     </div>
 
-        <div>
-            @Html.LabelFor(m => m.Price)
-            @Html.EditorFor(m => m.Price)
-        </div>
+    <div>
+        @Html.LabelFor(m => m.Price)
+        @Html.EditorFor(m => m.Price)
+    </div>
 
-        <div>
-            @Html.LabelFor(m => m.Description)
-            @Html.EditorFor(m => m.Description)
-        </div>
+    <div>
+        @Html.LabelFor(m => m.Description)
+        @Html.EditorFor(m => m.Description)
+    </div>
 
-        <div>
-            @Html.LabelFor(m => m.ToId)
-            @Html.DropDownListFor(m => m.ToId, Model.Towns)
-        </div>
+    <div>
+        @Html.LabelFor(m => m.ToId)
+        @Html.DropDownListFor(m => m.ToId, Model.Towns)
+    </div>
 
         <div>
             @Html.LabelFor(m => m.DateOfLeaving)

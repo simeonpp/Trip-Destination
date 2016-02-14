@@ -23,11 +23,7 @@
                 UsersCount = 0 /* this.StatisticsServices.GetUserCount() */,
                 DriversCount = this.StatisticsServices.GetDriversCount(),
                 AverageTripRating = 0 /* this.StatisticsServices.GetAverateTripRating() */,
-                TripViews = 0 /* this.StatisticsServices.GetTripViews() */,
-                TodayCreatedTrips = this.StatisticsServices.TripsGetTodayCreatedCount(),
-                TodayInProgressTrips = this.StatisticsServices.TripsGetTodayInProgressCount(),
-                TodayFinishedTrips = this.StatisticsServices.TripsGetTodayFinishedCount(),
-                TodayTopDestinationTown = this.StatisticsServices.TripsGetTodayTopDestination()
+                TripViews = 0 /* this.StatisticsServices.GetTripViews() */
             };
 
             return this.View(viewModel);

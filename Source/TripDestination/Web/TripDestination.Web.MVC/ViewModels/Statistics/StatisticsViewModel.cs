@@ -17,14 +17,6 @@
 
         public int TripViews { get; set; }
 
-        public int TodayCreatedTrips { get; set; }
-
-        public int TodayInProgressTrips { get; set; }
-
-        public int TodayFinishedTrips { get; set; }
-
-        public string TodayTopDestinationTown { get; set; }
-
         public IEnumerable<User> TopDrivers { get; set; }
 
         public IEnumerable<User> TopPassengers { get; set; }
