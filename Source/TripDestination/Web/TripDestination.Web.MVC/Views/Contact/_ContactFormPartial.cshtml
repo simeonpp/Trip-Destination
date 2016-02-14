@@ -1,12 +1,21 @@
 ﻿@using TripDestination.Web.MVC.ViewModels.Contact
 @model ContactFormViewModel
 
-@using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+@using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "form-horizontal" } ))
 {
-    @Html.ValidationSummary(true)
-    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Get in touch with us</legend>
 
-    @Html.EditorForModel();
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
 
-    <input type="submit" value="Send" />
-}
+        @Html.EditorForModel();
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="button2">Cancel</button>
+                <button type="submit" class="button">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+} 

@@ -13,15 +13,23 @@
         </article>
     </section>
 
+    <section>
+        <h1>Contact form</h1>
+        <h2>If you have any questions, suggestions or recommendation, do not hasitate to contact with us. Your feedback is important to us.</h2>
+        <article>
+            <div id="contactFormWrap" class="wrapper row">
+                @if (this.ViewBag.SuccessMessage != null)
+                {
+                    <h3>@this.ViewBag.SuccessMessage</h3>
+                }
+
+                @Html.Partial("_ContactFormPartial")
+            </div>
+        </article>
+    </section>
+
 </div>
-
-    <h2>Social links</h2>
-
-    <h2>Contact form</h2>
-    @if (this.ViewBag.SuccessMessage != null)
-    {
-        <h3>@this.ViewBag.SuccessMessage</h3>
-    }
-    @Html.Partial("_ContactFormPartial")
+    
+    
 
 
