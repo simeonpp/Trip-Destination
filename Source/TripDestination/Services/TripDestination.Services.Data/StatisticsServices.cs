@@ -17,15 +17,12 @@
 
         // private IDbRepository<User> userRepos;
 
-        private ITripDestinationDbContext tripDestinationDbContext;
-
         private DateTime today = DateTime.Today;
 
-        public StatisticsServices(IDbRepository<Trip> tripRepos, ITripDestinationDbContext tripDestinationDbContext)
+        public StatisticsServices(IDbRepository<Trip> tripRepos)
         {
             this.tripRepos = tripRepos;
             // this.userRepos = userRepos;
-            this.tripDestinationDbContext = tripDestinationDbContext;
         }
 
         public int GetTotalTripsCount()

@@ -1,26 +1,82 @@
 ﻿@using TripDestination.Web.MVC.ViewModels.Statistics
 @model StatisticsViewModel
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<div id="statistics">
 
-<h2>General Statistics</h2>
-<ul>
-    <li>@Model.TripsCount</li>
-    <li>@Model.TopDestination</li>
-    <li>@Model.UsersCount</li>
-    <li>@Model.DriversCount</li>
-    <li>@Model.AverageTripRating</li>
-    <li>@Model.TripViews</li>
-</ul>
+    <section>
+        <h1>General statistics</h1>
+        <h2>Main website statistics</h2>
+        <article>
+            <div class="wrapper row">
+                <ul class="statsUl">
+                    <li class="col-md-2">
+                        <div class="description">Trips count</div>
+                        <div class="icon"><img src="images/plus-icon.png" alt="Add icon"></div>
+                        <div class="actualInfo">@Model.TripsCount</div>
+                    </li>
+                    <li class="col-md-2">
+                        <div class="description">Top destination</div>
+                        <div class="icon"><img src="images/destination-icon.png" alt="Road icon"></div>
+                        <div class="actualInfo">@Model.TopDestination</div>
+                    </li>
+                    <li class="col-md-2">
+                        <div class="description">Users count</div>
+                        <div class="icon"><img src="images/users-icon.png" alt="Users icon"></div>
+                        <div class="actualInfo">@Model.UsersCount</div>
+                    </li>
+                    <li class="col-md-2">
+                        <div class="description">Drivers count</div>
+                        <div class="icon"><img src="images/driver-icon.png" alt="Driver icon"></div>
+                        <div class="actualInfo">@Model.DriversCount</div>
+                    </li>
+                    <li class="col-md-2">
+                        <div class="description">Average trip rating</div>
+                        <div class="icon"><img src="images/star-icon.png" alt="Star icon"></div>
+                        <div class="actualInfo">@Model.AverageTripRating</div>
+                    </li>
+                    <li class="col-md-2">
+                        <div class="description">Trip views</div>
+                        <div class="icon"><img src="images/view-icon.png" alt="View icon"></div>
+                        <div class="actualInfo">@Model.TripViews</div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section>
 
-<h2>Today statistics</h2>
-<ul>
-    <li>@Model.TodayCreatedTrips</li>
-    <li>@Model.TodayInProgressTrips</li>
-    <li>@Model.TodayFinishedTrips</li>
-    <li>@Model.TodayTopDestinationTown</li>
-</ul>
+    <section id="todayStatsWrap">
+        <h1>Today's statistics</h1>
+        <h2>Trip statistics for today</h2>
+        <article>
+            <div class="wrapper row">
+                <div class="col-md-8 col-md-offset-2">
+                    <ul class="statsUl">
+                        <li class="col-md-3">
+                            <div class="description">Created</div>
+                            <div class="icon"><img src="images/plus-icon.png" alt="Add icon"></div>
+                            <div class="actualInfo">@Model.TodayCreatedTrips</div>
+                        </li>
+                        <li class="col-md-3">
+                            <div class="description">In progress</div>
+                            <div class="icon"><img src="images/in-progress-icon.png" alt="In progress icon"></div>
+                            <div class="actualInfo">@Model.TodayInProgressTrips</div>
+                        </li>
+                        <li class="col-md-3">
+                            <div class="description">Finished</div>
+                            <div class="icon"><img src="images/finish-icon.png" alt="Flag finish icon"></div>
+                            <div class="actualInfo">@Model.TodayFinishedTrips</div>
+                        </li>
+                        <li class="col-md-3">
+                            <div class="description">Top destination</div>
+                            <div class="icon"><img src="images/destination-icon.png" alt="Road icon"></div>
+                            <div class="actualInfo">@Model.TodayTopDestinationTown</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+
+</div>
 
 

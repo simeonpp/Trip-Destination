@@ -67,6 +67,7 @@
                 );
         }
 
+        /*
         [Test]
         public void IndexShouldRenderCorrectViewWithCorrectTodayTrips()
         {
@@ -96,5 +97,6 @@
                     }
                 );
         }
+        */
     }
 }

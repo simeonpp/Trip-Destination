@@ -19,7 +19,7 @@
             {
                 TripsCount = this.StatisticsServices.GetTotalTripsCount(),
                 TopDestination = this.StatisticsServices.GetTopDestination(),
-                UsersCount = this.StatisticsServices.GetUserCount(),
+                UsersCount = 0 /* this.StatisticsServices.GetUserCount() */,
                 DriversCount = this.StatisticsServices.GetDriversCount(),
                 AverageTripRating = 0 /* this.StatisticsServices.GetAverateTripRating() */,
                 TripViews = 0 /* this.StatisticsServices.GetTripViews() */,
