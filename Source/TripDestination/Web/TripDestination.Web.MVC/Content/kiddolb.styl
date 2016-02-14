@@ -1,0 +1,89 @@
+﻿.defaultLink
+  text-decoration none
+  color #ffffff
+  &:hover
+    color #ccc
+
+.clearFix
+  zoom 1
+  &:after
+    visibility hidden
+    display block
+    font-size 0
+    content " "
+    clear both
+    height 0
+
+.ulClear
+  list-style-type none
+  margin 0
+  padding 0
+
+  li
+    margin 0
+    padding 0
+
+.imageFix
+  display block
+
+.imageCover
+  background-position center center
+  background-repeat no-repeat
+  -webkit-background-size cover
+  -moz-background-size cover
+  -o-background-size cover
+  background-size cover
+
+.boxSizing
+  -webkit-box-sizing border-box
+  -moz-box-sizing border-box
+  box-sizing border-box
+
+border-radius(n) // 5px
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+transition(n) // 500ms
+  -webkit-transition: all n ease-out;
+  -moz-transition: all n ease-out;
+  -ms-transition: all n ease-out;
+  -o-transition: all n ease-out;
+  transition: all n ease-out;
+
+textLengthLimit()
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+
+textLengthLimitWithParameters(lineHeight, maxHeigth, numberOfLinesToShow)
+  overflow hidden
+  text-overflow ellipsis
+  display -webkit-box
+  line-height lineHeight     /* fallback */
+  max-height maxHeigth      /* fallback */
+  -webkit-line-clamp numberOfLinesToShow /* number of lines to show */
+  -webkit-box-orient vertical
+
+rotate-css3(n) // 90deg
+  -moz-transform: rotate(n);
+  -webkit-transform: rotate(n);
+  -o-transform: rotate(n);
+  -ms-transform: rotate(n);
+  transform: rotate(n);
+
+columns(count, gapInPx)
+  -moz-column-count 2
+  -moz-column-gap 20px
+  -webkit-column-count 2
+  -webkit-column-gap 20px
+  column-count 2
+  column-gap 20px
+
+.noSelectable
+  -webkit-touch-callout none
+  -webkit-user-select none
+  -khtml-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  user-select none

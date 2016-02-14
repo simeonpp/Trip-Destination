@@ -5,7 +5,18 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2>Top destination</h2>
+
+<section id="welcomeMessageWrap">
+    <article>
+        <div class="wrapper">
+            <h1>Welcome to Trip Destination</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur libero reiciendis saepe velit! Aspernatur at deleniti distinctio dolorum sit? Ad amet at consectetur cupiditate debitis, delectus, dolore dolorem eaque est eum facere, hic illo inventore itaque iusto laboriosam natus odio quia repellendus repudiandae sapiente sequi suscipit vel veniam vero voluptatum!</p>
+        </div>
+    </article>
+</section>
+
+
+@*<h2>Top destination</h2>
 @if (Model.TopDestinations.Count() > 0)
 {
     <ul>
@@ -14,7 +25,7 @@
             <li>@tupleDestinations.FromTown - @tupleDestinations.ToTown</li>
         }
     </ul>
-}
+}*@
 
 <h2>Today tips</h2>
 @if (Model.TodayTrips.Count() > 0)

@@ -25,7 +25,8 @@ namespace TripDestination.Web.MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/reset.css"));
 
             // BundleTable.EnableOptimizations = true;
         }

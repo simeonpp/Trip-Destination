@@ -18,6 +18,7 @@
     using Services.Web.Providers;
     using Services.Web.Providers.Contracts;
     using Services.Web.Helpers.Contracts;
+
     public static class AutofacConfig
     {
         public static void Register()
