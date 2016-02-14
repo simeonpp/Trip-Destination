@@ -196,6 +196,7 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChildActionControllers\HomeChildActionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\ChildAction\TripsListViewModel.cs" />
     <Compile Include="ViewModels\Contact\ContactFormViewModel.cs" />
     <Compile Include="ViewModels\Home\HomepageViewModel.cs" />
     <Compile Include="ViewModels\Home\TopDestinationVIewModel.cs" />
@@ -272,7 +274,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -317,6 +321,8 @@
     <Content Include="Views\Page\_ParagraphDoublePartial.cshtml" />
     <Content Include="Views\Page\_ParagraphFAQPartial.cshtml" />
     <Content Include="TripDestination.Web.MVC.ruleset" />
+    <Content Include="Views\Home\_TodayTripsPartial.cshtml" />
+    <Content Include="Views\Home\_LatestTripsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

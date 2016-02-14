@@ -1,0 +1,27 @@
+﻿@model TripsListViewModel
+
+<section id="todaysTripsWrap" class="wrapper homeTripsList">
+    <div class="row">
+        <div class="infoTextcoverQuickSearchWrap  col-md-4">
+            <h1>Today's Trips</h1>
+            <h2>Take advantage of our four tirps today ready for you. Choose one or check out all our trips in the Discover page.</h2>
+        </div>
+        <div class="list col-md-8">
+            @if (Model.Trips.Count() > 0)
+            {
+                <ul class="tripsList">
+                    @foreach (var trip in Model.Trips)
+                    {
+                        Html.RenderPartial("_TripListLiPartial", trip);
+                    }
+                </ul>
+            }
+            else
+            {
+                <text>
+                    No trips were added today.
+                </text>
+            }
+        </div>
+    </div>
+</section> <!-- end #todaysTripsWrap -->

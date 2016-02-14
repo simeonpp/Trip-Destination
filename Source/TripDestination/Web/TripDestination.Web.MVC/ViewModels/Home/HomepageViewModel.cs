@@ -7,9 +7,5 @@
     public class HomepageViewModel
     {
         public IEnumerable<TopDestinationVIewModel> TopDestinations { get; set; }
-
-        public IEnumerable<TripListViewModel> TodayTrips { get; set; }
-
-        public IEnumerable<TripListViewModel> LatestTrips { get; set; }
     }
 }

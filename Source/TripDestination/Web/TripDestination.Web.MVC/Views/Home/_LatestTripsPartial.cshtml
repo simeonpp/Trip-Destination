@@ -1,0 +1,27 @@
+﻿@model TripsListViewModel
+
+<section id="latestTripsWrap" class="wrapper homeTripsList">
+    <div class="row">
+        <div class="infoText col-md-4">
+            <h1>Latest Trips</h1>
+            <h2>Check out our latest trips</h2>
+        </div>
+        <div class="list col-md-8">            
+            @if (Model.Trips.Count() > 0)
+            {
+                <ul class="tripsList">
+                    @foreach (var trip in Model.Trips)
+                    {
+                        Html.RenderPartial("_TripListLiPartial", trip);
+                    }
+                </ul>
+            }
+            else
+            {
+                <text>
+                    No found trips.
+                </text>
+            }
+        </div>
+    </div>
+</section> <!-- end #latestTripsWrap -->

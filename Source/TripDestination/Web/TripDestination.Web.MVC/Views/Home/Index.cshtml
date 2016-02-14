@@ -27,36 +27,6 @@
     </ul>
 }*@
 
-<h2>Today tips</h2>
-@if (Model.TodayTrips.Count() > 0)
-{
-    <ul>
-        @foreach (var trip in Model.TodayTrips)
-        {
-            Html.RenderPartial("_TripListLiPartial", trip);
-        }
-    </ul>
-}
-else
-{
-    <text>
-        No trips were added today.
-    </text>
-}
+@Html.Action("TodayTripsPartial", "HomeChildAction")
 
-<h3>Latest trips</h3>
-@if (Model.LatestTrips.Count() > 0)
-{
-    <ul>
-        @foreach (var trip in Model.LatestTrips)
-        {
-            Html.RenderPartial("_TripListLiPartial", trip);
-        }
-    </ul>
-}
-else
-{
-    <text>
-        No found trips.
-    </text>
-}
+@Html.Action("LatesTripsPartial", "HomeChildAction")

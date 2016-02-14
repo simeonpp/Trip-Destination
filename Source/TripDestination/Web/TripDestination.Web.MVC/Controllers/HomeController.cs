@@ -35,28 +35,10 @@
                     })
                     .ToList(),
                 CacheTimeConstants.HomeTopDestination);
-
-            var todayTrips = this.Cache.Get(
-                "todayTrips",
-                () => this.TripServices
-                    .GetTodayTrips(WebApplicationConstants.HomepageTripsPerSectionCount)
-                    .To<TripListViewModel>()
-                    .ToList(),
-                CacheTimeConstants.HomeTodayTrips);
-
-            var latestTrips = this.Cache.Get(
-                "latestTrips",
-                () => this.TripServices
-                    .GetLatest(WebApplicationConstants.HomepageTripsPerSectionCount)
-                    .To<TripListViewModel>()
-                    .ToList(),
-                CacheTimeConstants.HomeLatestTrips);
-
+            
             HomepageViewModel viewModel = new HomepageViewModel()
             {
-                TopDestinations = topDestinations,
-                TodayTrips = todayTrips,
-                LatestTrips = latestTrips
+                TopDestinations = topDestinations
             };
 
             return this.View(viewModel);
