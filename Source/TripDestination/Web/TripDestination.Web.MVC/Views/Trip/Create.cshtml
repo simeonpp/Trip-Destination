@@ -1,9 +1,24 @@
-﻿@using TripDestination.Web.MVC.ViewModels.Trip
-@model InputVIewModel
+﻿@model TripInputVIewModel
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<div id="tripCreate">
+
+    <section class="noBottomMargin">
+        <div class="wrapper row">
+
+            <div class="col-md-8">
+                <h1>Create new trip</h1>
+                <h2>Fill up the information below and click save button to create new trip</h2>
+
+            </div>
+
+            <div class="col-md-4">
+                @Html.Action("TodaysStats", "StatisticsChildAction")
+            </div>
+
+            </div>
+    </section>
+
+</div> @*end #tripCreate*@
 
 <h1>Create new trip</h1>
 
@@ -22,60 +37,43 @@
         @Html.EditorFor(m => m.AvailableSeats)
     </div>
 
-    <div>
-        @Html.LabelFor(m => m.Price)
-        @Html.EditorFor(m => m.Price)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.Price)
+            @Html.EditorFor(m => m.Price)
+        </div>
 
-    <div>
-        @Html.LabelFor(m => m.Description)
-        @Html.EditorFor(m => m.Description)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.Description)
+            @Html.EditorFor(m => m.Description)
+        </div>
 
-    <div>
-        @Html.LabelFor(m => m.ToId)
-        @Html.DropDownListFor(m => m.ToId, Model.Towns)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.ToId)
+            @Html.DropDownListFor(m => m.ToId, Model.Towns)
+        </div>
 
-    <div>
-        @Html.LabelFor(m => m.DateOfLeaving)
-        @Html.EditorFor(m => m.DateOfLeaving)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.DateOfLeaving)
+            @Html.EditorFor(m => m.DateOfLeaving)
+        </div>
 
-    <div>
-        @Html.LabelFor(m => m.ETA)
-        @Html.EditorFor(m => m.ETA)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.ETA)
+            @Html.EditorFor(m => m.ETA)
+        </div>
 
-    <div>
-        @Html.LabelFor(m => m.PlaceOfLeaving)
-        @Html.EditorFor(m => m.PlaceOfLeaving)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.PlaceOfLeaving)
+            @Html.EditorFor(m => m.PlaceOfLeaving)
+        </div>
 
-    <div>
-        @Html.LabelFor(m => m.PickUpFromAddress)
-        @Html.EditorFor(m => m.PickUpFromAddress)
-    </div>
+        <div>
+            @Html.LabelFor(m => m.PickUpFromAddress)
+            @Html.EditorFor(m => m.PickUpFromAddress)
+        </div>
 
-    <input type="submit" value="Create trip" />
+        <input type="submit" value="Create trip" />
 }
-
-<h2>Stats</h2>
-<div>
-    TodayCreatedTrips - @Model.TodayCreatedTrips
-</div>
-
-<div>
-    TodayInProgressTrips - @Model.TodayInProgressTrips
-</div>
-
-<div>
-    TodayFinishedTrips - @Model.TodayFinishedTrips
-</div>
-
-<div>
-    TodayTopDestinationTown - @Model.TodayTopDestinationTown
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

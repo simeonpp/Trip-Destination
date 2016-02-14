@@ -13,6 +13,7 @@
 
         public IStatisticsServices StatisticsServices { get; set; }
 
+        [HttpGet]
         public ActionResult Index()
         {
             StatisticsViewModel viewModel = new StatisticsViewModel()

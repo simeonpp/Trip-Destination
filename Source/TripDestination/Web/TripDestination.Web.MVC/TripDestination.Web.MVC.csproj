@@ -198,6 +198,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChildActionControllers\HomeChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\LayoutController.cs" />
+    <Compile Include="Controllers\ChildActionControllers\StatisticsChildActionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -238,9 +239,10 @@
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
     <Compile Include="ViewModels\Shared\NavigationViewModel.cs" />
     <Compile Include="ViewModels\Shared\PageViewModel.cs" />
+    <Compile Include="ViewModels\Shared\TodaysStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
-    <Compile Include="ViewModels\Trip\InputVIewModel.cs" />
+    <Compile Include="ViewModels\Trip\TripInputVIewModel.cs" />
     <Compile Include="ViewModels\Trip\TripLstViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripViewModel.cs" />
   </ItemGroup>
@@ -338,6 +340,7 @@
     <Content Include="Views\Shared\_NavigationPartial.cshtml" />
     <Content Include="Views\Contact\EditorTemplates\String.cshtml" />
     <Content Include="Views\Contact\EditorTemplates\TextArea.cshtml" />
+    <Content Include="Views\Shared\_TodaysStatisticsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

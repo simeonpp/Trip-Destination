@@ -9,13 +9,14 @@
 
     public class PageController : BaseController
     {
-        public IPageServices PageServices { get; set; }
-
         public PageController(IPageServices pageServices)
         {
             this.PageServices = pageServices;
         }
 
+        public IPageServices PageServices { get; set; }
+
+        [HttpGet]
         public ActionResult Index(int id)
         {
             Page page = this.PageServices.GetById(id);

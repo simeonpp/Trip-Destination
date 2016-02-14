@@ -12,18 +12,18 @@
 
     public class TripController : BaseController
     {
-        public ITripServices TripServices { get; set; }
-            
-        public ITownsServices TownServices { get; set; }
-        
-        public IStatisticsServices StatisticsServices { get; set; }
-
         public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices)
         {
             this.TripServices = tripServices;
             this.TownServices = townServices;
             this.StatisticsServices = statisticsServices;
         }
+
+        public ITripServices TripServices { get; set; }
+
+        public ITownsServices TownServices { get; set; }
+
+        public IStatisticsServices StatisticsServices { get; set; }
 
         [HttpGet]
         [Authorize]
@@ -38,13 +38,9 @@
                     })
                     .ToList();
 
-            InputVIewModel viewModel = new InputVIewModel()
+            TripInputVIewModel viewModel = new TripInputVIewModel()
             {
-                Towns = towns,
-                TodayCreatedTrips = this.StatisticsServices.TripsGetTodayCreatedCount(),
-                TodayInProgressTrips = this.StatisticsServices.TripsGetTodayInProgressCount(),
-                TodayFinishedTrips = this.StatisticsServices.TripsGetTodayFinishedCount(),
-                TodayTopDestinationTown = this.StatisticsServices.TripsGetTodayTopDestination()
+                Towns = towns
             };
 
             return this.View(viewModel);
@@ -53,7 +49,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(InputVIewModel trip)
+        public ActionResult Create(TripInputVIewModel trip)
         {
             if (!this.ModelState.IsValid)
             {
