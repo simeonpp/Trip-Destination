@@ -1,4 +1,6 @@
-﻿<nav class="navbar navbar-default navbar-static-top">
+﻿@model NavigationViewModel
+
+<nav class="navbar navbar-default navbar-static-top">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -14,9 +16,17 @@
                 <li><a href="@Url.Action("List", "Trip", new { area = "" })">Discover  <div class="clarification">Trips</div></a></li>
                 <li><a href="@Url.Action("Create", "Trip", new { area = "" })">Create  <div class="clarification">New trip</div></a></li>
                 <li><a href="@Url.Action("Index", "Statistics", new { area = "" })">Statistics  <div class="clarification">Numbers</div></a></li>
-                <li><a href="/trip-destination/about.php">About  <div class="clarification">Who we are</div></a></li>
+
+                @foreach (var page in Model.Pages)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Page", new { id = page.Id, slug = page.Slug, area = "" })">
+                            @page.Heading <div class="clarification">@page.SubHeading</div>
+                        </a>
+                    </li>
+                }
+
                 <li><a href="@Url.Action("Index", "Contact", new { area = "" })">Contact  <div class="clarification">Information</div></a></li>
-                <li><a href="/trip-destination/faq.php">FAQ  <div class="clarification">Answers</div></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

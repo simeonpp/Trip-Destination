@@ -1,6 +1,7 @@
 ﻿namespace TripDestination.Data.Services
 {
     using System.Linq;
+    using System.Collections.Generic;
 
     using Common;
     using Models;
@@ -16,6 +17,15 @@
         {
             this.pageRepos = pageRepos;
             this.pageParagraphRepos = pageParagraphRepos;
+        }
+
+        public IQueryable<Page> GetAll()
+        {
+            var pages = this.pageRepos
+                .All()
+                .OrderBy(p => p.Layout);
+
+            return pages;
         }
 
         public Page GetById(int id)

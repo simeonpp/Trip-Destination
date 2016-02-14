@@ -236,6 +236,8 @@
     <Compile Include="ViewModels\Shared\BaseTripExtentendedModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
+    <Compile Include="ViewModels\Shared\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PageViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\Trip\InputVIewModel.cs" />

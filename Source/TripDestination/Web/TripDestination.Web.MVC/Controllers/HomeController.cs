@@ -35,7 +35,7 @@
                     })
                     .ToList(),
                 CacheTimeConstants.HomeTopDestination);
-            
+
             HomepageViewModel viewModel = new HomepageViewModel()
             {
                 TopDestinations = topDestinations

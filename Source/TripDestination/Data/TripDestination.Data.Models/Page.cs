@@ -12,9 +12,10 @@
 
         public Page()
         {
+            this.Layout = 0;
             this.paragraphs = new HashSet<PageParagraph>();
         }
-        
+
         [Required]
         [MinLength(ModelConstants.PageHeadingMinLength, ErrorMessage = "Page heading can no be less than 5 symbols long.")]
         [MaxLength(ModelConstants.PageHeadingMaxLength, ErrorMessage = "Page heading can no be more than 50 symbols long.")]
@@ -26,6 +27,8 @@
         public string SubHeading { get; set; }
 
         public string Slug { get; set; }
+
+        public int Layout { get; set; }
 
         public virtual IEnumerable<PageParagraph> Paragraphs
         {
