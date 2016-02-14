@@ -5,6 +5,7 @@
     using TripDestination.Common.Infrastructure.Mapping;
     using System.Linq;
     using ViewModels.Shared;
+    using Common.Infrastructure.Constants;
     public class LayoutController : Controller
     {
         public LayoutController(IPageServices pageServices)
@@ -15,6 +16,7 @@
         public IPageServices PageServices { get; set; }
 
         [ChildActionOnly]
+        [OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
         public ActionResult NavigationPartial()
         {
             var pages = this.PageServices

@@ -2,6 +2,9 @@
 {
     public class CacheTimeConstants
     {
+        // Layout
+        public const int NavigationPartial = 60 * 60 * 60;
+
         // Home 
         public const int HomeTopDestination = 60 * 15;
         public const int HomeTodayTrips = 60 * 5;
