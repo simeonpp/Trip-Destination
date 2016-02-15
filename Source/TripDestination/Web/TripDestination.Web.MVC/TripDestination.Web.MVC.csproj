@@ -195,6 +195,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AJAX\NewsletterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChildActionControllers\HomeChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\LayoutController.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\AJAX\NewsletterInputModel.cs" />
     <Compile Include="ViewModels\ChildAction\TripsListViewModel.cs" />
     <Compile Include="ViewModels\Contact\ContactFormInputModel.cs" />
     <Compile Include="ViewModels\Home\HomepageViewModel.cs" />
