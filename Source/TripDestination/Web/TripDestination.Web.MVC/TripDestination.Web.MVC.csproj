@@ -563,6 +563,11 @@
     <Content Include="Assets\javascript\lib\moment\templates\globals.js" />
     <Content Include="Assets\javascript\lib\moment\templates\locale-header.js" />
     <Content Include="Assets\javascript\lib\moment\templates\test-header.js" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.css" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.js" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.min.css" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.min.js" />
+    <Content Include="Assets\javascript\src\common\newsletter-subscriber.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -625,6 +630,12 @@
     <Content Include="Assets\javascript\lib\moment-timezone\data\unpacked\latest.json" />
     <Content Include="Assets\javascript\lib\moment-timezone\LICENSE" />
     <Content Include="Assets\javascript\lib\moment-timezone\README.md" />
+    <Content Include="Assets\javascript\lib\toastr\.bower.json" />
+    <Content Include="Assets\javascript\lib\toastr\bower.json" />
+    <Content Include="Assets\javascript\lib\toastr\README.md" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.js.map" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.less" />
+    <Content Include="Assets\javascript\lib\toastr\toastr.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
