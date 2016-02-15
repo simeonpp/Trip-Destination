@@ -7,20 +7,21 @@
             email = $newsletterEmailInput.val();
 
         if (emailPattern.test(email)) {
-            $.getJSON(
-                '/Newsletter/Subscribe',
-                {
+            $.ajax({
+                type: "POST",
+                url: '/Newsletter/Subscribe',
+                data: {
                     email: email
                 },
-                function (response) {
-                    if (reseponse.status) {
+                success: function (response) {
+                    if (response.Status) {
                         $newsletterEmailInput.val('');
-                        toastr.success('You have successfully subscribed email ' + response.data + ' to our newsletter.');
+                        toastr.success('You have successfully subscribed email ' + response.Data + ' to our newsletter.');
                     } else {
                         toastr.error('An error has occured during trying to register to newsletter. Please try again or contact our team for help.');
                     }
                 }
-            )
+            });
         } else {
             toastr.error('You have entered invalid email.');
         }
