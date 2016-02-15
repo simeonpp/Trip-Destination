@@ -17,7 +17,7 @@
                        .Select(x => new WeekDay
                        {
                            Datetime = today.AddDays(x),
-                           IsActive = chosenDay.Day == x
+                           IsActive = chosenDay == today.AddDays(x)
                        })
                        .AsQueryable();
 

@@ -8,5 +8,9 @@
         IEnumerable<SelectListItem> GetAvailableSeatsSelectList();
 
         IEnumerable<SelectListItem> GetAddressPickUpSelectList();
+
+        IEnumerable<SelectListItem> GetLuggageSpcaceSelectList();
+
+        IEnumerable<SelectListItem> GetTripsPerPageSelectList();
     }
 }

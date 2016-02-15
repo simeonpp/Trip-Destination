@@ -719,7 +719,7 @@
     <Content Include="Views\Shared\EditorTemplates\TextArea.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Views\Trip\EditorTemplates\CustomDropDownList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CustomDropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

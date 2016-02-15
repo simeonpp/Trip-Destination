@@ -94,6 +94,11 @@
             {
                 Date = day,
                 WeekDays = weekDays,
+                SearchInputModel = new TripSearchInputModel(),
+                LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList(),
+                ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList(),
+                TownsSelectList = this.TownProvider.GetTowns(),
+                AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList(),
                 Trips = trips
             };
 

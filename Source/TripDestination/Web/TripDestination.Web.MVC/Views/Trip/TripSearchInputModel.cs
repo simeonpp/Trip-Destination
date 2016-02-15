@@ -27,7 +27,7 @@
         public string DriverName { get; set; }
 
         [Required]
-        public SpaceForLugage LuggaeSpcace { get; set; }
+        public SpaceForLugage LuggageSpcace { get; set; }
 
         [Required]
         public int ItemsPerPage { get; set; }

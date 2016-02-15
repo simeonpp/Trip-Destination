@@ -7,8 +7,9 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+    using TripDestination.Data.Models;
 
-    class TripProvider : ITripProvider
+    public class TripProvider : ITripProvider
     {
         public IEnumerable<SelectListItem> GetAvailableSeatsSelectList()
         {
@@ -31,6 +32,39 @@
             };
 
             return addressPickUpSelectList;
+        }
+
+        public IEnumerable<SelectListItem> GetLuggageSpcaceSelectList()
+        {
+            var luggageSpaceSelectList = new List<SelectListItem>();
+
+            foreach (var luggageSpace in Enum.GetValues(typeof(SpaceForLugage)))
+            {
+                luggageSpaceSelectList.Add(new SelectListItem()
+                {
+                    Text = luggageSpace.ToString(),
+                    Value = luggageSpace.ToString()
+                });
+            }
+
+            return luggageSpaceSelectList;
+        }
+
+        public IEnumerable<SelectListItem> GetTripsPerPageSelectList()
+        {
+            var tripsPerPageSelectList = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "3", Value = "3" },
+                new SelectListItem { Text = "6", Value = "6" },
+                new SelectListItem { Text = "9", Value = "9", Selected = true },
+                new SelectListItem { Text = "12", Value = "12" },
+                new SelectListItem { Text = "15", Value = "15" },
+                new SelectListItem { Text = "18", Value = "18" },
+                new SelectListItem { Text = "21", Value = "21" },
+                new SelectListItem { Text = "24", Value = "24" }
+            };
+
+            return tripsPerPageSelectList;
         }
     }
 }
