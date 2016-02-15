@@ -14,6 +14,7 @@
                 },
                 function (response) {
                     if (reseponse.status) {
+                        $newsletterEmailInput.val('');
                         toastr.success('You have successfully subscribed email ' + response.data + ' to our newsletter.');
                     } else {
                         toastr.error('An error has occured during trying to register to newsletter. Please try again or contact our team for help.');
