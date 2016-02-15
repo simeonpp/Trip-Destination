@@ -7,19 +7,19 @@
     using TripDestination.Web.Infrastructure.Models;
     public class DateProvider : IDateProvider
     {
-        public IEnumerable<WeekDay> GetWeekAhedDays(DateTime chosenDay)
+        public IQueryable<WeekDay> GetWeekAhedDays(DateTime chosenDay)
         {
             var today = DateTime.Today;
             var endDate = today.AddDays(7);
             var numDays = (int)(endDate - today).TotalDays;
-            List<WeekDay> dates = Enumerable
+            var dates = Enumerable
                        .Range(0, numDays)
                        .Select(x => new WeekDay
                        {
                            Datetime = today.AddDays(x),
                            IsActive = chosenDay.Day == x
                        })
-                       .ToList();
+                       .AsQueryable();
 
             return dates;
         }

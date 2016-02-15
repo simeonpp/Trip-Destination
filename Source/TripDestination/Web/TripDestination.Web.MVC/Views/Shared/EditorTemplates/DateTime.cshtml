@@ -1,14 +1,12 @@
 ﻿@model DateTime
 
-<div class="form-group">
-    @Html.LabelFor(m => m, new { @class = "col-lg12 control-labe" })
-    <div class="error col-lg-12">@Html.ValidationMessageFor(m => m)</div>
-    <div class="col-lg-12">
-        <div class='customDateTimePickers input-group date'>
-            @Html.TextBoxFor(m => m, new { @type = "datetime", @class = "form-control" })
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-        </div>        
-    </div>
+@Html.LabelFor(m => m, new { @class = "col-lg12 control-labe" })
+<div class="error col-lg-12">@Html.ValidationMessageFor(m => m)</div>
+<div class="col-lg-12">
+    <div class='customDateTimePickers input-group date'>
+        @Html.TextBoxFor(m => m, new { @type = "datetime", @class = "form-control" })
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>        
 </div>

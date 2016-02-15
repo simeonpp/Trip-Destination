@@ -6,10 +6,11 @@
     using Microsoft.AspNet.Identity;
     using Data.Models;
     using System.Linq;
-    using AutoMapper.QueryableExtensions;
     using ViewModels.Shared;
     using Services.Data.Contracts;
     using Services.Web.Providers.Contracts;
+    using TripDestination.Common.Infrastructure.Mapping;
+
     public class TripController : BaseController
     {
         public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices, IDateProvider dateProvider)
@@ -83,10 +84,13 @@
             var day = DateTime.Today;
             var trips = this.TripServices
                 .GetForDay(day)
-                .ProjectTo<TripListViewModel>(this.MapperConfiguration)
+                .To<TripListViewModel>()
                 .ToList();
 
-            var weekDays = this.DateProvider.GetWeekAhedDays(day);
+            var weekDays = this.DateProvider
+                .GetWeekAhedDays(day)
+                .To<WeekDayViewModel>()
+                .ToList();
 
             TripLstViewModel viewModel = new TripLstViewModel()
             {
