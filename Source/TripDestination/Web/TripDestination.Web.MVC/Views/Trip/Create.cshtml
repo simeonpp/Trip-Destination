@@ -14,7 +14,9 @@
                         @using (Html.BeginForm("Create", "Trip", FormMethod.Post, new { id = "tripCreateForm" }))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="errorBox">
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                            </div>
 
                             <fieldset>
                                 <div class="row">

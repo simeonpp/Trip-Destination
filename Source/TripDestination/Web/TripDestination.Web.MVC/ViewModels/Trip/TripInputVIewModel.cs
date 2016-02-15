@@ -6,6 +6,10 @@
 
     public class TripInputVIewModel : BaseTripExtentendedModel
     {
-        public IEnumerable<SelectListItem> Towns { get; set; }
+        public IEnumerable<SelectListItem> TownsSelectList { get; set; }
+
+        public IEnumerable<SelectListItem> AvailableSeatsSelectList { get; set; }
+
+        public IEnumerable<SelectListItem> AddressPickUpSelectList { get; set; }
     }
 }

@@ -8,9 +8,11 @@
     public class TripSearchInputModel
     {
         [Required]
+        [Display(Name = "From")]
         public int FromId { get; set; }
 
         [Required]
+        [Display(Name = "To")]
         public int ToId { get; set; }
 
         [Required]

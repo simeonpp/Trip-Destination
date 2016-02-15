@@ -11,6 +11,8 @@
     using Services.Web.Providers.Contracts;
     using TripDestination.Common.Infrastructure.Mapping;
     using Views.Trip;
+    using System.Collections.Generic;
+
     public class TripController : BaseController
     {
         public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices, IDateProvider dateProvider)
@@ -42,9 +44,24 @@
                     })
                     .ToList();
 
+            var availableSeatsSelectList = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "1", Value = "1" },
+                new SelectListItem { Text = "2", Value = "2" },
+                new SelectListItem { Text = "3", Value = "3" }
+            };
+
+            var addressPickUpSelectList = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Yes", Value = "true" },
+                new SelectListItem { Text = "No", Value = "false" }
+            };
+
             TripInputVIewModel viewModel = new TripInputVIewModel()
             {
-                Towns = towns
+                TownsSelectList = towns,
+                AvailableSeatsSelectList = availableSeatsSelectList,
+                AddressPickUpSelectList = addressPickUpSelectList
             };
 
             return this.View(viewModel);
@@ -57,7 +74,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View(trip);
+                    return this.View(trip);
             }
 
             string currentUserId = this.CurrentUser.GetUserId();
@@ -112,7 +129,7 @@
             
             TripSearchInputModel searchModel = model.SearchInputModel;
 
-            return this.View
+            return this.View();
         }
 
         public ActionResult Detailed()

@@ -14,6 +14,7 @@
         public string PlaceOfLeaving { get; set; }
 
         [Required]
+        [Display(Name = "Address pick up")]
         public bool PickUpFromAddress { get; set; }
 
         [MinLength(ModelConstants.TripDescriptionMinLength, ErrorMessage = "Trip description can not be less than 10 symbols long.")]

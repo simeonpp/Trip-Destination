@@ -248,6 +248,8 @@
     <Compile Include="ViewModels\Trip\TripInputVIewModel.cs" />
     <Compile Include="ViewModels\Trip\TripLstViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripViewModel.cs" />
+    <Compile Include="ViewModels\Trip\WeekDayViewModel.cs" />
+    <Compile Include="Views\Trip\TripSearchInputModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker-standalone.css" />
@@ -717,6 +719,7 @@
     <Content Include="Views\Shared\EditorTemplates\TextArea.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Trip\EditorTemplates\CustomDropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

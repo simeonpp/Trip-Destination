@@ -46,7 +46,9 @@
     <Compile Include="Helpers\Contracts\ITripHelper.cs" />
     <Compile Include="Helpers\TripHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Contracts\IDateProvider.cs" />
     <Compile Include="Providers\Contracts\IIdentifierProvider.cs" />
+    <Compile Include="Providers\DateProvider.cs" />
     <Compile Include="Providers\IdentifierProvider.cs" />
     <Compile Include="Services\HttpCacheServices.cs" />
     <Compile Include="Services\Contracts\ICacheServices.cs" />
@@ -56,6 +58,10 @@
     <ProjectReference Include="..\..\Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj">
       <Project>{004c665e-6ec8-4c05-a312-ca577a55adb8}</Project>
       <Name>TripDestination.Common.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\TripDestination.Web.Infrastructure\TripDestination.Web.Infrastructure.csproj">
+      <Project>{21e57dd3-ee97-4dfd-9230-b633cbd3fc4f}</Project>
+      <Name>TripDestination.Web.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\TripDestination.Services.Data\TripDestination.Services.Data.csproj">
       <Project>{946ce469-34e0-4b54-92c7-18185e4ebb29}</Project>
