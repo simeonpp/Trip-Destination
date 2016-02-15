@@ -92,7 +92,7 @@ article,
 ul.tripsList li,
 .homeTripsList .infoText,
 #tripList ul.tripsList li,
-footer #topFooterWrap #newsletterWrap #newsletterButton {
+footer #topFooterWrap #newsletterButton {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1295,10 +1295,12 @@ footer #topFooterWrap #newsletterWrap #newsletterEmailInputWrap {
 footer #topFooterWrap #newsletterWrap #newsletterEmailInputWrap #newsletterEmailInput {
   width: 100%;
   padding: 3px 10px;
+}
+footer #topFooterWrap color #ffffff {
   background: #444;
   border: 1px solid #444;
 }
-footer #topFooterWrap #newsletterWrap #newsletterButton {
+footer #topFooterWrap #newsletterButton {
   float: right;
   margin-left: 12px;
   padding: 3px 10px;

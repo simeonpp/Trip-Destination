@@ -15,53 +15,34 @@
 
     public class TripController : BaseController
     {
-        public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices, IDateProvider dateProvider)
+        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IDateProvider dateProvider, ITripProvider tripProvider)
         {
             this.TripServices = tripServices;
-            this.TownServices = townServices;
             this.StatisticsServices = statisticsServices;
+            this.TownProvider = townProvider;
             this.DateProvider = dateProvider;
+            this.TripProvider = tripProvider;
         }
 
         public ITripServices TripServices { get; set; }
 
-        public ITownsServices TownServices { get; set; }
+        public ITownProvider TownProvider { get; set; }
 
         public IStatisticsServices StatisticsServices { get; set; }
 
         public IDateProvider DateProvider { get; set; }
 
+        public ITripProvider TripProvider { get; set; }
+
         [HttpGet]
         [Authorize]
         public ActionResult Create()
         {
-            var towns = this.TownServices
-                    .GetAll()
-                    .Select(t => new SelectListItem
-                    {
-                        Value = t.Id.ToString(),
-                        Text = t.Name
-                    })
-                    .ToList();
-
-            var availableSeatsSelectList = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "1", Value = "1" },
-                new SelectListItem { Text = "2", Value = "2" },
-                new SelectListItem { Text = "3", Value = "3" }
-            };
-
-            var addressPickUpSelectList = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Yes", Value = "true" },
-                new SelectListItem { Text = "No", Value = "false" }
-            };
-
             TripInputVIewModel viewModel = new TripInputVIewModel()
             {
-                TownsSelectList = towns,
-                AvailableSeatsSelectList = availableSeatsSelectList,
-                AddressPickUpSelectList = addressPickUpSelectList
+                TownsSelectList = this.TownProvider.GetTowns(),
+                AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList(),
+                AddressPickUpSelectList = this.TripProvider.GetAddressPickUpSelectList()
             };
 
             return this.View(viewModel);
