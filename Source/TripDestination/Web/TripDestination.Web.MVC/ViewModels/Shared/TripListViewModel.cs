@@ -5,7 +5,7 @@
     using Common.Infrastructure.Mapping;
     using TripDestination.Data.Models;
 
-    public class TripListViewModel : BaseTripViewModel, IMapTo<Trip>
+    public class TripListViewModel : BaseTripViewModel
     {
         public Town From { get; set; }
 

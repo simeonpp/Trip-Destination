@@ -66,5 +66,20 @@
 
             return tripsPerPageSelectList;
         }
+
+        public IEnumerable<SelectListItem> GetOrderBySelectList()
+        {
+            var oserBySelectList = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Order by date of leaving", Value = "dateOfLeaving" },
+                new SelectListItem { Text = "Order by travel destination", Value = "to" },
+                new SelectListItem { Text = "Order by leaving from", Value = "from" },
+                new SelectListItem { Text = "Order by available seats", Value = "seats" },
+                new SelectListItem { Text = "Order by price", Value = "price" },
+                new SelectListItem { Text = "Order by driver name", Value = "driver" }
+            };
+
+            return oserBySelectList;
+        }
     }
 }

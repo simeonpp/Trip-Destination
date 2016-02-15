@@ -570,6 +570,7 @@
     <Content Include="Assets\javascript\lib\toastr\toastr.min.css" />
     <Content Include="Assets\javascript\lib\toastr\toastr.min.js" />
     <Content Include="Assets\javascript\src\common\newsletter-subscriber.js" />
+    <Content Include="Assets\javascript\src\once\custom-date-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -720,6 +721,7 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CustomDropDownList.cshtml" />
+    <Content Include="Views\Trip\EditorTemplates\TripLstViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,5 +12,7 @@
         IEnumerable<SelectListItem> GetLuggageSpcaceSelectList();
 
         IEnumerable<SelectListItem> GetTripsPerPageSelectList();
+
+        IEnumerable<SelectListItem> GetOrderBySelectList();
     }
 }

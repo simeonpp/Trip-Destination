@@ -5,13 +5,11 @@
     using System.Collections.Generic;
     using Views.Trip;
     using System.Web.Mvc;
-    public class TripLstViewModel
+    public class TripLstViewModel : TripSearchInputModel
     {
         public DateTime Date { get; set; }
 
         public IEnumerable<WeekDayViewModel> WeekDays { get; set; }
-
-        public TripSearchInputModel SearchInputModel { get; set; }
 
         public IEnumerable<SelectListItem> TownsSelectList { get; set; }
 
@@ -20,6 +18,8 @@
         public IEnumerable<SelectListItem> ItemPerPageSelectList { get; set; }
 
         public IEnumerable<SelectListItem> AvailableSeatsSelectList { get; set; }
+
+        public IEnumerable<SelectListItem> OrderBySelectList { get; set; }
 
         public IEnumerable<TripListViewModel> Trips { get; set; }
     }

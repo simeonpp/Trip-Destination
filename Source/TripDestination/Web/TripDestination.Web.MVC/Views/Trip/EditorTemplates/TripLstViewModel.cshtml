@@ -1,0 +1,56 @@
+﻿@model TripLstViewModel
+
+<div class="row">
+
+    <div class="col-md-6">
+        @Html.EditorFor(m => m.FromId, "CustomDropDownList", new { selectListItems = Model.TownsSelectList })
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.Passengers, "CustomDropDownList", new { selectListItems = Model.AvailableSeatsSelectList })
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.DateOfLeaving)
+            </div>
+        </div>
+
+        @Html.EditorFor(m => m.DriverName)
+    </div>
+
+    <div class="col-md-6">
+        @Html.EditorFor(m => m.ToId, "CustomDropDownList", new { selectListItems = Model.TownsSelectList })
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.LuggageSpcace, "CustomDropDownList", new { selectListItems = Model.LuggageSpcaceSelectList })
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.ItemsPerPage, "CustomDropDownList", new { selectListItems = Model.ItemPerPageSelectList })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label for="priceMin" class="col-lg-12 control-label">Price range</label>
+            </div>
+            <div class="col-md-6">
+                <div class="col-lg-12">
+                    @Html.TextBoxFor(m => m.MinPrice, new { @type = "number", @Value = "0", @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="col-lg-12">
+                    @Html.TextBoxFor(m => m.MinPrice, new { @type = "number", @Value = "50", @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="filterButtonWrap" class="row">
+    <div class="col-md-3 pull-right">
+        <input class="button2 col-lg-12" type="submit" value="Filter">
+    </div>
+</div>

@@ -30,10 +30,15 @@ namespace TripDestination.Web.MVC
                 "~/Assets/javascript/src/common/newsletter-subscriber.js"));
 
             // DateTime picker
-            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+            bundles.Add(new ScriptBundle("~/bundles/datetimepicker").Include(
                 "~/Assets/javascript/lib/moment/min/moment.min.js",
                 "~/Assets/javascript/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
                 "~/Assets/javascript/src/once/custom-datetime-pickers-activator.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                "~/Assets/javascript/lib/moment/min/moment.min.js",
+                "~/Assets/javascript/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
+                "~/Assets/javascript/src/once/custom-date-pickers-activator.js"));
 
             bundles.Add(new StyleBundle("~/Content/datetimepicker-css").Include(
                 "~/Assets/javascript/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"));

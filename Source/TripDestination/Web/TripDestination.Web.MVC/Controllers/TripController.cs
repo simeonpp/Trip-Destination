@@ -94,10 +94,10 @@
             {
                 Date = day,
                 WeekDays = weekDays,
-                SearchInputModel = new TripSearchInputModel(),
                 LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList(),
                 ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList(),
                 TownsSelectList = this.TownProvider.GetTowns(),
+                OrderBySelectList = this.TripProvider.GetOrderBySelectList(),
                 AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList(),
                 Trips = trips
             };
@@ -113,7 +113,7 @@
                 return this.View(model);
             }
             
-            TripSearchInputModel searchModel = model.SearchInputModel;
+            //TripSearchInputModel searchModel = model.SearchInputModel;
 
             return this.View();
         }

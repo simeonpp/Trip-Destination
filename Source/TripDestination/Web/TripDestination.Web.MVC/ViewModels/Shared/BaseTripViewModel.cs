@@ -4,17 +4,18 @@
     using Common.Infrastructure.Mapping;
     using System.Collections.Generic;
     using TripDestination.Data.Models;
+    using System;
 
     public abstract class BaseTripViewModel : BaseTripModel, IMapFrom<Trip>
     {
         public int Id { get; set; }
 
         public User Driver { get; set; }
-        
-        //public IEnumerable<View> Views { get; set; }
 
-        //public IEnumerable<Like> Likes { get; set; }
+        public int ViewsCount { get; set; }
 
-        //public IEnumerable<Comment> Comments { get; set; }
+        public int LikesCount { get; set; }
+
+        public int CommentsCount { get; set; }
     }
 }
