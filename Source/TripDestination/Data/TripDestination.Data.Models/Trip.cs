@@ -8,13 +8,13 @@
 
     public class Trip : BaseModel<int>
     {
-        private IEnumerable<Rating> ratings;
+        private HashSet<Rating> ratings;
 
-        private IEnumerable<Comment> comments;
+        private HashSet<Comment> comments;
 
-        private IEnumerable<Like> likes;
+        private HashSet<Like> likes;
 
-        private IEnumerable<View> views;
+        private HashSet<View> views;
 
         public Trip()
         {
@@ -68,25 +68,25 @@
         [Required]
         public TripStatus Status { get; set; }
 
-        public virtual IEnumerable<Rating> Ratings
+        public virtual HashSet<Rating> Ratings
         {
             get { return this.ratings; }
             set { this.ratings = value; }
         }
 
-        public virtual IEnumerable<Comment> Comments
+        public virtual HashSet<Comment> Comments
         {
             get { return this.comments; }
             set { this.comments = value; }
         }
 
-        public virtual IEnumerable<Like> Likes
+        public virtual HashSet<Like> Likes
         {
             get { return this.likes; }
             set { this.likes = value; }
         }
 
-        public virtual IEnumerable<View> Views
+        public virtual HashSet<View> Views
         {
             get { return this.views; }
             set { this.views = value; }
