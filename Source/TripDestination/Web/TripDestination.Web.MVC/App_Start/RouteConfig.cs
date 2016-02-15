@@ -21,6 +21,13 @@ namespace TripDestination.Web.MVC
             );
 
             routes.MapRoute(
+                name: "TripDetails",
+                url: "Trip/{id}/{slug}",
+                defaults: new { controller = "Trip", action = "Details", slug = UrlParameter.Optional },
+                constraints: new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

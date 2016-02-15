@@ -1,0 +1,88 @@
+﻿@model TripDetailedViewModel
+
+<br />
+<div id="tripDetails">
+
+    <section id="topHead" class="noTopMargin noBottomMargin">
+        <article class="redBG noMargin topBottomPadding">
+            <div id="directions">@Model.From.Name - @Model.To.Name</div>
+            <div id="dateOfLeaving">@Model.DateOfLeaving.ToString("d MMMM yyyy HH:mm")</div>
+        </article>
+    </section>
+
+    <div class="wrapper row">
+
+        <div class="col-md-6">
+
+            <section id="tripSummarySection">
+                <h1>Trip summary</h1>
+                <h2>A brief information of the trip</h2>
+                <article>
+                    <ul class="statsUl">
+                        <li class="col-md-4">
+                            <div class="description">Place of leaving</div>
+                            <div class="icon"><img src="images/location-icon.png" alt="Location icon"></div>
+                            <div class="actualInfo">@Model.PlaceOfLeaving</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Available seats</div>
+                            <div class="icon"><img src="images/seat-icon.png" alt="Available seats icon"></div>
+                            <div class="actualInfo">@Model.AvailableSeats</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Status</div>
+                            <div class="icon"><img src="images/open-icon.png" alt="Status icon"></div>
+                            <div class="actualInfo">@Model.Status.ToString()</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Address pick up</div>
+                            <div class="icon"><img src="images/house-icon.png" alt="Address icon"></div>
+                            <div class="actualInfo">@Model.PickUpFromAddress ? "Yes" : "No"</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Price</div>
+                            <div class="icon"><img src="images/euro-icon.png" alt="Euro icon"></div>
+                            <div class="actualInfo">@Model.Price €</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Luggage</div>
+                            <div class="icon"><img src="images/lugage-icon.png" alt="Luggage icon"></div>
+                            <div class="actualInfo">XXX</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">ETA</div>
+                            <div class="icon"><img src="images/ETA-icon.png" alt="ETA icon"></div>
+                            <div class="actualInfo">21:00</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Views</div>
+                            <div class="icon"><img src="images/view-icon.png" alt="Views icon"></div>
+                            <div class="actualInfo">2</div>
+                        </li>
+                        <li class="col-md-4">
+                            <div class="description">Likes</div>
+                            <div class="icon"><img src="images/like-icon.png" alt="Likes icon"></div>
+                            <div class="actualInfo"><span id="likesCount">19</span></div>
+                        </li>
+                    </ul>
+
+                    <div id="descriptionWrap">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cupiditate, ea itaque minima odio optio porro, ratione recusandae sapiente sequi soluta vero? Aliquam animi delectus deleniti, dignissimos dolor dolorem ea ipsa ipsam iusto labore laboriosam nemo nostrum nulla pariatur perferendis provident reprehenderit suscipit totam ullam vero. A iusto nam nihil?
+                    </div>
+
+                    <div id="buttonsWrap">
+
+                        <div id="buttonsAction">
+                            <?php require_once('includes/trip-details/basic-user.php') ?>
+                            <?php // require_once('includes/trip-details/joined-user.php') ?>
+                        </div>
+
+                    </div>
+                </article>
+            </section>
+
+        </div>
+
+    </div>
+
+</div>

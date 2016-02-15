@@ -2,7 +2,7 @@
 @model TripListViewModel
 
 <li>
-    <a href="@Url.Action("Detailed", "Trip", new { area = "" })">
+    <a href="@Url.RouteUrl("TripDetails", new { id = Model.Id, slug = Model.From.Name, area = "" })">
         <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
         <div class="direction">@Model.From.Name - @Model.To.Name</div>
         <div class="timeOfLeaving">@Model.DateOfLeaving</div>

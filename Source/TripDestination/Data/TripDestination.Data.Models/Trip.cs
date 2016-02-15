@@ -42,7 +42,7 @@
         public string DriverId { get; set; }
 
         public User Driver { get; set; }
-        
+
         [MinLength(ModelConstants.TripDescriptionMinLength, ErrorMessage = "Trip description can not be less than 10 symbols long.")]
         [MaxLength(ModelConstants.TripDescriptionMaxLength, ErrorMessage = "Trip description can not be more than 1000 symbols long.")]
         public string Description { get; set; }

@@ -12,7 +12,8 @@
     using TripDestination.Common.Infrastructure.Mapping;
     using Views.Trip;
     using System.Collections.Generic;
-
+    using System.Net;
+    using System.Net.Http;
     public class TripController : BaseController
     {
         public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IDateProvider dateProvider, ITripProvider tripProvider)
@@ -112,15 +113,19 @@
             {
                 return this.View(model);
             }
-            
+
             //TripSearchInputModel searchModel = model.SearchInputModel;
 
             return this.View();
         }
 
-        public ActionResult Detailed()
+        public ActionResult Details(int id)
         {
-            return this.View();
+            var trip = this.TripServices.GetById(id);
+
+            var viewModel = this.Mapper.Map<TripDetailedViewModel>(trip);
+
+            return this.View(viewModel);
         }
     }
 }

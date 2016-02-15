@@ -245,6 +245,7 @@
     <Compile Include="ViewModels\Shared\TodaysStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
+    <Compile Include="ViewModels\Trip\TripDetailedViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripInputVIewModel.cs" />
     <Compile Include="ViewModels\Trip\TripLstViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripViewModel.cs" />
@@ -694,7 +695,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
-    <Content Include="Views\Trip\Detailed.cshtml" />
+    <Content Include="Views\Trip\Details.cshtml" />
     <Content Include="Views\Trip\List.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Shared\_TripListLiPartial.cshtml" />
