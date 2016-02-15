@@ -8,6 +8,8 @@
     {
         public DateTime Date { get; set; }
 
+        public IEnumerable<DateTime> WeekDays { get; set; }
+
         public IEnumerable<TripListViewModel> Trips { get; set; }
     }
 }

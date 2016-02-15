@@ -1,27 +1,158 @@
-﻿@using TripDestination.Web.MVC.ViewModels.Trip
-@model TripLstViewModel
+﻿@model TripLstViewModel
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<div id="tripList">
 
-<h1>List</h1>
+    <section class="noTopMargin noBottomMargin">
+        <article id="filterArticleWrap" class="redBG noPadding noMargin">
 
-@if (Model.Trips.Count() > 0)
-{
-    <ul>
-        @foreach (var trip in Model.Trips)
-        {
-            Html.RenderPartial("_TripListLiPartial", trip);
-        }
-    </ul>
-}
-else
-{
-    <text>
-        No found trips for @Model.Date
-    </text>
-}
+            <div class="wrapper row">
+                <div class="col-md-4">
+                    <div id="tripDateCalendarWrap">
+                        <div id="dateWrap">
+                            <div id="currentDay">@Model.Date.Day</div>
+                            <div id="currentMonth">@Model.Date.DayOfWeek.ToString().Substring(0, 3)</div>
+                            <div id="foundTripsCount">@Model.Trips.Count(); active trips</div>
+                        </div>
+
+                        <!-- Fixed size -->
+                        <div id="weekDaysWrap">
+                            <ul class="weekDaysUl">
+                                @foreach (var date in Model.WeekDays)
+                                {
+                                    <li><a href="#">@date.DayOfWeek.ToString().Substring(0, 2)</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+
+                    <form id="tripFilterForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="from" class="col-lg-12 control-label">From</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="from" name="from" placeholder="Enter destination">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="numberOfPassengers" class="col-md-12 control-label">Passengers</label>
+                                        <div class="col-lg-12">
+                                            <select class="form-control" id="numberOfPassengers" name="numberOfPassengers">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="dateOfLeaving" class="col-lg-12 control-label">Date of leaving</label>
+                                        <div class="col-lg-12">
+                                            <input type="datetime" class="form-control" id="dateOfLeaving" name="dateOfLeaving">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <label for="driverName" class="col-lg-12 control-label">Driver name (optional)</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="driverName" name="driverName" placeholder="Enter username">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="to" class="col-lg-12 control-label">To</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" id="to" name="to" placeholder="Enter destination">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="luggageSize" class="col-lg-12 control-label">Luggage size</label>
+                                        <div class="col-lg-12">
+                                            <select class="form-control" id="luggageSize" name="luggageSize">
+                                                <option value="none">None</option>
+                                                <option value="small" selected="selected">Small</option>
+                                                <option value="normal">Normal</option>
+                                                <option value="big">Big</option>
+                                                <option value="large">Large</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="itemsPerPage" class="col-lg-12 control-label">Items per page</label>
+                                        <div class="col-lg-12">
+                                            <select class="form-control" id="itemsPerPage" name="itemsPerPage">
+                                                <option value="3">3</option>
+                                                <option value="6">6</option>
+                                                <option value="9" selected="selected">9</option>
+                                                <option value="12">12</option>
+                                                <option value="15">15</option>
+                                                <option value="18">18</option>
+                                                <option value="21">21</option>
+                                                <option value="24">24</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="priceMin" class="col-lg-12 control-label">Price range</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-lg-12">
+                                            <input type="number" value="0.0" class="form-control" name="priceMin" id="priceMin" placeholder="Min">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="col-lg-12">
+                                            <input type="number" value="50.0" class="form-control" name="priceMax" id="priceMax" placeholder="Max">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="filterButtonWrap" class="row">
+                            <div class="col-md-3 pull-right">
+                                <input class="button2 col-lg-12" type="button" value="Filter">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </article>
+    </section>
+
+
+</div>
+
+    <h1>List</h1>
+
+    @if (Model.Trips.Count() > 0)
+    {
+        <ul>
+            @foreach (var trip in Model.Trips)
+            {
+                Html.RenderPartial("_TripListLiPartial", trip);
+            }
+        </ul>
+    }
+    else
+    {
+        <text>
+            No found trips for @Model.Date
+        </text>
+    }
 
 
 

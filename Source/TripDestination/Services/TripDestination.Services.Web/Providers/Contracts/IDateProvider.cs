@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using TripDestination.Web.Infrastructure.Models;
 
     public interface IDateProvider
     {
-        IEnumerable<DateTime> GetWeekAhedDays();
+        IEnumerable<WeekDay> GetWeekAhedDays(DateTime chosenDay);
     }
 }

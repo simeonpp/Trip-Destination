@@ -9,14 +9,15 @@
     using AutoMapper.QueryableExtensions;
     using ViewModels.Shared;
     using Services.Data.Contracts;
-
+    using Services.Web.Providers.Contracts;
     public class TripController : BaseController
     {
-        public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices)
+        public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices, IDateProvider dateProvider)
         {
             this.TripServices = tripServices;
             this.TownServices = townServices;
             this.StatisticsServices = statisticsServices;
+            this.DateProvider = dateProvider;
         }
 
         public ITripServices TripServices { get; set; }
@@ -24,6 +25,8 @@
         public ITownsServices TownServices { get; set; }
 
         public IStatisticsServices StatisticsServices { get; set; }
+
+        public IDateProvider DateProvider { get; set; }
 
         [HttpGet]
         [Authorize]
@@ -83,9 +86,12 @@
                 .ProjectTo<TripListViewModel>(this.MapperConfiguration)
                 .ToList();
 
+            var weekDays = this.DateProvider.GetWeekAhedDays(day);
+
             TripLstViewModel viewModel = new TripLstViewModel()
             {
                 Date = day,
+                WeekDays = weekDays,
                 Trips = trips
             };
 
