@@ -14,8 +14,8 @@
         public string Email { get; set; }
 
         [Required]
-        [MinLength(ModelConstants.NewsletterIpMinLength, ErrorMessage = "Newsletter IP can no be less tha 11 symbols long.")]
-        [MaxLength(ModelConstants.NewsletterIpMaxLength, ErrorMessage = "Newsletter IP can no be more than 45 symbols long.")]
+        [MinLength(ModelConstants.IpMinLength, ErrorMessage = "Newsletter IP can no be less tha 11 symbols long.")]
+        [MaxLength(ModelConstants.IpMaxLength, ErrorMessage = "Newsletter IP can no be more than 45 symbols long.")]
         public string Ip { get; set; }
 
         [Required]

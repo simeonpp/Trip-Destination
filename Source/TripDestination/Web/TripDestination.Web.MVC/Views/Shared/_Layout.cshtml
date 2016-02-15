@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @RenderSection("styles", required: false)
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
@@ -22,7 +22,8 @@
 
     @Html.Action("FooterPartial", "Layout")
 
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site-libs")
+    @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
 </body>
 </html>

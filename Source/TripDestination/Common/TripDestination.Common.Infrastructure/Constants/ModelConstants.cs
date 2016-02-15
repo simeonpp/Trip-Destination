@@ -9,6 +9,9 @@
          @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
          @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
+        public const int IpMinLength = 3;  // in order to store local ip, just for testing, otherwise make this value to 11
+        public const int IpMaxLength = 45;
+
         // User
         public const int UserFirstNameMinLength = 3;
         public const int UserFirstNameMaxLength = 50;
@@ -46,10 +49,7 @@
         public const int NewsletterEmailMinLength = 6;
         public const int NewsletterEmailMaxLength = 100;
 
-        public const int NewsletterIpMinLength = 11;
-        public const int NewsletterIpMaxLength = 45;
-
-        public const int NewsletterUserAgenMinLength = 200;
+        public const int NewsletterUserAgenMinLength = 10;
         public const int NewsletterUserAgentMaxLength = 2000;
 
         // Trip
@@ -111,8 +111,5 @@
 
         public const int ContactFormMessageMinLength = 10;
         public const int ContactFormMessageMaxLength = 500;
-
-        public const int ContactFormIpMinLength = 3;  // in order to store local ip, just for testing, otherwise make this value to 11
-        public const int ContactFormIpMaxLength = 45;
     }
 }

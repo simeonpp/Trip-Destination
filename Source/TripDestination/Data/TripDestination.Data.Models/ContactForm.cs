@@ -30,8 +30,8 @@
         public string Message { get; set; }
 
         [Required]
-        [MinLength(ModelConstants.ContactFormIpMinLength, ErrorMessage = "Contact form ip can no be less than 11 symbols long.")]
-        [MaxLength(ModelConstants.ContactFormIpMaxLength, ErrorMessage = "Contact form ip can no be more than 45 symbols long.")]
+        [MinLength(ModelConstants.IpMinLength, ErrorMessage = "Contact form ip can no be less than 11 symbols long.")]
+        [MaxLength(ModelConstants.IpMaxLength, ErrorMessage = "Contact form ip can no be more than 45 symbols long.")]
         public string Ip { get; set; }
     }
 }

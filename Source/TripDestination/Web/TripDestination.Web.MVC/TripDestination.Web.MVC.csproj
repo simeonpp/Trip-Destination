@@ -221,6 +221,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\AJAX\BaseResponseModel.cs" />
     <Compile Include="ViewModels\AJAX\NewsletterInputModel.cs" />
     <Compile Include="ViewModels\ChildAction\TripsListViewModel.cs" />
     <Compile Include="ViewModels\Contact\ContactFormInputModel.cs" />

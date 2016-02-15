@@ -61,10 +61,12 @@
   <ItemGroup>
     <Compile Include="ContactFormServices.cs" />
     <Compile Include="Contracts\IContactFormServices.cs" />
+    <Compile Include="Contracts\INewsletterServices.cs" />
     <Compile Include="Contracts\IPageServices.cs" />
     <Compile Include="Contracts\IStatisticsServices.cs" />
     <Compile Include="Contracts\ITownsServices.cs" />
     <Compile Include="Contracts\ITripServices.cs" />
+    <Compile Include="NewsletterServices.cs" />
     <Compile Include="PageServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatisticsServices.cs" />

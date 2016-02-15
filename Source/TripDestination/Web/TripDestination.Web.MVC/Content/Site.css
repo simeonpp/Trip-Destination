@@ -41,6 +41,7 @@ footer #footerWrap #navigationLinks:after {
   height: 0;
 }
 .ulClear,
+.errorBox ul,
 ul.tripsList,
 ul.ratingUl,
 ul.statsUl,
@@ -58,6 +59,7 @@ footer #footerWrap #navigationLinks ul {
   padding: 0;
 }
 .ulClear li,
+.errorBox ul li,
 ul.tripsList li,
 ul.ratingUl li,
 ul.statsUl li,
@@ -306,6 +308,14 @@ a.button2 {
 }
 .error {
   color: #aa152b;
+}
+.errorBox {
+  background: #f7dcdc;
+  color: #b94a48;
+}
+.errorBox ul {
+  padding: 10px;
+  border: 1px solid #b94a48;
 }
 #coverWrap {
   width: 100%;

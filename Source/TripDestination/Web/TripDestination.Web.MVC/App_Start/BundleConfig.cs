@@ -14,19 +14,20 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/reset.css"));
+                      "~/Assets/javascript/lib/toastr/toastr.min.css",
+                      "~/Content/reset.css",
+                      "~/Content/site.css"));
+
+             // Common
+             bundles.Add(new ScriptBundle("~/bundles/site-libs").Include(
+                 "~/Scripts/bootstrap.js",
+                 "~/Scripts/respond.js",
+                "~/Assets/javascript/lib/toastr/toastr.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/site").Include(
+                "~/Assets/javascript/src/common/newsletter-subscriber.js"));
 
             // DateTime picker
             bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
