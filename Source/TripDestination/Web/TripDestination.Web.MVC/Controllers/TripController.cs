@@ -10,7 +10,7 @@
     using Services.Data.Contracts;
     using Services.Web.Providers.Contracts;
     using TripDestination.Common.Infrastructure.Mapping;
-
+    using Views.Trip;
     public class TripController : BaseController
     {
         public TripController(ITripServices tripServices, ITownsServices townServices, IStatisticsServices statisticsServices, IDateProvider dateProvider)
@@ -100,6 +100,19 @@
             };
 
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult Search(TripLstViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+            
+            TripSearchInputModel searchModel = model.SearchInputModel;
+
+            return this.View
         }
 
         public ActionResult Detailed()

@@ -36,7 +36,6 @@
                         <div class="row">
 
                             <div class="col-md-6">
-
                                 <label for="from" class="col-lg-12 control-label">From</label>
                                 <div class="col-lg-12">
                                     <input type="text" class="form-control" id="from" name="from" placeholder="Enter destination">
@@ -44,7 +43,6 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-
                                         <label for="numberOfPassengers" class="col-md-12 control-label">Passengers</label>
                                         <div class="col-lg-12">
                                             <select class="form-control" id="numberOfPassengers" name="numberOfPassengers">
@@ -54,23 +52,14 @@
                                                 <option value="4">4</option>
                                             </select>
                                         </div>
-
                                     </div>
 
                                     <div class="col-md-6">
-                                        @Html.EditorFor(m => m.)
-                                        <label for="dateOfLeaving" class="col-lg-12 control-label">Date of leaving</label>
-                                        <div class="col-lg-12">
-                                            <input type="datetime" class="form-control" id="dateOfLeaving" name="dateOfLeaving">
-                                        </div>
+                                        @Html.EditorFor(m => m.SearchInputModel.DateOfLeaving)
                                     </div>
-
                                 </div>
 
-                                <label for="driverName" class="col-lg-12 control-label">Driver name (optional)</label>
-                                <div class="col-lg-12">
-                                    <input type="text" class="form-control" id="driverName" name="driverName" placeholder="Enter username">
-                                </div>
+                                @Html.EditorFor(m => m.SearchInputModel.DriverName)
                             </div>
 
                             <div class="col-md-6">
@@ -116,13 +105,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col-lg-12">
-                                            <input type="number" value="0.0" class="form-control" name="priceMin" id="priceMin" placeholder="Min">
+                                            @Html.TextBoxFor(m => m.SearchInputModel.MinPrice, new { @type = "number", @Value = "0", @class = "form-control" })
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="col-lg-12">
-                                            <input type="number" value="50.0" class="form-control" name="priceMax" id="priceMax" placeholder="Max">
+                                            @Html.TextBoxFor(m => m.SearchInputModel.MinPrice, new { @type = "number", @Value = "50", @class = "form-control" })
                                         </div>
                                     </div>
                                 </div>

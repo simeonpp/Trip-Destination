@@ -8,6 +8,5 @@
         public DateTime Datetime { get; set; }
 
         public bool IsActive { get; set; }
-
     }
 }
