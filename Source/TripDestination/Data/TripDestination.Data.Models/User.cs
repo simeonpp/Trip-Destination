@@ -7,9 +7,17 @@
     using Microsoft.AspNet.Identity;
     using TripDestination.Common.Infrastructure.Constants;
     using Common.Models;
-
+    using System.Collections;
+    using System.Collections.Generic;
     public class User : IdentityUser
     {
+        private ICollection<Trip> trips;
+
+        public User()
+        {
+            this.trips = new HashSet<Trip>();
+        }
+
         [Required]
         [MinLength(ModelConstants.UserFirstNameMinLength, ErrorMessage = "User first name can not be less than 3 symbols long.")]
         [MaxLength(ModelConstants.UserFirstNameMaxLength, ErrorMessage = "User first name can not be more than 50 symbols long.")]
@@ -23,6 +31,16 @@
         [MinLength(ModelConstants.UserDescriptionMinLength, ErrorMessage = "Description can not be less than 20 symbols long.")]
         [MaxLength(ModelConstants.UserDescriptionMaxLength, ErrorMessage = "Description can not be more than 1000 symbols long.")]
         public string Description { get; set; }
+
+        public int CarId { get; set; }
+
+        public virtual Car Car { get; set; }
+
+        public virtual ICollection<Trip> Trips
+        {
+            get { return this.trips; }
+            set { this.trips = value; }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

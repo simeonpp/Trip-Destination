@@ -37,7 +37,7 @@
                         <li class="col-md-4">
                             <div class="description">Address pick up</div>
                             <div class="icon"><img src="images/house-icon.png" alt="Address icon"></div>
-                            <div class="actualInfo">@Model.PickUpFromAddress ? "Yes" : "No"</div>
+                            <div class="actualInfo">@(Model.PickUpFromAddress ? "Yes" : "No")</div>
                         </li>
                         <li class="col-md-4">
                             <div class="description">Price</div>
@@ -47,7 +47,7 @@
                         <li class="col-md-4">
                             <div class="description">Luggage</div>
                             <div class="icon"><img src="images/lugage-icon.png" alt="Luggage icon"></div>
-                            <div class="actualInfo">XXX</div>
+                            <div class="actualInfo">@Model.Driver.Car.SpaceForLugage</div>
                         </li>
                         <li class="col-md-4">
                             <div class="description">ETA</div>

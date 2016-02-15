@@ -22,6 +22,7 @@
         public int ToId { get; set; }
 
         [Required]
+        [Display(Name = "Date of leaving")]
         public DateTime DateOfLeaving { get; set; }
 
         [Required]

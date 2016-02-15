@@ -8,13 +8,13 @@
 
     public class Trip : BaseModel<int>
     {
-        private HashSet<Rating> ratings;
+        private ICollection<Rating> ratings;
 
-        private HashSet<Comment> comments;
+        private ICollection<Comment> comments;
 
-        private HashSet<Like> likes;
+        private ICollection<Like> likes;
 
-        private HashSet<View> views;
+        private ICollection<View> views;
 
         public Trip()
         {
@@ -41,7 +41,7 @@
 
         public string DriverId { get; set; }
 
-        public User Driver { get; set; }
+        public virtual User Driver { get; set; }
 
         [MinLength(ModelConstants.TripDescriptionMinLength, ErrorMessage = "Trip description can not be less than 10 symbols long.")]
         [MaxLength(ModelConstants.TripDescriptionMaxLength, ErrorMessage = "Trip description can not be more than 1000 symbols long.")]
@@ -68,25 +68,25 @@
         [Required]
         public TripStatus Status { get; set; }
 
-        public virtual HashSet<Rating> Ratings
+        public virtual ICollection<Rating> Ratings
         {
             get { return this.ratings; }
             set { this.ratings = value; }
         }
 
-        public virtual HashSet<Comment> Comments
+        public virtual ICollection<Comment> Comments
         {
             get { return this.comments; }
             set { this.comments = value; }
         }
 
-        public virtual HashSet<Like> Likes
+        public virtual ICollection<Like> Likes
         {
             get { return this.likes; }
             set { this.likes = value; }
         }
 
-        public virtual HashSet<View> Views
+        public virtual ICollection<View> Views
         {
             get { return this.views; }
             set { this.views = value; }
