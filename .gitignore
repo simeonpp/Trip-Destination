@@ -154,6 +154,9 @@ publish/
 *.nuget.props
 *.nuget.targets
 
+# Bower lib directories
+**/Source/TripDestination/Web/TripDestination.Web.MVC/Assets/javascript/lib*
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
