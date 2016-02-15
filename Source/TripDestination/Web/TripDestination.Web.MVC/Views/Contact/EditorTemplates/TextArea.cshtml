@@ -1,5 +1,9 @@
 ﻿@model String  
 
-<div class="col-lg-10">
-    @Html.TextAreaFor(m => m, new { rows = "8", @class = "form-control" })
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "col-lg-2 control-label" })
+    <div class="error col-lg-10">@Html.ValidationMessageFor(m => m)</div>
+    <div class="col-lg-10">
+        @Html.TextAreaFor(m => m, new { rows = "8", @class = "form-control" })
+    </div>
 </div>

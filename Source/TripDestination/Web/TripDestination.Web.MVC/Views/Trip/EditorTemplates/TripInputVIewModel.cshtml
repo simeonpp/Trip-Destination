@@ -1,0 +1,62 @@
+﻿@model TripInputVIewModel
+
+@Html.DropDownListFor(m => m.FromId, Model.Towns, "CustomTemplateName")
+
+<div class="col-md-6">
+
+    <div class="form-group">
+        <label for="from" class="col-lg-12 control-label">From</label>
+        <div class="col-lg-12">
+            <input type="text" class="form-control" id="from" name="from" placeholder="Enter destination">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="availableSeats" class="col-lg-12 control-label">Available seats</label>
+            <div class="col-lg-12">
+                <select class="form-control" id="availableSeats" name="availableSeats">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected="selected">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+
+        @Html.EditorFor(m => m.Price)
+
+    </div>
+
+    @Html.EditorFor(m => m.Description)
+
+</div>
+
+<div class="col-md-6">
+
+    <div class="form-group">
+        <label for="to" class="col-lg12 control-label">To</label>
+        <div class="col-lg-12">
+            <input type="text" class="form-control" id="to" name="to" placeholder="Enter destination">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.EditorFor(m => m.DateOfLeaving)
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(m => m.ETA)
+        </div>
+        </div>
+
+    @Html.EditorFor(m => m.PlaceOfLeaving)
+
+    <label for="addressPickUp" class="col-lg-12 control-label">Address pick up</label>
+    <div class="col-lg-12">
+        <select class="form-control" id="addressPickUp" name="addressPickUp">
+            <option value="yes">Yes</option>
+            <option value="no" selected="selected">No</option>
+        </select>
+    </div>
+</div>

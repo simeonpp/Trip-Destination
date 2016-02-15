@@ -1,0 +1,10 @@
+﻿@model Decimal
+
+<div class="col-md-6">
+    <div class="form-group">
+        @Html.LabelFor(m => m, new { @class = "col-lg12 control-label" })
+        <div class="col-lg-12">
+            @Html.TextBoxFor(m => m, new { @type = "number",  @class = "form-control" })
+        </div>
+    </div>
+</div>

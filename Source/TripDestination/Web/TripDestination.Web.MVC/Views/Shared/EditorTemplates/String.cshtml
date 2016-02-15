@@ -1,4 +1,4 @@
-﻿@model String  
+﻿@model string
 
 @{
     var placeholder = string.Empty;
@@ -9,9 +9,9 @@
 }
 
 <div class="form-group">
-    @Html.LabelFor(m => m, new { @class = "col-lg-2 control-label" })
-    <div class="error col-lg-10">@Html.ValidationMessageFor(m => m)</div>
-    <div class="col-lg-10">
+    @Html.LabelFor(m => m, new { @class = "col-lg-12 control-label" })
+    <div class="error col-lg-12">@Html.ValidationMessageFor(m => m)</div>
+    <div class="col-lg-12">
         @Html.TextBoxFor(m => m, new { placeholder = placeholder, @class = "form-control" })
     </div>
 </div>
