@@ -10,6 +10,8 @@
     {
         public bool CurrectUserIsDriver { get; set; }
 
+        public bool CurrentUserIsWaitingJoinRequest { get; set; }
+
         public int Id { get; set; }
 
         public Town From { get; set; }
