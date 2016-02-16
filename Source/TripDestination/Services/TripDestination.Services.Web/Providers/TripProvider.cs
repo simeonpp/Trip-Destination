@@ -96,7 +96,7 @@
 
             var leftAvailableSeatsSelectList = new List<SelectListItem>();
 
-            for (int i = 1; i <= availableLeftSeatsCount; i++)
+            for (int i = availableLeftSeatsCount; i > 0; i--)
             {
                 leftAvailableSeatsSelectList.Add(new SelectListItem()
                 {

@@ -1,0 +1,105 @@
+﻿@model TripEditInputModel
+
+@{
+    var passengersCount = Model.Passengers.Count;
+}
+
+@Html.EditorFor(m => m.PlaceOfLeaving)
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.EditorFor(m => m.PickUpFromAddress, "CustomDropDownList", new { selectListItems = Model.AddressPickUpSelectList })
+    </div>
+    <div class="col-md-6">
+        @Html.EditorFor(m => m.LeftAvailableSeats, "CustomDropDownList", new { selectListItems = Model.LeaftAvailabeSeatsSelectList })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.EditorFor(m => m.DateOfLeaving)
+    </div>
+
+    <div class="col-md-6">
+        @Html.EditorFor(m => m.ETA)
+    </div>
+</div>
+
+@Html.EditorFor(m => m.Description)
+
+
+<h5>Passengers (<span id="passengersCount">@passengersCount</span>)</h5>
+<h6>Remove passenger</h6>
+@if (passengersCount > 0)
+{
+    <ul id="passengersList" class="passengersUl">
+        @foreach (var passenger in Model.Passengers)
+        {
+            <li>
+                <a href="#">
+                    <div class="image" style="background-image: url('images/people/3.jpg')"></div>
+                    <div class="firstName">@passenger.User.FirstName</div>
+                    <div class="lastName">@passenger.User.LastName</div>
+                </a>
+                <div class="removePassengerButton button" data-username="@passenger.User.UserName">Remove</div>
+            </li>
+        }        
+    </ul>
+    
+    @Html.TextBoxFor(m => m.UsernamesToBeRemoved)
+
+    <script>
+        $().ready(function () {
+            var $removePassengerButton = $('.removePassengerButton');
+
+            $removePassengerButton.on('click', function () {
+                var $this = $(this),
+                    $li = $this.parent(),
+                    username = $this.attr('data-username');
+
+                updateUsernamesToBeRemovedInput(username);
+                $li.remove();
+                decreasePassengersCount();
+            })
+        });
+
+        function updateUsernamesToBeRemovedInput(newUsername) {
+            var $usernamesToBeRemoved = $('#UsernamesToBeRemoved'),
+                currentValuesAsString,
+                currentValues,
+                newValueAsStringifiedJSON;
+
+            currentValuesAsString = $usernamesToBeRemoved.val();
+            if (currentValuesAsString) {
+                currentValues = $.parseJSON(currentValuesAsString);
+            } else {
+                currentValues = [];
+            }
+
+            currentValues.push(newUsername);
+            newValueAsStringifiedJSON = JSON.stringify(currentValues);
+            $usernamesToBeRemoved.val(newValueAsStringifiedJSON);
+        }
+
+        function decreasePassengersCount() {
+            var $passengersCount = $('#passengersCount'),
+                currentCount = $passengersCount.text() | 0,
+                newCount;
+
+            newCount = currentCount - 1;
+            $passengersCount.text(newCount);
+        }
+    </script>
+}
+else
+{
+    <p class="notLoginMessage">No passengers have joined your trip yet.</p>
+}
+
+
+<div id="buttonsFromWrap" class="row">
+    <div class="col-md-12">
+        <input type="reset" class="button2" value="Cancel">
+        <input type="submit" class="button" value="Save changes">
+    </div>
+</div>

@@ -725,6 +725,7 @@
     <Content Include="Views\Shared\EditorTemplates\CustomDropDownList.cshtml" />
     <Content Include="Views\Trip\EditorTemplates\TripLstViewModel.cshtml" />
     <Content Include="Views\Trip\Edit.cshtml" />
+    <Content Include="Views\Trip\EditorTemplates\TripEditInputModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

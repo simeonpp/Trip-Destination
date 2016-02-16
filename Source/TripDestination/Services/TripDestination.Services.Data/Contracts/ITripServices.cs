@@ -3,7 +3,7 @@
     using System;
     using TripDestination.Data.Models;
     using System.Linq;
-
+    using System.Collections.Generic;
     public interface ITripServices
     {
         Trip Create(
@@ -37,7 +37,8 @@
             string placeOfLeaving,
             bool pickUpFromAddress,
             string description,
-            DateTime ETA);
+            DateTime ETA,
+            IEnumerable<string> usernamesToBeRemoved);
 
         int GetAvailableLeftSeatsCount(int tripId);
     }

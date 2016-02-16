@@ -6,7 +6,7 @@
     using TripDestination.Services.Data.Contracts;
     using Common;
     using Models;
-
+    using System.Collections.Generic;
     public class TripServices : ITripServices
     {
         private IDbRepository<Trip> tripRepos;
@@ -100,15 +100,15 @@
         public IQueryable<PassengerTrip> GetPassengers(Trip trip)
         {
             var passengers = this.passengerTripsRepos.All()
-                .Where(pt => pt.Trip == trip && pt.Approved == true)
+                .Where(pt => pt.Trip == trip && pt.Approved == true && pt.IsDeleted == false)
                 .OrderBy(pt => pt.CreatedOn);
 
             return passengers;
         }
 
-        public Trip Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA)
+        public Trip Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, IEnumerable<string> usernamesToBeRemoved)
         {
-            var dbTrip = this.GetById(tripId);            
+            var dbTrip = this.GetById(tripId);
 
             int takenSeats = dbTrip.Passengers.Count();
             int availableSeats = takenSeats + leftAvailableSeats;
@@ -120,6 +120,19 @@
             dbTrip.Description = description;
             dbTrip.ETA = ETA;
 
+            foreach (var username in usernamesToBeRemoved)
+            {
+                PassengerTrip passengerToRemove = dbTrip.Passengers
+                    .Where(p => p.User.UserName == username)
+                    .FirstOrDefault();
+
+                if (passengerToRemove != null)
+                {
+                    this.passengerTripsRepos.HardDelete(passengerToRemove);
+                }
+            }
+
+            this.passengerTripsRepos.Save();
             this.tripRepos.Save();
 
             return dbTrip;

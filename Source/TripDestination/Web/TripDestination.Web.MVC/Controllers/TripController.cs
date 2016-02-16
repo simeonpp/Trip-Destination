@@ -14,6 +14,7 @@
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
+    using System.Web.Script.Serialization;
     public class TripController : BaseController
     {
         public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IDateProvider dateProvider, ITripProvider tripProvider)
@@ -166,6 +167,9 @@
                 throw new Exception("Not authorized to edit.");
             }
 
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            string[] usernamesToBeRemoved = js.Deserialize<string[]>(editModel.UsernamesToBeRemoved);
+
             var dbTrip = this.TripServices.Edit(
                 trip.Id,
                 editModel.DateOfLeaving,
@@ -173,7 +177,8 @@
                 editModel.PlaceOfLeaving,
                 editModel.PickUpFromAddress,
                 editModel.Description,
-                editModel.ETA);
+                editModel.ETA,
+                usernamesToBeRemoved);
 
             return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = trip.From.Name, area = "" });
         }

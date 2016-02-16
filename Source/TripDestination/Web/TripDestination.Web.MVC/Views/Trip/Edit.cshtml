@@ -22,41 +22,7 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary()
 
-                        @Html.EditorFor(m => m.PlaceOfLeaving)
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                @Html.EditorFor(m => m.PickUpFromAddress, "CustomDropDownList", new { selectListItems = Model.AddressPickUpSelectList })
-                            </div>
-                            <div class="col-md-6">
-                                @Html.EditorFor(m => m.LeftAvailableSeats, "CustomDropDownList", new { selectListItems = Model.LeaftAvailabeSeatsSelectList })
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                @Html.EditorFor(m => m.DateOfLeaving)
-                            </div>
-
-                            <div class="col-md-6">
-                                @Html.EditorFor(m => m.ETA)
-                            </div>
-                        </div>
-
-                        @Html.EditorFor(m => m.Description)
-
-                        @{
-                            int passengersCount = Model.Passengers.Count;
-                        }
-                        <h5>Passengers (@passengersCount)</h5>
-                        <h6>Remove passenger</h6>
-
-                        <div id="buttonsFromWrap" class="row">
-                            <div class="col-md-12">
-                                <input type="reset" class="button2" value="Cancel">
-                                <input type="submit" class="button" value="Save changes">
-                            </div>
-                        </div>
+                        @Html.EditorForModel()
                     }
                 </article>
 
