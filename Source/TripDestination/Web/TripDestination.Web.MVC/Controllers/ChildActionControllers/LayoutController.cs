@@ -16,7 +16,7 @@
         public IPageServices PageServices { get; set; }
 
         [ChildActionOnly]
-        [OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
+        //[OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
         public ActionResult NavigationPartial()
         {
             var pages = this.PageServices

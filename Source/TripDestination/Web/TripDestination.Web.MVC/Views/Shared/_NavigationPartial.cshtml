@@ -14,7 +14,12 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="@Url.Action("Index", "Home", new { area = "" })">Home <div class="clarification">Welcome</div></a></li>
                 <li><a href="@Url.Action("List", "Trip", new { area = "" })">Discover  <div class="clarification">Trips</div></a></li>
-                <li><a href="@Url.Action("Create", "Trip", new { area = "" })">Create  <div class="clarification">New trip</div></a></li>
+
+                @if (this.User.IsInRole(RoleConstants.DriverRole) || this.User.IsInRole(RoleConstants.AdminRole))
+                {
+                    <li><a href="@Url.Action("Create", "Trip", new { area = "" })">Create  <div class="clarification">New trip</div></a></li>
+                }
+
                 <li><a href="@Url.Action("Index", "Statistics", new { area = "" })">Statistics  <div class="clarification">Numbers</div></a></li>
 
                 @foreach (var page in Model.Pages)

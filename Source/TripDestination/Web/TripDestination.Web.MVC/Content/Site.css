@@ -316,6 +316,13 @@ a.button2 {
   color: #b94a48;
   border: 1px solid #b94a48;
 }
+.notLoginMessage {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-style: italic;
+  color: #bdbdbd;
+}
 #coverWrap {
   width: 100%;
   height: 100%;
