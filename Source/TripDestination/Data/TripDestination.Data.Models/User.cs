@@ -13,6 +13,8 @@
     {
         private ICollection<Trip> trips;
 
+        private ICollection<View> views;
+
         public User()
         {
             this.trips = new HashSet<Trip>();
@@ -40,6 +42,12 @@
         {
             get { return this.trips; }
             set { this.trips = value; }
+        }
+
+        public virtual ICollection<View> Views
+        {
+            get { return this.views; }
+            set { this.views = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

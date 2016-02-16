@@ -22,7 +22,7 @@
             this.comments = new HashSet<Comment>();
             this.likes = new HashSet<Like>();
             this.views = new HashSet<View>();
-            
+
             this.PickUpFromAddress = false;
             this.Status = TripStatus.Open;
             this.Price = 0;

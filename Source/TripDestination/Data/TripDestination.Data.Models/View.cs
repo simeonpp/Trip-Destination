@@ -5,8 +5,6 @@
 
     public class View : BaseModel<int>
     {
-        public int MyProperty { get; set; }
-
         [Required]
         public int TripId { get; set; }
 
