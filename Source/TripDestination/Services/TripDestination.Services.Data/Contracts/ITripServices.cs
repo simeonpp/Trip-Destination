@@ -27,5 +27,7 @@
         IQueryable<Trip> GetTodayTrips(int count);
 
         IQueryable<string> GetTopTownsDestination(bool townsTo = true, int count = 2);
+
+        IQueryable<PassengerTrip> GetPassengers(Trip trip);
     }
 }

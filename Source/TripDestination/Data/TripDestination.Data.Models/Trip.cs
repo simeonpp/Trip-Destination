@@ -16,12 +16,15 @@
 
         private ICollection<View> views;
 
+        private ICollection<PassengerTrip> passengers;
+
         public Trip()
         {
             this.ratings = new HashSet<Rating>();
             this.comments = new HashSet<Comment>();
             this.likes = new HashSet<Like>();
             this.views = new HashSet<View>();
+            this.passengers = new HashSet<PassengerTrip>();
 
             this.PickUpFromAddress = false;
             this.Status = TripStatus.Open;
@@ -90,6 +93,12 @@
         {
             get { return this.views; }
             set { this.views = value; }
+        }
+
+        public virtual ICollection<PassengerTrip> Passengers
+        {
+            get { return this.passengers; }
+            set { this.passengers = value; }
         }
     }
 }

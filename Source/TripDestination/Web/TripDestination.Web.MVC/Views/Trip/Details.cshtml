@@ -13,7 +13,6 @@
     <div class="wrapper row">
 
         <div class="col-md-6">
-
             <section id="tripSummarySection">
                 <h1>Trip summary</h1>
                 <h2>A brief information of the trip</h2>
@@ -52,35 +51,291 @@
                         <li class="col-md-4">
                             <div class="description">ETA</div>
                             <div class="icon"><img src="images/ETA-icon.png" alt="ETA icon"></div>
-                            <div class="actualInfo">21:00</div>
+                            <div class="actualInfo">@Model.ETA.ToString("HH:mm")</div>
                         </li>
                         <li class="col-md-4">
                             <div class="description">Views</div>
                             <div class="icon"><img src="images/view-icon.png" alt="Views icon"></div>
-                            <div class="actualInfo">2</div>
+                            <div class="actualInfo">@Model.Views.Count()</div>
                         </li>
                         <li class="col-md-4">
                             <div class="description">Likes</div>
                             <div class="icon"><img src="images/like-icon.png" alt="Likes icon"></div>
-                            <div class="actualInfo"><span id="likesCount">19</span></div>
+                            <div class="actualInfo"><span id="likesCount">@Model.Likes.Count()</span></div>
                         </li>
                     </ul>
 
                     <div id="descriptionWrap">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto cupiditate, ea itaque minima odio optio porro, ratione recusandae sapiente sequi soluta vero? Aliquam animi delectus deleniti, dignissimos dolor dolorem ea ipsa ipsam iusto labore laboriosam nemo nostrum nulla pariatur perferendis provident reprehenderit suscipit totam ullam vero. A iusto nam nihil?
+                        @Html.Raw(Model.Description)
                     </div>
 
                     <div id="buttonsWrap">
 
                         <div id="buttonsAction">
-                            <?php require_once('includes/trip-details/basic-user.php') ?>
-                            <?php // require_once('includes/trip-details/joined-user.php') ?>
+                            <div id="tripActionWrap" class="halfTableCell">
+                                <div id="joinTripButton" class="button">Join this trip</div>
+                            </div>
+                            <div class="halfTableCell">
+                                <div id="likeTripButton">
+                                    <div class="likeButton"></div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                 </article>
             </section>
 
+            <section id="passengersSection">
+                @{
+                    int passengersCount = Model.Passengers.Count();
+                }
+
+                <h1>Passengers (<span id="passengersCount">@passengersCount</span>)</h1>
+                <h2>Passengers on board</h2>
+                <article class="padding">                    
+                    @if (passengersCount > 0)
+                    {
+                        <ul id="passengersList" class="passengersUl">
+                            @foreach (var passenger in Model.Passengers)
+                            {
+                                <li>
+                                    <a href="#">
+                                        <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+                                        <div class="firstName">@passenger.User.FirstName</div>
+                                        <div class="lastName">@passenger.User.LastName</div>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No passengers joined to this trip yet.</p>
+                    }
+                </article>
+            </section>
+
+            <section id="commentsSection">
+                @{
+                    int commentsCount = Model.Comments.Count();
+                }
+
+                <h1>COMMENTS (@commentsCount)</h1>
+                <h2>Leave your comment about this trip</h2>
+                <article>
+                    @if (commentsCount > 0)
+                    {
+                        <ul class="commentsUl">
+                            @foreach (var comment in Model.Comments)
+                            {
+                                <li>
+                                    <div class="row noMargins">
+                                        <div class="col-md-2">
+                                            <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+                                        </div>
+                                        <div class="commentTextWrap col-md-10">
+                                            <div class="arrow"></div>
+                                            <div class="names">
+                                                <a href="#">
+                                                    @comment.User.FirstName <span class="lastName">@comment.User.LastName</span>
+                                                </a>
+                                            </div>
+                                            <div class="date"> @comment.CreatedOn.ToString("dd.MM.yyyy HH:mm")</div>
+                                            <div class="commentText">@comment.Text</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No added comments yet.</p>
+                    }                    
+
+                    <div id="addCommentWrap">
+                        <h5>Add comment</h5>
+                        <h6>Add your comment to this trip</h6>
+
+                        <form id="addNewCommentForm">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="6" id="commentArea"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="reset" class="button2" value="Cancel">
+                                    <input type="button" class="button" value="Add comment">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </article>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section id="driverDetailsSection">
+                <h1>Driver Details</h1>
+                <h2>Information about the driver of the trip</h2>
+                <article>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="image"><img src="images/people/8.jpg" alt="Username images"></div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="names"><a href="#">@Model.Driver.FirstName <span id="lastName">@Model.Driver.LastName</span></a></div>
+                            <ul class="infoUl">
+                                <li>
+                                    <div class="labelInfo">Username</div>
+                                    <div class="textInfo">@Model.Driver.UserName</div>
+                                </li>
+                                @if (Model.Driver.PhoneNumber != null)
+                                {
+                                    <li>
+                                        <div class="labelInfo">Phone</div>
+                                        <div class="textInfo">@Model.Driver.PhoneNumber</div>
+                                    </li>
+
+                                }
+                                <li>
+                                    <div class="labelInfo">Email</div>
+                                    <div class="textInfo">@Model.Driver.Email</div>
+                                </li>
+                                <li>
+                                    <ul class="ratingUl">
+                                        <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                        <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                        <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                        <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                        <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="infoUl">
+                        <li>
+                            <div class="labelInfo">About me</div>
+                            <div class="textInfo">@Model.Driver.Description</div>
+                        </li>
+                    </ul>
+
+                    <div id="userCommentsWrap">
+                        <h5>Comments</h5>
+                        <h6>Latest comments about Ivaylo</h6>
+                        
+                        <div id="loadMoreUserComments" class="button">Load more</div>
+                    </div>
+
+                </article>
+            </section>
+
+            <section id="carDetailsSection">
+                <h1>Car details</h1>
+                <h2>Specifications</h2>
+                <article>
+                    <div id="carTitle">@Model.Driver.Car.Brand @Model.Driver.Car.Model</div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <ul class="infoUl">
+                                <li>
+                                    <div class="labelInfo">Year</div>
+                                    <div class="textInfo">@Model.Driver.Car.Year</div>
+                                </li>
+                                <li>
+                                    <div class="labelInfo">Color</div>
+                                    <div class="textInfo">@Model.Driver.Car.Color</div>
+                                </li>
+                                <li>
+                                    <div class="labelInfo">Space for luggage</div>
+                                    <div class="textInfo">@Model.Driver.Car.SpaceForLugage</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="infoUl">
+                                <li>
+                                    <div class="labelInfo">Additional info</div>
+                                    <div class="textInfo">
+                                        @Model.Driver.Car.Description
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="carPhotosWrap">
+                        
+                    </div>
+                </article>
+            </section>
+
+            <section id="fullTripDetailsWrap">
+                <h1>Trip details</h1>
+                <h2>Full information about the trip</h2>
+                <article>
+                    <ul class="infoUl">
+                        <li>
+                            <div class="labelInfo">Leaving from</div>
+                            <div class="textInfo">@Model.From.Name</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Destination</div>
+                            <div class="textInfo">@Model.To.Name</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Date of leaving</div>
+                            <div class="textInfo">@Model.DateOfLeaving.ToString("dd MMMM yyyy")</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Time of leaving</div>
+                            <div class="textInfo">@Model.DateOfLeaving.ToString("HH:mm")</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Place of leaving</div>
+                            <div class="textInfo">@Model.PlaceOfLeaving</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Option to pick up from address</div>
+                            <div class="textInfo">@(Model.PickUpFromAddress ? "Yes" : "No")</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Total seats</div>
+                            <div class="textInfo">@Model.Driver.Car.TotalSeats</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Available seats</div>
+                            <div class="textInfo">@Model.AvailableSeats</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Status</div>
+                            <div class="textInfo">@Model.Status</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Price</div>
+                            <div class="textInfo">@Model.Price
+                            </div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Date created</div>
+                            <div class="textInfo">@Model.CreatedOn.ToString("dd MMMM yyyy HH:mm")</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Additional information</div>
+                            <div class="textInfo">
+                                @Model.Description
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </section>
         </div>
 
     </div>

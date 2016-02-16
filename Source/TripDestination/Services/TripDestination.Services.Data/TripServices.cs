@@ -11,9 +11,12 @@
     {
         private IDbRepository<Trip> tripRepos;
 
-        public TripServices(IDbRepository<Trip> tripRepos)
+        private IDbRepository<PassengerTrip> passengerTripsRepos;
+
+        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos)
         {
             this.tripRepos = tripRepos;
+            this.passengerTripsRepos = passengerTripsRepos;
         }
 
         public Trip Create(int fromTownId, int toTownId, DateTime dateOfLeaving, int availableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, decimal price, string driverId)
@@ -92,6 +95,15 @@
                .Select(t => t.TownName);
 
             return towns;
+        }
+
+        public IQueryable<PassengerTrip> GetPassengers(Trip trip)
+        {
+            var passengers = this.passengerTripsRepos.All()
+                .Where(pt => pt.Trip == trip && pt.Approved == true)
+                .OrderBy(pt => pt.CreatedOn);
+
+            return passengers;
         }
     }
 }

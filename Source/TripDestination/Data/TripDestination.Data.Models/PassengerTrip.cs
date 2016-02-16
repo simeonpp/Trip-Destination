@@ -11,16 +11,16 @@
         {
             this.Approved = false;
         }
-        
-        [Required]
-        public string UserId { get; set; }
-
-        public User User { get; set; }
 
         [Required]
         public int TripId { get; set; }
 
         public Trip Trip { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        public User User { get; set; }
 
         [Required]
         public bool Approved { get; set; }

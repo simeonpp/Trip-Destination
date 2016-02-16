@@ -26,7 +26,7 @@
         }
 
         public ITripServices TripServices { get; set; }
-
+        
         public ITownProvider TownProvider { get; set; }
 
         public IStatisticsServices StatisticsServices { get; set; }
@@ -123,7 +123,8 @@
         {
             var trip = this.TripServices.GetById(id);
 
-            var viewModel = this.Mapper.Map<TripDetailedViewModel>(trip);
+            var viewModel = this.Mapper
+                .Map<TripDetailedViewModel>(trip);
 
             return this.View(viewModel);
         }

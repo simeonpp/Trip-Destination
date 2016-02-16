@@ -4,8 +4,12 @@
     using TripDestination.Web.MVC.ViewModels.Shared;
     using TripDestination.Data.Models;
     using System;
+    using System.Collections.Generic;
+
     public class TripDetailedViewModel : IMapFrom<Trip>
     {
+        public int Id { get; set; }
+
         public Town From { get; set; }
 
         public Town To { get; set; }
@@ -23,5 +27,19 @@
         public decimal Price { get; set; }
 
         public User Driver { get; set; }
+
+        public DateTime ETA { get; set; }
+
+        public virtual IEnumerable<View> Views { get; set; }
+
+        public virtual IEnumerable<Like> Likes { get; set; }
+
+        public string Description { get; set; }
+
+        public IEnumerable<PassengerTrip> Passengers { get; set; }
+
+        public IEnumerable<Comment> Comments { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }
