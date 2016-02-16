@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using TripDestination.Common.Infrastructure.Constants;
     using Common.Models;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Car : BaseModel<int>
     {
@@ -15,7 +16,7 @@
             this.photos = new HashSet<Photo>();
             this.SpaceForLugage = SpaceForLugage.None;
         }
-        
+
         [Required]
         [Range(ModelConstants.CarTotalSeatsMinLength, ModelConstants.CarTotalSeatsMaxLength, ErrorMessage = "Car total seat must be between 1 and 5.")]
         public int TotalSeats { get; set; }
