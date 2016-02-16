@@ -5,9 +5,116 @@
 
     <section id="topHead" class="noTopMargin noBottomMargin">
         <article class="redBG noMargin topBottomPadding">
-            <div id="directions">Sofia - Burgas</div>
-            <div id="dateOfLeaving">10 January 2016 18:30</div>
+            <div id="directions">@Model.From.Name - @Model.To.Name</div>
+            <div id="dateOfLeaving">@Model.DateOfLeaving.ToString("d MMMM yyyy HH:mm")</div>
         </article>
     </section>
 
+    <div class="wrapper row">
+
+        <div class="col-md-6">
+            <section id="editTripSection">
+                <h1>Edit trip details</h1>
+                <h2>Not saved information</h2>
+                <article>
+                    @using (Html.BeginForm("Edit", "Trip", FormMethod.Post, new { id = "editTripFrom" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+
+                        @Html.EditorFor(m => m.PlaceOfLeaving)
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="leftAvailableSeats" class="col-lg-12 control-label">Left available seats</label>
+                                <div class="col-lg-12">
+                                    <select class="form-control" id="leftAvailableSeats" name="leftAvailableSeats">
+                                        <option value="1">1</option>
+                                        <option value="2" selected="selected">2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                @Html.EditorFor(m => m.DateOfLeaving)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="addressPickUp" class="col-lg-12 control-label">Address pick up</label>
+                                <div class="col-lg-12">
+                                    <select class="form-control" id="addressPickUp" name="addressPickUp">
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected="selected">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="luggageSpace" class="col-lg-12 control-label">Luggage space</label>
+                                <div class="col-lg-12">
+                                    <select class="form-control" id="luggageSpace" name="luggageSpace">
+                                        <option value="none" selected="selected">None</option>
+                                        <option value="small">Small</option>
+                                        <option value="normal">Normal</option>
+                                        <option value="big">Big</option>
+                                        <option value="large">Large</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        @Html.EditorFor(m => m.Description)
+
+                        <h5>Passengers (3)</h5>
+                        <h6>Remove passenger</h6>
+                        <ul id="passengersList" class="passengersUl">
+                            <li>
+                                <a href="#">
+                                    <div class="image" style="background-image: url('images/people/3.jpg')"></div>
+                                    <div class="firstName">Chuck</div>
+                                    <div class="lastName">Norris</div>
+                                </a>
+                                <div class="removePassengerButton">Remove</div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="image" style="background-image: url('images/people/8.jpg')"></div>
+                                    <div class="firstName">Arnold </div>
+                                    <div class="lastName">Schwarzenegger</div>
+                                </a>
+                                <div class="removePassengerButton">Remove</div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="image" style="background-image: url('images/people/1.jpg')"></div>
+                                    <div class="firstName">Sylvester</div>
+                                    <div class="lastName">Stallone</div>
+                                </a>
+                                <div class="removePassengerButton">Remove</div>
+                            </li>
+                        </ul>
+
+                        <div id="buttonsFromWrap" class="row">
+                            <div class="col-md-12">
+                                <input type="reset" class="button2" value="Cancel">
+                                <input type="submit" class="button" value="Save changes">
+                            </div>
+                        </div>
+                    }
+                </article>
+            </section>
+        </div>
+
+    </div>
+
 </div>
+
+@section styles {
+    @Styles.Render("~/Content/datetimepicker-css")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datetimepicker")
+}

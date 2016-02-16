@@ -1,13 +1,16 @@
 ﻿namespace TripDestination.Web.MVC.ViewModels.Trip
 {
     using Common.Infrastructure.Constants;
+    using Common.Infrastructure.Mapping;
     using Data.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class TripEditInputModel
+    public class TripEditInputModel : IMapFrom<Trip>
     {
+        public int Id { get; set; }
+
         public Town From { get; set; }
 
         public Town To { get; set; }
@@ -37,6 +40,8 @@
 
         [MinLength(ModelConstants.TripDescriptionMinLength, ErrorMessage = "Trip description can not be less than 10 symbols long.")]
         [MaxLength(ModelConstants.TripDescriptionMaxLength, ErrorMessage = "Trip description can not be more than 1000 symbols long.")]
+        [DataType(DataType.MultilineText)]
+        [UIHint("TextArea")]
         public string Description { get; set; }
 
         public IEnumerable<int> UsernamesToBeRemoved { get; set; }

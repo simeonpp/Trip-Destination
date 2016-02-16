@@ -134,18 +134,37 @@
             return this.View(viewModel);
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var trip = this.TripServices.GetById(id);
 
             if (trip.Driver.Id != this.CurrentUser.GetUserId())
             {
-                throw new 
+                throw new Exception("Not authorized to edit.");
             }
 
+            var viewModel = this.Mapper.Map<TripEditInputModel>(trip);
 
+            return this.View(viewModel);
+        }
 
-            return this.View();
+        [HttpPost]
+        public ActionResult Edit(TripEditInputModel editModel)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(editModel);
+            }
+
+            var trip = this.TripServices.GetById(editModel.Id);
+
+            if (trip.Driver.Id != this.CurrentUser.GetUserId())
+            {
+                throw new Exception("Not authorized to edit.");
+            }
+
+            return this.RedirectToRoute("TripDetails", new { id = trip.Id, slug = trip.From.Name, area = "" });
         }
     }
 }
