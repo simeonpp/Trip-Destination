@@ -136,6 +136,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var trip = this.TripServices.GetById(id);
@@ -153,6 +154,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(TripEditInputModel editModel)
         {
             if (!this.ModelState.IsValid)

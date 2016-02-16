@@ -121,6 +121,8 @@
                                     }
                                     else
                                     {
+                                        <div class="tripMessage"></div>
+
                                         <div id="tripActionWrap" class="halfTableCell">
                                             <div id="joinTripButton" class="button">Join this trip</div>
                                         </div>
@@ -424,3 +426,8 @@
     </div>
 
 </div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/trip-detailed")    
+}

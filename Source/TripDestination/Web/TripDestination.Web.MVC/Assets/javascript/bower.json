@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "toastr": "~2.1.2",
-    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "handlebars": "~4.0.5"
   }
 }

@@ -24,7 +24,8 @@ namespace TripDestination.Web.MVC
              bundles.Add(new ScriptBundle("~/bundles/site-libs").Include(
                  "~/Scripts/bootstrap.js",
                  "~/Scripts/respond.js",
-                "~/Assets/javascript/lib/toastr/toastr.min.js"));
+                "~/Assets/javascript/lib/toastr/toastr.min.js",
+                "~/Assets/javascript/lib/handlebars/handlebars.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                 "~/Assets/javascript/src/common/newsletter-subscriber.js"));
@@ -42,6 +43,10 @@ namespace TripDestination.Web.MVC
 
             bundles.Add(new StyleBundle("~/Content/datetimepicker-css").Include(
                 "~/Assets/javascript/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/trip-detailed").Include(
+                "~/Assets/javascript/src/once/trip-detailed-join-request.js"));
+
 
             // BundleTable.EnableOptimizations = true;
         }

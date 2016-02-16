@@ -41,5 +41,7 @@
             IEnumerable<string> usernamesToBeRemoved);
 
         int GetAvailableLeftSeatsCount(int tripId);
+
+
     }
 }
