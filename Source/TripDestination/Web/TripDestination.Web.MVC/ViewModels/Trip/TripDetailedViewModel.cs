@@ -8,6 +8,8 @@
 
     public class TripDetailedViewModel : IMapFrom<Trip>
     {
+        public bool CurrectUserIsDriver { get; set; }
+
         public int Id { get; set; }
 
         public Town From { get; set; }

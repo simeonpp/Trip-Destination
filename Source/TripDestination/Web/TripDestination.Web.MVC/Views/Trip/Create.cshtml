@@ -11,7 +11,7 @@
                 <section>
                     <article>
 
-                        @using (Html.BeginForm("Create", "Trip", FormMethod.Post, new { id = "tripCreateForm" }))
+                        @using (Html.BeginForm("Index", "Trip", FormMethod.Post, new { id = "tripCreateForm" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="errorBox">

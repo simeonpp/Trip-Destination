@@ -74,6 +74,47 @@
                         <div id="buttonsWrap">
 
                             <div id="buttonsAction">
+
+                                @if (Model.CurrectUserIsDriver)
+                                {
+                                    @*Driver user*@
+                                    <div id="tripActionWrap" class="halfTableCell">
+                                        <a id="editTripButton" href="@Url.Action("Edit", "Trip", new { id = Model.Id })" class="button2">Edit trip</a>
+                                    </div>
+                                    <div class="halfTableCell">
+                                        <a id="deleteTripButton" href="#" class="button">Delete trip</a>
+                                    </div>
+
+                                    @*Check for pending users*@
+                                    <div class="row">
+                                        <div class="tripMessage">You have 2 pending users waiting to join your trip.</div>
+                                        <ul class="pendingUsersUl">
+                                            <li class="row">
+                                                <div class="col-md-3">
+                                                    <div class="image" style="background-image: url('images/people/6.jpg')"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="passengerName"><a href="#">Ivaylo Kenov</a></div>
+                                                    <div class="rating">
+                                                        <ul class="ratingUl">
+                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="approvePassengerJoinRequest button">Approve</div>
+                                                    <div class="disapprovePassengerJoinRequestbutton2">Disapprove</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                }
+
+
                                 <div id="tripActionWrap" class="halfTableCell">
                                     <div id="joinTripButton" class="button">Join this trip</div>
                                 </div>
@@ -82,7 +123,7 @@
                                         <div class="likeButton"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> @*end #buttonsAction*@
 
                         </div>
                     }

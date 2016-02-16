@@ -52,7 +52,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TripInputVIewModel trip)
+        public ActionResult Index(TripInputVIewModel trip)
         {
             if (!this.ModelState.IsValid)
             {
@@ -126,7 +126,26 @@
             var viewModel = this.Mapper
                 .Map<TripDetailedViewModel>(trip);
 
+            if (this.User.Identity.IsAuthenticated)
+            {
+                viewModel.CurrectUserIsDriver = trip.Driver.Id == this.User.Identity.GetUserId();
+            }
+
             return this.View(viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var trip = this.TripServices.GetById(id);
+
+            if (trip.Driver.Id != this.CurrentUser.GetUserId())
+            {
+                throw new 
+            }
+
+
+
+            return this.View();
         }
     }
 }
