@@ -1,15 +1,13 @@
-﻿namespace TripDestination.Web.MVC.ViewModels.AJAX
+﻿namespace TripDestination.Common.Infrastructure.Models
 {
-    using System;
-
-    public class BaseResponseModel
+    public class BaseResponseAjaxModel
     {
-        public BaseResponseModel()
+        public BaseResponseAjaxModel()
             : this(false)
         {
         }
 
-        public BaseResponseModel(bool status)
+        public BaseResponseAjaxModel(bool status)
         {
             this.Status = status;
         }

@@ -27,7 +27,7 @@
         }
 
         public ITripServices TripServices { get; set; }
-        
+
         public ITownProvider TownProvider { get; set; }
 
         public IStatisticsServices StatisticsServices { get; set; }
@@ -130,6 +130,7 @@
             if (this.User.Identity.IsAuthenticated)
             {
                 viewModel.CurrectUserIsDriver = trip.Driver.Id == this.User.Identity.GetUserId();
+                viewModel.CurrentUserIsWaitingJoinRequest = false;
             }
 
             return this.View(viewModel);
@@ -169,8 +170,12 @@
                 throw new Exception("Not authorized to edit.");
             }
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            string[] usernamesToBeRemoved = js.Deserialize<string[]>(editModel.UsernamesToBeRemoved);
+            string[] usernamesToBeRemoved = new List<string>().ToArray();
+            if (!string.IsNullOrEmpty(editModel.UsernamesToBeRemoved))
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                usernamesToBeRemoved = js.Deserialize<string[]>(editModel.UsernamesToBeRemoved);
+            }
 
             var dbTrip = this.TripServices.Edit(
                 trip.Id,

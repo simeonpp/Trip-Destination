@@ -195,7 +195,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AJAX\NewsletterController.cs" />
+    <Compile Include="Controllers\AJAX\NewsletterAjaxController.cs" />
+    <Compile Include="Controllers\AJAX\TripAjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChildActionControllers\HomeChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\LayoutController.cs" />
@@ -221,7 +222,6 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\AJAX\BaseResponseModel.cs" />
     <Compile Include="ViewModels\AJAX\NewsletterInputModel.cs" />
     <Compile Include="ViewModels\ChildAction\TripsListViewModel.cs" />
     <Compile Include="ViewModels\Contact\ContactFormInputModel.cs" />
@@ -262,6 +262,15 @@
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\src\js\bootstrap-datetimepicker.js" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\src\nuget\NuGet.exe" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\tasks\bump_version.js" />
+    <Content Include="Assets\javascript\lib\handlebars\.gitignore" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.amd.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.amd.min.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.min.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.runtime.amd.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.runtime.amd.min.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.runtime.js" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.runtime.min.js" />
     <Content Include="Assets\javascript\lib\moment-timezone\builds\moment-timezone-with-data-2010-2020.js" />
     <Content Include="Assets\javascript\lib\moment-timezone\builds\moment-timezone-with-data-2010-2020.min.js" />
     <Content Include="Assets\javascript\lib\moment-timezone\builds\moment-timezone-with-data.js" />
@@ -574,6 +583,7 @@
     <Content Include="Assets\javascript\src\common\newsletter-subscriber.js" />
     <Content Include="Assets\javascript\src\once\custom-date-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
+    <Content Include="Assets\javascript\src\once\trip-detailed-join-request.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\kiddolb.css">
@@ -641,6 +651,15 @@
     <Content Include="Assets\javascript\lib\toastr\toastr.js.map" />
     <Content Include="Assets\javascript\lib\toastr\toastr.less" />
     <Content Include="Assets\javascript\lib\toastr\toastr.scss" />
+    <Content Include="Assets\javascript\lib\handlebars\.bower.json" />
+    <Content Include="Assets\javascript\lib\handlebars\bower.json" />
+    <Content Include="Assets\javascript\lib\handlebars\component.json" />
+    <Content Include="Assets\javascript\lib\handlebars\composer.json" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars-source.gemspec" />
+    <Content Include="Assets\javascript\lib\handlebars\handlebars.js.nuspec" />
+    <Content Include="Assets\javascript\lib\handlebars\lib\handlebars\source.rb" />
+    <Content Include="Assets\javascript\lib\handlebars\package.json" />
+    <Content Include="Assets\javascript\lib\handlebars\README.md" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

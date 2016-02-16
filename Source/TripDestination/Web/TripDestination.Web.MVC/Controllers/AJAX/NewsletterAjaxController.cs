@@ -3,10 +3,11 @@
     using System.Web.Mvc;
     using Services.Data.Contracts;
     using ViewModels.AJAX;
+    using Common.Infrastructure.Models;
 
-    public class NewsletterController : Controller
+    public class NewsletterAjaxController : Controller
     {
-        public NewsletterController(INewsletterServices newsletterServices)
+        public NewsletterAjaxController(INewsletterServices newsletterServices)
         {
             this.NewsletterServices = newsletterServices;
         }
@@ -16,7 +17,7 @@
         [HttpPost]
         public ActionResult Subscribe(NewsletterInputModel model)
         {
-            var responseData = new BaseResponseModel();
+            var responseData = new BaseResponseAjaxModel();
 
             if (this.ModelState.IsValid)
             {

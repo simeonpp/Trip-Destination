@@ -5,22 +5,28 @@
     $('body').on('click', '#joinTripButton', function () {
         var $joinTripButton = $('#joinTripButton');
 
-        executeAJAXJoinTripRequest()
-            .then(function (response) {
+        $.ajax({
+            type: "POST",
+            url: '/TripAjax/JoinRequest',
+            data: {
+                tripid: 2
+            },
+            success: function (response) {
                 $joinTripButton.remove();
 
-                if (response.status) {
+                if (response.Status) {
                     addPendingMessage();
                     addRecallJoinTripButton();
                     toastr.success("You have successfully send request to join this trip.");
                 } else {
-                    if (response.error && response.error.message) {
-                        toastr.error(response.error.message);
+                    if (response.Data) {
+                        toastr.error(response.Data);
                     } else {
                         toastr.error("Unable to join trip.");
                     }
                 }
-            })
+            }
+        })
     });
 
     $('body').on('click', '#recallJoinTripButton', function () {

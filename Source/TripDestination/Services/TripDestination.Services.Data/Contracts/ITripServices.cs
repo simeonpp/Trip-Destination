@@ -4,6 +4,7 @@
     using TripDestination.Data.Models;
     using System.Linq;
     using System.Collections.Generic;
+    using Common.Infrastructure.Models;
     public interface ITripServices
     {
         Trip Create(
@@ -42,6 +43,8 @@
 
         int GetAvailableLeftSeatsCount(int tripId);
 
+        BaseResponseAjaxModel JoinRequest(int tripId, string userId);
 
+        bool CheckIfUserHasPendingRequest(int tripId);
     }
 }

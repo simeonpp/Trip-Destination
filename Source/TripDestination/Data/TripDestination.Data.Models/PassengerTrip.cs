@@ -15,12 +15,12 @@
         [Required]
         public int TripId { get; set; }
 
-        public Trip Trip { get; set; }
+        public virtual Trip Trip { get; set; }
 
         [Required]
         public string UserId { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         [Required]
         public bool Approved { get; set; }

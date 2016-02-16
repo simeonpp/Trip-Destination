@@ -7,6 +7,7 @@
     using Common;
     using Models;
     using System.Collections.Generic;
+    using TripDestination.Common.Infrastructure.Models;
     public class TripServices : ITripServices
     {
         private IDbRepository<Trip> tripRepos;
@@ -143,6 +144,44 @@
             var dbTrip = this.GetById(tripId);
             int leftAvailableSeats = dbTrip.AvailableSeats - dbTrip.Passengers.Count();
             return leftAvailableSeats;
+        }
+
+        public BaseResponseAjaxModel JoinRequest(int tripId, string userId)
+        {
+            var response = new BaseResponseAjaxModel();
+
+            var dbTrip = this.GetById(tripId);
+            bool currentPassengerAlreadyHasJoinRequest = dbTrip.Passengers
+                .Where(p => p.UserId == userId)
+                .FirstOrDefault() 
+                != null ? true : false;
+
+            if (currentPassengerAlreadyHasJoinRequest)
+            {
+                response.Status = false;
+                response.Data = "You already has pending join request";
+
+                return response;
+            }
+
+            PassengerTrip passengerTrip = new PassengerTrip()
+            {
+                Trip = dbTrip,
+                UserId = userId,
+                Approved = false
+            };
+
+            dbTrip.Passengers.Add(passengerTrip);
+            this.tripRepos.Save();
+
+            response.Status = true;
+
+            return response;
+        }
+
+        public bool CheckIfUserHasPendingRequest(int tripId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

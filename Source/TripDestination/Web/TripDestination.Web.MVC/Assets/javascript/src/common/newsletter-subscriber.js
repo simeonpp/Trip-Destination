@@ -9,7 +9,7 @@
         if (emailPattern.test(email)) {
             $.ajax({
                 type: "POST",
-                url: '/Newsletter/Subscribe',
+                url: '/NewsletterAjax/Subscribe',
                 data: {
                     email: email
                 },
