@@ -145,6 +145,8 @@
             }
 
             var viewModel = this.Mapper.Map<TripEditInputModel>(trip);
+            viewModel.AddressPickUpSelectList = this.TripProvider.GetAddressPickUpSelectList();
+            viewModel.LeaftAvailabeSeatsSelectList = this.TripProvider.GetleftAvailableSeatsSelectList(trip.Id);
 
             return this.View(viewModel);
         }
@@ -164,7 +166,16 @@
                 throw new Exception("Not authorized to edit.");
             }
 
-            return this.RedirectToRoute("TripDetails", new { id = trip.Id, slug = trip.From.Name, area = "" });
+            var dbTrip = this.TripServices.Edit(
+                trip.Id,
+                editModel.DateOfLeaving,
+                editModel.LeftAvailableSeats,
+                editModel.PlaceOfLeaving,
+                editModel.PickUpFromAddress,
+                editModel.Description,
+                editModel.ETA);
+
+            return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = trip.From.Name, area = "" });
         }
     }
 }

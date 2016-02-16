@@ -105,5 +105,31 @@
 
             return passengers;
         }
+
+        public Trip Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA)
+        {
+            var dbTrip = this.GetById(tripId);            
+
+            int takenSeats = dbTrip.Passengers.Count();
+            int availableSeats = takenSeats + leftAvailableSeats;
+            dbTrip.AvailableSeats = availableSeats;
+
+            dbTrip.DateOfLeaving = dateOfLeaving;
+            dbTrip.PlaceOfLeaving = placeOfLeaving;
+            dbTrip.PickUpFromAddress = pickUpFromAddress;
+            dbTrip.Description = description;
+            dbTrip.ETA = ETA;
+
+            this.tripRepos.Save();
+
+            return dbTrip;
+        }
+
+        public int GetAvailableLeftSeatsCount(int tripId)
+        {
+            var dbTrip = this.GetById(tripId);
+            int leftAvailableSeats = dbTrip.AvailableSeats - dbTrip.Passengers.Count();
+            return leftAvailableSeats;
+        }
     }
 }

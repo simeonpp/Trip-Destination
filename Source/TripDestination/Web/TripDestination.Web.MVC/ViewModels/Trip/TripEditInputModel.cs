@@ -6,10 +6,17 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Web.Mvc;
     public class TripEditInputModel : IMapFrom<Trip>
     {
         public int Id { get; set; }
+
+        public IEnumerable<SelectListItem> AddressPickUpSelectList { get; set; }
+
+        public IEnumerable<SelectListItem> LeaftAvailabeSeatsSelectList { get; set; }
+
+
+
 
         public Town From { get; set; }
 
@@ -26,10 +33,6 @@
         public int LeftAvailableSeats { get; set; }
 
         [Required]
-        [EnumDataType(typeof(SpaceForLugage))]
-        public int LuggageSpace { get; set; }
-
-        [Required]
         public DateTime DateOfLeaving { get; set; }
 
         [Required]
@@ -44,6 +47,8 @@
         [UIHint("TextArea")]
         public string Description { get; set; }
 
-        public IEnumerable<int> UsernamesToBeRemoved { get; set; }
+        public ICollection<PassengerTrip> Passengers { get; set; }
+
+        public string UsernamesToBeRemoved { get; set; }
     }
 }

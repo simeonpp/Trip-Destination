@@ -29,5 +29,16 @@
         IQueryable<string> GetTopTownsDestination(bool townsTo = true, int count = 2);
 
         IQueryable<PassengerTrip> GetPassengers(Trip trip);
+
+        Trip Edit(
+            int tripId,
+            DateTime dateOfLeaving,
+            int leftAvailableSeats,
+            string placeOfLeaving,
+            bool pickUpFromAddress,
+            string description,
+            DateTime ETA);
+
+        int GetAvailableLeftSeatsCount(int tripId);
     }
 }

@@ -26,74 +26,30 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="leftAvailableSeats" class="col-lg-12 control-label">Left available seats</label>
-                                <div class="col-lg-12">
-                                    <select class="form-control" id="leftAvailableSeats" name="leftAvailableSeats">
-                                        <option value="1">1</option>
-                                        <option value="2" selected="selected">2</option>
-                                    </select>
-                                </div>
+                                @Html.EditorFor(m => m.PickUpFromAddress, "CustomDropDownList", new { selectListItems = Model.AddressPickUpSelectList })
                             </div>
-
                             <div class="col-md-6">
-                                @Html.EditorFor(m => m.DateOfLeaving)
+                                @Html.EditorFor(m => m.LeftAvailableSeats, "CustomDropDownList", new { selectListItems = Model.LeaftAvailabeSeatsSelectList })
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="addressPickUp" class="col-lg-12 control-label">Address pick up</label>
-                                <div class="col-lg-12">
-                                    <select class="form-control" id="addressPickUp" name="addressPickUp">
-                                        <option value="yes">Yes</option>
-                                        <option value="no" selected="selected">No</option>
-                                    </select>
-                                </div>
+                                @Html.EditorFor(m => m.DateOfLeaving)
                             </div>
+
                             <div class="col-md-6">
-                                <label for="luggageSpace" class="col-lg-12 control-label">Luggage space</label>
-                                <div class="col-lg-12">
-                                    <select class="form-control" id="luggageSpace" name="luggageSpace">
-                                        <option value="none" selected="selected">None</option>
-                                        <option value="small">Small</option>
-                                        <option value="normal">Normal</option>
-                                        <option value="big">Big</option>
-                                        <option value="large">Large</option>
-                                    </select>
-                                </div>
+                                @Html.EditorFor(m => m.ETA)
                             </div>
                         </div>
 
                         @Html.EditorFor(m => m.Description)
 
-                        <h5>Passengers (3)</h5>
+                        @{
+                            int passengersCount = Model.Passengers.Count;
+                        }
+                        <h5>Passengers (@passengersCount)</h5>
                         <h6>Remove passenger</h6>
-                        <ul id="passengersList" class="passengersUl">
-                            <li>
-                                <a href="#">
-                                    <div class="image" style="background-image: url('images/people/3.jpg')"></div>
-                                    <div class="firstName">Chuck</div>
-                                    <div class="lastName">Norris</div>
-                                </a>
-                                <div class="removePassengerButton">Remove</div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="image" style="background-image: url('images/people/8.jpg')"></div>
-                                    <div class="firstName">Arnold </div>
-                                    <div class="lastName">Schwarzenegger</div>
-                                </a>
-                                <div class="removePassengerButton">Remove</div>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="image" style="background-image: url('images/people/1.jpg')"></div>
-                                    <div class="firstName">Sylvester</div>
-                                    <div class="lastName">Stallone</div>
-                                </a>
-                                <div class="removePassengerButton">Remove</div>
-                            </li>
-                        </ul>
 
                         <div id="buttonsFromWrap" class="row">
                             <div class="col-md-12">
@@ -103,6 +59,7 @@
                         </div>
                     }
                 </article>
+
             </section>
         </div>
 

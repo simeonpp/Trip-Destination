@@ -14,5 +14,7 @@
         IEnumerable<SelectListItem> GetTripsPerPageSelectList();
 
         IEnumerable<SelectListItem> GetOrderBySelectList();
+
+        IEnumerable<SelectListItem> GetleftAvailableSeatsSelectList(int tripId);
     }
 }

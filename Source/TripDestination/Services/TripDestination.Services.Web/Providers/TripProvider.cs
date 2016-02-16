@@ -1,6 +1,7 @@
 ﻿namespace TripDestination.Services.Web.Providers
 {
     using Contracts;
+    using Data.Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -11,6 +12,13 @@
 
     public class TripProvider : ITripProvider
     {
+        private readonly ITripServices tripServices;
+
+        public TripProvider(ITripServices tripServices)
+        {
+            this.tripServices = tripServices;
+        }
+
         public IEnumerable<SelectListItem> GetAvailableSeatsSelectList()
         {
             var availableSeatsSelectList = new List<SelectListItem>
@@ -80,6 +88,24 @@
             };
 
             return oserBySelectList;
+        }
+
+        public IEnumerable<SelectListItem> GetleftAvailableSeatsSelectList(int tripId)
+        {
+            int availableLeftSeatsCount = this.tripServices.GetAvailableLeftSeatsCount(tripId);
+
+            var leftAvailableSeatsSelectList = new List<SelectListItem>();
+
+            for (int i = 1; i <= availableLeftSeatsCount; i++)
+            {
+                leftAvailableSeatsSelectList.Add(new SelectListItem()
+                {
+                    Text = i.ToString(),
+                    Value = i.ToString()
+                });
+            }
+
+            return leftAvailableSeatsSelectList;
         }
     }
 }
