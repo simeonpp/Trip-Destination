@@ -32,10 +32,30 @@
             return this.Json(serviceResponse);
         }
 
+        [Authorize]
+        [HttpPost]
         public ActionResult AddComments(int tripId, string commentText)
         {
             string userId = this.User.Identity.GetUserId();
             var serviceResponse = this.tripServices.AddComment(tripId, userId, commentText);
+            return this.Json(serviceResponse);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ApproveJoinRequest(int tripId, string username)
+        {
+            string userId = this.User.Identity.GetUserId();
+            var serviceResponse = this.tripServices.ApproveJoinRequest(tripId, username, userId);
+            return this.Json(serviceResponse);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult DisapproveJoinRequest(int tripId, string username)
+        {
+            string userId = this.User.Identity.GetUserId();
+            var serviceResponse = this.tripServices.DisapproveJoinRequest(tripId, username, userId);
             return this.Json(serviceResponse);
         }
     }

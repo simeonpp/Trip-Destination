@@ -145,6 +145,11 @@
         {
             var trip = this.TripServices.GetById(id);
 
+            if (trip == null)
+            {
+                throw new Exception("No such trip.");
+            }
+
             if (trip.Driver.Id != this.CurrentUser.GetUserId())
             {
                 throw new Exception("Not authorized to edit.");
@@ -152,7 +157,7 @@
 
             var viewModel = this.Mapper.Map<TripEditInputModel>(trip);
             viewModel.AddressPickUpSelectList = this.TripProvider.GetAddressPickUpSelectList();
-            viewModel.LeaftAvailabeSeatsSelectList = this.TripProvider.GetleftAvailableSeatsSelectList(trip.Id);
+            viewModel.LeaftAvailabeSeatsSelectList = this.TripProvider.GetleftAvailableSeatsSelectList(trip);
 
             return this.View(viewModel);
         }
@@ -191,6 +196,13 @@
                 usernamesToBeRemoved);
 
             return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = trip.From.Name, area = "" });
+        }
+
+        public ActionResult Delete(int tripId)
+        {
+            var userId = this.User.Identity.GetUserId();
+            this.TripServices.Delete(tripId, userId);
+            return this.RedirectToAction("List");
         }
     }
 }

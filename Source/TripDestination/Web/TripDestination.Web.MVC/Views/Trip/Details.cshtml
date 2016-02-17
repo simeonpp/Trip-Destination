@@ -82,12 +82,13 @@
                                 @if (Model.CurrectUserIsDriver)
                                 {
                                     @*Check for pending users*@
-                                    int pendingApprovePassengersCount = Model.PendingApprovePassengers.Count();
-                                
+                                int pendingApprovePassengersCount = Model.PendingApprovePassengers.Count();
+
+                                <div class="tripMessage">You have <span id="pendingApprovePassengersCount">@pendingApprovePassengersCount</span> pending users waiting to join your trip.</div>
+
                                     if (pendingApprovePassengersCount > 0)
                                     {
                                         <div class="row col-md-12">
-                                            <div class="tripMessage">You have @pendingApprovePassengersCount pending users waiting to join your trip.</div>
                                             <ul class="pendingUsersUl">
                                                 @foreach (var pendingUser in Model.PendingApprovePassengers)
                                                 {
@@ -107,13 +108,23 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-3" data-username="@pendingUser.User.UserName">
                                                             <div class="approvePassengerJoinRequest button">Approve</div>
-                                                            <div class="disapprovePassengerJoinRequestbutton2">Disapprove</div>
+                                                            <div class="disapprovePassengerJoinRequest button2">Disapprove</div>
                                                         </div>
                                                     </li>
                                                 }
                                             </ul>
+
+                                            <script id="passengerLiTemplate" type="text/x-handlebars-template">
+                                                <li>
+                                                    <a href="{{ userProfileLink }}">
+                                                        <div class="image" style='background-image: url("{{ imageSrc }}")'></div>
+                                                        <div class="firstName">{{ firstName }}</div>
+                                                        <div class="lastName">{{ lastName }}</div>
+                                                    </a>
+                                                </li>
+                                            </script>
                                         </div>
                                     }
 
@@ -122,7 +133,11 @@
                                         <a id="editTripButton" href="@Url.Action("Edit", "Trip", new { id = Model.Id })" class="button2">Edit trip</a>
                                     </div>
                                     <div class="halfTableCell">
-                                        <a id="deleteTripButton" href="#" class="button">Delete trip</a>
+                                        @using (Html.BeginForm("Delete", "Trip", FormMethod.Post))
+                                        {
+                                            @Html.TextBox("tripId", Model.Id, new { hidden = "hidden" })
+                                            <input id="deleteTripButton" class="button" type="submit" value="Delete trip" />
+                                        }                                                                                
                                     </div>
                                 }
                                 else
@@ -180,6 +195,7 @@
                         </div>
                     }
                 </article>
+
             </section>
 
             <section id="passengersSection">
@@ -190,10 +206,11 @@
                 <h1>Passengers (<span id="passengersCount">@passengersCount</span>)</h1>
                 <h2>Passengers on board</h2>
                 <article class="padding">
-                    @if (passengersCount > 0)
-                    {
-                        <ul id="passengersList" class="passengersUl">
-                            @foreach (var passenger in Model.Passengers)
+                    @*Has to be outside if statement because it has to be there when drive approves first passenger*@ 
+                    <ul id="passengersList" class="passengersUl">
+                        @if (passengersCount > 0)
+                        {
+                            foreach (var passenger in Model.Passengers)
                             {
                                 <li>
                                     <a href="#">
@@ -203,12 +220,13 @@
                                     </a>
                                 </li>
                             }
-                        </ul>
-                    }
-                    else
-                    {
-                        <p class="notLoginMessage">No passengers joined to this trip yet.</p>
-                    }
+                        }
+                        else
+                        {
+                            <p class="notLoginMessage">No passengers joined to this trip yet.</p>
+                        }
+
+                    </ul>
                 </article>
             </section>
 

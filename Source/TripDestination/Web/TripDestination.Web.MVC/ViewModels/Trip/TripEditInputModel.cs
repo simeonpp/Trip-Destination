@@ -7,7 +7,10 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
-    public class TripEditInputModel : IMapFrom<Trip>
+    using AutoMapper;
+    using System.Linq;
+
+    public class TripEditInputModel : IMapFrom<Trip>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -47,8 +50,16 @@
         [UIHint("TextArea")]
         public string Description { get; set; }
 
-        public ICollection<PassengerTrip> Passengers { get; set; }
+        public ICollection<PassengerTripEditInputModel> Passengers { get; set; }
 
         public string UsernamesToBeRemoved { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<Trip, TripEditInputModel>("Passengers")
+                .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers
+                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)
+                ));
+        }
     }
 }
