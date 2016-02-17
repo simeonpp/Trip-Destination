@@ -102,42 +102,4 @@
         var $span = $('#pendingApprovePassengersCount');
         $span.text(newCount);
     }
-
-    function executeAJAXRequest() {
-        var promise = new Promise(function (resolve, reject) {
-            var response = {
-                status: true,
-                data: {
-                    firstName: "Borko",
-                    lastName: "Borkov",
-                    imageSrc: "http://wowslider.com/sliders/demo-85/data1/images/southtyrol350698.jpg",
-                    userUrl: "http://www.google.com"
-                }
-            };
-
-            resolve(response);
-        });
-
-        return promise;
-    }
-
-    function executeAJAXRemoveRequest() {
-        var promise = new Promise(function (resolve, reject) {
-            var response = {
-                status: true
-            };
-
-            resolve(response);
-        });
-
-        return promise;
-    }
-
-    function executeAJAXCheckForSeatsAvailability() {
-        var promise = new Promise(function (resolve, reject) {
-            resolve({ status: true });
-        });
-
-        return promise;
-    }
 });

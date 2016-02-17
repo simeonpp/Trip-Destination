@@ -47,7 +47,8 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/trip-detailed").Include(
                 "~/Assets/javascript/src/once/trip-detailed-join-request.js",
                 "~/Assets/javascript/src/once/trip-detailed-add-comment.js",
-                "~/Assets/javascript/src/once/trip-detailed-approve-join-request.js"));
+                "~/Assets/javascript/src/once/trip-detailed-approve-join-request.js",
+                "~/Assets/javascript/src/once/load-more-comments.js"));
 
 
             // BundleTable.EnableOptimizations = true;

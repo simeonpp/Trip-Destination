@@ -265,7 +265,12 @@
 
                         if (Model.HasMoreComment)
                         {
-                            <div id="loadMoreTripComments" class="button" data-offset="@WebApplicationConstants.CommentsOfset">Load more</div>
+                            <div id="loadMoreTripComments"
+                                 class="loadMoreComments button"
+                                 data-offset="@WebApplicationConstants.CommentsOfset"
+                                 data-ajaxUrl="/TripAjax/LoadComments">
+                                Load more
+                            </div>
                         }
                     }
                     else

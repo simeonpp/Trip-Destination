@@ -58,5 +58,10 @@
             var serviceResponse = this.tripServices.DisapproveJoinRequest(tripId, username, userId);
             return this.Json(serviceResponse);
         }
+
+        public ActionResult LoadComments()
+        {
+
+        }
     }
 }
