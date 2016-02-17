@@ -58,5 +58,10 @@
         {
             this.Context.SaveChanges();
         }
+
+        public void Reload(T entity)
+        {
+            this.Context.Entry<T>(entity).Reload();
+        }
     }
 }
