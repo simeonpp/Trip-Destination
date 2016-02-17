@@ -79,7 +79,8 @@
 
     function addUserToPassengersList(data) {
         var $passengersCount = $('#passengersCount'),
-            $leftAvailableSeats = $('#availableSeats');
+            $leftAvailableSeats = $('#availableSeats'),
+            $fullTripDetailsAvailableSeats = $('#fullTripDetailsAvailableSeats');
 
         var sourceTemplate = $("#passengerLiTemplate").html();
         var template = Handlebars.compile(sourceTemplate);
@@ -94,6 +95,7 @@
 
         $passengersCount.text(data.PassengersCount);
         $leftAvailableSeats.text(data.AvailableSeatsCount);
+        $fullTripDetailsAvailableSeats.text(data.AvailableSeatsCount);
     }
 
     function updatePendingApprovePassengersCount(newCount) {
