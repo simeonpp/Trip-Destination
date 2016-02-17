@@ -45,6 +45,8 @@
 
         BaseResponseAjaxModel JoinRequest(int tripId, string userId);
 
-        bool CheckIfUserHasPendingRequest(int tripId);
+        BaseResponseAjaxModel LeaveTrip(int tripId, string userId);
+
+        bool CheckIfUserHasPendingRequest(int tripId, string userId);
     }
 }

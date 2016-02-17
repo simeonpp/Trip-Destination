@@ -16,10 +16,19 @@
 
         [Authorize]
         [HttpPost]
-        public ActionResult JoinRequest(int tripid)
+        public ActionResult JoinRequest(int tripId)
         {
             string userId = this.User.Identity.GetUserId();
-            var serviceResponse = this.tripServices.JoinRequest(tripid, userId);
+            var serviceResponse = this.tripServices.JoinRequest(tripId, userId);
+            return this.Json(serviceResponse);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult LeaveTrip(int tripId)
+        {
+            string userId = this.User.Identity.GetUserId(); ;
+            var serviceResponse = this.tripServices.LeaveTrip(tripId, userId);
             return this.Json(serviceResponse);
         }
     }

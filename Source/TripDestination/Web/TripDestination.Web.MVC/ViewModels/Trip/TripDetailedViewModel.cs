@@ -5,8 +5,10 @@
     using TripDestination.Data.Models;
     using System;
     using System.Collections.Generic;
+    using AutoMapper;
+    using System.Linq;
 
-    public class TripDetailedViewModel : IMapFrom<Trip>
+    public class TripDetailedViewModel : IMapFrom<Trip>, IHaveCustomMappings
     {
         public bool CurrectUserIsDriver { get; set; }
 
@@ -45,5 +47,11 @@
         public IEnumerable<Comment> Comments { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<Trip, TripDetailedViewModel>("Passengers")
+                .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers.Where(p => p.Approved == true && p.IsDeleted == false)));
+        }
     }
 }

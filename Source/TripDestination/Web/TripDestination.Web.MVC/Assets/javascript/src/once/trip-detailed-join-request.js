@@ -1,6 +1,9 @@
 ﻿$().ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+
     var $tripActionWrap = $('#tripActionWrap'),
-        $tripMessage = $('#tripMessage');
+        $tripMessage = $('#tripMessage'),
+        $availableSeats = $('#availableSeats');
 
     $('body').on('click', '#joinTripButton', function () {
         var $joinTripButton = $('#joinTripButton');
@@ -9,7 +12,7 @@
             type: "POST",
             url: '/TripAjax/JoinRequest',
             data: {
-                tripid: 2
+                tripid: tripId
             },
             success: function (response) {
                 $joinTripButton.remove();
@@ -32,23 +35,28 @@
     $('body').on('click', '#recallJoinTripButton', function () {
         var $recallJoinTripButton = $('#recallJoinTripButton');
 
-        executeAJAXRecallJoinTripRequest()
-            .then(function (response) {
+        $.ajax({
+            type: "POST",
+            url: '/TripAjax/LeaveTrip',
+            data: {
+                tripid: tripId
+            },
+            success: function (response) {
                 $recallJoinTripButton.remove();
 
-                if (response.status) {
+                if (response.Status) {
                     removePendingMessage();
                     addJoinTripButton();
                     toastr.success("You have successfully recall your join trip request.");
                 } else {
-                    if (response.error && response.error.message) {
-                        toastr.error(response.error.message);
+                    if (response.Data) {
+                        toastr.error(response.Data);
                     } else {
-                        // Possible the drive has already approved his join request
-                        location.reload();
+                        toastr.error("Unable to leave this trip.");
                     }
                 }
-            })
+            }
+        })
     });
 
     function addPendingMessage() {
@@ -63,7 +71,6 @@
 
     function removePendingMessage() {
         $tripMessage.removeClass('tripInfoMessage');
-        $tripMessage.addClass('tripSuccessMessage');
         $tripMessage.text('');
     }
 
@@ -79,44 +86,5 @@
         var template = Handlebars.compile(sourceTemplate);
         var renderedTemplateHTML = template({});
         $tripActionWrap.append(renderedTemplateHTML);
-    }
-
-    function executeAJAXJoinTripRequest() {
-        var promise = new Promise(function (resolve, reject) {
-            var responseSuccess = {
-                status: true
-            };
-
-            var responseFailWithMessage = {
-                status: false,
-                error: {
-                    message: "No available spaces"
-                }
-            };
-
-            resolve(responseSuccess);
-        });
-
-        return promise;
-    }
-
-    function executeAJAXRecallJoinTripRequest() {
-        var promise = new Promise(function (resolve, reject) {
-            var responseSuccess = {
-                status: true
-            };
-
-            var responseFailWithMessage = {
-                status: false,
-                error: {
-                    message: "You need to send join trip request first."
-                    // another option here is to be approved, handle?? refresh page
-                }
-            };
-
-            resolve(responseSuccess);
-        });
-
-        return promise;
     }
 })

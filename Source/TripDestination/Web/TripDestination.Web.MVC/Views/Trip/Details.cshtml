@@ -26,7 +26,7 @@
                         <li class="col-md-4">
                             <div class="description">Available seats</div>
                             <div class="icon"><img src="images/seat-icon.png" alt="Available seats icon"></div>
-                            <div class="actualInfo">@Model.AvailableSeats</div>
+                            <div id="availableSeats" class="actualInfo">@Model.AvailableSeats</div>
                         </li>
                         <li class="col-md-4">
                             <div class="description">Status</div>
@@ -115,13 +115,32 @@
                                 }
                                 else
                                 {
+                                    <script>
+                                        var tripId = @Model.Id;
+                                    </script>
+
                                     if (Model.CurrentUserIsWaitingJoinRequest)
                                     {
+                                        <div id="tripMessage">
+                                            Pending join trip request...
+                                            <span class="glyphicon glyphicon-info-sign"
+                                                  data-toggle="tooltip"
+                                                  title="Please wait while the driver of this trip approve your join request."></span>
+                                        </div>
 
+                                        <div id="tripActionWrap" class="halfTableCell">
+                                            <div id="recallJoinTripButton" class="button">Recall trip join request</div>
+                                        </div>
+                                        <div class="halfTableCell">
+                                            <div id="likeTripButton">
+                                                <div class="likeButton"></div>
+                                            </div>
+                                        </div>
                                     }
-                                    else
+
+                                    if (Model.AvailableSeats > 0 && !Model.CurrentUserIsWaitingJoinRequest)
                                     {
-                                        <div class="tripMessage"></div>
+                                        <div id="tripMessage"></div>
 
                                         <div id="tripActionWrap" class="halfTableCell">
                                             <div id="joinTripButton" class="button">Join this trip</div>
@@ -131,22 +150,22 @@
                                                 <div class="likeButton"></div>
                                             </div>
                                         </div>
-
-                                        <script id="pendingJoinRequestTemplate" type="text/x-handlebars-template">
-                                            Pending join trip request...
-                                            <span class="glyphicon glyphicon-info-sign"
-                                                  data-toggle="tooltip"
-                                                  title="Please wait while the driver of this trip approve your join request.">XX</span>
-                                        </script>
-
-                                        <script id="recallJoinTripRequestButtonTemplate" type="text/x-handlebars-template">
-                                            <div id="recallJoinTripButton" class="button">Recall trip join request</div>
-                                        </script>
-
-                                        <script id="joinTripRequestButtonTemplate" type="text/x-handlebars-template">
-                                            <div id="joinTripButton" class="button">Join this trip</div>
-                                        </script>
                                     }
+
+                                    <script id="pendingJoinRequestTemplate" type="text/x-handlebars-template">
+                                        Pending join trip request...
+                                        <span class="glyphicon glyphicon-info-sign"
+                                              data-toggle="tooltip"
+                                              title="Please wait while the driver of this trip approve your join request."></span>
+                                    </script>
+
+                                    <script id="recallJoinTripRequestButtonTemplate" type="text/x-handlebars-template">
+                                        <div id="recallJoinTripButton" class="button">Recall trip join request</div>
+                                    </script>
+
+                                    <script id="joinTripRequestButtonTemplate" type="text/x-handlebars-template">
+                                        <div id="joinTripButton" class="button">Join this trip</div>
+                                    </script>
                                 }
                             </div> @*end #buttonsAction*@
 
@@ -162,7 +181,7 @@
 
                 <h1>Passengers (<span id="passengersCount">@passengersCount</span>)</h1>
                 <h2>Passengers on board</h2>
-                <article class="padding">                    
+                <article class="padding">
                     @if (passengersCount > 0)
                     {
                         <ul id="passengersList" class="passengersUl">
@@ -180,7 +199,7 @@
                     }
                     else
                     {
-                        <p>No passengers joined to this trip yet.</p>
+                        <p class="notLoginMessage">No passengers joined to this trip yet.</p>
                     }
                 </article>
             </section>
@@ -221,7 +240,7 @@
                     else
                     {
                         <p class="notLoginMessage">No added comments yet.</p>
-                    }                    
+                    }
 
                     <div id="addCommentWrap">
                         <h5>Add comment</h5>
@@ -307,13 +326,13 @@
                     </ul>
 
                     <div id="userCommentsWrap">
-                        @{ 
+                        @{
                             int userCommentsCount = 0;
                         }
 
                         <h5>Comments (@userCommentsCount)</h5>
                         <h6>Latest comments about Ivaylo</h6>
-                        
+
                         <div id="loadMoreUserComments" class="button">Load more</div>
                     </div>
 
@@ -357,7 +376,7 @@
                     </div>
 
                     <div id="carPhotosWrap">
-                        
+
                     </div>
                 </article>
             </section>
@@ -405,7 +424,8 @@
                         </li>
                         <li>
                             <div class="labelInfo">Price</div>
-                            <div class="textInfo">@Model.Price
+                            <div class="textInfo">
+                                @Model.Price
                             </div>
                         </li>
                         <li>
@@ -429,5 +449,5 @@
 
 
 @section scripts {
-    @Scripts.Render("~/bundles/trip-detailed")    
+    @Scripts.Render("~/bundles/trip-detailed")
 }

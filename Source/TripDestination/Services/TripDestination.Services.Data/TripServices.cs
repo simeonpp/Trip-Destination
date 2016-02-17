@@ -149,10 +149,26 @@
         public BaseResponseAjaxModel JoinRequest(int tripId, string userId)
         {
             var response = new BaseResponseAjaxModel();
-
             var dbTrip = this.GetById(tripId);
+
+            if (dbTrip == null)
+            {
+                response.Data = "No such trip";
+                return response;
+            }
+
+            bool tripHasAvailableSeats = dbTrip.AvailableSeats > 0;
+
+            if (!tripHasAvailableSeats)
+            {
+                response.Status = false;
+                response.Data = "Sorry, no available seats left.";
+
+                return response;
+            }
+
             bool currentPassengerAlreadyHasJoinRequest = dbTrip.Passengers
-                .Where(p => p.UserId == userId)
+                .Where(p => p.UserId == userId && p.IsDeleted == false)
                 .FirstOrDefault() 
                 != null ? true : false;
 
@@ -175,13 +191,54 @@
             this.tripRepos.Save();
 
             response.Status = true;
-
             return response;
         }
 
-        public bool CheckIfUserHasPendingRequest(int tripId)
+        public BaseResponseAjaxModel LeaveTrip(int tripId, string userId)
         {
-            throw new NotImplementedException();
+            var response = new BaseResponseAjaxModel();
+            var dbTrip = this.GetById(tripId);
+
+            if (dbTrip == null)
+            {
+                response.Data = "No such trip";
+                return response;
+            }
+
+            var passengerTrip = dbTrip.Passengers
+                .Where(p => p.UserId == userId && p.IsDeleted == false)
+                .FirstOrDefault();
+
+            if (passengerTrip == null)
+            {
+                response.Status = false;
+                response.Data = "You first need to send join request.";
+
+                return response;
+            }
+
+            passengerTrip.IsDeleted = true;
+            this.tripRepos.Save();
+
+            response.Status = true;
+            return response;
+
+        }
+
+        public bool CheckIfUserHasPendingRequest(int tripId, string userId)
+        {
+            var dbTrip = this.GetById(tripId);
+
+            if (dbTrip != null)
+            {
+                bool hasPendingRequest = dbTrip.Passengers
+                    .Where(p => p.UserId == userId && p.Approved == false && p.IsDeleted == false)
+                    .Any();
+
+                return hasPendingRequest;
+            }
+
+            return false;
         }
     }
 }

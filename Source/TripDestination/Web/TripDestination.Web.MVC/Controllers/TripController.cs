@@ -129,8 +129,9 @@
 
             if (this.User.Identity.IsAuthenticated)
             {
+                var userId = this.User.Identity.GetUserId();
                 viewModel.CurrectUserIsDriver = trip.Driver.Id == this.User.Identity.GetUserId();
-                viewModel.CurrentUserIsWaitingJoinRequest = false;
+                viewModel.CurrentUserIsWaitingJoinRequest = this.TripServices.CheckIfUserHasPendingRequest(id, userId);
             }
 
             return this.View(viewModel);
