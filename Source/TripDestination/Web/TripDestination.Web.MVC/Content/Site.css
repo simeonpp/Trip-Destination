@@ -865,6 +865,9 @@ ul.passengersUl li .lastName {
   text-align: left !important;
   padding-bottom: 20px;
 }
+#register #driverAdditionalWrap {
+  display: none;
+}
 #tripList article#filterArticleWrap {
   height: 246px;
 }
