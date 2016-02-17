@@ -7,12 +7,14 @@
     using System.Collections.Generic;
     using AutoMapper;
     using System.Linq;
-
+    using Common.Infrastructure.Constants;
     public class TripDetailedViewModel : IMapFrom<Trip>, IHaveCustomMappings
     {
         public bool CurrectUserIsDriver { get; set; }
 
         public bool CurrentUserIsWaitingJoinRequest { get; set; }
+
+        public bool HasMoreComment { get; set; }
 
         public int Id { get; set; }
 
@@ -51,7 +53,16 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Trip, TripDetailedViewModel>("Passengers")
-                .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers.Where(p => p.Approved == true && p.IsDeleted == false)));
+                .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers
+                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)
+                ));
+
+            configuration.CreateMap<Trip, TripDetailedViewModel>("Comments")
+                .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
+                                                                        .Where(c => c.IsDeleted == false)
+                                                                        .OrderByDescending(c => c.CreatedOn)
+                                                                        .Take(WebApplicationConstants.CommentsOfset)
+                ));
         }
     }
 }

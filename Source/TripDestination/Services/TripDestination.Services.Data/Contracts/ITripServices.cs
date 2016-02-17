@@ -48,5 +48,7 @@
         BaseResponseAjaxModel LeaveTrip(int tripId, string userId);
 
         bool CheckIfUserHasPendingRequest(int tripId, string userId);
+
+        bool CheckIfTripHasMoreCommentsToLoad(int tripId, int currentLoadedComments);
     }
 }

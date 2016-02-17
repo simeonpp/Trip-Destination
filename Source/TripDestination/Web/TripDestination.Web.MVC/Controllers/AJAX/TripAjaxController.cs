@@ -31,5 +31,7 @@
             var serviceResponse = this.tripServices.LeaveTrip(tripId, userId);
             return this.Json(serviceResponse);
         }
+
+
     }
 }

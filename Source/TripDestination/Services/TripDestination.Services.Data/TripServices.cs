@@ -240,5 +240,18 @@
 
             return false;
         }
+
+        public bool CheckIfTripHasMoreCommentsToLoad(int tripId, int currentLoadedComments)
+        {
+            var dbTrip = this.GetById(tripId);
+
+            if (dbTrip != null)
+            {
+                var result = (dbTrip.Comments.Count - currentLoadedComments) > 0 ? true : false;
+                return result;
+            }
+
+            return false;
+        }
     }
 }

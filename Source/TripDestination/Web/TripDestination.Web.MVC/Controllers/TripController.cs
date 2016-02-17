@@ -15,6 +15,7 @@
     using System.Net;
     using System.Net.Http;
     using System.Web.Script.Serialization;
+    using Common.Infrastructure.Constants;
     public class TripController : BaseController
     {
         public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IDateProvider dateProvider, ITripProvider tripProvider)
@@ -132,6 +133,7 @@
                 var userId = this.User.Identity.GetUserId();
                 viewModel.CurrectUserIsDriver = trip.Driver.Id == this.User.Identity.GetUserId();
                 viewModel.CurrentUserIsWaitingJoinRequest = this.TripServices.CheckIfUserHasPendingRequest(id, userId);
+                viewModel.HasMoreComment = this.TripServices.CheckIfTripHasMoreCommentsToLoad(id, WebApplicationConstants.CommentsOfset);
             }
 
             return this.View(viewModel);

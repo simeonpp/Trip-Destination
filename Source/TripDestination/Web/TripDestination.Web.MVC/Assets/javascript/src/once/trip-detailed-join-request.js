@@ -2,8 +2,7 @@
     $('[data-toggle="tooltip"]').tooltip();
 
     var $tripActionWrap = $('#tripActionWrap'),
-        $tripMessage = $('#tripMessage'),
-        $availableSeats = $('#availableSeats');
+        $tripMessage = $('#tripMessage');
 
     $('body').on('click', '#joinTripButton', function () {
         var $joinTripButton = $('#joinTripButton');

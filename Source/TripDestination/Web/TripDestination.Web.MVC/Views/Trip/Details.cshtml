@@ -209,7 +209,7 @@
                     int commentsCount = Model.Comments.Count();
                 }
 
-                <h1>COMMENTS (@commentsCount)</h1>
+                <h1>COMMENTS (<span id="commentsCount">@commentsCount</span>)</h1>
                 <h2>Leave your comment about this trip</h2>
                 <article>
                     @if (commentsCount > 0)
@@ -236,6 +236,11 @@
                                 </li>
                             }
                         </ul>
+
+                        @if (Model.HasMoreComment)
+                        {
+                            <div id="loadMoreTripComments" class="button" data-offset="@WebApplicationConstants.CommentsOfset">Load more</div>
+                        }
                     }
                     else
                     {
@@ -256,7 +261,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <input type="reset" class="button2" value="Cancel">
-                                        <input type="button" class="button" value="Add comment">
+                                        <input id="addNewCommentButton" type="button" class="button" value="Add comment">
                                     </div>
                                 </div>
                             </form>
