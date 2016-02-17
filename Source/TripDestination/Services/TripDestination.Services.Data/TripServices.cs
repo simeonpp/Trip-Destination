@@ -276,9 +276,9 @@
 
             dbTrip.Comments.Add(comment);
             this.tripRepos.Save();
+            this.tripRepos.Reload(dbTrip);
 
-            var updatedDbTrip = this.GetById(tripId);
-            var dbComment = updatedDbTrip.Comments
+            var dbComment = dbTrip.Comments
                 .Where(c => c.TripId == tripId && c.AuthorId == userId && c.IsDeleted == false)
                 .OrderByDescending(c => c.CreatedOn)
                 .FirstOrDefault();

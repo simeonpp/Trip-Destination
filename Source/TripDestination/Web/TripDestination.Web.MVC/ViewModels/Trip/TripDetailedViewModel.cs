@@ -46,6 +46,8 @@
 
         public IEnumerable<PassengerTrip> Passengers { get; set; }
 
+        public IEnumerable<PassengerTrip> PendingApprovePassengers { get; set; }
+
         public IEnumerable<TripComment> Comments { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -62,6 +64,11 @@
                                                                         .Where(c => c.IsDeleted == false)
                                                                         .OrderByDescending(c => c.CreatedOn)
                                                                         .Take(WebApplicationConstants.CommentsOfset)
+                ));
+
+            configuration.CreateMap<Trip, TripDetailedViewModel>("PendingApprovePassengers")
+                .ForMember(x => x.PendingApprovePassengers, opt => opt.MapFrom(x => x.Passengers
+                                                                        .Where(p => p.Approved == false && p.IsDeleted == false)
                 ));
         }
     }

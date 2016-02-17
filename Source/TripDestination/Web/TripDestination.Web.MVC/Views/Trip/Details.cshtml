@@ -81,40 +81,48 @@
 
                                 @if (Model.CurrectUserIsDriver)
                                 {
+                                    @*Check for pending users*@
+                                    int pendingApprovePassengersCount = Model.PendingApprovePassengers.Count();
+                                
+                                    if (pendingApprovePassengersCount > 0)
+                                    {
+                                        <div class="row col-md-12">
+                                            <div class="tripMessage">You have @pendingApprovePassengersCount pending users waiting to join your trip.</div>
+                                            <ul class="pendingUsersUl">
+                                                @foreach (var pendingUser in Model.PendingApprovePassengers)
+                                                {
+                                                    <li class="row">
+                                                        <div class="col-md-3">
+                                                            <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="passengerName"><a href="#">@pendingUser.User.FirstName @pendingUser.User.LastName</a></div>
+                                                            <div class="rating">
+                                                                <ul class="ratingUl">
+                                                                    <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                                    <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                                    <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                                    <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                                    <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="approvePassengerJoinRequest button">Approve</div>
+                                                            <div class="disapprovePassengerJoinRequestbutton2">Disapprove</div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+
                                     @*Driver user*@
                                     <div id="tripActionWrap" class="halfTableCell">
                                         <a id="editTripButton" href="@Url.Action("Edit", "Trip", new { id = Model.Id })" class="button2">Edit trip</a>
                                     </div>
                                     <div class="halfTableCell">
                                         <a id="deleteTripButton" href="#" class="button">Delete trip</a>
-                                    </div>
-
-                                    @*Check for pending users*@
-                                    <div class="row">
-                                        <div class="tripMessage">You have 2 pending users waiting to join your trip.</div>
-                                        <ul class="pendingUsersUl">
-                                            <li class="row">
-                                                <div class="col-md-3">
-                                                    <div class="image" style="background-image: url('images/people/6.jpg')"></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="passengerName"><a href="#">Ivaylo Kenov</a></div>
-                                                    <div class="rating">
-                                                        <ul class="ratingUl">
-                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="approvePassengerJoinRequest button">Approve</div>
-                                                    <div class="disapprovePassengerJoinRequestbutton2">Disapprove</div>
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </div>
                                 }
                                 else
