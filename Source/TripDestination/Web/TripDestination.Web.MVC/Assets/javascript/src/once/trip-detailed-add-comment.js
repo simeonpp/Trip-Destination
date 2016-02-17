@@ -22,8 +22,8 @@
                     updateLoadMoreTripCommentsButtonOffset();
                     toastr.success("You comment was successfully added.");
                 } else {
-                    if (response.error && response.error.message) {
-                        toastr.error(response.error.message);
+                    if (response.ErrorMessage) {
+                        toastr.error(response.ErrorMessage);
                     } else {
                         toastr.error("Comment can not be add to this trip. Please contact our team.");
                     }

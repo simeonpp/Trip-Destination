@@ -245,6 +245,7 @@
     <Compile Include="ViewModels\Shared\TodaysStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
+    <Compile Include="ViewModels\Trip\PassengerTripEditInputModel.cs" />
     <Compile Include="ViewModels\Trip\TripDetailedViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripEditInputModel.cs" />
     <Compile Include="ViewModels\Trip\TripInputVIewModel.cs" />
@@ -584,6 +585,7 @@
     <Content Include="Assets\javascript\src\once\custom-date-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-add-comment.js" />
+    <Content Include="Assets\javascript\src\once\trip-detailed-approve-join-request.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-join-request.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

@@ -21,8 +21,8 @@
                     addRecallJoinTripButton();
                     toastr.success("You have successfully send request to join this trip.");
                 } else {
-                    if (response.Data) {
-                        toastr.error(response.Data);
+                    if (response.ErrorMessage) {
+                        toastr.error(response.ErrorMessage);
                     } else {
                         toastr.error("Unable to join trip.");
                     }
@@ -48,8 +48,8 @@
                     addJoinTripButton();
                     toastr.success("You have successfully recall your join trip request.");
                 } else {
-                    if (response.Data) {
-                        toastr.error(response.Data);
+                    if (response.ErrorMessage) {
+                        toastr.error(response.ErrorMessage);
                     } else {
                         toastr.error("Unable to leave this trip.");
                     }
