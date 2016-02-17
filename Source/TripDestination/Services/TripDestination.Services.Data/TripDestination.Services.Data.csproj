@@ -67,6 +67,7 @@
     <Compile Include="Contracts\ITownsServices.cs" />
     <Compile Include="Contracts\ITripServices.cs" />
     <Compile Include="Contracts\IUserServices.cs" />
+    <Compile Include="Contracts\IViewServices.cs" />
     <Compile Include="Models\ApprovedJoinRequestResponseModel.cs" />
     <Compile Include="Models\CommentResponseModel.cs" />
     <Compile Include="Models\LoadedCommentsResponseModel.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="TownsServices.cs" />
     <Compile Include="TripServices.cs" />
     <Compile Include="UserServices.cs" />
+    <Compile Include="ViewServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\TripDestination.Common.Infrastructure\TripDestination.Common.Infrastructure.csproj">

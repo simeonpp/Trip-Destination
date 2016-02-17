@@ -18,10 +18,11 @@
     using Common.Infrastructure.Constants;
     public class TripController : BaseController
     {
-        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IDateProvider dateProvider, ITripProvider tripProvider)
+        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider)
         {
             this.TripServices = tripServices;
             this.StatisticsServices = statisticsServices;
+            this.ViewServices = viewServices;
             this.TownProvider = townProvider;
             this.DateProvider = dateProvider;
             this.TripProvider = tripProvider;
@@ -32,6 +33,8 @@
         public ITownProvider TownProvider { get; set; }
 
         public IStatisticsServices StatisticsServices { get; set; }
+
+        public IViewServices ViewServices { get; set; }
 
         public IDateProvider DateProvider { get; set; }
 
@@ -127,6 +130,9 @@
 
             var viewModel = this.Mapper
                 .Map<TripDetailedViewModel>(trip);
+
+            var ip = this.Request.ServerVariables["REMOTE_ADDR"];
+            this.ViewServices.AddView(trip, ip);
 
             if (this.User.Identity.IsAuthenticated)
             {

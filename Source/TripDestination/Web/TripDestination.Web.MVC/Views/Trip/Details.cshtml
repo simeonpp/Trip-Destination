@@ -60,7 +60,7 @@
                         <li class="col-md-4">
                             <div class="description">Views</div>
                             <div class="icon"><img src="images/view-icon.png" alt="Views icon"></div>
-                            <div class="actualInfo">@Model.Views.Count()</div>
+                            <div class="actualInfo">@Model.ViewsCount</div>
                         </li>
                         <li class="col-md-4">
                             <div class="description">Likes</div>
@@ -559,7 +559,6 @@
     </div>
 
 </div>
-
 
 @section scripts {
     @Scripts.Render("~/bundles/trip-detailed")

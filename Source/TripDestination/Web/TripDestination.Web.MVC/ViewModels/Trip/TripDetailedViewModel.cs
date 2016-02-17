@@ -42,7 +42,7 @@
 
         public DateTime ETA { get; set; }
 
-        public virtual IEnumerable<View> Views { get; set; }
+        public int ViewsCount { get; set; }
 
         public int LikesCount { get; set; }
 
@@ -74,6 +74,9 @@
                 .ForMember(x => x.PendingApprovePassengers, opt => opt.MapFrom(x => x.Passengers
                                                                         .Where(p => p.Approved == false && p.IsDeleted == false)
                 ));
+
+            configuration.CreateMap<Trip, TripDetailedViewModel>("ViewsCount")
+                .ForMember(x => x.ViewsCount, opt => opt.MapFrom(x => x.Views.Count()));
         }
     }
 }

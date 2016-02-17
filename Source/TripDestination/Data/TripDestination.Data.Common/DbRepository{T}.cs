@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Data.Entity;
     using Models;
-    
+
     public class DbRepository<T> : IDbRepository<T>
         where T : BaseModel<int>
     {
