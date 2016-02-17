@@ -46,7 +46,7 @@
 
         public IEnumerable<PassengerTrip> Passengers { get; set; }
 
-        public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<TripComment> Comments { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

@@ -14,7 +14,9 @@
 
         IDbSet<Car> Cars { get; set; }
 
-        IDbSet<Comment> Comments { get; set; }
+        IDbSet<TripComment> TripComments { get; set; }
+
+        IDbSet<UserComment> UserComments { get; set; }
 
         IDbSet<Like> Likes { get; set; }
 

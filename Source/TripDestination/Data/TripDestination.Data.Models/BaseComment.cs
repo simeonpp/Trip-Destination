@@ -2,20 +2,15 @@
 {
     using Common.Models;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using TripDestination.Common.Infrastructure.Constants;
 
-    public class Comment : BaseModel<int>
+
+    public abstract class BaseComment : BaseModel<int>
     {
         [Required]
-        public int TripId { get; set; }
+        public string AuthorId { get; set; }
 
-        public Trip Trip { get; set; }
-
-        [Required]
-        public string UserId { get; set; }
-
-        public User User { get; set; }
+        public User Author { get; set; }
 
         [Required]
         [MinLength(ModelConstants.CommentTextMinLength, ErrorMessage = "Comment text can no be less than 5 symbols long.")]

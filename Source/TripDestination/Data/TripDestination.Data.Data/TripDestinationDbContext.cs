@@ -70,7 +70,9 @@
 
         public virtual IDbSet<Car> Cars { get; set; }
 
-        public virtual IDbSet<Comment> Comments { get; set; }
+        public virtual IDbSet<TripComment> TripComments { get; set; }
+
+        public virtual IDbSet<UserComment> UserComments { get; set; }
 
         public virtual IDbSet<Like> Likes { get; set; }
 

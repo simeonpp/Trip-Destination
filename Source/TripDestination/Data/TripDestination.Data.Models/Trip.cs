@@ -10,7 +10,7 @@
     {
         private ICollection<Rating> ratings;
 
-        private ICollection<Comment> comments;
+        private ICollection<TripComment> comments;
 
         private ICollection<Like> likes;
 
@@ -21,7 +21,7 @@
         public Trip()
         {
             this.ratings = new HashSet<Rating>();
-            this.comments = new HashSet<Comment>();
+            this.comments = new HashSet<TripComment>();
             this.likes = new HashSet<Like>();
             this.views = new HashSet<View>();
             this.passengers = new HashSet<PassengerTrip>();
@@ -77,7 +77,7 @@
             set { this.ratings = value; }
         }
 
-        public virtual ICollection<Comment> Comments
+        public virtual ICollection<TripComment> Comments
         {
             get { return this.comments; }
             set { this.comments = value; }

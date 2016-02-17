@@ -6,9 +6,8 @@
     using System.Security.Claims;
     using Microsoft.AspNet.Identity;
     using TripDestination.Common.Infrastructure.Constants;
-    using Common.Models;
-    using System.Collections;
     using System.Collections.Generic;
+
     public class User : IdentityUser
     {
         private ICollection<Trip> trips;
