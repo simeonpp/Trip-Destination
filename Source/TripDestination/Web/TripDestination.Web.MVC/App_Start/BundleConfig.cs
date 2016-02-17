@@ -45,7 +45,8 @@ namespace TripDestination.Web.MVC
                 "~/Assets/javascript/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/trip-detailed").Include(
-                "~/Assets/javascript/src/once/trip-detailed-join-request.js"));
+                "~/Assets/javascript/src/once/trip-detailed-join-request.js",
+                "~/Assets/javascript/src/once/trip-detailed-add-comment.js"));
 
 
             // BundleTable.EnableOptimizations = true;

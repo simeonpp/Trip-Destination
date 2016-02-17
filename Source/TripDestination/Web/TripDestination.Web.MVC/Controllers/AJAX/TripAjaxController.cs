@@ -32,6 +32,11 @@
             return this.Json(serviceResponse);
         }
 
-
+        public ActionResult AddComments(int tripId, string commentText)
+        {
+            string userId = this.User.Identity.GetUserId();
+            var serviceResponse = this.tripServices.AddComment(tripId, userId, commentText);
+            return this.Json(serviceResponse);
+        }
     }
 }

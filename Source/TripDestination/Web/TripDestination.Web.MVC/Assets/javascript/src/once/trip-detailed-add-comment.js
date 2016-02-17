@@ -7,11 +7,18 @@
     $addNewCommentButton.on('click', function () {
         var commentText = $commentArea.val();
 
-        executeAjaxAddCommentRequest()
-            .then(function (response) {
-                if (response.status) {
-                    addCommentToCommentsList(response.data.comment, false);
-                    updateCommentsCount(response.data.totalComment);
+        $.ajax({
+            type: "POST",
+            url: '/TripAjax/AddComments',
+            data: {
+                tripid: tripId,
+                commentText: commentText
+            },
+            success: function (response) {
+                if (response.Status) {
+                    $commentArea.val('');
+                    addCommentToCommentsList(response.Data, false);
+                    updateCommentsCount(response.Data.CommentTotalCount);
                     updateLoadMoreTripCommentsButtonOffset();
                     toastr.success("You comment was successfully added.");
                 } else {
@@ -21,7 +28,8 @@
                         toastr.error("Comment can not be add to this trip. Please contact our team.");
                     }
                 }
-            })
+            }
+        })
     });
 
     function addCommentToCommentsList(comment, append) {
@@ -32,12 +40,12 @@
         var sourceTemplate = $("#commentLiTemplate").html();
         var template = Handlebars.compile(sourceTemplate);
         var context = {
-            firstName: comment.firstName,
-            lastName: comment.lastName,
-            userUrl: comment.userUrl,
-            userImageSrc: comment.userImageSrc,
-            createdOnFormatted: comment.createdOnFormatted,
-            commentText: comment.commentText
+            firstName: comment.FirstName,
+            lastName: comment.LastName,
+            userUrl: comment.UserUrl,
+            userImageSrc: comment.UserImageSrc,
+            createdOnFormatted: comment.CreatedOnFormatted,
+            commentText: comment.CommentText
         };
         var renderedTemplateHTML = template(context);
 

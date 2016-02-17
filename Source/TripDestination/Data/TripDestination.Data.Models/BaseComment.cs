@@ -10,7 +10,7 @@
         [Required]
         public string AuthorId { get; set; }
 
-        public User Author { get; set; }
+        public virtual User Author { get; set; }
 
         [Required]
         [MinLength(ModelConstants.CommentTextMinLength, ErrorMessage = "Comment text can no be less than 5 symbols long.")]

@@ -8,6 +8,8 @@
     using Models;
     using System.Collections.Generic;
     using TripDestination.Common.Infrastructure.Models;
+    using TripDestination.Services.Data.Models;
+
     public class TripServices : ITripServices
     {
         private IDbRepository<Trip> tripRepos;
@@ -169,7 +171,7 @@
 
             bool currentPassengerAlreadyHasJoinRequest = dbTrip.Passengers
                 .Where(p => p.UserId == userId && p.IsDeleted == false)
-                .FirstOrDefault() 
+                .FirstOrDefault()
                 != null ? true : false;
 
             if (currentPassengerAlreadyHasJoinRequest)
@@ -252,6 +254,48 @@
             }
 
             return false;
+        }
+
+        public BaseResponseAjaxModel AddComment(int tripId, string userId, string commentText)
+        {
+            var dbTrip = this.GetById(tripId);
+            var response = new BaseResponseAjaxModel();
+
+            if (dbTrip == null)
+            {
+                response.Data = "No such trip";
+                return response;
+            }
+
+            TripComment comment = new TripComment()
+            {
+                TripId = tripId,
+                AuthorId = userId,
+                Text = commentText
+            };
+
+            dbTrip.Comments.Add(comment);
+            this.tripRepos.Save();
+
+            var updatedDbTrip = this.GetById(tripId);
+            var dbComment = updatedDbTrip.Comments
+                .Where(c => c.TripId == tripId && c.AuthorId == userId && c.IsDeleted == false)
+                .OrderByDescending(c => c.CreatedOn)
+                .FirstOrDefault();
+
+            response.Status = true;
+            response.Data = new CommentResponseModel()
+            {
+                FirstName = dbComment.Author.FirstName,
+                LastName = dbComment.Author.LastName,
+                UserUrl = "www.google.com", // TODO: Implement URL
+                UserImageSrc = "http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg", // TODO: Implement imageSrc
+                CreatedOnFormatted = dbComment.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
+                CommentText = dbComment.Text,
+                CommentTotalCount = dbTrip.Comments.Count
+            };
+
+            return response;
         }
     }
 }

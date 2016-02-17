@@ -1,5 +1,9 @@
 ﻿@model TripDetailedViewModel
 
+<script>
+    var tripId = @Model.Id;
+</script>
+
 <br />
 <div id="tripDetails">
 
@@ -115,10 +119,6 @@
                                 }
                                 else
                                 {
-                                    <script>
-                                        var tripId = @Model.Id;
-                                    </script>
-
                                     if (Model.CurrentUserIsWaitingJoinRequest)
                                     {
                                         <div id="tripMessage">
@@ -214,7 +214,7 @@
                 <article>
                     @if (commentsCount > 0)
                     {
-                        <ul class="commentsUl">
+                        <ul id="tripCommentsList" class="commentsUl">
                             @foreach (var comment in Model.Comments)
                             {
                                 <li>
@@ -237,7 +237,7 @@
                             }
                         </ul>
 
-                        @if (Model.HasMoreComment)
+                        if (Model.HasMoreComment)
                         {
                             <div id="loadMoreTripComments" class="button" data-offset="@WebApplicationConstants.CommentsOfset">Load more</div>
                         }
@@ -265,6 +265,26 @@
                                     </div>
                                 </div>
                             </form>
+
+                            <script id="commentLiTemplate" type="text/x-handlebars-template">
+                                <li>
+                                    <div class="row noMargins">
+                                        <div class="col-md-2">
+                                            <div class="image" style="background-image: url('{{ userImageSrc }}')"></div>
+                                        </div>
+                                        <div class="commentTextWrap col-md-10">
+                                            <div class="arrow"></div>
+                                            <div class="names">
+                                                <a href="{{ userUrl }}">
+                                                    {{ firstName }} <span class="lastName">{{ lastName }}</span>
+                                                </a>
+                                            </div>
+                                            <div class="date">{{ createdOnFormatted }}</div>
+                                            <div class="commentText">{{ commentText }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </script>
                         }
                         else
                         {

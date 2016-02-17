@@ -50,5 +50,7 @@
         bool CheckIfUserHasPendingRequest(int tripId, string userId);
 
         bool CheckIfTripHasMoreCommentsToLoad(int tripId, int currentLoadedComments);
+
+        BaseResponseAjaxModel AddComment(int tripId, string userId, string commentText);
     }
 }

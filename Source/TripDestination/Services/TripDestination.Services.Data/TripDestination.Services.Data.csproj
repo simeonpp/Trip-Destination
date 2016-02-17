@@ -67,6 +67,7 @@
     <Compile Include="Contracts\ITownsServices.cs" />
     <Compile Include="Contracts\ITripServices.cs" />
     <Compile Include="Contracts\IUserServices.cs" />
+    <Compile Include="Models\CommentResponseModel.cs" />
     <Compile Include="NewsletterServices.cs" />
     <Compile Include="PageServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
