@@ -12,8 +12,6 @@
     {
         private ICollection<Trip> trips;
 
-        private ICollection<View> views;
-
         private ICollection<UserComment> comments;
 
         private ICollection<PassengerTrip> tripsAsPassenger;
@@ -21,7 +19,6 @@
         public User()
         {
             this.trips = new HashSet<Trip>();
-            this.views = new HashSet<View>();
             this.comments = new HashSet<UserComment>();
             this.tripsAsPassenger = new HashSet<PassengerTrip>();
         }
@@ -48,12 +45,6 @@
         {
             get { return this.trips; }
             set { this.trips = value; }
-        }
-
-        public virtual ICollection<View> Views
-        {
-            get { return this.views; }
-            set { this.views = value; }
         }
 
         public virtual ICollection<PassengerTrip> TripsAsPassenger

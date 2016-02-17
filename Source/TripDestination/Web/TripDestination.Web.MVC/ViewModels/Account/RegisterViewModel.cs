@@ -1,7 +1,9 @@
 ﻿namespace TripDestination.Web.MVC.ViewModels.Account
 {
     using Common.Infrastructure.Constants;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public class RegisterViewModel
     {
@@ -22,7 +24,7 @@
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -41,5 +43,9 @@
 
         [Required]
         public string Role { get; set; }
+
+        public virtual string PhoneNumber { get; set; }
+
+        public IEnumerable<SelectListItem> AvailableRoles { get; set; }
     }
 }

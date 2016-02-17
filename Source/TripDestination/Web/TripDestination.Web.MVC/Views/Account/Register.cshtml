@@ -63,15 +63,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @{
-                var rolesSelectList = new List<SelectListItem>()
-                {
-                    new SelectListItem() { Text = RoleConstants.PassengerRole, Value = RoleConstants.PassengerRole, Selected = true  },
-                    new SelectListItem() { Text = RoleConstants.DriverRole, Value = RoleConstants.DriverRole }                    
-                };
-            }
-
-            @Html.DropDownListFor(m => m.Role, rolesSelectList)
+            @Html.DropDownListFor(m => m.Role, Model.AvailableRoles)
         </div>
     </div>
 }

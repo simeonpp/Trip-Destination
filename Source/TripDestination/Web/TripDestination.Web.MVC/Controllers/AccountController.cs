@@ -1,26 +1,26 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using TripDestination.Web.MVC.ViewModels.Account;
-using TripDestination.Data.Models;
-
-namespace TripDestination.Web.MVC.Controllers
+﻿namespace TripDestination.Web.MVC.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using TripDestination.Web.MVC.ViewModels.Account;
+    using TripDestination.Data.Models;
+    using TripDestination.Services.Web.Providers.Contracts;
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IRoleProvider roleProvider;
 
-        public AccountController()
+        public AccountController(IRoleProvider roleProvider)
         {
+            this.roleProvider = roleProvider;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -138,12 +138,10 @@ namespace TripDestination.Web.MVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var rolesSelectList = new System.Collections.Generic.List<SelectListItem>()
-            {
-                new SelectListItem()
-            };
+            var viewModel = new RegisterViewModel();
+            viewModel.AvailableRoles = this.roleProvider.GetPublicUserRoles();
 
-            return View();
+            return View(viewModel);
         }
 
         // POST: /Account/Register
@@ -155,11 +153,11 @@ namespace TripDestination.Web.MVC.Controllers
             if (this.ModelState.IsValid)
             {
                 var user = new User { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Description = model.Description };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent : false, rememberBrowser : false);
-                    UserManager.AddToRole(user.Id, model.Role);
+                    await this.SignInManager.SignInAsync(user, isPersistent : false, rememberBrowser : false);
+                    this.UserManager.AddToRole(user.Id, model.Role);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -422,6 +420,14 @@ namespace TripDestination.Web.MVC.Controllers
             get
             {
                 return this.HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        public IRoleProvider RoleProvider
+        {
+            get
+            {
+                return roleProvider;
             }
         }
 
