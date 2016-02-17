@@ -14,7 +14,9 @@
 
         public bool CurrentUserIsWaitingJoinRequest { get; set; }
 
-        public bool HasMoreComment { get; set; }
+        public bool HasMoreTripComments { get; set; }
+
+        public bool HasMoreUserComments { get; set; }
 
         public int Id { get; set; }
 

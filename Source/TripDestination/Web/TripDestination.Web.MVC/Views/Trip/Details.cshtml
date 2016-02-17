@@ -259,7 +259,7 @@
                             }
                         </ul>
 
-                        if (Model.HasMoreComment)
+                        if (Model.HasMoreTripComments)
                         {
                             <div id="loadMoreTripComments"
                                  class="loadMoreComments button"
@@ -381,13 +381,53 @@
 
                     <div id="userCommentsWrap">
                         @{
-                            int userCommentsCount = 0;
+                            int userCommentsCount = Model.Driver.Comments.Count();
                         }
 
                         <h5>Comments (@userCommentsCount)</h5>
                         <h6>Latest comments about Ivaylo</h6>
 
-                        <div id="loadMoreUserComments" class="button">Load more</div>
+                        @if (userCommentsCount > 0)
+                        {
+                            <ul class="commentsUl">
+                                @foreach (var comment in Model.Driver.Comments)
+                                {
+                                    <li>
+                                        <div class="row noMargins">
+                                            <div class="col-md-2">
+                                                <div class="image" style="background-image: url('images/people/4.jpg')"></div>
+                                            </div>
+                                            <div class="commentTextWrap col-md-10">
+                                                <div class="arrow"></div>
+                                                <div class="names">
+                                                    <a href="#">
+                                                        @comment.Author.FirstName <span class="lastName">@comment.Author.LastName</span>
+                                                    </a>
+                                                </div>
+                                                <div class="date">@comment.FormattedDate</div>
+                                                <div class="commentText">@comment.Text</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p class="notLoginMessage">@Model.Driver.FirstName has no added comments yet.</p>
+                        }
+
+                        @if (Model.HasMoreUserComments)
+                        {
+                            <div id="loadMoreUserComments"
+                                 class="loadMoreComments button"
+                                 data-ajaxUrl="/TripAjax/LoadComments"
+                                 data-offset="@WebApplicationConstants.CommentsOfset"
+                                 data-type="trip"
+                                 data-id="@Model.Id">
+                                Load more
+                            </div>
+                        }
                     </div>
 
                 </article>

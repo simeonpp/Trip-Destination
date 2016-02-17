@@ -14,7 +14,7 @@
 
         public string Description { get; set; }
 
-        public ICollection<UserCommentsViewModel> Comments { get; set; }
+        public ICollection<UserCommentViewModel> Comments { get; set; }
 
         public CarViewModel Car { get; set; }
     }

@@ -133,7 +133,8 @@
                 var userId = this.User.Identity.GetUserId();
                 viewModel.CurrectUserIsDriver = trip.Driver.Id == this.User.Identity.GetUserId();
                 viewModel.CurrentUserIsWaitingJoinRequest = this.TripServices.CheckIfUserHasPendingRequest(id, userId);
-                viewModel.HasMoreComment = this.TripServices.CheckIfTripHasMoreCommentsToLoad(id, WebApplicationConstants.CommentsOfset);
+                viewModel.HasMoreTripComments = this.TripServices.CheckIfTripHasMoreCommentsToLoad(id, WebApplicationConstants.CommentsOfset);
+                viewModel.HasMoreUserComments = false;
             }
 
             return this.View(viewModel);

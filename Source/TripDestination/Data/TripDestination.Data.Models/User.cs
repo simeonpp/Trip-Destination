@@ -22,7 +22,7 @@
         {
             this.trips = new HashSet<Trip>();
             this.views = new HashSet<View>();
-            this.comments = new HashSet<UserComment>;
+            this.comments = new HashSet<UserComment>();
             this.tripsAsPassenger = new HashSet<PassengerTrip>();
         }
 
