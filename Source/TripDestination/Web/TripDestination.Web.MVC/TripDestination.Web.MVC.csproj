@@ -240,10 +240,14 @@
     <Compile Include="ViewModels\Shared\BaseTripExtentendedModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
+    <Compile Include="ViewModels\Shared\BaseUserViewModel.cs" />
+    <Compile Include="ViewModels\Shared\CarViewModel.cs" />
+    <Compile Include="ViewModels\Shared\ExtendedUserViewModel.cs" />
     <Compile Include="ViewModels\Shared\NavigationViewModel.cs" />
     <Compile Include="ViewModels\Shared\PageViewModel.cs" />
     <Compile Include="ViewModels\Shared\TodaysStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
+    <Compile Include="ViewModels\Shared\UserCommentsViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\Trip\PassengerTripEditInputModel.cs" />
     <Compile Include="ViewModels\Trip\TripDetailedViewModel.cs" />

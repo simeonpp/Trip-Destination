@@ -14,12 +14,15 @@
 
         private ICollection<View> views;
 
+        private ICollection<UserComment> comments;
+
         private ICollection<PassengerTrip> tripsAsPassenger;
 
         public User()
         {
             this.trips = new HashSet<Trip>();
             this.views = new HashSet<View>();
+            this.comments = new HashSet<UserComment>;
             this.tripsAsPassenger = new HashSet<PassengerTrip>();
         }
 
@@ -57,6 +60,12 @@
         {
             get { return this.tripsAsPassenger; }
             set { this.tripsAsPassenger = value; }
+        }
+
+        public virtual ICollection<UserComment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

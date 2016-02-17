@@ -34,7 +34,7 @@
 
         public decimal Price { get; set; }
 
-        public User Driver { get; set; }
+        public ExtendedUserViewModel Driver { get; set; }
 
         public DateTime ETA { get; set; }
 
