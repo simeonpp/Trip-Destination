@@ -48,6 +48,7 @@ namespace TripDestination.Web.MVC
                 "~/Assets/javascript/src/once/trip-detailed-join-request.js",
                 "~/Assets/javascript/src/once/trip-detailed-add-comment.js",
                 "~/Assets/javascript/src/once/trip-detailed-approve-join-request.js",
+                "~/Assets/javascript/src/once/trip-detailed-like.js",
                 "~/Assets/javascript/src/once/load-more-comments.js"));
 
 

@@ -442,5 +442,72 @@
 
             return response;
         }
+
+        public bool CheckIfUserLikedTrip(Trip trip, string userId)
+        {
+            Like like = trip.Likes
+                .Where(l => l.UserId == userId && l.IsDeleted == false)
+                .FirstOrDefault();
+
+            if (like != null)
+            {
+                return like.Value;
+            }
+
+            return false;
+        }
+
+        public BaseResponseAjaxModel LikeDislike(int tripId, string userId, bool value)
+        {
+            var dbTrip = this.GetById(tripId);
+            var response = new BaseResponseAjaxModel();
+
+            if (dbTrip == null)
+            {
+                response.ErrorMessage = "No such trip.";
+                return response;
+            }
+
+            Like like = dbTrip.Likes
+                .Where(l => l.UserId == userId && l.IsDeleted == false)
+                .FirstOrDefault();
+
+            if (like == null)
+            {
+                like = new Like()
+                {
+                    TripId = dbTrip.Id,
+                    UserId = userId,
+                    Value = value
+                };
+
+                dbTrip.Likes.Add(like);
+            }
+            else
+            {
+                like.Value = value;
+            }
+
+            this.tripRepos.Save();
+
+            response.Status = true;
+            response.Data = this.GetLikesCount(dbTrip);
+
+            return response;
+        }
+
+        public int GetLikesCount(Trip trip)
+        {
+            int likes = trip.Likes
+                .Where(l => l.IsDeleted == false && l.Value == true)
+                .Count();
+
+            int dislikes = trip.Likes
+                .Where(l => l.IsDeleted == false && l.Value == false)
+                .Count();
+
+            int likesCount = likes - dislikes;
+            return likesCount;
+        }
     }
 }

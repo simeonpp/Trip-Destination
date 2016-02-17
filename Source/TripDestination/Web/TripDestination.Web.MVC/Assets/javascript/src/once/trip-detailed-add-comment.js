@@ -68,38 +68,4 @@
             $loadMoreTripComments.attr('data-offset', newOffsetValue);
         }
     }
-
-    function executeAjaxAddCommentRequest() {
-        var promise = new Promise(function (resolve, reject) {
-            var responseSuccess = {
-                status: true,
-                data: {
-                    comment: {
-                        firstName: "Strahil",
-                        lastName: "Strahilov",
-                        userUrl: "http://www.google.com",
-                        userImageSrc: "http://media02.hongkiat.com/ww-flower-wallpapers/roundflower.jpg",
-                        createdOnFormatted: "02.01.2016 18:30",
-                        commentText: "lorem lorem lorem lorem loremlorem lorem loremloremlorem lorem"
-                    },
-                    totalComment: 6
-                }
-            };
-
-            var responseFailServer = {
-                status: false
-            };
-
-            var responseFailWithErrorMessage = {
-                status: false,
-                error: {
-                    message: "Comment length can no be less than 10 symbols long."
-                }
-            };
-
-            resolve(responseSuccess);
-        });
-
-        return promise;
-    }
 })

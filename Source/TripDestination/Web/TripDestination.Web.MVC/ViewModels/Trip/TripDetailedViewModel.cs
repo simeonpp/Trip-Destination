@@ -18,6 +18,8 @@
 
         public bool HasMoreUserComments { get; set; }
 
+        public bool CurrentUserLikedTrip { get; set; }
+
         public int Id { get; set; }
 
         public Town From { get; set; }
@@ -42,7 +44,7 @@
 
         public virtual IEnumerable<View> Views { get; set; }
 
-        public virtual IEnumerable<Like> Likes { get; set; }
+        public int LikesCount { get; set; }
 
         public string Description { get; set; }
 

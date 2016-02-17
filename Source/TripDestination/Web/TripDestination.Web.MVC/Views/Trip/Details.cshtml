@@ -65,7 +65,7 @@
                         <li class="col-md-4">
                             <div class="description">Likes</div>
                             <div class="icon"><img src="images/like-icon.png" alt="Likes icon"></div>
-                            <div class="actualInfo"><span id="likesCount">@Model.Likes.Count()</span></div>
+                            <div class="actualInfo"><span id="likesCount">@Model.LikesCount</span></div>
                         </li>
                     </ul>
 
@@ -166,8 +166,27 @@
                                     }
 
                                     <div class="halfTableCell">
-                                        <div id="likeTripButton">
-                                            <div class="likeButton">LikeTOBEREMOVETEXT</div>
+                                        <div id="likeNotLikeButtonsWrap">
+                                            <div id="likeDislikeTripButton" class="likeDislikeTripButton" 
+                                                @if (Model.CurrentUserLikedTrip)
+                                                {
+                                                    <text>data-value="dislike"</text>
+                                                }
+                                                else
+                                                {
+                                                    <text>data-value="like"</text>
+                                                }
+                                                >
+                                                @if (Model.CurrentUserLikedTrip)
+                                                {
+                                                    @:Dislike
+                                                }
+                                                else
+                                                {
+                                                    @:Like
+                                                }
+                                            </div>
+                                            TOBEREMOVED
                                         </div>
                                     </div>
 

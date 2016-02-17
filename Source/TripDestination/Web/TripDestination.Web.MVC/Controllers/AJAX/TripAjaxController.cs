@@ -86,5 +86,14 @@
 
             return this.Json(serviceResponse, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult LikeDislikeTrip(int tripId, bool value)
+        {
+            var userId = this.User.Identity.GetUserId();
+            var serviceResponse= this.tripServices.LikeDislike(tripId, userId, value);
+            return this.Json(serviceResponse);
+        }
     }
 }

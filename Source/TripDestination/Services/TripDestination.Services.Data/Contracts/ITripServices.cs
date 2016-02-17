@@ -60,5 +60,11 @@
         BaseResponseAjaxModel DisapproveJoinRequest(int tripId, string username, string actionUserId);
 
         BaseResponseAjaxModel LoadComments(int tripId, int offset);
+
+        bool CheckIfUserLikedTrip(Trip trip, string userId);
+
+        BaseResponseAjaxModel LikeDislike(int tripId, string userId, bool value);
+
+        int GetLikesCount(Trip trip);
     }
 }

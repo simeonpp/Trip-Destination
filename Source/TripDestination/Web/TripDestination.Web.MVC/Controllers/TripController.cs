@@ -135,6 +135,8 @@
                 viewModel.CurrentUserIsWaitingJoinRequest = this.TripServices.CheckIfUserHasPendingRequest(id, userId);
                 viewModel.HasMoreTripComments = this.TripServices.CheckIfTripHasMoreCommentsToLoad(id, WebApplicationConstants.CommentsOfset);
                 viewModel.HasMoreUserComments = false;
+                viewModel.CurrentUserLikedTrip = this.TripServices.CheckIfUserLikedTrip(trip, userId);
+                viewModel.LikesCount = this.TripServices.GetLikesCount(trip);
             }
 
             return this.View(viewModel);
@@ -199,11 +201,14 @@
             return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = trip.From.Name, area = "" });
         }
 
+        [HttpPost]
+        [Authorize]
         public ActionResult Delete(int tripId)
         {
             var userId = this.User.Identity.GetUserId();
             this.TripServices.Delete(tripId, userId);
             return this.RedirectToAction("List");
         }
+        
     }
 }
