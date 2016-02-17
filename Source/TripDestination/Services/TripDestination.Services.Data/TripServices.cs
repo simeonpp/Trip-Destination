@@ -113,8 +113,7 @@
         {
             var dbTrip = this.GetById(tripId);
 
-            int takenSeats = dbTrip.Passengers.Count();
-            int availableSeats = takenSeats + leftAvailableSeats;
+            int availableSeats = leftAvailableSeats;
             dbTrip.AvailableSeats = availableSeats;
 
             dbTrip.DateOfLeaving = dateOfLeaving;
@@ -126,7 +125,7 @@
             foreach (var username in usernamesToBeRemoved)
             {
                 PassengerTrip passengerToRemove = dbTrip.Passengers
-                    .Where(p => p.User.UserName == username)
+                    .Where(p => p.User.UserName == username && p.Approved == true && p.IsDeleted == false)
                     .FirstOrDefault();
 
                 if (passengerToRemove != null)
@@ -141,11 +140,24 @@
             return dbTrip;
         }
 
-        public int GetAvailableLeftSeatsCount(int tripId)
+        public void Delete(int id, string userId)
+        {
+            var dbTrip = this.GetById(id);
+
+            if (dbTrip != null && dbTrip.DriverId == userId )
+            {
+                this.tripRepos.Delete(dbTrip);
+                this.tripRepos.Save();
+            }
+
+            return;
+        }
+
+        public int GetTakenSeatsCount(int tripId)
         {
             var dbTrip = this.GetById(tripId);
-            int leftAvailableSeats = dbTrip.AvailableSeats - dbTrip.Passengers.Count();
-            return leftAvailableSeats;
+            int takenSeats = dbTrip.Passengers.Where(p => p.IsDeleted == false && p.Approved == true).Count();
+            return takenSeats;
         }
 
         public BaseResponseAjaxModel JoinRequest(int tripId, string userId)
@@ -155,7 +167,7 @@
 
             if (dbTrip == null)
             {
-                response.Data = "No such trip";
+                response.ErrorMessage = "No such trip";
                 return response;
             }
 
@@ -163,9 +175,7 @@
 
             if (!tripHasAvailableSeats)
             {
-                response.Status = false;
-                response.Data = "Sorry, no available seats left.";
-
+                response.ErrorMessage = "Sorry, no available seats left.";
                 return response;
             }
 
@@ -176,9 +186,7 @@
 
             if (currentPassengerAlreadyHasJoinRequest)
             {
-                response.Status = false;
-                response.Data = "You already has pending join request";
-
+                response.ErrorMessage = "You already has pending join request";
                 return response;
             }
 
@@ -203,7 +211,7 @@
 
             if (dbTrip == null)
             {
-                response.Data = "No such trip";
+                response.ErrorMessage = "No such trip";
                 return response;
             }
 
@@ -213,9 +221,7 @@
 
             if (passengerTrip == null)
             {
-                response.Status = false;
-                response.Data = "You first need to send join request.";
-
+                response.ErrorMessage = "You first need to send join request.";
                 return response;
             }
 
@@ -263,7 +269,7 @@
 
             if (dbTrip == null)
             {
-                response.Data = "No such trip";
+                response.ErrorMessage = "No such trip";
                 return response;
             }
 
@@ -293,6 +299,100 @@
                 CreatedOnFormatted = dbComment.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
                 CommentText = dbComment.Text,
                 CommentTotalCount = dbTrip.Comments.Count
+            };
+
+            return response;
+        }
+
+        public BaseResponseAjaxModel ApproveJoinRequest(int tripId, string username, string actionUserId)
+        {
+            var dbTrip = this.GetById(tripId);
+            var response = new BaseResponseAjaxModel();
+
+            if (dbTrip == null)
+            {
+                response.ErrorMessage = "No such trip.";
+                return response;
+            }
+
+            if (dbTrip.DriverId != actionUserId)
+            {
+                response.ErrorMessage = "Only driver of the trip is authorized to perfome this action.";
+                return response;
+            }
+
+            var passengerTrip = dbTrip.Passengers
+                .Where(p => p.TripId == tripId && p.User.UserName == username && p.Approved == false && p.IsDeleted == false)
+                .FirstOrDefault();
+
+            if (passengerTrip == null)
+            {
+                response.ErrorMessage = "Such join request does not exist.";
+                return response;
+            }
+
+            bool tripHasAvailableSeats = dbTrip.AvailableSeats > 0;
+
+            if (!tripHasAvailableSeats)
+            {
+                response.ErrorMessage = "Sorry, no available seats left.";
+
+                return response;
+            }
+
+            passengerTrip.Approved = true;
+            dbTrip.AvailableSeats = dbTrip.AvailableSeats - 1;
+            this.tripRepos.Save();
+
+            response.Status = true;
+            response.Data = new ApprovedJoinRequestResponseModel()
+            {
+                PassengersCount = dbTrip.Passengers.Where(p => p.Approved == true && p.IsDeleted == false).Count(),
+                AvailableSeatsCount = dbTrip.AvailableSeats,
+                PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
+                FirstName = passengerTrip.User.FirstName,
+                LastName = passengerTrip.User.LastName,
+                ImageSrc = "http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg", // TODO: Implement imageSrc
+                UserProfileLink = "www.google.com", // TODO: Implement URL
+            };
+
+            return response;
+        }
+
+        public BaseResponseAjaxModel DisapproveJoinRequest(int tripId, string username, string actionUserId)
+        {
+            var dbTrip = this.GetById(tripId);
+            var response = new BaseResponseAjaxModel();
+
+            if (dbTrip == null)
+            {
+                response.ErrorMessage = "No such trip.";
+                return response;
+            }
+
+            if (dbTrip.DriverId != actionUserId)
+            {
+                response.ErrorMessage = "Only driver of the trip is authorized to perfome this action.";
+                return response;
+            }
+
+            var passengerTrip = dbTrip.Passengers
+                .Where(p => p.TripId == tripId && p.User.UserName == username && p.Approved == false && p.IsDeleted == false)
+                .FirstOrDefault();
+
+            if (passengerTrip == null)
+            {
+                response.ErrorMessage = "Such join request does not exist.";
+                return response;
+            }
+
+            passengerTrip.IsDeleted = true;
+            this.tripRepos.Save();
+
+            response.Status = true;
+            response.Data = new ApprovedJoinRequestResponseModel()
+            {
+                PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
             };
 
             return response;

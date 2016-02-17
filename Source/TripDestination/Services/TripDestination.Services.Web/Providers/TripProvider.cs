@@ -90,13 +90,15 @@
             return oserBySelectList;
         }
 
-        public IEnumerable<SelectListItem> GetleftAvailableSeatsSelectList(int tripId)
+        public IEnumerable<SelectListItem> GetleftAvailableSeatsSelectList(Trip trip)
         {
-            int availableLeftSeatsCount = this.tripServices.GetAvailableLeftSeatsCount(tripId);
+            int carSeats = trip.Driver.Car.TotalSeats;
+            int availableLeftSeatsCount = this.tripServices.GetTakenSeatsCount(trip.Id);
+            int maxAvailableLeftSeats = carSeats - availableLeftSeatsCount;
 
             var leftAvailableSeatsSelectList = new List<SelectListItem>();
 
-            for (int i = availableLeftSeatsCount; i > 0; i--)
+            for (int i = 0; i <= maxAvailableLeftSeats; i++)
             {
                 leftAvailableSeatsSelectList.Add(new SelectListItem()
                 {

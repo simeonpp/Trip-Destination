@@ -41,7 +41,9 @@
             DateTime ETA,
             IEnumerable<string> usernamesToBeRemoved);
 
-        int GetAvailableLeftSeatsCount(int tripId);
+        void Delete(int id, string userId);
+
+        int GetTakenSeatsCount(int tripId);
 
         BaseResponseAjaxModel JoinRequest(int tripId, string userId);
 
@@ -52,5 +54,9 @@
         bool CheckIfTripHasMoreCommentsToLoad(int tripId, int currentLoadedComments);
 
         BaseResponseAjaxModel AddComment(int tripId, string userId, string commentText);
+
+        BaseResponseAjaxModel ApproveJoinRequest(int tripId, string username, string actionUserId);
+
+        BaseResponseAjaxModel DisapproveJoinRequest(int tripId, string username, string actionUserId);
     }
 }
