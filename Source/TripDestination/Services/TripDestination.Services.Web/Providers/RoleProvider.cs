@@ -8,7 +8,7 @@
 
     public class RoleProvider : IRoleProvider
     {
-        public IEnumerable<SelectListItem> GetPublicUserRoles()
+        public IEnumerable<SelectListItem> GetPublicUserRolesSelectList()
         {
             var publicRoles = new List<SelectListItem>()
             {

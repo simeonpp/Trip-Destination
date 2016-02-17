@@ -5,6 +5,6 @@
 
     public interface IRoleProvider
     {
-        IEnumerable<SelectListItem> GetPublicUserRoles();
+        IEnumerable<SelectListItem> GetPublicUserRolesSelectList();
     }
 }
