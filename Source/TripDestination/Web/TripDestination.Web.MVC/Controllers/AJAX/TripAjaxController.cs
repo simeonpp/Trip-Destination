@@ -59,7 +59,15 @@
             return this.Json(serviceResponse);
         }
 
-        public ActionResult LoadComments()
+        /// <summary>
+        /// Method to load more comments
+        /// It used to load comments about trip or users
+        /// </summary>
+        /// <param name="id">If it is for trip it is int, if for user it is string</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="type">Possible typesL trip or user</param>
+        /// <returns></returns>
+        public ActionResult LoadComments(string id, int offset, string type)
         {
 
         }
