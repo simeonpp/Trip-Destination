@@ -58,5 +58,7 @@
         BaseResponseAjaxModel ApproveJoinRequest(int tripId, string username, string actionUserId);
 
         BaseResponseAjaxModel DisapproveJoinRequest(int tripId, string username, string actionUserId);
+
+        BaseResponseAjaxModel LoadComments(int tripId, int offset);
     }
 }

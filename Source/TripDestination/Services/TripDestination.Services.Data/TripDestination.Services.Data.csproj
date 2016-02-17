@@ -69,6 +69,7 @@
     <Compile Include="Contracts\IUserServices.cs" />
     <Compile Include="Models\ApprovedJoinRequestResponseModel.cs" />
     <Compile Include="Models\CommentResponseModel.cs" />
+    <Compile Include="Models\LoadedCommentsResponseModel.cs" />
     <Compile Include="NewsletterServices.cs" />
     <Compile Include="PageServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

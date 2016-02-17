@@ -1,10 +1,10 @@
 ﻿namespace TripDestination.Web.MVC.Controllers.AJAX
 {
+    using System;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
-    using System.Linq;
     using System.Web.Mvc;
-
+    using Common.Infrastructure.Models;
     public class TripAjaxController : Controller
     {
         private readonly ITripServices tripServices;
@@ -59,6 +59,7 @@
             return this.Json(serviceResponse);
         }
 
+        [HttpGet]
         /// <summary>
         /// Method to load more comments
         /// It used to load comments about trip or users
@@ -66,10 +67,24 @@
         /// <param name="id">If it is for trip it is int, if for user it is string</param>
         /// <param name="offset">The offset</param>
         /// <param name="type">Possible typesL trip or user</param>
-        /// <returns></returns>
+        /// <returns>BaseResponseAjaxModel</returns>
         public ActionResult LoadComments(string id, int offset, string type)
         {
+            BaseResponseAjaxModel serviceResponse;
 
+            if (type == "trip")
+            {
+                int identifier = int.Parse(id);
+                serviceResponse = this.tripServices.LoadComments(identifier, offset);
+            } else if (type == "user")
+            {
+                serviceResponse = new BaseResponseAjaxModel();
+            } else
+            {
+                throw new Exception(string.Format("type {0} is not supported", type));
+            }
+
+            return this.Json(serviceResponse, JsonRequestBehavior.AllowGet);
         }
     }
 }

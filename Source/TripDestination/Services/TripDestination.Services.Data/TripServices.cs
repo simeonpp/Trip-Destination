@@ -9,7 +9,7 @@
     using System.Collections.Generic;
     using TripDestination.Common.Infrastructure.Models;
     using TripDestination.Services.Data.Models;
-
+    using TripDestination.Common.Infrastructure.Constants;
     public class TripServices : ITripServices
     {
         private IDbRepository<Trip> tripRepos;
@@ -255,7 +255,7 @@
 
             if (dbTrip != null)
             {
-                var result = (dbTrip.Comments.Count - currentLoadedComments) > 0 ? true : false;
+                var result = (dbTrip.Comments.Where(c => c.IsDeleted == false).Count() - currentLoadedComments) > 0 ? true : false;
                 return result;
             }
 
@@ -394,6 +394,51 @@
             {
                 PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
             };
+
+            return response;
+        }
+
+        public BaseResponseAjaxModel LoadComments(int tripId, int offset)
+        {
+            var dbTrip = this.GetById(tripId);
+            var response = new BaseResponseAjaxModel();
+
+            if (dbTrip == null)
+            {
+                response.ErrorMessage = "No such trip.";
+                return response;
+            }
+
+            var comments = dbTrip.Comments
+                .Where(c => c.IsDeleted == false)
+                .OrderByDescending(c => c.CreatedOn)
+                .Skip(offset)
+                .Take(WebApplicationConstants.CommentsOfset)
+                .Select(c => new CommentResponseModel()
+                {
+                    FirstName = c.Author.FirstName,
+                    LastName = c.Author.LastName,
+                    UserUrl = "http://www.google.com", // TODO: Fix url
+                    UserImageSrc = "http://media02.hongkiat.com/ww-flower-wallpapers/roundflower.jpg", // TODO: Fix image
+                    CreatedOnFormatted = c.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
+                    CommentText = c.Text
+                })
+                .ToList();
+
+
+            if (comments.Count > 0)
+            {
+                int newOffset = offset + WebApplicationConstants.CommentsOfset;
+                bool hasMoreCommentsToLoad = this.CheckIfTripHasMoreCommentsToLoad(dbTrip.Id, newOffset);
+
+                response.Status = true;
+                response.Data = new LoadedCommentsResponseModel()
+                {
+                    HasMoreCommentsToLoad = hasMoreCommentsToLoad,
+                    Offset = newOffset,
+                    Comments = comments
+                };
+            }
 
             return response;
         }

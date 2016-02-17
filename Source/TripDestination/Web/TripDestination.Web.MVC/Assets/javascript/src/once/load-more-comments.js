@@ -3,12 +3,13 @@
 
     $('body').on('click', '.loadMoreComments', function () {
         var $this = $(this),
+            ajaxUrl = $this.attr('data-ajaxUrl'),
             id = $this.attr('data-id'),
             currentOffset = $this.attr('data-offset'),
             type = $this.attr('data-type');
 
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: ajaxUrl,
             data: {
                 id: id,
@@ -21,17 +22,17 @@
                         $loadMoreTripComments.remove();
                     }
 
-                    var comments = response.data.comments;
+                    var comments = response.Data.Comments;
                     $.each(comments, function (index, comment) {
                         addCommentToCommentsList(comment, true);
                     });
 
-                    updateLoadMoreButtonOffset(response.data.offset);
+                    updateLoadMoreButtonOffset(response.Data.Offset);
                 } else {
-                    if (response.error && response.error.message) {
-                        toastr.error(response.error.message);
+                    if (response.ErrorMessage) {
+                        toastr.error(response.ErrorMessage);
                     } else {
-                        toastr.error("Unable to load more comment. Please contact our team.");
+                        toastr.error("Unable to load more comment. Please contact with our team.");
                     }
                 }
             }
@@ -46,12 +47,12 @@
         var sourceTemplate = $("#commentLiTemplate").html();
         var template = Handlebars.compile(sourceTemplate);
         var context = {
-            firstName: comment.firstName,
-            lastName: comment.lastName,
-            userUrl: comment.userUrl,
-            userImageSrc: comment.userImageSrc,
-            createdOnFormatted: comment.createdOnFormatted,
-            commentText: comment.commentText
+            firstName: comment.FirstName,
+            lastName: comment.LastName,
+            userUrl: comment.UserUrl,
+            userImageSrc: comment.UserImageSrc,
+            createdOnFormatted: comment.CreatedOnFormatted,
+            commentText: comment.CommentText
         };
         var renderedTempalteHTML = template(context);
 
