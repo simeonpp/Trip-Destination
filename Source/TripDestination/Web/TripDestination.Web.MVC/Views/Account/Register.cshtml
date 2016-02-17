@@ -55,6 +55,12 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
         @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
@@ -63,11 +69,56 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Role, Model.AvailableRoles)
+            @Html.DropDownListFor(m => m.Role, Model.AvailableRolesSelectList)
+        </div>
+    </div>
+
+    @*Driver*@
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarTotalSeats, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.CarTotalSeats, Model.AvailableSeatsSelectList)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarBrand, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarBrand, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarModel, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarModel, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarColor, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarColor, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarYear, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CarYear, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarSpaceForLugage, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Role, Model.AvailableLuggageSelectList)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CarDescription, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.CarDescription, new { @class = "form-control" })
         </div>
     </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/registration")
 }

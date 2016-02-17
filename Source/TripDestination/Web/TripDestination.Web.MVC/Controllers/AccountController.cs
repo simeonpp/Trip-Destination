@@ -10,17 +10,19 @@
     using TripDestination.Web.MVC.ViewModels.Account;
     using TripDestination.Data.Models;
     using TripDestination.Services.Web.Providers.Contracts;
-
+    using System;
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private readonly IRoleProvider roleProvider;
+        private readonly ICarProvider carProvider;
 
-        public AccountController(IRoleProvider roleProvider)
+        public AccountController(IRoleProvider roleProvider, ICarProvider carProvider)
         {
             this.roleProvider = roleProvider;
+            this.carProvider = carProvider;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -139,8 +141,8 @@
         public ActionResult Register()
         {
             var viewModel = new RegisterViewModel();
-            viewModel.AvailableRoles = this.roleProvider.GetPublicUserRoles();
-
+            viewModel.CarYear = DateTime.Now.Year;
+            this.FillRequiredRegistrationSelectList(viewModel);
             return View(viewModel);
         }
 
@@ -169,8 +171,17 @@
                 this.AddErrors(result);
             }
 
+            this.FillRequiredRegistrationSelectList(model);
+
             // If we got this far, something failed, redisplay form
             return this.View(model);
+        }
+
+        private void FillRequiredRegistrationSelectList(RegisterViewModel viewModel)
+        {
+            viewModel.AvailableRolesSelectList = this.roleProvider.GetPublicUserRolesSelectList();
+            viewModel.AvailableSeatsSelectList = this.carProvider.GetAvailableSeatsSelectList();
+            viewModel.AvailableLuggageSelectList = this.carProvider.GetAvailableLuggageSelectList();
         }
 
         // GET: /Account/ConfirmEmail

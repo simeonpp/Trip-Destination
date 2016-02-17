@@ -51,6 +51,8 @@ namespace TripDestination.Web.MVC
                 "~/Assets/javascript/src/once/trip-detailed-like.js",
                 "~/Assets/javascript/src/once/load-more-comments.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/registration").Include(
+                "~/Assets/javascript/src/once/registration.js"));
 
             // BundleTable.EnableOptimizations = true;
         }

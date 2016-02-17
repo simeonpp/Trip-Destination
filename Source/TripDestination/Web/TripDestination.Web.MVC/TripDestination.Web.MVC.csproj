@@ -589,6 +589,7 @@
     <Content Include="Assets\javascript\src\once\custom-date-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\load-more-comments.js" />
+    <Content Include="Assets\javascript\src\once\registration.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-add-comment.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-approve-join-request.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-join-request.js" />
