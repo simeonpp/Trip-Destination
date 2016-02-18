@@ -22,11 +22,6 @@
         [HttpGet]
         public ActionResult Index()
         {
-            if (this.User.Identity.IsAuthenticated)
-            {
-                this.ViewData["User"] = this.CurrentUser.FirstName;
-            }
-
             var topDestinations = this.Cache.Get(
                 "topDestinations",
                 () => this.TripHelper
