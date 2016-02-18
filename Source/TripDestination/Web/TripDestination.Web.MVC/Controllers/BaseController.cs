@@ -6,12 +6,17 @@
     using System.Web.Mvc;
     using Common.Infrastructure.Mapping;
     using Services.Web.Services.Contracts;
+    using Services.Data.Contracts;
+    using Microsoft.AspNet.Identity;
     public abstract class BaseController : Controller
     {
         // Need to be public, otherwise Autofac will no be able to autowire it
+        public IUserServices UserServices { get; set; }
+
+        // Need to be public, otherwise Autofac will no be able to autowire it
         public ICacheServices Cache { get; set; }
 
-        protected IIdentity CurrentUser { get; set; }
+        protected User CurrentUser { get; set; }
 
         protected IMapper Mapper { get; private set; }
 
@@ -19,11 +24,15 @@
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
+            if (this.User.Identity.IsAuthenticated)
+            {
+                this.CurrentUser = this.UserServices.GetByUsername(this.User.Identity.GetUserName());
+            }
 
-            this.CurrentUser = this.User.Identity;
             this.MapperConfiguration = AutoMapperConfig.Configuration;
             this.Mapper = AutoMapperConfig.Mapper;
+
+            base.OnActionExecuting(filterContext);
         }
     }
 }

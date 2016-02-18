@@ -4,10 +4,8 @@
     using System.Web.Mvc;
     using TripDestination.Common.Infrastructure.Constants;
     using TripDestination.Web.MVC.ViewModels.Home;
-    using ViewModels.Shared;
     using Services.Data.Contracts;
     using Services.Web.Helpers.Contracts;
-    using TripDestination.Common.Infrastructure.Mapping;
 
     public class HomeController : BaseController
     {
@@ -24,6 +22,11 @@
         [HttpGet]
         public ActionResult Index()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                this.ViewData["User"] = this.CurrentUser.FirstName;
+            }
+
             var topDestinations = this.Cache.Get(
                 "topDestinations",
                 () => this.TripHelper

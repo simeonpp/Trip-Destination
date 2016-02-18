@@ -64,7 +64,7 @@
                     return this.View(trip);
             }
 
-            string currentUserId = this.CurrentUser.GetUserId();
+            string currentUserId = this.User.Identity.GetUserId();
 
             Trip dbtrip = this.TripServices.Create(
                     trip.FromId,
@@ -159,7 +159,7 @@
                 throw new Exception("No such trip.");
             }
 
-            if (trip.Driver.Id != this.CurrentUser.GetUserId())
+            if (trip.Driver.Id != this.User.Identity.GetUserId())
             {
                 throw new Exception("Not authorized to edit.");
             }
@@ -182,7 +182,7 @@
 
             var trip = this.TripServices.GetById(editModel.Id);
 
-            if (trip.Driver.Id != this.CurrentUser.GetUserId())
+            if (trip.Driver.Id != this.User.Identity.GetUserId())
             {
                 throw new Exception("Not authorized to edit.");
             }

@@ -55,6 +55,10 @@
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
+            builder.RegisterGeneric(typeof(DbGenericRepository<,>))
+                .As(typeof(IDbGenericRepository<,>))
+                .InstancePerRequest();
+
             builder.Register(x => new TripDestinationDbContext())
                 .As<DbContext>()
                 .InstancePerRequest();

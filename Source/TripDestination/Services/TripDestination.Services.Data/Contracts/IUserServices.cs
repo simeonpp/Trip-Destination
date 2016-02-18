@@ -4,6 +4,6 @@
 
     public interface IUserServices
     {
-        User GetById(string id);
+        User GetByUsername(string username);
     }
 }

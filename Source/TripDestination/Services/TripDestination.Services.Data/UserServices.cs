@@ -1,7 +1,7 @@
 ﻿namespace TripDestination.Services.Data
 {
     using Contracts;
-    using System;
+    using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
 
@@ -14,10 +14,13 @@
             this.userRepos = userRepos;
         }
 
-
-        public User GetById(string id)
+        public User GetByUsername(string username)
         {
-            throw new NotImplementedException();
+            var user = this.userRepos.All()
+                .Where(u => u.UserName == username)
+                .FirstOrDefault();
+
+            return user;
         }
     }
 }
