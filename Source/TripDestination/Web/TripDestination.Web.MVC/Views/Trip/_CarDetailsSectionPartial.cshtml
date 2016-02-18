@@ -1,0 +1,51 @@
+﻿@{
+    string Brand = (string)this.ViewData["Brand"];
+    string Model = (string)this.ViewData["Model"];
+    int Year = (int)this.ViewData["Year"];
+    string Color = (string)this.ViewData["Color"];
+    string LuggageSpace = (string)this.ViewData["LuggageSpace"];
+    string Description = (string)this.ViewData["Description"];
+}
+
+<h1>Car details</h1>
+<h2>Specifications</h2>
+
+<article>
+
+    <div id="carTitle">@Brand @Model</div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <ul class="infoUl">
+                <li>
+                    <div class="labelInfo">Year</div>
+                    <div class="textInfo">@Year</div>
+                </li>
+                <li>
+                    <div class="labelInfo">Color</div>
+                    <div class="textInfo">@Color</div>
+                </li>
+                <li>
+                    <div class="labelInfo">Space for luggage</div>
+                    <div class="textInfo">@LuggageSpace</div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul class="infoUl">
+                <li>
+                    <div class="labelInfo">Additional info</div>
+                    <div class="textInfo">
+                        @Description
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="carPhotosWrap">
+
+    </div>
+
+</article>

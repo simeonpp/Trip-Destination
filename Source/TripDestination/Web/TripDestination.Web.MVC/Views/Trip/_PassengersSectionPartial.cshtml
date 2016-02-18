@@ -1,0 +1,36 @@
+﻿@{
+    IEnumerable<PassengerTripViewModel> Passengers = (IEnumerable<PassengerTripViewModel>)this.ViewData["Passengers"];
+}
+
+@{
+    int passengersCount = Passengers.Count();
+}
+
+<h1>Passengers (<span id="passengersCount">@passengersCount</span>)</h1>
+<h2>Passengers on board</h2>
+
+<article class="padding">
+
+    @*Has to be outside if statement because it has to be there when drive approves first passenger*@
+    <ul id="passengersList" class="passengersUl">
+        @if (passengersCount > 0)
+        {
+            foreach (var passenger in Passengers)
+            {
+                <li>
+                    <a href="#">
+                        <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+                        <div class="firstName">@passenger.User.FirstName</div>
+                        <div class="lastName">@passenger.User.LastName</div>
+                    </a>
+                </li>
+            }
+        }
+        else
+        {
+            <p class="notLoginMessage">No passengers joined to this trip yet.</p>
+        }
+
+    </ul>
+
+</article>

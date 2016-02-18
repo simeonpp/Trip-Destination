@@ -1,0 +1,79 @@
+﻿@{
+    string From = (string)this.ViewData["From"];
+    string To = (string)this.ViewData["To"];
+
+    string DateOfLeavingFormatted = (string)this.ViewData["DateOfLeavingFormatted"];
+    string TimeOfLeavingFormatted = (string)this.ViewData["TimeOfLeavingFormatted"];
+    string PlaceOfLeaving = (string)this.ViewData["PlaceOfLeaving"];
+    string PickUpFromAddressAsString = (string)this.ViewData["PickUpFromAddressAsString"];
+    int TotalSeats = (int)this.ViewData["TotalSeats"];
+    int AvailableSeats = (int)this.ViewData["AvailableSeats"];
+    string Status = (string)this.ViewData["Status"];
+    decimal Price = (decimal)this.ViewData["Price"];
+    string CreatedOnFormatted = (string)this.ViewData["CreatedOnFormatted"];
+    string Description = (string)this.ViewData["Description"];
+}
+
+
+
+<h1>Trip details</h1>
+<h2>Full information about the trip</h2>
+
+<article>
+
+    <ul class="infoUl">
+        <li>
+            <div class="labelInfo">Leaving from</div>
+            <div class="textInfo">@From</div>
+        </li>
+        <li>
+            <div class="labelInfo">Destination</div>
+            <div class="textInfo">@To</div>
+        </li>
+        <li>
+            <div class="labelInfo">Date of leaving</div>
+            <div class="textInfo">@DateOfLeavingFormatted</div>
+        </li>
+        <li>
+            <div class="labelInfo">Time of leaving</div>
+            <div class="textInfo">@TimeOfLeavingFormatted</div>
+        </li>
+        <li>
+            <div class="labelInfo">Place of leaving</div>
+            <div class="textInfo">@PlaceOfLeaving</div>
+        </li>
+        <li>
+            <div class="labelInfo">Option to pick up from address</div>
+            <div class="textInfo">@PickUpFromAddressAsString</div>
+        </li>
+        <li>
+            <div class="labelInfo">Total seats</div>
+            <div class="textInfo">@TotalSeats</div>
+        </li>
+        <li>
+            <div class="labelInfo">Available seats</div>
+            <div id="fullTripDetailsAvailableSeats" class="textInfo">@AvailableSeats</div>
+        </li>
+        <li>
+            <div class="labelInfo">Status</div>
+            <div class="textInfo">@Status</div>
+        </li>
+        <li>
+            <div class="labelInfo">Price</div>
+            <div class="textInfo">
+                @Price
+            </div>
+        </li>
+        <li>
+            <div class="labelInfo">Date created</div>
+            <div class="textInfo">@CreatedOnFormatted/div>
+        </li>
+        <li>
+            <div class="labelInfo">Additional information</div>
+            <div class="textInfo">
+                @Description
+            </div>
+        </li>
+    </ul>
+
+</article>

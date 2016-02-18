@@ -48,219 +48,45 @@
                 @Html.Partial("_CommentsSectionPartial", new ViewDataDictionary {
                     { "Comments", Model.Comments },
                     { "TripId", Model.Id },
-                })                
+                })
             </section>
         </div>
 
         <div class="col-md-6">
             <section id="driverDetailsSection">
-                <h1>Driver Details</h1>
-                <h2>Information about the driver of the trip</h2>
-                <article>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="image"><img src="images/people/8.jpg" alt="Username images"></div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="names"><a href="#">@Model.Driver.FirstName <span id="lastName">@Model.Driver.LastName</span></a></div>
-                            <ul class="infoUl">
-                                <li>
-                                    <div class="labelInfo">Username</div>
-                                    <div class="textInfo">@Model.Driver.UserName</div>
-                                </li>
-                                @if (Model.Driver.PhoneNumber != null)
-                                {
-                                    <li>
-                                        <div class="labelInfo">Phone</div>
-                                        <div class="textInfo">@Model.Driver.PhoneNumber</div>
-                                    </li>
-
-                                }
-                                <li>
-                                    <div class="labelInfo">Email</div>
-                                    <div class="textInfo">@Model.Driver.Email</div>
-                                </li>
-                                <li>
-                                    <fieldset class="rating">
-                                        <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                        <input type="radio" checked id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                        <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
-                                        <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                        <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                    </fieldset>
-
-                                    <style>
-                                        @@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-                                    </style>
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <ul class="infoUl">
-                        <li>
-                            <div class="labelInfo">About me</div>
-                            <div class="textInfo">@Model.Driver.Description</div>
-                        </li>
-                    </ul>
-
-                    <div id="userCommentsWrap">
-                        @{
-                            int userCommentsCount = Model.Driver.Comments.Count();
-                        }
-
-                        <h5>Comments (@userCommentsCount)</h5>
-                        <h6>Latest comments about Ivaylo</h6>
-
-                        @if (userCommentsCount > 0)
-                        {
-                            <ul class="commentsUl">
-                                @foreach (var comment in Model.Driver.Comments)
-                                {
-                                    <li>
-                                        <div class="row noMargins">
-                                            <div class="col-md-2">
-                                                <div class="image" style="background-image: url('images/people/4.jpg')"></div>
-                                            </div>
-                                            <div class="commentTextWrap col-md-10">
-                                                <div class="arrow"></div>
-                                                <div class="names">
-                                                    <a href="#">
-                                                        @comment.Author.FirstName <span class="lastName">@comment.Author.LastName</span>
-                                                    </a>
-                                                </div>
-                                                <div class="date">@comment.FormattedDate</div>
-                                                <div class="commentText">@comment.Text</div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <p class="notLoginMessage">@Model.Driver.FirstName has no added comments yet.</p>
-                        }
-
-                        @if (Model.HasMoreUserComments)
-                        {
-                            <div id="loadMoreUserComments"
-                                 class="loadMoreComments button"
-                                 data-ajaxUrl="/TripAjax/LoadComments"
-                                 data-offset="@WebApplicationConstants.CommentsOfset"
-                                 data-type="trip"
-                                 data-id="@Model.Id">
-                                Load more
-                            </div>
-                        }
-                    </div>
-
-                </article>
+                @Html.Partial("_DriverDetailsSectionPartial", new ViewDataDictionary {
+                    { "Driver", Model.Driver },
+                    { "HasMoreUserComments", Model.HasMoreUserComments },
+                    { "TripId", Model.Id },
+                }) 
             </section>
 
             <section id="carDetailsSection">
-                <h1>Car details</h1>
-                <h2>Specifications</h2>
-                <article>
-                    <div id="carTitle">@Model.Driver.Car.Brand @Model.Driver.Car.Model</div>
-
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <ul class="infoUl">
-                                <li>
-                                    <div class="labelInfo">Year</div>
-                                    <div class="textInfo">@Model.Driver.Car.Year</div>
-                                </li>
-                                <li>
-                                    <div class="labelInfo">Color</div>
-                                    <div class="textInfo">@Model.Driver.Car.Color</div>
-                                </li>
-                                <li>
-                                    <div class="labelInfo">Space for luggage</div>
-                                    <div class="textInfo">@Model.Driver.Car.SpaceForLugage</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="infoUl">
-                                <li>
-                                    <div class="labelInfo">Additional info</div>
-                                    <div class="textInfo">
-                                        @Model.Driver.Car.Description
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="carPhotosWrap">
-
-                    </div>
-                </article>
+                @Html.Partial("_CarDetailsSectionPartial", new ViewDataDictionary {
+                    { "Brand", Model.Driver.Car.Brand },
+                    { "Model", Model.Driver.Car.Model },
+                    { "Year", Model.Driver.Car.Year },
+                    { "Color", Model.Driver.Car.Color },
+                    { "LuggageSpace", Model.Driver.Car.SpaceForLugage.ToString() },
+                    { "Description", Model.Description },
+                })   
             </section>
 
             <section id="fullTripDetailsWrap">
-                <h1>Trip details</h1>
-                <h2>Full information about the trip</h2>
-                <article>
-                    <ul class="infoUl">
-                        <li>
-                            <div class="labelInfo">Leaving from</div>
-                            <div class="textInfo">@Model.From.Name</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Destination</div>
-                            <div class="textInfo">@Model.To.Name</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Date of leaving</div>
-                            <div class="textInfo">@Model.DateOfLeaving.ToString("dd MMMM yyyy")</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Time of leaving</div>
-                            <div class="textInfo">@Model.DateOfLeaving.ToString("HH:mm")</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Place of leaving</div>
-                            <div class="textInfo">@Model.PlaceOfLeaving</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Option to pick up from address</div>
-                            <div class="textInfo">@(Model.PickUpFromAddress ? "Yes" : "No")</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Total seats</div>
-                            <div class="textInfo">@Model.Driver.Car.TotalSeats</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Available seats</div>
-                            <div id="fullTripDetailsAvailableSeats" class="textInfo">@Model.AvailableSeats</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Status</div>
-                            <div class="textInfo">@Model.Status</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Price</div>
-                            <div class="textInfo">
-                                @Model.Price
-                            </div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Date created</div>
-                            <div class="textInfo">@Model.CreatedOn.ToString("dd MMMM yyyy HH:mm")</div>
-                        </li>
-                        <li>
-                            <div class="labelInfo">Additional information</div>
-                            <div class="textInfo">
-                                @Model.Description
-                            </div>
-                        </li>
-                    </ul>
-                </article>
+                @Html.Partial("_FullDetailsPartial", new ViewDataDictionary {
+                    { "From", Model.From.Name },
+                    { "To", Model.To.Name },
+                    { "DateOfLeavingFormatted", Model.DateOfLeavingFormatted },
+                    { "TimeOfLeavingFormatted", Model.TimeOfLeavingFormatted },
+                    { "PlaceOfLeaving", Model.PlaceOfLeaving },
+                    { "PickUpFromAddressAsString", Model.PickUpFromAddressAsString },
+                    { "TotalSeats", Model.Driver.Car.TotalSeats },
+                    { "AvailableSeats", Model.AvailableSeats },
+                    { "Status", Model.Status.ToString() },
+                    { "Price", Model.Price },
+                    { "CreatedOnFormatted", Model.CreatedOnFormatted },
+                    { "Description", Model.Description },
+                }) 
             </section>
         </div>
 

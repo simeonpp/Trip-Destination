@@ -770,6 +770,9 @@
     <Content Include="Views\Trip\_PassengerActionButtonsTemplatesPartial.cshtml" />
     <Content Include="Views\Trip\_PassengersSectionPartial.cshtml" />
     <Content Include="Views\Trip\_CommentsSectionPartial.cshtml" />
+    <Content Include="Views\Trip\_CarDetailsSectionPartial.cshtml" />
+    <Content Include="Views\Trip\_FullDetailsPartial.cshtml" />
+    <Content Include="Views\Trip\_DriverDetailsSectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -36,6 +36,22 @@
             }
         }
 
+        public string DateOfLeavingFormatted
+        {
+            get
+            {
+                return this.DateOfLeaving.ToString("dd MMMM yyyy");
+            }
+        }
+
+        public string TimeOfLeavingFormatted
+        {
+            get
+            {
+                return this.DateOfLeaving.ToString("HH:mm");
+            }
+        }
+
         public string PlaceOfLeaving { get; set; }
 
         public int AvailableSeats { get; set; }
@@ -88,6 +104,14 @@
         public IEnumerable<BaseCommentViewModel> Comments { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+        public string CreatedOnFormatted
+        {
+            get
+            {
+                return this.CreatedOn.ToString("dd MMMM yyyy HH:mm");
+            }
+        }
 
         public void CreateMappings(IConfiguration configuration)
         {
