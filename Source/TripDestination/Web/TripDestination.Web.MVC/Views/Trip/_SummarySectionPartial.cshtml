@@ -9,7 +9,11 @@
     int ViewsCount = (int)this.ViewData["ViewsCount"];
     int LikesCount = (int)this.ViewData["LikesCount"];
     string SanitizedDescription = (string)this.ViewData["SanitizedDescription"];
+    bool CurrectUserIsDriver = (bool)this.ViewData["CurrectUserIsDriver"];
     IEnumerable<PassengerTripViewModel> PendingApprovePassengers = (IEnumerable<PassengerTripViewModel>)this.ViewData["PendingApprovePassengers"];
+    int TripId = (int)this.ViewData["TripId"];
+    bool CurrentUserIsWaitingJoinRequest = (bool)this.ViewData["CurrentUserIsWaitingJoinRequest"];
+    bool CurrentUserLikedTrip = (bool)this.ViewData["CurrentUserLikedTrip"];
 }
 
 <h1>Trip summary</h1>
@@ -80,9 +84,25 @@
 
         <div id="buttonsWrap">
             <div id="buttonsAction">
-                @if (Model.CurrectUserIsDriver)
+                @if (CurrectUserIsDriver)
                 {
                     @Html.Partial("_PendingApprovePassengersPartial", PendingApprovePassengers)
+                    @Html.Partial("_DriverActionButtonsPartial", new ViewDataDictionary { { "TripId", TripId } })
+                }
+                else
+                {
+                    if (CurrentUserIsWaitingJoinRequest)
+                    {
+                        @Html.Partial("_PassengerPendingRequestPartial")
+                    }
+
+                    if (AvailableSeats > 0 && !CurrentUserIsWaitingJoinRequest)
+                    {
+                        @Html.Partial("_PassengerActionButtonPartial")
+                    }
+
+                    @Html.Partial("_LikeDislikeButtonsPartial", new ViewDataDictionary { { "CurrentUserLikedTrip", CurrentUserLikedTrip } })
+                    @Html.Partial("_PassengerActionButtonsTemplatesPartial", new ViewDataDictionary { { "CurrentUserLikedTrip", CurrentUserLikedTrip } })
                 }
 
             </div> @* End #buttonsAction*@

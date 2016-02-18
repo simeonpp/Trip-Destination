@@ -1,0 +1,18 @@
+﻿@{
+    int tripId = (int)this.ViewData["TripId"];
+}
+
+<div id="tripActionWrap" class="halfTableCell">
+    <a id="editTripButton" href="@Url.Action("Edit", "Trip", new { id = tripId })" class="button2">Edit trip</a>
+</div>
+
+<div class="halfTableCell">
+    @using (Html.BeginForm("Delete", "Trip", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        
+        @Html.TextBox("tripId", tripId, new { hidden = "hidden" })
+        <input id="deleteTripButton" class="button" type="submit" value="Delete trip" />
+    }
+</div>
+

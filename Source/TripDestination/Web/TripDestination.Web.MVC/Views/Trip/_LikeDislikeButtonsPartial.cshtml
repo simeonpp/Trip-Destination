@@ -1,0 +1,32 @@
+﻿@{
+    bool CurrentUserLikedTrip = (bool)this.ViewData["CurrentUserLikedTrip"];
+}
+
+<div class="halfTableCell">
+    <div id="likeNotLikeButtonsWrap">
+
+        <div id="likeDislikeTripButton" class="likeDislikeTripButton"
+             @if (CurrentUserLikedTrip)
+             {
+                 @:data-value="dislike"
+             }
+             else
+             {
+                 @:data-value="like"
+             }
+             >
+
+            @if (CurrentUserLikedTrip)
+            {
+                @:Dislike
+            }
+            else
+            {
+                @:Like
+            }
+
+        </div>
+        TOBEREMOVED
+
+    </div>
+</div>

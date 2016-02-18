@@ -251,6 +251,7 @@
     <Compile Include="ViewModels\Shared\UserCommentViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\Trip\PassengerTripEditInputModel.cs" />
+    <Compile Include="ViewModels\Trip\PassengerTripViewModel.cs" />
     <Compile Include="ViewModels\Trip\TownViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripDetailedViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripEditInputModel.cs" />
@@ -760,6 +761,12 @@
     <Content Include="Views\CookiePolicy\Index.cshtml" />
     <Content Include="Views\Trip\_TopSectionPartial.cshtml" />
     <Content Include="Views\Trip\_SummarySectionPartial.cshtml" />
+    <Content Include="Views\Trip\_PendingApprovePassengersPartial.cshtml" />
+    <Content Include="Views\Trip\_DriverActionButtonsPartial.cshtml" />
+    <Content Include="Views\Trip\_PassengerPendingRequestPartial.cshtml" />
+    <Content Include="Views\Trip\_PassengerActionButtonPartial.cshtml" />
+    <Content Include="Views\Trip\_LikeDislikeButtonsPartial.cshtml" />
+    <Content Include="Views\Trip\_PassengerActionButtonsTemplatesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

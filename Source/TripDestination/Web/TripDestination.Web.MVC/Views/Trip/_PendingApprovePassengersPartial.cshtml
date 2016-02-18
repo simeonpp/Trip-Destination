@@ -1,6 +1,50 @@
 ﻿@model IEnumerable<PassengerTripViewModel>
 
 @{ 
-    int pendingApprovePassengersCount = Model.Count()
+    int pendingApprovePassengersCount = Model.Count();
+}
+
+<div class="tripMessage">You have <span id="pendingApprovePassengersCount">@pendingApprovePassengersCount</span> pending users waiting to join your trip.</div>
+
+@if (pendingApprovePassengersCount > 0)
+{
+    <div class="row col-md-12">
+        <ul class="pendingUsersUl">
+            @foreach (var pendingUser in Model)
+            {
+                <li class="row">
+                    <div class="col-md-3">
+                        <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="passengerName"><a href="#">@pendingUser.User.FirstName @pendingUser.User.LastName</a></div>
+                        <div class="rating">
+                            <ul class="ratingUl">
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3" data-username="@pendingUser.User.UserName">
+                        <div class="approvePassengerJoinRequest button">Approve</div>
+                        <div class="disapprovePassengerJoinRequest button2">Disapprove</div>
+                    </div>
+                </li>
+            }
+        </ul>
+
+        <script id="passengerLiTemplate" type="text/x-handlebars-template">
+            <li>
+                <a href="{{ userProfileLink }}">
+                    <div class="image" style='background-image: url("{{ imageSrc }}")'></div>
+                    <div class="firstName">{{ firstName }}</div>
+                    <div class="lastName">{{ lastName }}</div>
+                </a>
+            </li>
+        </script>
+    </div>
 }
 
