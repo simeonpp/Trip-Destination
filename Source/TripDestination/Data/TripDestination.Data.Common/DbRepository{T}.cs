@@ -21,7 +21,7 @@
 
         private IDbSet<T> DbSet { get; }
 
-        private DbContext Context { get; }
+        public DbContext Context { get; }
 
         public IQueryable<T> All()
         {
@@ -56,7 +56,13 @@
 
         public void Save()
         {
-            this.Context.SaveChanges();
+            try
+            {
+
+                this.Context.SaveChanges();
+            }
+            catch(Exception ex)
+            { }
         }
 
         public void Reload(T entity)

@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using Models;
+    using System.Data.Entity;
 
     public interface IDbRepository<T> : IDbRepository<T, int>
     where T : BaseModel<int>
@@ -11,6 +12,8 @@
     public interface IDbRepository<T, in TKey> : IDbGenericRepository<T, TKey>
     where T : BaseModel<TKey>
     {
+        DbContext Context { get; }
+
         T GetById(TKey id);
 
         IQueryable<T> AllWithDeleted();

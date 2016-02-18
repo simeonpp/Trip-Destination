@@ -11,16 +11,21 @@
     using TripDestination.Data.Models;
     using TripDestination.Services.Web.Providers.Contracts;
     using System;
+    using Common.Infrastructure.Constants;
+    using Services.Data.Contracts;
+    using System.Collections.Generic;
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly ICarServices carServices;
         private readonly IRoleProvider roleProvider;
         private readonly ICarProvider carProvider;
 
-        public AccountController(IRoleProvider roleProvider, ICarProvider carProvider)
+        public AccountController(ICarServices carServices, IRoleProvider roleProvider, ICarProvider carProvider)
         {
+            this.carServices = carServices;
             this.roleProvider = roleProvider;
             this.carProvider = carProvider;
         }
@@ -155,10 +160,30 @@
             if (this.ModelState.IsValid)
             {
                 var user = new User { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Description = model.Description };
+
+                if (model.Role == RoleConstants.DriverRole)
+                {
+                    var car = new Car()
+                    {
+                        OwnerId = user.Id,
+                        Brand = model.CarBrand,
+                        Model = model.CarModel,
+                        TotalSeats = model.CarTotalSeats,
+                        Color = model.CarColor,
+                        Year = model.CarYear,
+                        SpaceForLugage = model.CarSpaceForLugage,
+                        Description = model.CarDescription,
+                        CreatedOn = DateTime.Now,
+                        IsDeleted = false
+                    };
+
+                    user.Car = car;
+                }
+
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await this.SignInManager.SignInAsync(user, isPersistent : false, rememberBrowser : false);
+                    await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     this.UserManager.AddToRole(user.Id, model.Role);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -168,6 +193,7 @@
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     return this.RedirectToAction("Index", "Home");
                 }
+
                 this.AddErrors(result);
             }
 

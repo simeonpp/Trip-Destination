@@ -42,9 +42,9 @@
                         .WillCascadeOnDelete(false);
 
             // http://stackoverflow.com/questions/6531671/what-does-principal-end-of-an-association-means-in-11-relationship-in-entity-fr
-            modelBuilder.Entity<User>()
-                .HasOptional(u => u.Car)
-                .WithRequired(c => c.Owner);
+            modelBuilder.Entity<Car>()
+                .HasRequired(c => c.Owner)
+                .WithOptional(u => u.Car);
         }
 
         private void ApplyAuditInfoRules()

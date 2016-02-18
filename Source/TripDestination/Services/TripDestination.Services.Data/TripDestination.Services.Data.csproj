@@ -59,7 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarServices.cs" />
     <Compile Include="ContactFormServices.cs" />
+    <Compile Include="Contracts\ICarServices.cs" />
     <Compile Include="Contracts\IContactFormServices.cs" />
     <Compile Include="Contracts\INewsletterServices.cs" />
     <Compile Include="Contracts\IPageServices.cs" />

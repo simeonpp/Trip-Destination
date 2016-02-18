@@ -5,6 +5,7 @@
     using TripDestination.Common.Infrastructure.Constants;
     using Common.Models;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web.Mvc;
 
     public class Car : BaseModel<int>
     {
@@ -42,6 +43,7 @@
         [Required]
         public SpaceForLugage SpaceForLugage { get; set; }
 
+        [AllowHtml]
         [MinLength(ModelConstants.CarDescriptionMinLength, ErrorMessage = "Car description can no be less than 20 symbols long.")]
         [MaxLength(ModelConstants.CarDescriptionMaxLength, ErrorMessage = "Car description can no be more than 1000 symbols long.")]
         public string Description { get; set; }

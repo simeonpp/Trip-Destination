@@ -129,7 +129,7 @@ namespace TripDestination.Data.Data.Migrations
                         {
                             Town dbTownToBeSaved = new Town
                             {
-                                Name = town
+                                Name = town.Trim()
                             };
 
                             context.Towns.Add(dbTownToBeSaved);

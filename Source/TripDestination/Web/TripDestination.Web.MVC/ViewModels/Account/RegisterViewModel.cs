@@ -108,7 +108,8 @@
                 yield return new ValidationResult("You must enter car year in range.", new[] { "CarYear" });
             }
 
-            if (this.Role == RoleConstants.DriverRole && Enum.IsDefined(typeof(SpaceForLugage), this.CarSpaceForLugage))
+            int luggageSpaceAsInt = (int)this.CarSpaceForLugage;
+            if (this.Role == RoleConstants.DriverRole && !Enum.IsDefined(typeof(SpaceForLugage), luggageSpaceAsInt))
             {
                 yield return new ValidationResult("You must choose car luggage space.", new[] { "CarSpaceForLugage" });
             }
