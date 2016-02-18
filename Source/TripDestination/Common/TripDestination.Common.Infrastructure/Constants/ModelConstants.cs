@@ -42,7 +42,7 @@
         public const int CarDescriptionMaxLength = 1000;
 
         // Town
-        public const int TownNameMinLength = 4;
+        public const int TownNameMinLength = 3;
         public const int TownNameMaxLength = 50;
 
         // Newsletter

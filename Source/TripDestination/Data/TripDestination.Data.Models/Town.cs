@@ -19,7 +19,7 @@
         }
 
         [Required]
-        [MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "Town name can no be less than 4 symbols long.")]
+        [MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "Town name can no be less than 3 symbols long.")]
         [MaxLength(ModelConstants.TownNameMaxLength, ErrorMessage = "Town name can no be more than 50 symbols long.")]
         public string Name { get; set; }
 

@@ -117,7 +117,7 @@ namespace TripDestination.Data.Data.Migrations
             {
                 var appDomain = AppDomain.CurrentDomain;
                 var basePath = appDomain.RelativeSearchPath ?? appDomain.BaseDirectory;
-                string townsFilePath = Path.GetFullPath(Path.Combine(basePath, @"..\..\files\cities.csv"));
+                string townsFilePath = basePath + @"\files\cities.csv";
 
                 if (File.Exists(townsFilePath))
                 {
