@@ -81,11 +81,11 @@
         }
 
 
-        public IEnumerable<PassengerTrip> Passengers { get; set; }
+        public IEnumerable<PassengerTripViewModel> Passengers { get; set; }
 
         public IEnumerable<PassengerTripViewModel> PendingApprovePassengers { get; set; }
 
-        public IEnumerable<TripComment> Comments { get; set; }
+        public IEnumerable<BaseCommentViewModel> Comments { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

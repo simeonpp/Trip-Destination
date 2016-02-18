@@ -238,6 +238,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Page\PageParagraphViewModel.cs" />
     <Compile Include="ViewModels\Page\PageViewModel.cs" />
+    <Compile Include="ViewModels\Shared\BaseCommentViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripExtentendedModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripViewModel.cs" />
@@ -767,6 +768,8 @@
     <Content Include="Views\Trip\_PassengerActionButtonPartial.cshtml" />
     <Content Include="Views\Trip\_LikeDislikeButtonsPartial.cshtml" />
     <Content Include="Views\Trip\_PassengerActionButtonsTemplatesPartial.cshtml" />
+    <Content Include="Views\Trip\_PassengersSectionPartial.cshtml" />
+    <Content Include="Views\Trip\_CommentsSectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
