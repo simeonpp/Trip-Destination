@@ -111,5 +111,15 @@
 
         public const int ContactFormMessageMinLength = 10;
         public const int ContactFormMessageMaxLength = 500;
+
+        // Photo
+        public const int PhotoContentTypeMinLength = 5;
+        public const int PhotoContentTypeMaxLength = 75;
+
+        public const int PhotoOriginalNameMinLength = 3;
+        public const int PhotoOriginalNameMaxLength = 255;
+
+        public const int PhotoFileNameMinLength = 25;
+        public const int PhotoFileNameMaxLength = 70;
     }
 }
