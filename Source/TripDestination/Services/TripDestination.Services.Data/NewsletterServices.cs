@@ -1,7 +1,8 @@
 ﻿namespace TripDestination.Services.Data
 {
+    using Common.Infrastructure.Models;
     using Contracts;
-    using System;
+    using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
 
@@ -14,18 +15,35 @@
             this.newsletterRepos = newsletterRepos;
         }
 
-        public Newsletter Create(string email, string ip, string userAgent)
+        public BaseResponseAjaxModel Create(string email, string ip, string userAgent)
         {
-            Newsletter dbNewsletter = new Newsletter()
-            {
-                Email = email,
-                Ip = ip,
-                UserAgent = userAgent
-            };
+            var responseData = new BaseResponseAjaxModel();
 
-            this.newsletterRepos.Add(dbNewsletter);
-            this.newsletterRepos.Save();
-            return dbNewsletter;
+            bool emailAlreadyRegistered = this.newsletterRepos
+                .All()
+                .Where(n => n.Email == email)
+                .Any();
+
+            if (emailAlreadyRegistered)
+            {
+                responseData.ErrorMessage = string.Format("emai '{0}' is already registered for our newsletter.", email);
+            }
+            else
+            {
+                Newsletter dbNewsletter = new Newsletter()
+                {
+                    Email = email,
+                    Ip = ip,
+                    UserAgent = userAgent
+                };
+
+                this.newsletterRepos.Add(dbNewsletter);
+                this.newsletterRepos.Save();
+
+                responseData.Status = true;
+            }
+
+            return responseData;
         }
     }
 }

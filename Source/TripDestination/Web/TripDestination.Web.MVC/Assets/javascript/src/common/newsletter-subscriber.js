@@ -18,7 +18,11 @@
                         $newsletterEmailInput.val('');
                         toastr.success('You have successfully subscribed email ' + response.Data + ' to our newsletter.');
                     } else {
-                        toastr.error('An error has occured during trying to register to newsletter. Please try again or contact our team for help.');
+                        if (response.ErrorMessage) {
+                            toastr.error(response.ErrorMessage);
+                        } else {
+                            toastr.error('An error has occured during trying to register to newsletter. Please try again or contact our team for help.');
+                        }
                     }
                 }
             });

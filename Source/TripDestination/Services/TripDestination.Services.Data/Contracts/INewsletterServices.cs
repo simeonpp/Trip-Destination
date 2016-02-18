@@ -1,9 +1,10 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
+    using Common.Infrastructure.Models;
     using TripDestination.Data.Models;
 
     public interface INewsletterServices
     {
-        Newsletter Create(string email, string ip, string userAgent);
+        BaseResponseAjaxModel Create(string email, string ip, string userAgent);
     }
 }
