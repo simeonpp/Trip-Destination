@@ -7,7 +7,7 @@
 
     public class ContactFormServices : IContactFormServices
     {
-        private IDbRepository<ContactForm> contactFormRepos;
+        private readonly IDbRepository<ContactForm> contactFormRepos;
 
         public ContactFormServices(IDbRepository<ContactForm> contactFormRepos)
         {

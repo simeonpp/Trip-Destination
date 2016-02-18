@@ -7,7 +7,7 @@
     using TripDestination.Data.Common;
     public class ViewServices : IViewServices
     {
-        private IDbRepository<View> viewRepos;
+        private readonly IDbRepository<View> viewRepos;
 
         public ViewServices(IDbRepository<View> viewRepos)
         {

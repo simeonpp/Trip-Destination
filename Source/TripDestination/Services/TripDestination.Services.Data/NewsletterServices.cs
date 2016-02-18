@@ -8,7 +8,7 @@
 
     public class NewsletterServices : INewsletterServices
     {
-        private IDbRepository<Newsletter> newsletterRepos;
+        private readonly IDbRepository<Newsletter> newsletterRepos;
 
         public NewsletterServices(IDbRepository<Newsletter> newsletterRepos)
         {

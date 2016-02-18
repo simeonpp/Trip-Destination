@@ -13,7 +13,7 @@
 
     public class StatisticsServices : IStatisticsServices
     {
-        private IDbRepository<Trip> tripRepos;
+        private readonly IDbRepository<Trip> tripRepos;
 
         // private IDbRepository<User> userRepos;
 

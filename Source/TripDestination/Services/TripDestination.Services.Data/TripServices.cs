@@ -12,9 +12,9 @@
     using TripDestination.Common.Infrastructure.Constants;
     public class TripServices : ITripServices
     {
-        private IDbRepository<Trip> tripRepos;
+        private readonly IDbRepository<Trip> tripRepos;
 
-        private IDbRepository<PassengerTrip> passengerTripsRepos;
+        private readonly IDbRepository<PassengerTrip> passengerTripsRepos;
 
         public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos)
         {

@@ -9,9 +9,9 @@
 
     public class PageServices : IPageServices
     {
-        private IDbRepository<Page> pageRepos;
+        private readonly IDbRepository<Page> pageRepos;
 
-        private IDbRepository<PageParagraph> pageParagraphRepos;
+        private readonly IDbRepository<PageParagraph> pageParagraphRepos;
 
         public PageServices(IDbRepository<Page> pageRepos, IDbRepository<PageParagraph> pageParagraphRepos)
         {

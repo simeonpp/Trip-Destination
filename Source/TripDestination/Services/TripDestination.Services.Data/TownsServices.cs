@@ -7,7 +7,7 @@
 
     public class TownsServices : ITownsServices
     {
-        private IDbRepository<Town> townRepos;
+        private readonly IDbRepository<Town> townRepos;
 
         public TownsServices(IDbRepository<Town> townRepos)
         {

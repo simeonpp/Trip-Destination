@@ -30,11 +30,13 @@
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name = "First name")]
         [MinLength(ModelConstants.UserFirstNameMinLength, ErrorMessage = "User first name can not be less than 3 symbols long.")]
         [MaxLength(ModelConstants.UserFirstNameMaxLength, ErrorMessage = "User first name can not be more than 50 symbols long.")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Last name")]
         [MinLength(ModelConstants.UserLastNameMinLength, ErrorMessage = "User last name can not be less than 3 symbols long.")]
         [MaxLength(ModelConstants.UserLastNameMaxLength, ErrorMessage = "User last name can not be more than 50 symbols long.")]
         public string LastName { get; set; }
@@ -47,6 +49,7 @@
         [Required]
         public string Role { get; set; }
 
+        [Display(Name = "Phone number")]
         public virtual string PhoneNumber { get; set; }
 
         public IEnumerable<SelectListItem> AvailableRolesSelectList { get; set; }
@@ -56,26 +59,33 @@
         public IEnumerable<SelectListItem> AvailableLuggageSelectList { get; set; }
 
         // Driver (Car)
+        [Display(Name = "Car total seats")]
         [Range(ModelConstants.CarTotalSeatsMinLength, ModelConstants.CarTotalSeatsMaxLength, ErrorMessage = "Car total seat must be between 1 and 5.")]
         public int CarTotalSeats { get; set; }
 
+        [Display(Name = "Car brand")]
         [MinLength(ModelConstants.CarBrandMinLength, ErrorMessage = "Car brand can no be less than 3 symbols long.")]
         [MaxLength(ModelConstants.CarBrandMaxLength, ErrorMessage = "Car brand can no be more than 50 symbols long.")]
         public string CarBrand { get; set; }
 
+        [Display(Name = "Car model")]
         [MinLength(ModelConstants.CarModelMinLength, ErrorMessage = "Car model can no be less than 3 symbols long.")]
         [MaxLength(ModelConstants.CarModelMaxLength, ErrorMessage = "Car model can no be more than 50 symbols long.")]
         public string CarModel { get; set; }
 
+        [Display(Name = "Car color")]
         [MinLength(ModelConstants.CarColorMinLength, ErrorMessage = "Car color can no be less than 3 symbols long.")]
         [MaxLength(ModelConstants.CarColorMaxLength, ErrorMessage = "Car color can no be more than 50 symbols long.")]
         public string CarColor { get; set; }
 
+        [Display(Name = "Car year")]
         [Range(ModelConstants.CarYearMinYear, ModelConstants.CarYearMaxYear, ErrorMessage = "Car year is not in range.")]
         public int CarYear { get; set; }
 
+        [Display(Name = "Car luggage space")]
         public SpaceForLugage CarSpaceForLugage { get; set; }
 
+        [Display(Name = "Car description")]
         [AllowHtml]
         [MinLength(ModelConstants.UserDescriptionMinLength, ErrorMessage = "Description can not be less than 20 symbols long.")]
         [MaxLength(ModelConstants.UserDescriptionMaxLength, ErrorMessage = "Description can not be more than 1000 symbols long.")]
