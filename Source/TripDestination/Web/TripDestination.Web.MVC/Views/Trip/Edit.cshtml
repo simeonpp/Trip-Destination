@@ -3,12 +3,7 @@
 <br />
 <div id="tripEdit">
 
-    <section id="topHead" class="noTopMargin noBottomMargin">
-        <article class="redBG noMargin topBottomPadding">
-            <div id="directions">@Model.From.Name - @Model.To.Name</div>
-            <div id="dateOfLeaving">@Model.DateOfLeaving.ToString("d MMMM yyyy HH:mm")</div>
-        </article>
-    </section>
+    @Html.Partial("_TopSectionPartial", new { From = Model.From.Name, To = Model.To.Name, FortammetDateOfLeaving = Model.FormattedDateOfLeaving })
 
     <div class="wrapper row">
 

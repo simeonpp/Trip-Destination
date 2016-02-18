@@ -251,6 +251,7 @@
     <Compile Include="ViewModels\Shared\UserCommentViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\Trip\PassengerTripEditInputModel.cs" />
+    <Compile Include="ViewModels\Trip\TownViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripDetailedViewModel.cs" />
     <Compile Include="ViewModels\Trip\TripEditInputModel.cs" />
     <Compile Include="ViewModels\Trip\TripInputVIewModel.cs" />
@@ -757,6 +758,8 @@
     <Content Include="Views\Trip\Edit.cshtml" />
     <Content Include="Views\Trip\EditorTemplates\TripEditInputModel.cshtml" />
     <Content Include="Views\CookiePolicy\Index.cshtml" />
+    <Content Include="Views\Trip\_TopSectionPartial.cshtml" />
+    <Content Include="Views\Trip\_SummarySectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

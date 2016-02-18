@@ -22,11 +22,19 @@
 
         public int Id { get; set; }
 
-        public Town From { get; set; }
+        public TownViewModel From { get; set; }
 
-        public Town To { get; set; }
+        public TownViewModel To { get; set; }
 
         public DateTime DateOfLeaving { get; set; }
+
+        public string FormattedDateOfLeaving
+        {
+            get
+            {
+                return this.DateOfLeaving.ToString("d MMMM yyyy HH:mm");
+            }
+        }
 
         public string PlaceOfLeaving { get; set; }
 
@@ -36,11 +44,27 @@
 
         public bool PickUpFromAddress { get; set; }
 
+        public string PickUpFromAddressAsString
+        {
+            get
+            {
+                return this.PickUpFromAddress ? "Yes" : "No";
+            }
+        }
+
         public decimal Price { get; set; }
 
         public ExtendedUserViewModel Driver { get; set; }
 
         public DateTime ETA { get; set; }
+
+        public string FormattedETA
+        {
+            get
+            {
+                return this.ETA.ToString("HH:mm");
+            }
+        }
 
         public int ViewsCount { get; set; }
 
@@ -48,9 +72,18 @@
 
         public string Description { get; set; }
 
+        public string SanitizedDescription
+        {
+            get
+            {
+                return this.Description;
+            }
+        }
+
+
         public IEnumerable<PassengerTrip> Passengers { get; set; }
 
-        public IEnumerable<PassengerTrip> PendingApprovePassengers { get; set; }
+        public IEnumerable<PassengerTripViewModel> PendingApprovePassengers { get; set; }
 
         public IEnumerable<TripComment> Comments { get; set; }
 

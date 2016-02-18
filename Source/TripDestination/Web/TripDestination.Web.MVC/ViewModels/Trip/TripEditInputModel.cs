@@ -38,6 +38,14 @@
         [Required]
         public DateTime DateOfLeaving { get; set; }
 
+        public string FormattedDateOfLeaving
+        {
+            get
+            {
+                return this.DateOfLeaving.ToString("d MMMM yyyy HH:mm");
+            }
+        }
+
         [Required]
         public DateTime ETA { get; set; }
 

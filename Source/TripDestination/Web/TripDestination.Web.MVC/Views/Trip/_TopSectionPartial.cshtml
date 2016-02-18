@@ -1,0 +1,10 @@
+﻿@{ 
+    string From = (string)this.ViewData["From"];
+    string To = (string)this.ViewData["To"];
+    string FortammetDateOfLeaving = (string)this.ViewData["FortammetDateOfLeaving"];
+}
+
+<article class="redBG noMargin topBottomPadding">
+    <div id="directions">@From - @To</div>
+    <div id="dateOfLeaving">@FortammetDateOfLeaving</div>
+</article>
