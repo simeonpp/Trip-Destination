@@ -16,6 +16,7 @@
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult JoinRequest(int tripId)
         {
             string userId = this.User.Identity.GetUserId();
@@ -25,6 +26,7 @@
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LeaveTrip(int tripId)
         {
             string userId = this.User.Identity.GetUserId(); ;
@@ -34,6 +36,7 @@
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddComments(int tripId, string commentText)
         {
             string userId = this.User.Identity.GetUserId();
@@ -43,6 +46,7 @@
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ApproveJoinRequest(int tripId, string username)
         {
             string userId = this.User.Identity.GetUserId();
@@ -52,6 +56,7 @@
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult DisapproveJoinRequest(int tripId, string username)
         {
             string userId = this.User.Identity.GetUserId();
@@ -89,6 +94,7 @@
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult LikeDislikeTrip(int tripId, bool value)
         {
             var userId = this.User.Identity.GetUserId();

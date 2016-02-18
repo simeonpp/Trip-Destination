@@ -1,6 +1,7 @@
 ﻿$().ready(function () {
     var $likeDislikeTripButton = $('#likeDislikeTripButton'),
-        $likesCount = $('#likesCount');
+        $likesCount = $('#likesCount'),
+        ajaxAFT = $('#ajaxAFT input[name="__RequestVerificationToken"]:first').val();
 
     $likeDislikeTripButton.on('click', function () {
         var $this = $(this),
@@ -15,6 +16,7 @@
             type: "POST",
             url: '/TripAjax/LikeDislikeTrip',
             data: {
+                __RequestVerificationToken: ajaxAFT,
                 tripId: tripId,
                 value: value
             },

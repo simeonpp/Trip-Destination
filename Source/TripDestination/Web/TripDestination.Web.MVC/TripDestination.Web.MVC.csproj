@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ChildActionControllers\LayoutController.cs" />
     <Compile Include="Controllers\ChildActionControllers\StatisticsChildActionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CookiePolicyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
@@ -755,6 +756,7 @@
     <Content Include="Views\Trip\EditorTemplates\TripLstViewModel.cshtml" />
     <Content Include="Views\Trip\Edit.cshtml" />
     <Content Include="Views\Trip\EditorTemplates\TripEditInputModel.cshtml" />
+    <Content Include="Views\CookiePolicy\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

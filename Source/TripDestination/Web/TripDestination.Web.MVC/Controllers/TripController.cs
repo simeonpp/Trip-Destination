@@ -79,7 +79,7 @@
                     currentUserId
                 );
 
-            return this.RedirectToAction("Detailed", "Trip");
+            return this.RedirectToAction("Detailed", "Trip", new { id = dbtrip.Id });
         }
 
         [HttpGet]
@@ -124,6 +124,7 @@
             return this.View();
         }
 
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var trip = this.TripServices.GetById(id);
@@ -173,6 +174,7 @@
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(TripEditInputModel editModel)
         {
             if (!this.ModelState.IsValid)
@@ -209,12 +211,13 @@
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int tripId)
         {
             var userId = this.User.Identity.GetUserId();
             this.TripServices.Delete(tripId, userId);
             return this.RedirectToAction("List");
         }
-        
+
     }
 }

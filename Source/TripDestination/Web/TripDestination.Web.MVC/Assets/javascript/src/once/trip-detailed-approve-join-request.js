@@ -1,7 +1,8 @@
 ﻿$().ready(function () {
     var $approvePassengerJoinRequest = $('.approvePassengerJoinRequest'),
         $disapprovePassengerJoinRequest = $('.disapprovePassengerJoinRequest'),
-        pendingUsernames = [];
+        pendingUsernames = [],
+        ajaxAFT = $('#ajaxAFT input[name="__RequestVerificationToken"]:first').val();
 
     $disapprovePassengerJoinRequest.on('click', function () {
         var $this = $(this),
@@ -11,6 +12,7 @@
         if ($.inArray(username, pendingUsernames)) {
             addPendingUser(username);
             $.ajax({
+                __RequestVerificationToken: ajaxAFT,
                 type: "POST",
                 url: '/TripAjax/DisapproveJoinRequest',
                 data: {
@@ -44,6 +46,7 @@
 
         if ($.inArray(username, pendingUsernames)) {
             $.ajax({
+                __RequestVerificationToken: ajaxAFT,
                 type: "POST",
                 url: '/TripAjax/ApproveJoinRequest',
                 data: {

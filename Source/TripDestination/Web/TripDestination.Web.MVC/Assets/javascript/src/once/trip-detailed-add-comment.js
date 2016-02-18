@@ -4,7 +4,8 @@
         $commentsCount = $('#commentsCount'),
         $loadMoreTripComments = $('#loadMoreTripComments'),
         commentTextMinLength = 5,
-        commentTextMaxLength = 1000;
+        commentTextMaxLength = 1000,
+        ajaxAFT = $('#ajaxAFT input[name="__RequestVerificationToken"]:first').val();
 
     $addNewCommentButton.on('click', function () {
         var commentText = $commentArea.val(),
@@ -19,6 +20,7 @@
             type: "POST",
             url: '/TripAjax/AddComments',
             data: {
+                __RequestVerificationToken: ajaxAFT,
                 tripid: tripId,
                 commentText: commentText
             },

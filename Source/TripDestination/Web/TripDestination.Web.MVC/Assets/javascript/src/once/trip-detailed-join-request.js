@@ -2,7 +2,8 @@
     $('[data-toggle="tooltip"]').tooltip();
 
     var $tripActionWrap = $('#tripActionWrap'),
-        $tripMessage = $('#tripMessage');
+        $tripMessage = $('#tripMessage'),
+        ajaxAFT = $('#ajaxAFT input[name="__RequestVerificationToken"]:first').val();
 
     $('body').on('click', '#joinTripButton', function () {
         var $joinTripButton = $('#joinTripButton');
@@ -11,6 +12,7 @@
             type: "POST",
             url: '/TripAjax/JoinRequest',
             data: {
+                __RequestVerificationToken: ajaxAFT,
                 tripid: tripId
             },
             success: function (response) {
@@ -38,6 +40,7 @@
             type: "POST",
             url: '/TripAjax/LeaveTrip',
             data: {
+                __RequestVerificationToken: ajaxAFT,
                 tripid: tripId
             },
             success: function (response) {

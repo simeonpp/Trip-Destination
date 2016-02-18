@@ -75,6 +75,13 @@
 
                     @if (this.User.Identity.IsAuthenticated)
                     {
+                        using (Html.BeginForm())
+                        {
+                            <div id="ajaxAFT">
+                                @Html.AntiForgeryToken()
+                            </div>
+                        }
+
                         <div id="buttonsWrap">
 
                             <div id="buttonsAction">
@@ -135,6 +142,8 @@
                                     <div class="halfTableCell">
                                         @using (Html.BeginForm("Delete", "Trip", FormMethod.Post))
                                         {
+                                            @Html.AntiForgeryToken()
+
                                             @Html.TextBox("tripId", Model.Id, new { hidden = "hidden" })
                                             <input id="deleteTripButton" class="button" type="submit" value="Delete trip" />
                                         }                                                                                
