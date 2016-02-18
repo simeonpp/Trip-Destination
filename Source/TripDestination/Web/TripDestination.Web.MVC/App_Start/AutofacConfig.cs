@@ -18,7 +18,7 @@
     using Services.Web.Providers;
     using Services.Web.Providers.Contracts;
     using Services.Web.Helpers.Contracts;
-
+    using Infrastructure.HtmlSanitizer;
     public static class AutofacConfig
     {
         public static void Register()
@@ -81,6 +81,10 @@
             // Here HomeController is used instead of Executable assmebly since Unit test fails
             builder.RegisterAssemblyTypes(typeof(HomeController).Assembly)
                 .AssignableTo<BaseController>().PropertiesAutowired();
+
+            builder.Register(x => new HtmlSanitizerAdapter())
+                .As<ISanitizer>()
+                .InstancePerRequest();
         }
     }
 }
