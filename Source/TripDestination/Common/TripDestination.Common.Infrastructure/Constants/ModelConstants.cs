@@ -64,7 +64,7 @@
 
         // Comment
         public const int CommentTextMinLength = 5;
-        public const int CommenttextMaxLength = 1000;
+        public const int CommentTextMaxLength = 1000;
 
         // Rating
         public const double RatingValueMin = 0.0;

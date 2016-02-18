@@ -14,7 +14,7 @@
 
         [Required]
         [MinLength(ModelConstants.CommentTextMinLength, ErrorMessage = "Comment text can no be less than 5 symbols long.")]
-        [MaxLength(ModelConstants.CommenttextMaxLength, ErrorMessage = "Comment text can no be more than 1000 symbosl long,")]
+        [MaxLength(ModelConstants.CommentTextMaxLength, ErrorMessage = "Comment text can no be more than 1000 symbosl long,")]
         public string Text { get; set; }
     }
 }

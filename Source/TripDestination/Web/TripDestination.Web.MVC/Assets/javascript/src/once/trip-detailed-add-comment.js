@@ -2,10 +2,18 @@
     var $addNewCommentButton = $('#addNewCommentButton'),
         $commentArea = $('#commentArea'),
         $commentsCount = $('#commentsCount'),
-        $loadMoreTripComments = $('#loadMoreTripComments');
+        $loadMoreTripComments = $('#loadMoreTripComments'),
+        commentTextMinLength = 5,
+        commentTextMaxLength = 1000;
 
     $addNewCommentButton.on('click', function () {
-        var commentText = $commentArea.val();
+        var commentText = $commentArea.val(),
+            commentTextLength = commentText.length;
+
+        if (commentTextLength < commentTextMinLength || commentTextMinLength > commentTextMaxLength) {
+            toastr.error('Comment text should be between ' + commentTextMinLength + ' and ' + commentTextMaxLength + ' symbols.');
+            return;
+        }
 
         $.ajax({
             type: "POST",

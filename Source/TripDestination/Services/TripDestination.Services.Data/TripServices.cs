@@ -264,8 +264,16 @@
 
         public BaseResponseAjaxModel AddComment(int tripId, string userId, string commentText)
         {
-            var dbTrip = this.GetById(tripId);
+
             var response = new BaseResponseAjaxModel();
+
+            if (commentText.Length < ModelConstants.CommentTextMinLength || commentText.Length > ModelConstants.CommentTextMaxLength)
+            {
+                response.ErrorMessage = string.Format("Comment text should be between {0} and {1} symbols long", ModelConstants.CommentTextMinLength, ModelConstants.CommentTextMaxLength);
+                return response;
+            }
+
+            var dbTrip = this.GetById(tripId);
 
             if (dbTrip == null)
             {
