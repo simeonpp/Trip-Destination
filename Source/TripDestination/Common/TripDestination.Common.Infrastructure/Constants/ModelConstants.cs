@@ -121,5 +121,8 @@
 
         public const int PhotoFileNameMinLength = 25;
         public const int PhotoFileNameMaxLength = 70;
+
+        public const int PhotoExtensionMinLength = 3;
+        public const int PhotoExtensionMaxLength = 15;
     }
 }

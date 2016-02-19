@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\TempController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -773,9 +774,10 @@
     <Content Include="Views\Trip\_CarDetailsSectionPartial.cshtml" />
     <Content Include="Views\Trip\_FullDetailsPartial.cshtml" />
     <Content Include="Views\Trip\_DriverDetailsSectionPartial.cshtml" />
+    <Content Include="Views\Temp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
