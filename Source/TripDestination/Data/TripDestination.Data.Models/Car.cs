@@ -9,7 +9,7 @@
 
     public class Car : BaseModel<int>
     {
-        private IEnumerable<Photo> photos;
+        private ICollection<Photo> photos;
 
         public Car()
         {
@@ -53,7 +53,7 @@
 
         public virtual User Owner { get; set; }
 
-        public virtual IEnumerable<Photo> Photos
+        public virtual ICollection<Photo> Photos
         {
             get { return this.photos; }
             set { this.photos = value; }

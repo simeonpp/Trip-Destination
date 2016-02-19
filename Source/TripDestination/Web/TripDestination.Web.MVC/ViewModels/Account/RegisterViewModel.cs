@@ -88,6 +88,8 @@
         [Display(Name = "Car luggage space")]
         public SpaceForLugage CarSpaceForLugage { get; set; }
 
+        public ICollection<HttpPostedFileBase> CarPhotos { get; set; }
+
         [Display(Name = "Car description")]
         [AllowHtml]
         [MinLength(ModelConstants.UserDescriptionMinLength, ErrorMessage = "Description can not be less than 20 symbols long.")]
@@ -125,6 +127,11 @@
             if (this.Role == RoleConstants.DriverRole && !Enum.IsDefined(typeof(SpaceForLugage), luggageSpaceAsInt))
             {
                 yield return new ValidationResult("You must choose car luggage space.", new[] { "CarSpaceForLugage" });
+            }
+
+            if (this.Role == RoleConstants.DriverRole && this.CarPhotos.Count == 0)
+            {
+                yield return new ValidationResult("You must upload car photos.", new[] { "CarYear" });
             }
         }
     }

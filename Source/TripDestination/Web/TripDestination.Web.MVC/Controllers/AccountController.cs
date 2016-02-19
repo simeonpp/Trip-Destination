@@ -13,9 +13,10 @@
     using System;
     using Common.Infrastructure.Constants;
     using Services.Data.Contracts;
-    using System.Collections.Generic;
     using System.IO;
     using Services.Web.Services.Contracts;
+    using System.Collections.Generic;
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -186,7 +187,7 @@
                     this.imageProccessorServices.ResizeAndSaveImage(
                         model.Avatar, 
                         new int[] { WebApplicationConstants.ImageUserAvatarSmallWidth, WebApplicationConstants.ImageUserAvatarNormalWidth },
-                        filePath, 
+                        filePath,
                         extension);
 
                     var avatar = new Photo()
@@ -227,6 +228,44 @@
                         };
 
                         user.Car = car;
+
+                        // Save car photos
+                        foreach (var carPhoto in model.CarPhotos)
+                        {
+                            var carOriginalFileName = Path.GetFileName(carPhoto.FileName);
+                            var carSizeInBytes = carPhoto.ContentLength;
+                            var carContentType = carPhoto.ContentType;
+                            var carExtension = Path.GetExtension(carOriginalFileName);
+                            var carFileName = Guid.NewGuid().ToString();
+                            var carFileNameWithExtension = carFileName + carExtension;
+                            var carFilePath = Path.Combine(folderToBeuploadFiles, carFileNameWithExtension);
+
+                            if (carPhoto != null && sizeInBytes < WebApplicationConstants.ImageMaxSizeInBytes && (extension == ".jpg" || extension == ".png"))
+                            {
+                                carPhoto.SaveAs(carFilePath);
+                                this.imageProccessorServices.ResizeAndSaveImage(
+                                    carPhoto,
+                                    new int[] { WebApplicationConstants.ImageCarWidth },
+                                    carFilePath,
+                                    carExtension);
+
+                                var carPhotoEntity = new Photo()
+                                {
+                                    ContentType = carContentType,
+                                    Extension = carExtension,
+                                    OriginalName = carOriginalFileName,
+                                    SizeInBytes = carSizeInBytes,
+                                    CreatedOn = DateTime.Now,
+                                    FileName = model.Username + '/' + carFileName
+                                };
+
+                                car.Photos.Add(carPhotoEntity);
+                            }
+                            else
+                            {
+                                this.ModelState.AddModelError("CarPhotos", "Car images should be less than 1.5MB and in jpg or png format.");
+                            }
+                        }
                     }
 
                     var result = await this.UserManager.CreateAsync(user, model.Password);
