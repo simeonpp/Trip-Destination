@@ -6,7 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
     using System;
-
+    using System.Web;
     public class RegisterViewModel : IValidatableObject
     {
         [Required]
@@ -40,6 +40,9 @@
         [MinLength(ModelConstants.UserLastNameMinLength, ErrorMessage = "User last name can not be less than 3 symbols long.")]
         [MaxLength(ModelConstants.UserLastNameMaxLength, ErrorMessage = "User last name can not be more than 50 symbols long.")]
         public string LastName { get; set; }
+
+        [Required]
+        public HttpPostedFileBase Avatar { get; set; }
 
         [AllowHtml]
         [MinLength(ModelConstants.UserDescriptionMinLength, ErrorMessage = "Description can not be less than 20 symbols long.")]

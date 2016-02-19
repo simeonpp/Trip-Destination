@@ -6,6 +6,6 @@
     {
         byte[] Resize(byte[] originalImage, int width);
 
-        void ResizeAndSaveImage(HttpPostedFileBase originalImage, int width, string originalImageFilename, string extension);
+        void ResizeAndSaveImage(HttpPostedFileBase originalImage, int[] widths, string originalImageFilename, string extension);
     }
 }

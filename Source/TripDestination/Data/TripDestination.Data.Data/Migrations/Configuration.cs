@@ -67,12 +67,23 @@ namespace TripDestination.Data.Data.Migrations
                     RequireUppercase = UserConstants.RequireUppercase,
                 };
 
+                var avatar = new Photo()
+                {
+                    ContentType = "image/jpeg",
+                    Extension = ".jpg",
+                    OriginalName = "adminImage",
+                    SizeInBytes = 123123,
+                    CreatedOn = DateTime.Now,
+                    FileName = "admin_image_image_iamge_image"
+                };
+
                 var adminUser = new User
                 {
                     UserName = UserConstants.AdminUsername,
                     Email = UserConstants.AdminEmail,
                     FirstName = UserConstants.AdminFirstName,
-                    LastName = UserConstants.AdminlastName
+                    LastName = UserConstants.AdminlastName,
+                    Avatar = avatar
                 };
 
                 IdentityResult result = userManager.Create(adminUser, UserConstants.AdminPassword);

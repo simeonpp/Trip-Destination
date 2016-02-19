@@ -41,6 +41,10 @@
 
         public virtual Car Car { get; set; }
 
+        public int AvatarId { get; set; }
+
+        public virtual Photo Avatar { get; set; }
+
         public virtual ICollection<Trip> Trips
         {
             get { return this.trips; }

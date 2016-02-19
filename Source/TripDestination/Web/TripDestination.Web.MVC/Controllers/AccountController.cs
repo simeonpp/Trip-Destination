@@ -14,6 +14,8 @@
     using Common.Infrastructure.Constants;
     using Services.Data.Contracts;
     using System.Collections.Generic;
+    using System.IO;
+    using Services.Web.Services.Contracts;
     [Authorize]
     public class AccountController : Controller
     {
@@ -22,12 +24,14 @@
         private readonly ICarServices carServices;
         private readonly IRoleProvider roleProvider;
         private readonly ICarProvider carProvider;
+        private readonly IImageProccessorServices imageProccessorServices;
 
-        public AccountController(ICarServices carServices, IRoleProvider roleProvider, ICarProvider carProvider)
+        public AccountController(ICarServices carServices, IRoleProvider roleProvider, ICarProvider carProvider, IImageProccessorServices imageProccessorServices)
         {
             this.carServices = carServices;
             this.roleProvider = roleProvider;
             this.carProvider = carProvider;
+            this.imageProccessorServices = imageProccessorServices;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -159,7 +163,51 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Description = model.Description };
+                // Save avatar
+                var uploadsFolderPath = this.Server.MapPath(WebApplicationConstants.ImageFolder);
+                var folderToBeuploadFiles = Path.Combine(uploadsFolderPath, model.Username);
+
+                var originalFileName = Path.GetFileName(model.Avatar.FileName);
+                var sizeInBytes = model.Avatar.ContentLength;
+                var contentType = model.Avatar.ContentType;
+                var extension = Path.GetExtension(originalFileName);
+                var fileName = Guid.NewGuid().ToString();
+                var fileNameWithExtension = fileName + extension;
+                var filePath = Path.Combine(folderToBeuploadFiles, fileNameWithExtension);
+
+                if (sizeInBytes < WebApplicationConstants.ImageMaxSizeInBytes && (extension == ".jpg" || extension == ".png"))
+                {
+                    if (!Directory.Exists(folderToBeuploadFiles))
+                    {
+                        Directory.CreateDirectory(folderToBeuploadFiles);
+                    }
+
+                    model.Avatar.SaveAs(filePath);
+                    this.imageProccessorServices.ResizeAndSaveImage(
+                        model.Avatar, 
+                        new int[] { WebApplicationConstants.ImageUserAvatarSmallWidth, WebApplicationConstants.ImageUserAvatarNormalWidth },
+                        filePath, 
+                        extension);
+                }
+
+                var avatar = new Photo()
+                {
+                    ContentType = contentType,
+                    Extension = extension,
+                    OriginalName = originalFileName,
+                    SizeInBytes = sizeInBytes,
+                    CreatedOn = DateTime.Now,
+                    FileName = model.Username + '/' + fileName
+                };
+
+                var user = new User {
+                    UserName = model.Username,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = 
+                    model.LastName,
+                    Avatar = avatar,
+                    Description = model.Description };
 
                 if (model.Role == RoleConstants.DriverRole)
                 {

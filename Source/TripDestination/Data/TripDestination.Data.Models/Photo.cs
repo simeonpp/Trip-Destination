@@ -12,6 +12,7 @@
             this.CreatedOn = DateTime.Now;
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -30,7 +31,7 @@
         public string OriginalName { get; set; }
 
         [Required]
-        public int SizeInKB { get; set; }
+        public int SizeInBytes { get; set; }
 
         [Required]
         public DateTime CreatedOn { get; set; }

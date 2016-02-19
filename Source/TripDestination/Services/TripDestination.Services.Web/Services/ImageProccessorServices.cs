@@ -39,7 +39,7 @@
             }
         }
 
-        public void ResizeAndSaveImage(HttpPostedFileBase originalImage, int width, string originalImageFilePath, string extension)
+        public void ResizeAndSaveImage(HttpPostedFileBase originalImage, int[] widths, string originalImageFilePath, string extension)
         {
             byte[] imgData;
             using (var reader = new BinaryReader(originalImage.InputStream))
@@ -48,11 +48,15 @@
             }
 
             var filePath = originalImageFilePath.Substring(0, originalImageFilePath.Length - extension.Length);
-            var resizedImageFilePath = filePath + "_" + width + extension;
-            byte[] resizedImageBytes = this.Resize(imgData, 210);
-            MemoryStream ms = new MemoryStream(resizedImageBytes);
-            Image resizedImage = Image.FromStream(ms);
-            resizedImage.Save(resizedImageFilePath);
+
+            foreach (var width in widths)
+            {
+                var resizedImageFilePath = filePath + "_" + width + extension;
+                byte[] resizedImageBytes = this.Resize(imgData, width);
+                MemoryStream ms = new MemoryStream(resizedImageBytes);
+                Image resizedImage = Image.FromStream(ms);
+                resizedImage.Save(resizedImageFilePath);
+            }
         }
     }
 }
