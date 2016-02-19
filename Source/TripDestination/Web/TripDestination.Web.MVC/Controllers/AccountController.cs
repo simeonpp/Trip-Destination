@@ -188,61 +188,67 @@
                         new int[] { WebApplicationConstants.ImageUserAvatarSmallWidth, WebApplicationConstants.ImageUserAvatarNormalWidth },
                         filePath, 
                         extension);
-                }
 
-                var avatar = new Photo()
-                {
-                    ContentType = contentType,
-                    Extension = extension,
-                    OriginalName = originalFileName,
-                    SizeInBytes = sizeInBytes,
-                    CreatedOn = DateTime.Now,
-                    FileName = model.Username + '/' + fileName
-                };
-
-                var user = new User {
-                    UserName = model.Username,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = 
-                    model.LastName,
-                    Avatar = avatar,
-                    Description = model.Description };
-
-                if (model.Role == RoleConstants.DriverRole)
-                {
-                    var car = new Car()
+                    var avatar = new Photo()
                     {
-                        OwnerId = user.Id,
-                        Brand = model.CarBrand,
-                        Model = model.CarModel,
-                        TotalSeats = model.CarTotalSeats,
-                        Color = model.CarColor,
-                        Year = model.CarYear,
-                        SpaceForLugage = model.CarSpaceForLugage,
-                        Description = model.CarDescription,
+                        ContentType = contentType,
+                        Extension = extension,
+                        OriginalName = originalFileName,
+                        SizeInBytes = sizeInBytes,
                         CreatedOn = DateTime.Now,
-                        IsDeleted = false
+                        FileName = model.Username + '/' + fileName
                     };
 
-                    user.Car = car;
-                }
+                    var user = new User
+                    {
+                        UserName = model.Username,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName =
+                        model.LastName,
+                        Avatar = avatar,
+                        Description = model.Description
+                    };
 
-                var result = await this.UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                    if (model.Role == RoleConstants.DriverRole)
+                    {
+                        var car = new Car()
+                        {
+                            OwnerId = user.Id,
+                            Brand = model.CarBrand,
+                            Model = model.CarModel,
+                            TotalSeats = model.CarTotalSeats,
+                            Color = model.CarColor,
+                            Year = model.CarYear,
+                            SpaceForLugage = model.CarSpaceForLugage,
+                            Description = model.CarDescription,
+                            CreatedOn = DateTime.Now,
+                            IsDeleted = false
+                        };
+
+                        user.Car = car;
+                    }
+
+                    var result = await this.UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        this.UserManager.AddToRole(user.Id, model.Role);
+
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        return this.RedirectToAction("Index", "Home");
+
+                        this.AddErrors(result);
+                    }
+                }
+                else
                 {
-                    await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    this.UserManager.AddToRole(user.Id, model.Role);
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return this.RedirectToAction("Index", "Home");
+                    this.ModelState.AddModelError("Avatar", "Avatar image should be less than 1.5MB and in jpg or png format.");
                 }
-
-                this.AddErrors(result);
             }
 
             this.FillRequiredRegistrationSelectList(model);
