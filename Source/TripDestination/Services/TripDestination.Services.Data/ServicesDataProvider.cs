@@ -12,5 +12,20 @@
                     fileName,
                     WebApplicationConstants.ImageUserAvatarSmallWidth);
         }
+
+        public static string GetProfileUrl(string username)
+        {
+            return string.Format("/User/{0}", username);
+        }
+
+        public static string GetProfileUrl(string username, string firstOrLastName)
+        {
+            return string.Format("/User/{0}/{1}", username, firstOrLastName);
+        }
+
+        public static string GetProfileUrl(string username, string firstname, string lastname)
+        {
+            return string.Format("/User/{0}/{1}", username, firstname + "-" + lastname);
+        }
     }
 }

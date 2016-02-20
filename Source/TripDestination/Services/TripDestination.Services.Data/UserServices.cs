@@ -82,7 +82,7 @@
             {
                 FirstName = author.FirstName,
                 LastName = author.LastName,
-                UserUrl = "www.google.com", // TODO: Implement URL
+                UserUrl = ServicesDataProvider.GetProfileUrl(author.UserName, author.FirstName, author.LastName),
                 UserImageSrc = ServicesDataProvider.GetUserImageSmallUrl(author.Avatar.FileName),
                 CreatedOnFormatted = comment.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
                 CommentText = comment.Text,
@@ -112,7 +112,7 @@
                 {
                     FirstName = c.Author.FirstName,
                     LastName = c.Author.LastName,
-                    UserUrl = "http://www.google.com", // TODO: Fix url
+                    UserUrl = ServicesDataProvider.GetProfileUrl(c.Author.UserName, c.Author.FirstName, c.Author.LastName),
                     UserImageSrc = ServicesDataProvider.GetUserImageSmallUrl(c.Author.Avatar.FileName),
                     CreatedOnFormatted = c.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
                     CommentText = c.Text
