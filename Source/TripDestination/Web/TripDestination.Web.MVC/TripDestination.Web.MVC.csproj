@@ -200,7 +200,9 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CarAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CarAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ProfileController.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
@@ -729,6 +731,8 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Areas\Admin\Views\CarAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CarAdminViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\TripAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TripAdminViewModel.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -844,6 +848,7 @@
     <Folder Include="Content\Kendo\images\" />
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Views\CarAdmin\" />
+    <Folder Include="Views\TripAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

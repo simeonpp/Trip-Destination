@@ -26,6 +26,11 @@
             this.userServices = userServices;
         }
 
+        public IQueryable<Trip> GetAll()
+        {
+            return this.tripRepos.All();
+        }
+
         public Trip Create(int fromTownId, int toTownId, DateTime dateOfLeaving, int availableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, decimal price, string driverId)
         {
             Trip trip = new Trip()
@@ -148,7 +153,20 @@
         {
             var dbTrip = this.GetById(id);
 
-            if (dbTrip != null && dbTrip.DriverId == userId )
+            if (dbTrip != null && dbTrip.DriverId == userId)
+            {
+                this.tripRepos.Delete(dbTrip);
+                this.tripRepos.Save();
+            }
+
+            return;
+        }
+
+        public void AdminDelete(int id)
+        {
+            var dbTrip = this.GetById(id);
+
+            if (dbTrip != null)
             {
                 this.tripRepos.Delete(dbTrip);
                 this.tripRepos.Save();

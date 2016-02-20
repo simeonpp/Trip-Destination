@@ -5,8 +5,11 @@
     using System.Linq;
     using System.Collections.Generic;
     using Common.Infrastructure.Models;
+
     public interface ITripServices
     {
+        IQueryable<Trip> GetAll();
+
         Trip Create(
             int fromTownId,
             int toTownId,
@@ -42,6 +45,8 @@
             IEnumerable<string> usernamesToBeRemoved);
 
         void Delete(int id, string userId);
+
+        void AdminDelete(int id);
 
         int GetTakenSeatsCount(int tripId);
 

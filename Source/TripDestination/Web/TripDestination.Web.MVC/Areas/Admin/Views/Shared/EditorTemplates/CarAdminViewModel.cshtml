@@ -1,9 +1,5 @@
 ﻿@model CarAdminViewModel
 
-@{ 
-    var provider = new TripDestination.Services.Web.Providers.CarProvider();
-}
-
 <div class="form-group">
     @Html.LabelFor(m => m.TotalSeats, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
