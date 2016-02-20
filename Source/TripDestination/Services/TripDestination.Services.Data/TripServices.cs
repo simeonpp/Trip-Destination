@@ -10,6 +10,7 @@
     using TripDestination.Common.Infrastructure.Models;
     using TripDestination.Services.Data.Models;
     using TripDestination.Common.Infrastructure.Constants;
+    using TripDestination.Services.Data;
     public class TripServices : ITripServices
     {
         private readonly IDbRepository<Trip> tripRepos;
@@ -267,7 +268,6 @@
 
         public BaseResponseAjaxModel AddComment(int tripId, string userId, string commentText)
         {
-
             var response = new BaseResponseAjaxModel();
 
             if (commentText.Length < ModelConstants.CommentTextMinLength || commentText.Length > ModelConstants.CommentTextMaxLength)
@@ -303,7 +303,7 @@
                 FirstName = author.FirstName,
                 LastName = author.LastName,
                 UserUrl = "www.google.com", // TODO: Implement URL
-                UserImageSrc = this.GetUserImageSmallUrl(author.Avatar.FileName),
+                UserImageSrc = ServicesDataProvider.GetUserImageSmallUrl(author.Avatar.FileName),
                 CreatedOnFormatted = comment.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
                 CommentText = comment.Text,
                 CommentTotalCount = dbTrip.Comments.Count
@@ -415,7 +415,8 @@
             {
                 response.ErrorMessage = "No such trip.";
                 return response;
-            }            
+            }
+
             var comments = dbTrip.Comments
                 .Where(c => c.IsDeleted == false)
                 .OrderByDescending(c => c.CreatedOn)
@@ -426,14 +427,14 @@
                     FirstName = c.Author.FirstName,
                     LastName = c.Author.LastName,
                     UserUrl = "http://www.google.com", // TODO: Fix url
-                    UserImageSrc = this.GetUserImageSmallUrl(c.Author.Avatar.FileName),
+                    UserImageSrc = ServicesDataProvider.GetUserImageSmallUrl(c.Author.Avatar.FileName),
                     CreatedOnFormatted = c.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
                     CommentText = c.Text
                 })
                 .ToList();
 
 
-            if (comments.Count > 0)
+            if (comments.Count() > 0)
             {
                 int newOffset = offset + WebApplicationConstants.CommentsOfset;
                 bool hasMoreCommentsToLoad = this.CheckIfTripHasMoreCommentsToLoad(dbTrip.Id, newOffset);
@@ -515,15 +516,6 @@
 
             int likesCount = likes - dislikes;
             return likesCount;
-        }
-
-        private string GetUserImageSmallUrl(string fileName)
-        {
-            return string.Format(
-                    "/{0}/{1}/{2}",
-                    WebApplicationConstants.ImageRouteUrl,
-                    fileName,
-                    WebApplicationConstants.ImageUserAvatarSmallWidth);
         }
     }
 }

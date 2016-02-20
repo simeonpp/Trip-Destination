@@ -1,14 +1,19 @@
 ﻿@{
     IEnumerable<BaseCommentViewModel> Comments = (IEnumerable<BaseCommentViewModel>)this.ViewData["Comments"];
     string identifier = (string)this.ViewData["Identifier"];
-    int id = (int)this.ViewData["id"];
+    string id = (string)this.ViewData["id"];
     bool HasMoreComments = (bool)this.ViewData["HasMoreComments"];
+
+    // First letter is upper
+    string ajaxLoadUrl = "/" + char.ToUpper(identifier[0]) + identifier.Substring(1) + "Ajax/LoadComments";
+    string ajaxAddUrl = "/" + char.ToUpper(identifier[0]) + identifier.Substring(1) + "Ajax/AddComments";
 }
 
-@if (Comments.Count() > 0)
-{
-    <ul id="@identifier-CommentsList" class="commentsUl">
-        @foreach (var comment in Comments)
+@*Should be outside the if clause because when we add for first time comment it should be there.*@
+<ul id="@identifier-CommentsList" class="commentsUl">
+    @if (Comments.Count() > 0)
+    {
+        foreach (var comment in Comments)
         {
             <li>
                 <div class="row noMargins">
@@ -22,29 +27,29 @@
                                 @comment.Author.FirstName <span class="lastName">@comment.Author.LastName</span>
                             </a>
                         </div>
-                        <div class="date"> @comment.FormattedCreatedOn)</div>
+                        <div class="date"> @comment.FormattedCreatedOn</div>
                         <div class="commentText">@comment.Text</div>
                     </div>
                 </div>
             </li>
         }
-    </ul>
-
-    if (HasMoreComments)
-    {
-        <div id="loadMoreComments-@identifier"
-             class="loadMoreComments button"
-             data-ajaxUrl="/TripAjax/LoadComments"
-             data-offset="@WebApplicationConstants.CommentsOfset"
-             data-type="@identifier"
-             data-id="@id">
-            Load more
-        </div>
     }
-}
-else
+    else
+    {
+        <p class="notLoginMessage">No added comments yet.</p>
+    }
+</ul>
+
+@if (HasMoreComments)
 {
-    <p class="notLoginMessage">No added comments yet.</p>
+    <div id="loadMoreComments-@identifier"
+         class="loadMoreComments button"
+         data-ajaxUrl="@ajaxLoadUrl",
+         data-offset="@WebApplicationConstants.CommentsOfset"
+         data-type="@identifier"
+         data-id="@id">
+        Load more
+    </div>
 }
 
 <div id="addCommentWrap">
@@ -61,7 +66,11 @@ else
             <div class="row">
                 <div class="col-md-12">
                     <input type="reset" class="button2" value="Cancel">
-                    <input type="button" class="addNewCommentButton button" data-identifier="@identifier" value="Add comment">
+                    <input type="button" class="addNewCommentButton button" 
+                           data-identifier="@identifier" 
+                           data-ajaxUrl="@ajaxAddUrl"
+                           data-id="@id"
+                           value="Add comment">
                 </div>
             </div>
         </form>
