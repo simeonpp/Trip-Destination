@@ -14,27 +14,28 @@ namespace TripDestination.Web.MVC
                 name: "Page",
                 url: "Page/{id}/{slug}",
                 defaults: new { controller = "Page", action = "Index", slug = UrlParameter.Optional },
-                constraints: new { id = @"\d+" }
-            );
+                constraints: new { id = @"\d+" });
 
             routes.MapRoute(
                 name: "TripDetails",
                 url: "Trip/{id}/{slug}",
                 defaults: new { controller = "Trip", action = "Details", slug = UrlParameter.Optional },
-                constraints: new { id = @"\d+" }
-            );
+                constraints: new { id = @"\d+" });
+
+            routes.MapRoute(
+                name: "Profile",
+                url: "User/{username}/{slug}",
+                defaults: new { controller = "Profile", action = "Index", slug = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "MediaImage",
                 url: WebApplicationConstants.ImageRouteUrl + "/{username}/{guid}/{size}",
-                defaults: new { controller = "Image", action = "Index", size = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Image", action = "Index", size = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
     }
 }

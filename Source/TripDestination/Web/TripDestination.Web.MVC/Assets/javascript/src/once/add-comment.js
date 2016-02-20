@@ -1,15 +1,16 @@
 ﻿$().ready(function () {
-    var $addNewCommentButton = $('#addNewCommentButton'),
-        $commentArea = $('#commentArea'),
-        $commentsCount = $('#commentsCount'),
-        $loadMoreTripComments = $('#loadMoreTripComments'),
-        commentTextMinLength = 5,
+    var commentTextMinLength = 5,
         commentTextMaxLength = 1000,
         ajaxAFT = $('#ajaxAFT input[name="__RequestVerificationToken"]:first').val();
 
-    $addNewCommentButton.on('click', function () {
-        var commentText = $commentArea.val(),
-            commentTextLength = commentText.length;
+    $('body').on('click', '.addNewCommentButton', function () {
+        var $this = $(this).
+            identifier = $this.attr('data-identifier'),
+            $commentArea = $('#commentArea-' + identifier),
+            commentText = $commentArea.val(),
+            commentTextLength = commentText.length,
+            commentsCountSpanSelector = '#commentsCount-' + identifier,
+            loadMoreTripCommentsSelector = '#loadMoreTripComments-' + identifier;
 
         if (commentTextLength < commentTextMinLength || commentTextMinLength > commentTextMaxLength) {
             toastr.error('Comment text should be between ' + commentTextMinLength + ' and ' + commentTextMaxLength + ' symbols.');
@@ -28,8 +29,8 @@
                 if (response.Status) {
                     $commentArea.val('');
                     addCommentToCommentsList(response.Data, false);
-                    updateCommentsCount(response.Data.CommentTotalCount);
-                    updateLoadMoreTripCommentsButtonOffset();
+                    updateCommentsCount(commentsCountSpanSelector, response.Data.CommentTotalCount);
+                    updateLoadMoreTripCommentsButtonOffset(loadMoreTripCommentsSelector);
                     toastr.success("You comment was successfully added.");
                 } else {
                     if (response.ErrorMessage) {
@@ -40,7 +41,7 @@
                 }
             }
         })
-    });
+    })
 
     function addCommentToCommentsList(comment, append) {
         if (typeof append === 'undefined') {
@@ -66,16 +67,19 @@
         }
     }
 
-    function updateCommentsCount(newCommentCount) {
-        $commentsCount.text(newCommentCount);
+    function updateCommentsCount(selector, newCommentCount) {
+        var $span = $(selector);
+        $span.text(newCommentCount);
     }
 
-    function updateLoadMoreTripCommentsButtonOffset() {
-        if ($loadMoreTripComments) {
-            var currentOffsetValue = $loadMoreTripComments.attr('data-offset') | 0,
+    function updateLoadMoreTripCommentsButtonOffset(selector) {
+        $button = $(selector);
+
+        if ($button) {
+            var currentOffsetValue = $button.attr('data-offset') | 0,
             newOffsetValue = currentOffsetValue + 1;
 
-            $loadMoreTripComments.attr('data-offset', newOffsetValue);
+            $button.attr('data-offset', newOffsetValue);
         }
     }
 })

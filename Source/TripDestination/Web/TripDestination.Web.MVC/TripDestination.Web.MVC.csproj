@@ -200,6 +200,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChildActionControllers\HomeChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\LayoutController.cs" />
+    <Compile Include="Controllers\ChildActionControllers\ProfileChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\StatisticsChildActionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CookiePolicyController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Media\ImageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TempController.cs" />
     <Compile Include="Controllers\TripController.cs" />
@@ -227,6 +229,7 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\AJAX\NewsletterInputModel.cs" />
     <Compile Include="ViewModels\ChildAction\TripsListViewModel.cs" />
+    <Compile Include="ViewModels\ChildAction\UserStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Contact\ContactFormInputModel.cs" />
     <Compile Include="ViewModels\Home\HomepageViewModel.cs" />
     <Compile Include="ViewModels\Home\TopDestinationVIewModel.cs" />
@@ -240,6 +243,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Page\PageParagraphViewModel.cs" />
     <Compile Include="ViewModels\Page\PageViewModel.cs" />
+    <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseCommentViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripExtentendedModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
@@ -597,7 +601,7 @@
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\load-more-comments.js" />
     <Content Include="Assets\javascript\src\once\registration.js" />
-    <Content Include="Assets\javascript\src\once\trip-detailed-add-comment.js" />
+    <Content Include="Assets\javascript\src\once\add-comment.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-approve-join-request.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-join-request.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-like.js" />
@@ -777,6 +781,9 @@
     <Content Include="Views\Trip\_FullDetailsPartial.cshtml" />
     <Content Include="Views\Trip\_DriverDetailsSectionPartial.cshtml" />
     <Content Include="Views\Temp\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_ProfileDetailsSectionPartial.cshtml" />
+    <Content Include="Views\Profile\_UserStatisticsSectionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

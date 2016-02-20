@@ -8,7 +8,7 @@
     int commentsCount = Comments.Count();
 }
 
-<h1>COMMENTS (<span id="commentsCount">@commentsCount</span>)</h1>
+<h1>COMMENTS (<span id="commentsCount-trip">@commentsCount</span>)</h1>
 <h2>Leave your comment about this trip</h2>
 
 <article>
@@ -40,7 +40,7 @@
 
         if (HasMoreComments)
         {
-            <div id="loadMoreTripComments"
+            <div id="loadMoreTripComments-trip"
                  class="loadMoreComments button"
                  data-ajaxUrl="/TripAjax/LoadComments"
                  data-offset="@WebApplicationConstants.CommentsOfset"
@@ -63,13 +63,13 @@
         {
             <form id="addNewCommentForm">
                 <div class="form-group">
-                    <textarea class="form-control" rows="6" id="commentArea"></textarea>
+                    <textarea class="form-control" rows="6" id="commentArea-trip"></textarea>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <input type="reset" class="button2" value="Cancel">
-                        <input id="addNewCommentButton" type="button" class="button" value="Add comment">
+                        <input type="button" class="addNewCommentButton button" data-identifier="trip" value="Add comment">
                     </div>
                 </div>
             </form>
