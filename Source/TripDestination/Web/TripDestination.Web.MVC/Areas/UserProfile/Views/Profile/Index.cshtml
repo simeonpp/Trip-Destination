@@ -38,7 +38,7 @@
 
         <div class="class="col-md-8"">
             <section>
-                @Html.Partial("_ProfileDetailsSectionPartial", new ViewDataDictionary {
+                @Html.Partial("~/Areas/UserProfile/Views/Profile/_ProfileDetailsSectionPartial.cshtml", new ViewDataDictionary {
                     { "Username", Model.User.UserName },
                     { "Email", Model.User.Email },
                     { "Phone", Model.User.PhoneNumber },
@@ -53,7 +53,7 @@
 
         <div class="col-md-4">
             <section>
-                @Html.Action("UserStatistics", "ProfileChildAction", new { username = Model.User.Id })
+                @Html.Action("UserStatistics", "ProfileChildAction", new { area = string.Empty, username = Model.User.Id })
             </section>
         </div>
 

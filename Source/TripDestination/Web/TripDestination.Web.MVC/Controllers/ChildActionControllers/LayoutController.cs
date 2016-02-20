@@ -6,6 +6,8 @@
     using System.Linq;
     using ViewModels.Shared;
     using Common.Infrastructure.Constants;
+    using Microsoft.AspNet.Identity;
+
     public class LayoutController : Controller
     {
         public LayoutController(IPageServices pageServices)
@@ -26,7 +28,8 @@
 
             var viewModel = new NavigationViewModel()
             {
-                Pages = pages
+                Pages = pages,
+                CurrentUsername = this.User.Identity.GetUserName()
             };
 
             return this.PartialView("~/Views/Shared/_NavigationPartial.cshtml", viewModel);

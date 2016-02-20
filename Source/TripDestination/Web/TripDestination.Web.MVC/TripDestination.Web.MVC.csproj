@@ -194,6 +194,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
+    <Compile Include="Areas\UserProfile\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\ProfileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AJAX\NewsletterAjaxController.cs" />
     <Compile Include="Controllers\AJAX\TripAjaxController.cs" />
@@ -209,7 +212,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Media\ImageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TempController.cs" />
     <Compile Include="Controllers\TripController.cs" />
@@ -244,7 +246,6 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Page\PageParagraphViewModel.cs" />
     <Compile Include="ViewModels\Page\PageViewModel.cs" />
-    <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseCommentViewModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripExtentendedModel.cs" />
     <Compile Include="ViewModels\Shared\BaseTripModel.cs" />
@@ -682,6 +683,11 @@
     <Content Include="Assets\javascript\lib\handlebars\lib\handlebars\source.rb" />
     <Content Include="Assets\javascript\lib\handlebars\package.json" />
     <Content Include="Assets\javascript\lib\handlebars\README.md" />
+    <Content Include="Areas\UserProfile\Views\web.config" />
+    <Content Include="Areas\UserProfile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Profile\_ProfileDetailsSectionPartial.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Profile\_UserStatisticsSectionPartial.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -735,7 +741,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
     <Content Include="Views\Trip\Details.cshtml" />
     <Content Include="Views\Trip\List.cshtml" />
@@ -781,13 +786,12 @@
     <Content Include="Views\Trip\_FullDetailsPartial.cshtml" />
     <Content Include="Views\Trip\_DriverDetailsSectionPartial.cshtml" />
     <Content Include="Views\Temp\Index.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Profile\_ProfileDetailsSectionPartial.cshtml" />
-    <Content Include="Views\Profile\_UserStatisticsSectionPartial.cshtml" />
     <Content Include="Views\Shared\_CommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="Areas\UserProfile\Models\" />
+    <Folder Include="Areas\UserProfile\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

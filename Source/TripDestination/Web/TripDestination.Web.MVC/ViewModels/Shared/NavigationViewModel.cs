@@ -5,5 +5,9 @@
     public class NavigationViewModel
     {
         public IEnumerable<PageViewModel> Pages { get; set; }
+
+        public string CurrentUsername { get; set; }
+
+        public string CurrentUserFullName { get; set; }
     }
 }

@@ -12,26 +12,26 @@
     <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="@Url.Action("Index", "Home", new { area = "" })">Home <div class="clarification">Welcome</div></a></li>
-                <li><a href="@Url.Action("List", "Trip", new { area = "" })">Discover  <div class="clarification">Trips</div></a></li>
+                <li class="active"><a href="@Url.Action("Index", "Home", new { area = string.Empty })">Home <div class="clarification">Welcome</div></a></li>
+                <li><a href="@Url.Action("List", "Trip", new { area = string.Empty })">Discover  <div class="clarification">Trips</div></a></li>
 
                 @if (this.User.IsInRole(RoleConstants.DriverRole) || this.User.IsInRole(RoleConstants.AdminRole))
                 {
-                    <li><a href="@Url.Action("Create", "Trip", new { area = "" })">Create  <div class="clarification">New trip</div></a></li>
+                    <li><a href="@Url.Action("Create", "Trip", new { area = string.Empty })">Create  <div class="clarification">New trip</div></a></li>
                 }
 
-                <li><a href="@Url.Action("Index", "Statistics", new { area = "" })">Statistics  <div class="clarification">Numbers</div></a></li>
+                <li><a href="@Url.Action("Index", "Statistics", new { area = string.Empty })">Statistics  <div class="clarification">Numbers</div></a></li>
 
                 @foreach (var page in Model.Pages)
                 {
                     <li>
-                        <a href="@Url.Action("Index", "Page", new { id = page.Id, slug = page.Slug, area = "" })">
+                        <a href="@Url.Action("Index", "Page", new { id = page.Id, slug = page.Slug, area = string.Empty })">
                             @page.Heading <div class="clarification">@page.SubHeading</div>
                         </a>
                     </li>
                 }
 
-                <li><a href="@Url.Action("Index", "Contact", new { area = "" })">Contact  <div class="clarification">Information</div></a></li>
+                <li><a href="@Url.Action("Index", "Contact", new { area = string.Empty })">Contact  <div class="clarification">Information</div></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span><div class="clarification">Your profile</div></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">My profile</a></li>
+                            <li><a href="@Url.RouteUrl("Profile", new { username = Model.CurrentUsername, slug = "Tankooasd" })">My profile</a></li>
                             <li><a href="@Url.Action("Index", "Manage")">Manage profile</a></li>
                             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                         </ul>

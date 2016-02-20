@@ -1,4 +1,4 @@
-﻿namespace TripDestination.Web.MVC.ViewModels.Profile
+﻿namespace TripDestination.Web.MVC.Areas.UserProfile.ViewModels
 {
     using TripDestination.Web.MVC.ViewModels.Shared;
 

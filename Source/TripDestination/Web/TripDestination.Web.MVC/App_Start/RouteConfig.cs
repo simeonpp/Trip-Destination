@@ -25,7 +25,7 @@ namespace TripDestination.Web.MVC
             routes.MapRoute(
                 name: "Profile",
                 url: "User/{username}/{slug}",
-                defaults: new { controller = "Profile", action = "Index", slug = UrlParameter.Optional });
+                defaults: new { controller = "Profile", action = "Index", area = "UserProfile", slug = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "MediaImage",

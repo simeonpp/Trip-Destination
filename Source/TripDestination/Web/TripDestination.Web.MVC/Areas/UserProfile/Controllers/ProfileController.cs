@@ -1,16 +1,12 @@
-﻿namespace TripDestination.Web.MVC.Controllers
+﻿namespace TripDestination.Web.MVC.Areas.UserProfile.Controllers
 {
     using System;
-    using Data.Models;
-    using Services.Data.Contracts;
     using System.Web.Mvc;
-    using ViewModels.Shared;
-    using System.Web.Security;
-    using ViewModels.Profile;
-    using Microsoft.AspNet.Identity;
-    using Data.Data;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System.Linq;
+    using Data.Models;
+    using MVC.ViewModels.Shared;
+    using Services.Data.Contracts;
+    using TripDestination.Web.MVC.Controllers;
+    using ViewModels;
 
     public class ProfileController : BaseController
     {
@@ -36,7 +32,7 @@
                 User = this.Mapper.Map<ExtendedUserViewModel>(user)
             };
 
-            return this.View(viewModel);
+            return this.View("~/Areas/UserProfile/Views/Profile/Index.cshtml", viewModel);
         }
     }
 }

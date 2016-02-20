@@ -11,13 +11,13 @@
 </head>
 <body>
 
-    @Html.Action("NavigationPartial", "Layout")
+    @Html.Action("NavigationPartial", "Layout", new { area = string.Empty })
 
     <div>
         @RenderBody()
     </div>
 
-    @Html.Action("FooterPartial", "Layout")
+    @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
 
     @Scripts.Render("~/bundles/site-libs")
     @Scripts.Render("~/bundles/site")
