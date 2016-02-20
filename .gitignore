@@ -160,6 +160,11 @@ publish/
 # App_Data assets
 **/Source/TripDestination/Web/TripDestination.Web.MVC/App_Data/uploads/*
 
+# Kendo assets
+**/Source/TripDestination/Web/TripDestination.Web.MVC/Libraries*
+**/Source/TripDestination/Web/TripDestination.Web.MVC/Scripts/Kendo/*
+**/Source/TripDestination/Web/TripDestination.Web.MVC/Content/Kendo/*
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef

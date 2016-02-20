@@ -56,6 +56,14 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/registration").Include(
                 "~/Assets/javascript/src/once/registration.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                "~/Scripts/Kendo/kendo.all.min.js",
+                "~/Scripts/Kendo/kendo.aspnetmvc.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo-css").Include(
+                      "~/Content/Kendo/kendo.common.min.css",
+                      "~/Content/Kendo/kendo.default.min.css"));
+
             // BundleTable.EnableOptimizations = true;
         }
     }
