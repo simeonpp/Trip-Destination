@@ -1,4 +1,4 @@
-﻿namespace TripDestination.Web.MVC.ViewModels.ChildAction
+﻿namespace TripDestination.Web.MVC.Areas.UserProfile.ViewModels.ChildAction
 {
     public class UserStatisticsViewModel
     {

@@ -194,8 +194,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
+    <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ProfileController.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\ChildAction\UserStatisticsViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\ProfileViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AJAX\NewsletterAjaxController.cs" />
@@ -204,7 +206,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ChildActionControllers\HomeChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\LayoutController.cs" />
-    <Compile Include="Controllers\ChildActionControllers\ProfileChildActionController.cs" />
     <Compile Include="Controllers\ChildActionControllers\StatisticsChildActionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CookiePolicyController.cs" />
@@ -232,7 +233,6 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\AJAX\NewsletterInputModel.cs" />
     <Compile Include="ViewModels\ChildAction\TripsListViewModel.cs" />
-    <Compile Include="ViewModels\ChildAction\UserStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Contact\ContactFormInputModel.cs" />
     <Compile Include="ViewModels\Home\HomepageViewModel.cs" />
     <Compile Include="ViewModels\Home\TopDestinationVIewModel.cs" />
@@ -688,6 +688,7 @@
     <Content Include="Areas\UserProfile\Views\Profile\Index.cshtml" />
     <Content Include="Areas\UserProfile\Views\Profile\_ProfileDetailsSectionPartial.cshtml" />
     <Content Include="Areas\UserProfile\Views\Profile\_UserStatisticsSectionPartial.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Shared\_ProfileNavigationPartial.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -791,7 +792,6 @@
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Areas\UserProfile\Models\" />
-    <Folder Include="Areas\UserProfile\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

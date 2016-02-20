@@ -1,10 +1,8 @@
-﻿namespace TripDestination.Web.MVC.Controllers.ChildActionControllers
+﻿namespace TripDestination.Web.MVC.Areas.UserProfile.Controllers.ChildActionControllers
 {
-    using Common.Infrastructure.Constants;
-    using Services.Data.Contracts;
     using System.Web.Mvc;
+    using Services.Data.Contracts;
     using ViewModels.ChildAction;
-
     public class ProfileChildActionController : Controller
     {
         private IStatisticsServices statisticsServices;
@@ -23,7 +21,7 @@
             viewModel.TripsAsPassengerCount = this.statisticsServices.GetUserTripsAsPassengerCount(userId);
             viewModel.TotalTrips = viewModel.TripsAsDriverCount + viewModel.TripsAsPassengerCount;
 
-            return this.PartialView("~/Views/Profile/_UserStatisticsSectionPartial.cshtml", viewModel);
+            return this.PartialView("~/Areas/UserProfile/Views/Profile/_UserStatisticsSectionPartial.cshtml", viewModel);
         }
     }
 }
