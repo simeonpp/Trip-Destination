@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+using TripDestination.Common.Infrastructure.Constants;
 
 namespace TripDestination.Web.MVC
 {
@@ -25,6 +22,12 @@ namespace TripDestination.Web.MVC
                 url: "Trip/{id}/{slug}",
                 defaults: new { controller = "Trip", action = "Details", slug = UrlParameter.Optional },
                 constraints: new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                name: "MediaImage",
+                url: WebApplicationConstants.ImageRouteUrl + "/{username}/{guid}",
+                defaults: new { controller = "Image", action = "Index" }
             );
 
             routes.MapRoute(

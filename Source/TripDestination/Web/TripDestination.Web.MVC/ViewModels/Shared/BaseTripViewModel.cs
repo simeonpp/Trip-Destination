@@ -10,7 +10,7 @@
     {
         public int Id { get; set; }
 
-        public User Driver { get; set; }
+        public BaseUserViewModel Driver { get; set; }
 
         public int ViewsCount { get; set; }
 

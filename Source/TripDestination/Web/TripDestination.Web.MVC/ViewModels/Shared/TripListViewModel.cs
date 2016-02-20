@@ -4,11 +4,11 @@
     using AutoMapper;
     using Common.Infrastructure.Mapping;
     using TripDestination.Data.Models;
-
-    public class TripListViewModel : BaseTripViewModel
+    using Trip;
+    public class TripListViewModel : BaseTripViewModel, IMapFrom<Trip>
     {
-        public Town From { get; set; }
+        public TownViewModel From { get; set; }
 
-        public Town To { get; set; }
+        public TownViewModel To { get; set; }
     }
 }
