@@ -1,0 +1,33 @@
+﻿
+@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.CarAdminViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.TotalSeats);
+        columns.Bound(c => c.Brand);
+        columns.Bound(c => c.Model);
+        columns.Bound(c => c.Color);
+        columns.Bound(c => c.Year);
+        columns.Bound(c => c.SpaceForLugage);
+        columns.Bound(c => c.Description);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Cars_Read", "CarAdmin"))
+          .Create(create => create.Action("Cars_Create", "CarAdmin"))
+          .Update(update => update.Action("Cars_Update", "CarAdmin"))
+          .Destroy(destroy => destroy.Action("Cars_Destroy", "CarAdmin"))
+      )
+)
