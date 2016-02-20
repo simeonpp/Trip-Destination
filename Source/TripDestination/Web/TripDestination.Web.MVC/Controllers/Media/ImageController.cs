@@ -15,7 +15,7 @@
             this.photoService = photoService;
         }
 
-        public ActionResult Index(string username, string guid)
+        public ActionResult Index(string username, string guid, int? size)
         {
             var photo = this.photoService.GetByFileName(string.Format(
                 "{0}{1}{2}",
@@ -29,12 +29,41 @@
             }
 
             string contentType = photo.ContentType;
-            string extenstion = photo.Extension;
+            string extension = photo.Extension;
             int length = photo.SizeInBytes;
 
-            var uploadsFolderPath = this.Server.MapPath(WebApplicationConstants.ImageFolder);
-            var imagePath = Path.Combine(uploadsFolderPath, photo.FileName + extenstion);
-            return this.File(imagePath, contentType);
+            string uploadsFolderPath = this.Server.MapPath(WebApplicationConstants.ImageFolder);
+            string imagePath = this.GetFilePath(Path.Combine(uploadsFolderPath, photo.FileName), extension, size);
+            bool imageExists = System.IO.File.Exists(imagePath);
+            if (imageExists)
+            {
+                return this.File(imagePath, contentType);
+            }
+            else
+            {
+                throw new Exception("Not found.");
+            }
+        }
+
+        private string GetFilePath(string originalFilePath, string extension, int? size)
+        {
+            string imagePath = string.Empty;
+
+            if (size != null)
+            {
+                imagePath = string.Format(
+                    "{0}{1}{2}{3}",
+                    originalFilePath,
+                    '_',
+                    size,
+                    extension);
+            }
+            else
+            {
+                imagePath = originalFilePath + extension;
+            }
+
+            return imagePath;
         }
     }
 }
