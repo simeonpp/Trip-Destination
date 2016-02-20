@@ -202,6 +202,8 @@
     <Compile Include="Areas\UserProfile\ViewModels\BaseTripViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\CarViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\ChildAction\UserStatisticsViewModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\EditCarInputModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\EditProfileInputModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\PhotoViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\ProfileViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\TripDriverViewModel.cs" />
@@ -699,6 +701,7 @@
     <Content Include="Areas\UserProfile\Views\Profile\Car.cshtml" />
     <Content Include="Areas\UserProfile\Views\Profile\Trips.cshtml" />
     <Content Include="Areas\UserProfile\Views\Profile\EditProfile.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Profile\EditCar.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

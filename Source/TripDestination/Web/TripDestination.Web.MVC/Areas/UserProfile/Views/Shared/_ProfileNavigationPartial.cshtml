@@ -35,7 +35,11 @@
 
         <div id="innerNav" class="row">
             <a href="@Url.Action("Index", "Profile", new { area = "UserProfile", username = Username })">Profile</a>
-            <a href="@Url.Action("Car", "Profile", new { area = "UserProfile",  username = Username })">Car</a>
+
+            @if (Role == RoleConstants.DriverRole)
+            {
+                <a href="@Url.Action("Car", "Profile", new { area = "UserProfile",  username = Username })">Car</a>
+            }
 
             @if (CurrentUsername == Username)
             {

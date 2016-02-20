@@ -7,14 +7,17 @@
     using TripDestination.Web.MVC.Controllers;
     using ViewModels;
     using Microsoft.AspNet.Identity;
-
+    using Services.Web.Providers;
     public class ProfileController : BaseController
     {
         private IUserServices userServices;
 
-        public ProfileController(IUserServices userServices)
+        private ICarServices carServices;
+
+        public ProfileController(IUserServices userServices, ICarServices carServices)
         {
             this.userServices = userServices;
+            this.carServices = carServices;
         }
 
         [HttpGet]
@@ -57,15 +60,16 @@
                 throw new Exception("Not auhtorized.");
             }
 
-            var viewModel = this.GetBasicEditInfo(user);
+            var viewModel = this.Mapper.Map<EditProfileInputModel>(user);
+            viewModel.BaseModel = this.GetBasicEditInfo(user);
             return this.View("~/Areas/UserProfile/Views/Profile/EditProfile.cshtml", viewModel);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult EditProfile(BaseEditModel model)
+        public ActionResult EditProfile(EditProfileInputModel model)
         {
-            if (this.User.Identity.GetUserName() != model.CurrentUsername)
+            if (this.User.Identity.GetUserName() != model.BaseModel.CurrentUsername)
             {
                 throw new Exception("Not auhtorized.");
             }
@@ -83,7 +87,51 @@
                 model.PhoneNumber,
                 model.Description);
 
-            return this.RedirectToAction("Index", new { username = model.CurrentUsername });
+            return this.RedirectToAction("Index", new { username = model.BaseModel.CurrentUsername });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult EditCar(string username)
+        {
+            User user = this.userServices.GetByUsername(username);
+            if (this.User.Identity.GetUserName() != user.UserName)
+            {
+                throw new Exception("Not auhtorized.");
+            }
+
+            var viewModel = this.Mapper.Map<EditCarInputModel>(user.Car);
+            viewModel.Firsname = user.FirstName;
+            viewModel.Lastname = user.LastName;
+            viewModel.BaseModel = this.GetBasicEditInfo(user);
+            return this.View("~/Areas/UserProfile/Views/Profile/EditCar.cshtml", viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditCar(EditCarInputModel model)
+        {
+            if (this.User.Identity.GetUserName() != model.BaseModel.CurrentUsername)
+            {
+                throw new Exception("Not auhtorized.");
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View("~/Areas/UserProfile/Views/Profile/EditCar.cshtml", model);
+            }
+
+            this.carServices.Update(
+                this.User.Identity.GetUserId(),
+                model.Brand,
+                model.CarModel,
+                model.Color,
+                model.Year,
+                model.TotalSeats,
+                model.SpaceForLugage,
+                model.Description);
+
+            return this.RedirectToAction("Car", new { username = model.BaseModel.CurrentUsername });
         }
 
         private ProfileViewModel GetBasicInfo(User user)

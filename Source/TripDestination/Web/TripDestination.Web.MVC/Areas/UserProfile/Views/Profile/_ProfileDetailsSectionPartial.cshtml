@@ -1,5 +1,7 @@
 ﻿@{
     string Username = (string)this.ViewData["Username"];
+    string FirstName = (string)this.ViewData["FirstName"];
+    string LastName = (string)this.ViewData["LastName"];
     string Email = (string)this.ViewData["Email"];
     string Phone = (string)this.ViewData["Phone"];
     string Description = (string)this.ViewData["Description"];
@@ -13,6 +15,14 @@
         <li>
             <div class="labelInfo">Username</div>
             <div class="textInfo">@Username</div>
+        </li>
+        <li>
+            <div class="labelInfo">First name</div>
+            <div class="textInfo">@FirstName</div>
+        </li>
+        <li>
+            <div class="labelInfo">Last name</div>
+            <div class="textInfo">@LastName</div>
         </li>
         <li>
             <div class="labelInfo">Email</div>

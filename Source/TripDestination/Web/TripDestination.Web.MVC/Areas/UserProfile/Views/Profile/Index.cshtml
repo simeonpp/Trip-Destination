@@ -17,6 +17,8 @@
             <section>
                 @Html.Partial("~/Areas/UserProfile/Views/Profile/_ProfileDetailsSectionPartial.cshtml", new ViewDataDictionary {
                     { "Username", Model.User.UserName },
+                    { "FirstName", Model.User.FirstName },
+                    { "LastName", Model.User.LastName },
                     { "Email", Model.User.Email },
                     { "Phone", Model.User.PhoneNumber },
                     { "Description", Model.User.SanitizedDescription }
