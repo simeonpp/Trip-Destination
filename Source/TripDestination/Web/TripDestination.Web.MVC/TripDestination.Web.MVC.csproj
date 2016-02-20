@@ -784,6 +784,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\_ProfileDetailsSectionPartial.cshtml" />
     <Content Include="Views\Profile\_UserStatisticsSectionPartial.cshtml" />
+    <Content Include="Views\Shared\_CommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

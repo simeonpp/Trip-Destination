@@ -45,11 +45,21 @@
             </section>
 
             <section id="commentsSection">
-                @Html.Partial("_CommentsSectionPartial", new ViewDataDictionary {
+                @{
+                    int commentsCount = Model.Comments.Count();
+                }
+
+                <h1>COMMENTS (<span id="commentsCount-trip">@commentsCount</span>)</h1>
+                <h2>Leave your comment about this trip</h2>
+
+                <article>
+                    @Html.Partial("_CommentsPartial", new ViewDataDictionary {
                     { "Comments", Model.Comments },
-                    { "TripId", Model.Id },
+                    { "Identifier", "trip" },
+                    { "id", Model.Id },
                     { "HasMoreComments", Model.HasMoreTripComments },
                 })
+                </article>                
             </section>
 
             <section id="fullTripDetailsWrap">

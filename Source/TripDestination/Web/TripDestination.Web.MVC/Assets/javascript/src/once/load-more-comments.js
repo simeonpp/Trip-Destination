@@ -3,10 +3,12 @@
 
     $('body').on('click', '.loadMoreComments', function () {
         var $this = $(this),
+            identifier = $this.attr('data-type'),
             ajaxUrl = $this.attr('data-ajaxUrl'),
             id = $this.attr('data-id'),
             currentOffset = $this.attr('data-offset'),
-            type = $this.attr('data-type');
+            type = $this.attr('data-type'),
+            loadMoreCommentsSelector = '#loadMoreComments-' + identifier;
 
         $.ajax({
             type: "GET",
@@ -19,15 +21,15 @@
             success: function (response) {
                 if (response.Status) {
                     if (!response.Data.HasMoreCommentsToLoad) {
-                        $loadMoreTripComments.remove();
+                        $(loadMoreCommentsSelector).remove();
                     }
 
                     var comments = response.Data.Comments;
                     $.each(comments, function (index, comment) {
-                        addCommentToCommentsList(comment, true);
+                        addCommentToCommentsList(identifier, comment, true);
                     });
 
-                    updateLoadMoreButtonOffset(response.Data.Offset);
+                    updateLoadMoreButtonOffset(loadMoreCommentsSelector, response.Data.Offset);
                 } else {
                     if (response.ErrorMessage) {
                         toastr.error(response.ErrorMessage);
@@ -39,7 +41,7 @@
         })
     })
 
-    function addCommentToCommentsList(comment, append) {
+    function addCommentToCommentsList(identifier, comment, append) {
         if (typeof append === 'undefined') {
             append = true;
         }
@@ -57,13 +59,13 @@
         var renderedTempalteHTML = template(context);
 
         if (append) {
-            $('ul#tripCommentsList').append(renderedTempalteHTML);
+            $('ul#' + identifier + '-CommentsList').append(renderedTempalteHTML);
         } else {
-            $('ul#tripCommentsList').prepend(renderedTempalteHTML);
+            $('ul#' + identifier + '-CommentsList').prepend(renderedTempalteHTML);
         }
     }
 
-    function updateLoadMoreButtonOffset(offset) {
-        $loadMoreTripComments.attr('data-offset', offset);
+    function updateLoadMoreButtonOffset(selector, offset) {
+        $(selector).attr('data-offset', offset);
     }
 })

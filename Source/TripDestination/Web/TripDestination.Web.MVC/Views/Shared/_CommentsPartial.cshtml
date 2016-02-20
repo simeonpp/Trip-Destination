@@ -1,0 +1,94 @@
+﻿@{
+    IEnumerable<BaseCommentViewModel> Comments = (IEnumerable<BaseCommentViewModel>)this.ViewData["Comments"];
+    string identifier = (string)this.ViewData["Identifier"];
+    int id = (int)this.ViewData["id"];
+    bool HasMoreComments = (bool)this.ViewData["HasMoreComments"];
+}
+
+@if (Comments.Count() > 0)
+{
+    <ul id="@identifier-CommentsList" class="commentsUl">
+        @foreach (var comment in Comments)
+        {
+            <li>
+                <div class="row noMargins">
+                    <div class="col-md-2">
+                        <div class="image" style="background-image: url('@comment.Author.AvatarUrlSmall')"></div>
+                    </div>
+                    <div class="commentTextWrap col-md-10">
+                        <div class="arrow"></div>
+                        <div class="names">
+                            <a href="#">
+                                @comment.Author.FirstName <span class="lastName">@comment.Author.LastName</span>
+                            </a>
+                        </div>
+                        <div class="date"> @comment.FormattedCreatedOn)</div>
+                        <div class="commentText">@comment.Text</div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+    if (HasMoreComments)
+    {
+        <div id="loadMoreComments-@identifier"
+             class="loadMoreComments button"
+             data-ajaxUrl="/TripAjax/LoadComments"
+             data-offset="@WebApplicationConstants.CommentsOfset"
+             data-type="@identifier"
+             data-id="@id">
+            Load more
+        </div>
+    }
+}
+else
+{
+    <p class="notLoginMessage">No added comments yet.</p>
+}
+
+<div id="addCommentWrap">
+    <h5>Add comment</h5>
+    <h6>Add your comment to this @identifier</h6>
+
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <form id="addNewCommentForm">
+            <div class="form-group">
+                <textarea class="form-control" rows="6" id="commentArea-@identifier"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="reset" class="button2" value="Cancel">
+                    <input type="button" class="addNewCommentButton button" data-identifier="@identifier" value="Add comment">
+                </div>
+            </div>
+        </form>
+
+            <script id="commentLiTemplate" type="text/x-handlebars-template">
+                <li>
+                    <div class="row noMargins">
+                        <div class="col-md-2">
+                            <div class="image" style="background-image: url('{{ userImageSrc }}')"></div>
+                        </div>
+                        <div class="commentTextWrap col-md-10">
+                            <div class="arrow"></div>
+                            <div class="names">
+                                <a href="{{ userUrl }}">
+                                    {{ firstName }} <span class="lastName">{{ lastName }}</span>
+                                </a>
+                            </div>
+                            <div class="date">{{ createdOnFormatted }}</div>
+                            <div class="commentText">{{ commentText }}</div>
+                        </div>
+                    </div>
+                </li>
+            </script>
+    }
+    else
+    {
+        <p class="notLoginMessage">You must be logged in to be able to comment.</p>
+    }
+</div>
+

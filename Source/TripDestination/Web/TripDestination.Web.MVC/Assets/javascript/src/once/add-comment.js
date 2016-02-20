@@ -4,13 +4,13 @@
         ajaxAFT = $('#ajaxAFT input[name="__RequestVerificationToken"]:first').val();
 
     $('body').on('click', '.addNewCommentButton', function () {
-        var $this = $(this).
+        var $this = $(this),
             identifier = $this.attr('data-identifier'),
             $commentArea = $('#commentArea-' + identifier),
             commentText = $commentArea.val(),
             commentTextLength = commentText.length,
             commentsCountSpanSelector = '#commentsCount-' + identifier,
-            loadMoreTripCommentsSelector = '#loadMoreTripComments-' + identifier;
+            loadMoreTripCommentsSelector = '#loadMoreComments-' + identifier;
 
         if (commentTextLength < commentTextMinLength || commentTextMinLength > commentTextMaxLength) {
             toastr.error('Comment text should be between ' + commentTextMinLength + ' and ' + commentTextMaxLength + ' symbols.');
@@ -28,7 +28,7 @@
             success: function (response) {
                 if (response.Status) {
                     $commentArea.val('');
-                    addCommentToCommentsList(response.Data, false);
+                    addCommentToCommentsList(identifier, response.Data, false);
                     updateCommentsCount(commentsCountSpanSelector, response.Data.CommentTotalCount);
                     updateLoadMoreTripCommentsButtonOffset(loadMoreTripCommentsSelector);
                     toastr.success("You comment was successfully added.");
@@ -43,7 +43,7 @@
         })
     })
 
-    function addCommentToCommentsList(comment, append) {
+    function addCommentToCommentsList(selector, comment, append) {
         if (typeof append === 'undefined') {
             append = true;
         }
@@ -61,9 +61,9 @@
         var renderedTemplateHTML = template(context);
 
         if (append) {
-            $('ul#tripCommentsList').append(renderedTemplateHTML);
+            $('ul#' + selector + '-CommentsList').append(renderedTemplateHTML);
         } else {
-            $('ul#tripCommentsList').prepend(renderedTemplateHTML);
+            $('ul#' + selector + '-CommentsList').prepend(renderedTemplateHTML);
         }
     }
 
