@@ -61,51 +61,16 @@
         </ul>
     }    
 
-    <div id="id=" userCommentsWrap"">
+    <div id="id="userCommentsWrap"">
         <h5>Comments (@Driver.Comments.Count)</h5>
         <h6>Latest comments about @Driver.FirstName</h6>
 
-        @if (Driver.Comments.Count > 0)
-        {
-            <ul class="commentsUl">
-                @foreach (var comment in Driver.Comments)
-                {
-                    <li>
-                        <div class="row noMargins">
-                            <div class="col-md-2">
-                                <div class="image" style="background-image: url('images/people/4.jpg')"></div>
-                            </div>
-                            <div class="commentTextWrap col-md-10">
-                                <div class="arrow"></div>
-                                <div class="names">
-                                    <a href="#">
-                                        @comment.Author.FirstName <span class="lastName">@comment.Author.LastName</span>
-                                    </a>
-                                </div>
-                                <div class="date">@comment.FormattedDate</div>
-                                <div class="commentText">@comment.Text</div>
-                            </div>
-                        </div>
-                    </li>
-                }
-            </ul>
-        }
-        else
-        {
-            <p class="notLoginMessage">@Driver.FirstName has no added comments yet.</p>
-        }
-
-        @if (HasMoreUserComments)
-        {
-            <div id="loadMoreUserComments"
-                 class="loadMoreComments button"
-                 data-ajaxUrl="/TripAjax/LoadComments"
-                 data-offset="@WebApplicationConstants.CommentsOfset"
-                 data-type="trip"
-                 data-id="@tripId">
-                Load more
-            </div>
-        }
+        @Html.Partial("_CommentsPartial", new ViewDataDictionary {
+            { "Comments", Driver.Comments },
+            { "Identifier", "user" },
+            { "id", Driver.Id },
+            { "HasMoreComments", HasMoreUserComments },
+        })
 
     </div>
 

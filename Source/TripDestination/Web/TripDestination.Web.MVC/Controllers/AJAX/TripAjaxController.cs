@@ -37,8 +37,9 @@
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddComments(int tripId, string commentText)
+        public ActionResult AddComments(string id, string commentText)
         {
+            int tripId = int.Parse(id);
             string userId = this.User.Identity.GetUserId();
             var serviceResponse = this.tripServices.AddComment(tripId, userId, commentText);
             return this.Json(serviceResponse);
@@ -81,12 +82,9 @@
             {
                 int identifier = int.Parse(id);
                 serviceResponse = this.tripServices.LoadComments(identifier, offset);
-            } else if (type == "user")
-            {
-                serviceResponse = new BaseResponseAjaxModel();
             } else
             {
-                throw new Exception(string.Format("type {0} is not supported", type));
+                throw new Exception(string.Format("type {0} is not supported, it must be a trip for this controller", type));
             }
 
             return this.Json(serviceResponse, JsonRequestBehavior.AllowGet);
