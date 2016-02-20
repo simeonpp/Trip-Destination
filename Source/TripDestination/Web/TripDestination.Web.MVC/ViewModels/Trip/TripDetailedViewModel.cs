@@ -8,8 +8,16 @@
     using AutoMapper;
     using System.Linq;
     using Common.Infrastructure.Constants;
+    using Infrastructure.HtmlSanitizer;
     public class TripDetailedViewModel : IMapFrom<Trip>, IHaveCustomMappings
     {
+        private readonly ISanitizer htmlSanitizer;
+
+        public TripDetailedViewModel()
+        {
+            this.htmlSanitizer = new HtmlSanitizerAdapter();
+        }
+
         public bool CurrectUserIsDriver { get; set; }
 
         public bool CurrentUserIsWaitingJoinRequest { get; set; }
@@ -92,10 +100,9 @@
         {
             get
             {
-                return this.Description;
+                return this.htmlSanitizer.Sanitize(this.Description);
             }
         }
-
 
         public IEnumerable<PassengerTripViewModel> Passengers { get; set; }
 

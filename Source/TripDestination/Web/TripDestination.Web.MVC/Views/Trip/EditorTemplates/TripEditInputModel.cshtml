@@ -99,7 +99,7 @@ else
 
 <div id="buttonsFromWrap" class="row">
     <div class="col-md-12">
-        <input type="reset" class="button2" value="Cancel">
+        <a href="@Url.RouteUrl("TripDetails", new { id = Model.Id, slug = Model.From.Name + "-" + Model.To.Name })" class="button2">Cancel</a>
         <input type="submit" class="button" value="Save changes">
     </div>
 </div>
