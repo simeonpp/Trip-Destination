@@ -45,10 +45,15 @@
             {
                 <a href="@Url.Action("Trips", "Profile", new { area = "UserProfile",  username = Username })">My trips</a>
                 <a href="@Url.Action("EditProfile", "Profile", new { area = "UserProfile",  username = Username })">Edit personal details</a>
-                <a href="@Url.Action("EditCar", "Profile", new { area = "UserProfile", username = Username })">Edit car details</a>
+
+                if (Role == RoleConstants.DriverRole)
+                {
+                    <a href="@Url.Action("EditCar", "Profile", new { area = "UserProfile", username = Username })">Edit car details</a>
+                }
             }
 
         </div>
 
     </article>
+
 </section>

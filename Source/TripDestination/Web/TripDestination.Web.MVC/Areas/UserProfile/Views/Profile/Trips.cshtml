@@ -17,6 +17,11 @@
         <div class="wrapper">
             <article>
 
+                @if(Model.User.Trips.Count == 0 && Model.User.TripsAsPassenger.Count == 0)
+                {
+                    <p>You have not any trip yet. Please join one of our trips and enjoy!</p>
+                }
+
                 @if (Model.User.Trips.Count > 0)
                 {
                     <h3>Trips as driver</h3>
