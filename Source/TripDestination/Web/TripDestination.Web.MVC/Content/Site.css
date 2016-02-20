@@ -837,6 +837,9 @@ ul.passengersUl li .lastName {
 .navbar-default .navbar-nav li.active a {
   background-color: #dfdfdf;
 }
+.navbar-nav ul.dropdown-menu li a {
+  padding: 10px 15px !important;
+}
 @media (min-width: 1200px) {
   .container {
     width: 1024px !important;

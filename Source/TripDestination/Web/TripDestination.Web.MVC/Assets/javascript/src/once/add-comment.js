@@ -6,6 +6,8 @@
     $('body').on('click', '.addNewCommentButton', function () {
         var $this = $(this),
             identifier = $this.attr('data-identifier'),
+            ajaxUrl = $this.attr('data-ajaxUrl'),
+            id = $this.attr('data-id'),
             $commentArea = $('#commentArea-' + identifier),
             commentText = $commentArea.val(),
             commentTextLength = commentText.length,
@@ -19,10 +21,10 @@
 
         $.ajax({
             type: "POST",
-            url: '/TripAjax/AddComments',
+            url: ajaxUrl,
             data: {
                 __RequestVerificationToken: ajaxAFT,
-                tripid: tripId,
+                id: id,
                 commentText: commentText
             },
             success: function (response) {
