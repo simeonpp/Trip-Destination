@@ -15,13 +15,19 @@
     {
         private readonly IDbRepository<Trip> tripRepos;
 
+        private readonly IDbRepository<UserComment> userCommentRepos;
+
+        private readonly IDbRepository<TripComment> tripCommentRepos;
+
         // private IDbRepository<User> userRepos;
 
         private DateTime today = DateTime.Today;
 
-        public StatisticsServices(IDbRepository<Trip> tripRepos)
+        public StatisticsServices(IDbRepository<Trip> tripRepos, IDbRepository<UserComment> userCommentRepos, IDbRepository<TripComment> tripCommentRepos)
         {
             this.tripRepos = tripRepos;
+            this.userCommentRepos = userCommentRepos;
+            this.tripCommentRepos = tripCommentRepos;
             // this.userRepos = userRepos;
         }
 
@@ -141,6 +147,41 @@
 
             string townAsString = town.TownName;
             return townAsString;
+        }
+
+        public int GetUserCommentsCount(string userId)
+        {
+            int tripComments = this.tripCommentRepos
+                .All()
+                .Where(c => c.AuthorId == userId)
+                .Count();
+
+            int userComments = this.tripCommentRepos
+                .All()
+                .Where(c => c.AuthorId == userId)
+                .Count();
+
+            return tripComments + userComments;
+        }
+
+        public int GetUserTripsAsDriverCount(string userId)
+        {
+            int result = this.tripRepos
+                .All()
+                .Where(t => t.DriverId == userId)
+                .Count();
+
+            return result;
+        }
+
+        public int GetUserTripsAsPassengerCount(string userId)
+        {
+            int result = this.tripRepos
+                .All()
+                .Select(t => t.Passengers.Where(p => p.UserId == userId))
+                .Count();
+
+            return result;
         }
     }
 }

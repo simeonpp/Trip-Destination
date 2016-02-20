@@ -12,5 +12,8 @@
 
         // Statistics
         public const int StatisticsTodaysTrips = 60 * 60 * 15;
+
+        // User profile
+        public const int UserProfileStatistics = 60 * 60 * 60;
     }
 }

@@ -22,5 +22,11 @@
         int TripsGetTodayFinishedCount();
 
         string TripsGetTodayTopDestination();
+        
+        int GetUserCommentsCount(string userId);
+
+        int GetUserTripsAsDriverCount(string userId);
+
+        int GetUserTripsAsPassengerCount(string userId);
     }
 }

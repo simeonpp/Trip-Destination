@@ -7,5 +7,7 @@
         User GetById(string id);
 
         User GetByUsername(string username);
+
+        string[] GetUserRoles(string id);
     }
 }
