@@ -1,0 +1,70 @@
+﻿@model BaseEditModel
+
+<div id="myProfile">
+
+    @Html.Partial("~/Areas/UserProfile/Views/Shared/_ProfileNavigationPartial.cshtml", new ViewDataDictionary {
+                { "AvatarSrc", Model.AvatarUrlSmall },
+                { "FirstName", Model.FirstName },
+                { "LastName", Model.LastName },
+                { "Role", Model.Role },
+                { "Username", Model.CurrentUsername },
+                { "CurrentUsername", Model.CurrentUsername }
+            })
+
+    <div class="wrapper row">
+
+        <section>
+            <article>
+                @using (Html.BeginForm("EditProfile", "Profile", FormMethod.Post, new { area = "UserProfile", @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Edit personal information</h4>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(m => m.CurrentUsername, new { @class = "form-control", hidden = "hidden" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a href="@Url.Action("Index", "Profile", new { area = "UserProfile", username = Model.CurrentUsername })"></a>
+                            <input type="submit" class="btn btn-default" value="Save" />
+                        </div>
+                    </div>
+                }
+            </article>
+        </section>
+
+    </div>
+
+
+</div> @*end #myProfile*@

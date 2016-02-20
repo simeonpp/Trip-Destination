@@ -13,7 +13,7 @@
         {
             get
             {
-
+                return this.DateOfLeaving.ToString("dd.MM.yyyy HH:mm");
             }
         }
 

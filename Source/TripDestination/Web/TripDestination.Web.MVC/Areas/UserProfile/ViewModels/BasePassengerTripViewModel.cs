@@ -9,6 +9,14 @@
     {
         public DateTime DateOfLeaving { get; set; }
 
+        public string DateOfLeavingFormate
+        {
+            get
+            {
+                return this.DateOfLeaving.ToString("dd.MM.yyyy HH:mm");
+            }
+        }
+
         public TripDriverViewModel Driver { get; set; }
 
         public int TotalPeople { get; set; }

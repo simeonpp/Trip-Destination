@@ -16,5 +16,7 @@
         BaseResponseAjaxModel LoadComments(string userId, int offset);
 
         bool CheckIfTripHasMoreCommentsToLoad(string userId, int currentLoadedComments);
+
+        User Update(string userId, string email, string firstName, string lastName, string phoneNumber, string description);
     }
 }

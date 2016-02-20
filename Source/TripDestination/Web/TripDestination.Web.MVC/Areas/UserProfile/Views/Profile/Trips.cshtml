@@ -1,0 +1,80 @@
+﻿@model ProfileViewModel
+
+<div id="myProfileTrips">
+
+    @Html.Partial("~/Areas/UserProfile/Views/Shared/_ProfileNavigationPartial.cshtml", new ViewDataDictionary {
+                { "AvatarSrc", Model.User.AvatarUrlSmall },
+                { "FirstName", Model.User.FirstName },
+                { "LastName", Model.User.LastName },
+                { "Role", Model.Role },
+                { "Username", Model.User.UserName },
+                { "CurrentUsername", Model.CurrentUsername }
+            })
+
+    <section>
+        <h1>Trips list</h1>
+        <h2>Ivaylo’s Trips</h2>
+        <div class="wrapper">
+            <article>
+
+                @if (Model.User.Trips.Count > 0)
+                {
+                    <h3>Trips as driver</h3>
+                    <table class="tripsTable table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="date">Date of leaving</th>
+                                <th>Driver</th>
+                                <th class="totalPeople center">Total people</th>
+                                @*<th class="rating center">Rating</th>*@
+                                <th class="status center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var trip in Model.User.Trips)
+                            {
+                                <tr>
+                                    <td>@trip.DateOfLeavingFormate</td>
+                                    <td><a href="@trip.Driver.ProfileUrl">@trip.Driver.FirstName @trip.Driver.LastName</a></td>
+                                    <td class="center">@trip.TotalPeople</td>
+                                    @*<td class="rating center">asd</td>*@
+                                    <td class="center"><span class="status">@trip.Status</span></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
+                @if (Model.User.TripsAsPassenger.Count > 0)
+                {
+                    <h3>Trips as passenger</h3>
+                    <table class="tripsTable table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="date">Date of leaving</th>
+                                <th>Driver</th>
+                                <th class="totalPeople center">Total people</th>
+                                @*<th class="rating center">Rating</th>*@
+                                <th class="status center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var trip in Model.User.TripsAsPassenger)
+                            {
+                                <tr>
+                                    <td>@trip.DateOfLeavingFormate</td>
+                                    <td><a href="@trip.Driver.ProfileUrl">@trip.Driver.FirstName @trip.Driver.LastName</a></td>
+                                    <td class="center">@trip.TotalPeople</td>
+                                    @*<td class="rating center">asd</td>*@
+                                    <td class="center"><span class="status">@trip.Status</span></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }               
+
+            </article>
+        </div>
+    </section>
+
+</div>

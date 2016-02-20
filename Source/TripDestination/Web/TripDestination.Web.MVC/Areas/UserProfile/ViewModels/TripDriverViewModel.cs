@@ -10,5 +10,13 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string ProfileUrl
+        {
+            get
+            {
+                return string.Format("/User/{0}/{1}", this.UserName, this.FirstName + "-" + this.LastName);
+            }
+        }
     }
 }

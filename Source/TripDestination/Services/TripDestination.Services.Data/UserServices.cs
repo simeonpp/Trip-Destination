@@ -149,5 +149,24 @@
 
             return false;
         }
+
+        public User Update(string userId, string email, string firstName, string lastName, string phoneNumber, string description)
+        {
+            var dbUser = this.GetById(userId);
+
+            if (dbUser == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            dbUser.Email = email;
+            dbUser.FirstName = firstName;
+            dbUser.LastName = lastName;
+            dbUser.PhoneNumber = phoneNumber;
+            dbUser.Description = description;
+
+            this.userRepos.Save();
+            return dbUser;
+        }
     }
 }

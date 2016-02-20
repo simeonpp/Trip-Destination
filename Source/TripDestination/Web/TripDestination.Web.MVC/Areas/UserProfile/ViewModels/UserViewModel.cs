@@ -28,14 +28,6 @@
 
         public string AvatarFilename { get; set; }
 
-        public string AvatarUrlNormal
-        {
-            get
-            {
-                return this.imageUrlProvider.GetImageUrl(this.AvatarFilename, WebApplicationConstants.ImageUserAvatarNormalWidth);
-            }
-        }
-
         public string AvatarUrlSmall
         {
             get
