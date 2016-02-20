@@ -18,9 +18,8 @@
         public ActionResult Index(string username, string guid, int? size)
         {
             var photo = this.photoService.GetByFileName(string.Format(
-                "{0}{1}{2}",
+                "{0}/{1}",
                 username,
-                '/',
                 guid));
 
             if (photo == null)
@@ -52,9 +51,8 @@
             if (size != null)
             {
                 imagePath = string.Format(
-                    "{0}{1}{2}{3}",
+                    "{0}_{1}{2}",
                     originalFilePath,
-                    '_',
                     size,
                     extension);
             }

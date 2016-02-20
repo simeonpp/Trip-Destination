@@ -2,6 +2,6 @@
 {
     public interface IMediaImageUrlProvider
     {
-        string GetImageUrl(string usernameSlashPhotoFilename);
+        string GetImageUrl(string usernameSlashPhotoFilename, int? size);
     }
 }

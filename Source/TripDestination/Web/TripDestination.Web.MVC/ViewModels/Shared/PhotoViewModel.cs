@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.ViewModels.Shared
 {
+    using Common.Infrastructure.Constants;
     using Services.Web.Providers;
     using Services.Web.Providers.Contracts;
     using TripDestination.Common.Infrastructure.Mapping;
@@ -28,7 +29,7 @@
         {
             get
             {
-                return this.imageUrlProvider.GetImageUrl(this.FileName);
+                return this.imageUrlProvider.GetImageUrl(this.FileName, WebApplicationConstants.ImageCarWidth);
             }
         }
     }
