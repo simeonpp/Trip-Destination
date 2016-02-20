@@ -5,7 +5,7 @@
     using AutoMapper;
     using Services.Web.Providers.Contracts;
     using Services.Web.Providers;
-
+    using Common.Infrastructure.Constants;
     public class BaseUserViewModel : IMapFrom<User>, IHaveCustomMappings
     {
         private readonly IMediaImageUrlProvider imageUrlProvider;
@@ -21,11 +21,19 @@
 
         public string AvatarFilename { get; set; }
 
-        public string AvatarUrl
+        public string AvatarUrlNormal
         {
             get
             {
-                return this.imageUrlProvider.GetImageUrl(this.AvatarFilename);
+                return this.imageUrlProvider.GetImageUrl(this.AvatarFilename, WebApplicationConstants.ImageUserAvatarNormalWidth);
+            }
+        }
+
+        public string AvatarUrlSmall
+        {
+            get
+            {
+                return this.imageUrlProvider.GetImageUrl(this.AvatarFilename, WebApplicationConstants.ImageUserAvatarSmallWidth);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿@{
     IEnumerable<BaseCommentViewModel> Comments = (IEnumerable<BaseCommentViewModel>)this.ViewData["Comments"];
     int tripId = (int)this.ViewData["TripId"];
+    bool HasMoreComments = (bool)this.ViewData["HasMoreComments"];
 }
 
 @{
@@ -20,7 +21,7 @@
                 <li>
                     <div class="row noMargins">
                         <div class="col-md-2">
-                            <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+                            <div class="image" style="background-image: url('@comment.Author.AvatarUrlSmall')"></div>
                         </div>
                         <div class="commentTextWrap col-md-10">
                             <div class="arrow"></div>
@@ -37,7 +38,7 @@
             }
         </ul>
 
-        if (Model.HasMoreTripComments)
+        if (HasMoreComments)
         {
             <div id="loadMoreTripComments"
                  class="loadMoreComments button"

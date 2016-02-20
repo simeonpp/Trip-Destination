@@ -48,6 +48,24 @@
                 @Html.Partial("_CommentsSectionPartial", new ViewDataDictionary {
                     { "Comments", Model.Comments },
                     { "TripId", Model.Id },
+                    { "HasMoreComments", Model.HasMoreTripComments },
+                })
+            </section>
+
+            <section id="fullTripDetailsWrap">
+                @Html.Partial("_FullDetailsPartial", new ViewDataDictionary {
+                    { "From", Model.From.Name },
+                    { "To", Model.To.Name },
+                    { "DateOfLeavingFormatted", Model.DateOfLeavingFormatted },
+                    { "TimeOfLeavingFormatted", Model.TimeOfLeavingFormatted },
+                    { "PlaceOfLeaving", Model.PlaceOfLeaving },
+                    { "PickUpFromAddressAsString", Model.PickUpFromAddressAsString },
+                    { "TotalSeats", Model.Driver.Car.TotalSeats },
+                    { "AvailableSeats", Model.AvailableSeats },
+                    { "Status", Model.Status.ToString() },
+                    { "Price", Model.Price },
+                    { "CreatedOnFormatted", Model.CreatedOnFormatted },
+                    { "Description", Model.Description },
                 })
             </section>
         </div>
@@ -73,22 +91,6 @@
                 })   
             </section>
 
-            <section id="fullTripDetailsWrap">
-                @Html.Partial("_FullDetailsPartial", new ViewDataDictionary {
-                    { "From", Model.From.Name },
-                    { "To", Model.To.Name },
-                    { "DateOfLeavingFormatted", Model.DateOfLeavingFormatted },
-                    { "TimeOfLeavingFormatted", Model.TimeOfLeavingFormatted },
-                    { "PlaceOfLeaving", Model.PlaceOfLeaving },
-                    { "PickUpFromAddressAsString", Model.PickUpFromAddressAsString },
-                    { "TotalSeats", Model.Driver.Car.TotalSeats },
-                    { "AvailableSeats", Model.AvailableSeats },
-                    { "Status", Model.Status.ToString() },
-                    { "Price", Model.Price },
-                    { "CreatedOnFormatted", Model.CreatedOnFormatted },
-                    { "Description", Model.Description },
-                }) 
-            </section>
         </div>
 
     </div>

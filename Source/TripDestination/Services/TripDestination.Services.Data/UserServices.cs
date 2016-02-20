@@ -14,6 +14,15 @@
             this.userRepos = userRepos;
         }
 
+        public User GetById(string id)
+        {
+            var user = this.userRepos.All()
+                .Where(u => u.Id == id)
+                .FirstOrDefault();
+
+            return user;
+        }
+
         public User GetByUsername(string username)
         {
             var user = this.userRepos.All()

@@ -16,10 +16,13 @@
 
         private readonly IDbRepository<PassengerTrip> passengerTripsRepos;
 
-        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos)
+        private readonly IUserServices userServices;
+
+        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices)
         {
             this.tripRepos = tripRepos;
             this.passengerTripsRepos = passengerTripsRepos;
+            this.userServices = userServices;
         }
 
         public Trip Create(int fromTownId, int toTownId, DateTime dateOfLeaving, int availableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, decimal price, string driverId)
@@ -292,20 +295,17 @@
             this.tripRepos.Save();
             this.tripRepos.Reload(dbTrip);
 
-            var dbComment = dbTrip.Comments
-                .Where(c => c.TripId == tripId && c.AuthorId == userId && c.IsDeleted == false)
-                .OrderByDescending(c => c.CreatedOn)
-                .FirstOrDefault();
+            var author = this.userServices.GetById(userId);
 
             response.Status = true;
             response.Data = new CommentResponseModel()
             {
-                FirstName = dbComment.Author.FirstName,
-                LastName = dbComment.Author.LastName,
+                FirstName = author.FirstName,
+                LastName = author.LastName,
                 UserUrl = "www.google.com", // TODO: Implement URL
-                UserImageSrc = "http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg", // TODO: Implement imageSrc
-                CreatedOnFormatted = dbComment.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
-                CommentText = dbComment.Text,
+                UserImageSrc = this.GetUserImageSmallUrl(author.Avatar.FileName),
+                CreatedOnFormatted = comment.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
+                CommentText = comment.Text,
                 CommentTotalCount = dbTrip.Comments.Count
             };
 
@@ -415,8 +415,7 @@
             {
                 response.ErrorMessage = "No such trip.";
                 return response;
-            }
-
+            }            
             var comments = dbTrip.Comments
                 .Where(c => c.IsDeleted == false)
                 .OrderByDescending(c => c.CreatedOn)
@@ -427,7 +426,7 @@
                     FirstName = c.Author.FirstName,
                     LastName = c.Author.LastName,
                     UserUrl = "http://www.google.com", // TODO: Fix url
-                    UserImageSrc = "http://media02.hongkiat.com/ww-flower-wallpapers/roundflower.jpg", // TODO: Fix image
+                    UserImageSrc = this.GetUserImageSmallUrl(c.Author.Avatar.FileName),
                     CreatedOnFormatted = c.CreatedOn.ToString("dd.MM.yyyy HH:mm"),
                     CommentText = c.Text
                 })
@@ -516,6 +515,15 @@
 
             int likesCount = likes - dislikes;
             return likesCount;
+        }
+
+        private string GetUserImageSmallUrl(string fileName)
+        {
+            return string.Format(
+                    "/{0}/{1}/{2}",
+                    WebApplicationConstants.ImageRouteUrl,
+                    fileName,
+                    WebApplicationConstants.ImageUserAvatarSmallWidth);
         }
     }
 }
