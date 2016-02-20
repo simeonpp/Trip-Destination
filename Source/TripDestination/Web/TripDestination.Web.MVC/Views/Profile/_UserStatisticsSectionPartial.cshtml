@@ -1,0 +1,28 @@
+﻿@model UserStatisticsViewModel
+
+<h1>Statistics</h1>
+<h2>User statistics</h2>
+<article>
+    <ul class="statsUl">
+        <li class="col-md-6">
+            <div class="description">Total trips</div>
+            <div class="icon"><img src="images/plus-icon.png" alt="Added icon"></div>
+            <div class="actualInfo">@Model.TotalTrips</div>
+        </li>
+        <li class="col-md-6">
+            <div class="description">Comments</div>
+            <div class="icon"><img src="images/in-progress-icon.png" alt="In progress icon"></div>
+            <div class="actualInfo">@Model.CommentsCount</div>
+        </li>
+        <li class="col-md-6">
+            <div class="description">Trips as driver</div>
+            <div class="icon"><img src="images/driver-icon.png" alt="Driver icon"></div>
+            <div class="actualInfo">@Model.TripsAsDriverCount</div>
+        </li>
+        <li class="col-md-6">
+            <div class="description">Trips as driver</div>
+            <div class="icon"><img src="images/users-icon.png" alt="Pasenger icon"></div>
+            <div class="actualInfo">@Model.TripsAsPassengerCount</div>
+        </li>
+    </ul>
+</article>

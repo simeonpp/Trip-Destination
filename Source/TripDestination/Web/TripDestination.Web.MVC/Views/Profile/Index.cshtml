@@ -1,0 +1,65 @@
+﻿@model ProfileViewModel
+
+<div id="myProfile">
+
+    <section class="noTopMargin noBottomMargin">
+        <article class="wrapper">
+
+            <div id="topInfoProfile">
+                <div class="row">
+                    <div class="col-md-2 col-md-push-1">
+                        <div class="image">
+                            <div class="imageContainer" style="background-image: url('@Model.User.AvatarUrlSmall')"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="name">@Model.User.FirstName @Model.User.LastName</div>
+                        <div class="role">@Model.Role</div>
+                        <div class="rating">
+                            <ul class="ratingUl">
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                                <li><img src="images/star-icon.png" alt="Star icon"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end #topInfo -->
+
+            <div id="innerNav" class="row">
+
+            </div>
+        </article>
+    </section>
+
+    <div class="wrapper row">
+
+        <div class="class="col-md-8"">
+            <section>
+                @Html.Partial("_ProfileDetailsSectionPartial", new ViewDataDictionary {
+                    { "Username", Model.User.UserName },
+                    { "Email", Model.User.Email },
+                    { "Phone", Model.User.PhoneNumber },
+                    { "Description", Model.User.SanitizedDescription }
+                })
+            </section>
+
+            <section>
+                
+            </section>
+        </div>
+
+        <div class="col-md-4">
+            <section>
+                @Html.Action("UserStatistics", "ProfileChildAction", new { username = Model.User.Id })
+            </section>
+        </div>
+
+    </div>
+
+
+
+
+</div> @*end #myProfile*@

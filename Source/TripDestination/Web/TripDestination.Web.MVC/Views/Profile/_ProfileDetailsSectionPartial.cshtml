@@ -1,0 +1,28 @@
+﻿@{
+    string Username = (string)this.ViewData["Username"];
+    string Email = (string)this.ViewData["Email"];
+    string Phone = (string)this.ViewData["Phone"];
+    string Description = (string)this.ViewData["Description"];
+}
+
+<h1>Profile details</h1>
+<article class="noLeftAndRightPadding">
+    <ul class="infoBorderedUl">
+        <li>
+            <div class="labelInfo">Username</div>
+            <div class="textInfo">@Username</div>
+        </li>
+        <li>
+            <div class="labelInfo">Email</div>
+            <div class="textInfo">@Email</div>
+        </li>
+        <li>
+            <div class="labelInfo">Phone</div>
+            <div class="textInfo">@Phone</div>
+        </li>
+        <li>
+            <div class="labelInfo">About me</div>
+            <div class="textInfo">@Html.Raw(Description)</div>
+        </li>
+    </ul>
+</article>

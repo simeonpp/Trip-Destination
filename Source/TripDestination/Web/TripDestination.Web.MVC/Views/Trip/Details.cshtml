@@ -65,7 +65,7 @@
                     { "Status", Model.Status.ToString() },
                     { "Price", Model.Price },
                     { "CreatedOnFormatted", Model.CreatedOnFormatted },
-                    { "Description", Model.Description },
+                    { "Description", Model.SanitizedDescription },
                 })
             </section>
         </div>
@@ -99,4 +99,5 @@
 
 @section scripts {
     @Scripts.Render("~/bundles/trip-detailed")
+    @Scripts.Render("~/bundles/comments")
 }
