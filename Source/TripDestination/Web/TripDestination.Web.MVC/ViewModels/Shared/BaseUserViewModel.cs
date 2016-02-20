@@ -6,6 +6,8 @@
     using Services.Web.Providers.Contracts;
     using Services.Web.Providers;
     using Common.Infrastructure.Constants;
+    using System.Linq;
+
     public class BaseUserViewModel : IMapFrom<User>, IHaveCustomMappings
     {
         private readonly IMediaImageUrlProvider imageUrlProvider;

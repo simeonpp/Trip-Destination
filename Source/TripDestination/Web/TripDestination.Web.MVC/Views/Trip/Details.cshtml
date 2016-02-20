@@ -54,11 +54,11 @@
 
                 <article>
                     @Html.Partial("_CommentsPartial", new ViewDataDictionary {
-                    { "Comments", Model.Comments },
-                    { "Identifier", "trip" },
-                    { "id", Model.Id },
-                    { "HasMoreComments", Model.HasMoreTripComments },
-                })
+                        { "Comments", Model.Comments },
+                        { "Identifier", "trip" },
+                        { "id", Model.Id.ToString() },
+                        { "HasMoreComments", Model.HasMoreTripComments },
+                    })
                 </article>                
             </section>
 
@@ -97,7 +97,7 @@
                     { "Color", Model.Driver.Car.Color },
                     { "LuggageSpace", Model.Driver.Car.SpaceForLugage.ToString() },
                     { "Photos", Model.Driver.Car.Photos },
-                    { "Description", Model.Description },
+                    { "Description", Model.SanitizedDescription },
                 })   
             </section>
 
