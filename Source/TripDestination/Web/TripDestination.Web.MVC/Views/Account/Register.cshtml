@@ -112,8 +112,10 @@
                 </div>
             </div>
 
-            <input type="file" name="CarPhotos" class="input-file" />
-            <input type="file" name="CarPhotos" class="input-file" />
+            <div id="carPhotosWrap">
+                <input type="file" name="CarPhotos" class="input-file" />
+            </div>
+            <div id="addNewPhotoButton" class="btn btn-default">Add new photo</div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.CarDescription, new { @class = "col-md-2 control-label" })

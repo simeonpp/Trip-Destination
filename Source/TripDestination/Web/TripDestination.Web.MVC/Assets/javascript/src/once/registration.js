@@ -1,7 +1,9 @@
 ﻿$().ready(function () {
     var $selectRole = $('#Role'),
         $driverAdditionalWrap = $('#driverAdditionalWrap'),
-        adnimationShowSpeed = 250;
+        adnimationShowSpeed = 250,
+        $addNewPhotoButton = $('#addNewPhotoButton'),
+        $carPhotosWrap = $('#carPhotosWrap');
 
     initCheck()
 
@@ -10,6 +12,16 @@
             selectedValue = $this.val();
 
         toogleDriverAdditinalWrap(selectedValue);
+    })
+
+    $addNewPhotoButton.on('click', function () {
+        // <input type="file" name="CarPhotos" class="input-file" />
+        var newInputFile = $('<input>')
+            .attr('type', 'file')
+            .attr('name', 'CarPhotos')
+            .addClass('input-file');
+
+        $carPhotosWrap.append(newInputFile);
     })
 
     function toogleDriverAdditinalWrap(value) {

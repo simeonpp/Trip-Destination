@@ -240,7 +240,7 @@
                             var carFileNameWithExtension = carFileName + carExtension;
                             var carFilePath = Path.Combine(folderToBeuploadFiles, carFileNameWithExtension);
 
-                            if (carPhoto != null && sizeInBytes < WebApplicationConstants.ImageMaxSizeInBytes && (extension == ".jpg" || extension == ".png"))
+                            if (carPhoto != null && carSizeInBytes < WebApplicationConstants.ImageMaxSizeInBytes && (extension == ".jpg" || extension == ".png"))
                             {
                                 carPhoto.SaveAs(carFilePath);
                                 this.imageProccessorServices.ResizeAndSaveImage(
