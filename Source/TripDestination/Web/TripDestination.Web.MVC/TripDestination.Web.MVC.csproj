@@ -249,6 +249,7 @@
     <Compile Include="ViewModels\Shared\ExtendedUserViewModel.cs" />
     <Compile Include="ViewModels\Shared\NavigationViewModel.cs" />
     <Compile Include="ViewModels\Shared\PageViewModel.cs" />
+    <Compile Include="ViewModels\Shared\PhotoViewModel.cs" />
     <Compile Include="ViewModels\Shared\TodaysStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
     <Compile Include="ViewModels\Shared\UserCommentViewModel.cs" />
@@ -776,7 +777,6 @@
     <Content Include="Views\Trip\_FullDetailsPartial.cshtml" />
     <Content Include="Views\Trip\_DriverDetailsSectionPartial.cshtml" />
     <Content Include="Views\Temp\Index.cshtml" />
-    <Content Include="Views\Media\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

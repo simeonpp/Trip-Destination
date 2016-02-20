@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="image"><img src="images/people/8.jpg" alt="Username images"></div>
+            <div class="image"><img src="@Driver.AvatarUrl" alt="@Driver.FirstName's avatar photo"></div>
         </div>
 
         <div class="col-md-6">
@@ -51,14 +51,17 @@
         </div>
     </div>
 
-    <ul class="infoUl">
-        <li>
-            <div class="labelInfo">About me</div>
-            <div class="textInfo">@Driver.Description</div>
-        </li>
-    </ul>
+    @if (Driver.Description != null)
+    {
+        <ul class="infoUl">
+            <li>
+                <div class="labelInfo">About me</div>
+                <div class="textInfo">@Driver.Description</div>
+            </li>
+        </ul>
+    }    
 
-    <div id="id="userCommentsWrap"">
+    <div id="id=" userCommentsWrap"">
         <h5>Comments (@Driver.Comments.Count)</h5>
         <h6>Latest comments about @Driver.FirstName</h6>
 

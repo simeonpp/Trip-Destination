@@ -185,7 +185,7 @@
 
                     model.Avatar.SaveAs(filePath);
                     this.imageProccessorServices.ResizeAndSaveImage(
-                        model.Avatar, 
+                        model.Avatar,
                         new int[] { WebApplicationConstants.ImageUserAvatarSmallWidth, WebApplicationConstants.ImageUserAvatarNormalWidth },
                         filePath,
                         extension);

@@ -5,6 +5,7 @@
     string Color = (string)this.ViewData["Color"];
     string LuggageSpace = (string)this.ViewData["LuggageSpace"];
     string Description = (string)this.ViewData["Description"];
+    ICollection<PhotoViewModel> Photos = (ICollection<PhotoViewModel>)this.ViewData["Photos"];
 }
 
 <h1>Car details</h1>
@@ -45,7 +46,12 @@
     </div>
 
     <div id="carPhotosWrap">
-
+        <ul class="carImagesUl">
+            @foreach (var photo in Photos)
+            {
+                <li><img src="@photo.ImageUrl" alt="@Brand @Model photo" /></li>
+            }
+        </ul>
     </div>
 
 </article>

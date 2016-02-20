@@ -19,7 +19,15 @@
 
         public string UserName { get; set; }
 
-        public string AvatarUrl { get; set; }
+        public string AvatarFilename { get; set; }
+
+        public string AvatarUrl
+        {
+            get
+            {
+                return this.imageUrlProvider.GetImageUrl(this.AvatarFilename);
+            }
+        }
 
         public string FirstName { get; set; }
 
@@ -27,8 +35,8 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<User, BaseUserViewModel>("AvatarUrl")
-                .ForMember(x => x.AvatarUrl, opt => opt.MapFrom(x => this.imageUrlProvider.GetImageUrl(x.Avatar.FileName)));
+            configuration.CreateMap<User, BaseUserViewModel>("AvatarFilename")
+                .ForMember(x => x.AvatarFilename, opt => opt.MapFrom(x => x.Avatar.FileName));
         }
     }
 }

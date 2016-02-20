@@ -3,7 +3,7 @@
 
 <li>
     <a href="@Url.RouteUrl("TripDetails", new { id = Model.Id, slug = Model.From.Name, area = "" })">
-        <div class="image" style="background-image: url('http://itspronouncedmetrosexual.com/wp-content/themes/ipmtheme/library/images/sam-killermann-headshot.jpg')"></div>
+        <div class="image" style="background-image: url('@Model.Driver.AvatarUrl')"></div>
         <div class="direction">@Model.From.Name - @Model.To.Name</div>
         <div class="timeOfLeaving">@Model.DateOfLeaving</div>
         <div class="driver">Driver: @Model.Driver.FirstName</div>

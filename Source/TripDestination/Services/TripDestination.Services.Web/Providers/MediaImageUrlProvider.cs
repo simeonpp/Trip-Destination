@@ -8,7 +8,7 @@
         public string GetImageUrl(string usernameSlashPhotoFilename)
         {
             return string.Format(
-                    "{0}{1}{2}",
+                    "/{0}{1}{2}",
                     WebApplicationConstants.ImageRouteUrl,
                     "/",
                     usernameSlashPhotoFilename);
