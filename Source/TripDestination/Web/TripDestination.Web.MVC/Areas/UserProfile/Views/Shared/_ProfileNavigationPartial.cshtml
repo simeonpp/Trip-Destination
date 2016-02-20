@@ -3,6 +3,8 @@
     string FirstName = (string)this.ViewData["FirstName"];
     string LastName = (string)this.ViewData["LastName"];
     string Role = (string)this.ViewData["Role"];
+    string Username = (string)this.ViewData["Username"];
+    string CurrentUsername = (string)this.ViewData["CurrentUsername"];
 }
 
 <section class="noTopMargin noBottomMargin">
@@ -32,11 +34,16 @@
         </div> <!-- end #topInfo -->
 
         <div id="innerNav" class="row">
-            <a href="@Url.RouteUrl("Profile", new { username = Model.CurrentUsername, slug = FirstName + "-" + LastName })">Profile</a>
-            <a href="@Url.Action("Car", "Profile", new { area = "UserProfile" })">Car</a>
-            <a href="@Url.Action("Trips", "Profile", new { area = "UserProfile" })">My trips</a>
-            <a href="@Url.Action("EditProfile", "Profile", new { area = "UserProfile" })">Edit personal details</a>
-            <a href="@Url.Action("EditCar", "Profile", new { area = "UserProfile" })">Edit car details</a>
+            <a href="@Url.Action("Index", "Profile", new { area = "UserProfile", username = Username })">Profile</a>
+            <a href="@Url.Action("Car", "Profile", new { area = "UserProfile",  username = Username })">Car</a>
+
+            @if (CurrentUsername == Username)
+            {
+                <a href="@Url.Action("Trips", "Profile", new { area = "UserProfile",  username = Username })">My trips</a>
+                <a href="@Url.Action("EditProfile", "Profile", new { area = "UserProfile",  username = Username })">Edit personal details</a>
+                <a href="@Url.Action("EditCar", "Profile", new { area = "UserProfile", username = Username })">Edit car details</a>
+            }
+
         </div>
 
     </article>

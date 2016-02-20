@@ -689,6 +689,7 @@
     <Content Include="Areas\UserProfile\Views\Profile\_ProfileDetailsSectionPartial.cshtml" />
     <Content Include="Areas\UserProfile\Views\Profile\_UserStatisticsSectionPartial.cshtml" />
     <Content Include="Areas\UserProfile\Views\Shared\_ProfileNavigationPartial.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Profile\Car.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

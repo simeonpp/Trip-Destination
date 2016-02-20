@@ -1,0 +1,68 @@
+﻿@model ProfileViewModel
+
+<div id="myProfileCar">
+
+    @Html.Partial("~/Areas/UserProfile/Views/Shared/_ProfileNavigationPartial.cshtml", new ViewDataDictionary {
+                { "AvatarSrc", Model.User.AvatarUrlSmall },
+                { "FirstName", Model.User.FirstName },
+                { "LastName", Model.User.LastName },
+                { "Role", Model.Role },
+                { "Username", Model.User.UserName },
+                { "CurrentUsername", Model.CurrentUsername }
+            })
+
+    <div class="wrapper row">
+
+        <div class="col-md-6">
+            <section>
+                <h1>Car specification</h1>
+                <h2>Description about the vehicle</h2>
+                <article class="noLeftAndRightPadding">
+                    <ul class="infoBorderedUl">
+                        <li>
+                            <div class="labelInfo">Brand</div>
+                            <div class="textInfo">@Model.User.Car.Brand</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Model</div>
+                            <div class="textInfo">@Model.User.Car.Model</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Year</div>
+                            <div class="textInfo">@Model.User.Car.Year</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Color</div>
+                            <div class="textInfo">@Model.User.Car.Color</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Space for luggage</div>
+                            <div class="textInfo">@Model.User.Car.SpaceForLugage</div>
+                        </li>
+                        <li>
+                            <div class="labelInfo">Additinal information</div>
+                            <div class="textInfo">@Html.Raw(Model.User.Car.SanitizedDescription)</div>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section>
+                <h1>Photos</h1>
+                <h2>Car images</h2>
+                <article>
+                    <ul class="carImagesUl">
+                        @foreach (var photo in Model.User.Car.Photos)
+                        {
+                            <li><img src="@photo.ImageUrl" alt="@Model.User.Car.Brand @Model.User.Car.Model image" /></li>
+                        }
+                    </ul>
+                </article>
+            </section>
+        </div>
+
+    </div>
+
+</div>

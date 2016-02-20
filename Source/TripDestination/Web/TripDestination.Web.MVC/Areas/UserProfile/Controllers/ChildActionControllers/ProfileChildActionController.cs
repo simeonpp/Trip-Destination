@@ -12,6 +12,7 @@
             this.statisticsServices = statisticsServices;
         }
 
+        [ChildActionOnly]
         //[OutputCache(Duration = CacheTimeConstants.UserProfileStatistics, VaryByParam = "username")]
         public ActionResult UserStatistics(string userId)
         {
