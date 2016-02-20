@@ -1,27 +1,28 @@
-﻿
-@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.CarAdminViewModel>()
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Cars administration</h1>    
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.CarAdminViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
-        columns.Bound(c => c.TotalSeats);
-        columns.Bound(c => c.Brand);
-        columns.Bound(c => c.Model);
-        columns.Bound(c => c.Color);
-        columns.Bound(c => c.Year);
-        columns.Bound(c => c.SpaceForLugage);
-        columns.Bound(c => c.Description);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
-      })
-      .ToolBar(toolbar => {
-            toolbar.Create();
+          columns.Bound(c => c.TotalSeats);
+          columns.Bound(c => c.Brand);
+          columns.Bound(c => c.CarModel);
+          columns.Bound(c => c.Color);
+          columns.Bound(c => c.Year);
+          columns.Bound(c => c.SpaceForLugage);
+          columns.Bound(c => c.Description);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
       .Pageable()
-      .Sortable(sortable => {
+      .Sortable(sortable =>
+      {
           sortable.SortMode(GridSortMode.SingleColumn);
       })
       .Filterable()
-      .Scrollable()
+      .Scrollable(scr => scr.Height(650))
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))
@@ -30,4 +31,6 @@
           .Update(update => update.Action("Cars_Update", "CarAdmin"))
           .Destroy(destroy => destroy.Action("Cars_Destroy", "CarAdmin"))
       )
-)
+    )
+
+</div>

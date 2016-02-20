@@ -1,0 +1,56 @@
+﻿@model CarAdminViewModel
+
+@{ 
+    var provider = new TripDestination.Services.Web.Providers.CarProvider();
+}
+
+<div class="form-group">
+    @Html.LabelFor(m => m.TotalSeats, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m.TotalSeats, Model.AvailableSeatsSelectList)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Brand, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Brand, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.CarModel, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.CarModel, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Color, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Color, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Year, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.SpaceForLugage, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.EnumDropDownListFor(m => m.SpaceForLugage, Model.AvailableLuggageSelectList)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+    </div>
+</div>
+
+

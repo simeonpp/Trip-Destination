@@ -728,6 +728,7 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Areas\Admin\Views\CarAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CarAdminViewModel.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

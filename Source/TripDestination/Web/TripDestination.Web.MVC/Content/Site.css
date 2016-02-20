@@ -1351,6 +1351,15 @@ table.tripsTable .statusReadyToGo {
 .adjustableRating > input:checked ~ label:hover ~ label {
   color: #ffed85;
 }
+.adminKendoTableWrap {
+  width: 90%;
+  margin: 25px 5%;
+}
+.adminKendoTableWrap h1 {
+  margin: 10px 0 30px;
+  background: #fff;
+  padding: 10px;
+}
 footer {
   background: #252525;
 }
