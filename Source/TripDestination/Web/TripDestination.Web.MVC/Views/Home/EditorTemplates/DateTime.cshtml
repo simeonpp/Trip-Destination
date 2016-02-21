@@ -1,11 +1,15 @@
 ﻿@model DateTime
 
-<div class="col-lg-12">
+@{
+    string identifier = this.ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+
+<div class="col-lg-12" style="margin-bottom: 6px">
     @Html.LabelFor(m => m, new { @class = "col-lg12 control-labe" })
-    <div class='customDateTimePickers input-group date'>
-        @Html.TextBoxFor(m => m, new { @type = "datetime", @class = "form-control" })
+    <div class='input-group date customDateTimePickers'>
+        <input type='text' class="form-control" style="margin-bottom:0" name="@identifier" id="@identifier" />
         <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
         </span>
-    </div>        
+    </div>
 </div>
