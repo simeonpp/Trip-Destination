@@ -13,7 +13,7 @@
 
         IEnumerable<SelectListItem> GetTripsPerPageSelectList();
 
-        IEnumerable<SelectListItem> GetOrderBySelectList();
+        IEnumerable<SelectListItem> GetOrderBySelectList(string selectedValue);
 
         IEnumerable<SelectListItem> GetleftAvailableSeatsSelectList(Trip trip);
     }

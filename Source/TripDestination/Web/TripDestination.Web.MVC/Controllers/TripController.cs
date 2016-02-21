@@ -18,8 +18,7 @@
     using Common.Infrastructure.Constants;
     public class TripController : BaseController
     {
-        public const string DefaultSortDirection = "ascending";
-        public const int DefaultItemsPerPage = 9;
+        public const int DefaultItemsPerPage = 3;
 
         public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider)
         {
@@ -87,14 +86,20 @@
         }
 
         [HttpGet]
-        public ActionResult List(string calendarDate)
+        public ActionResult List(string calendarDate, int page = 1)
         {
             TripLstViewModel viewModel = new TripLstViewModel();
             this.FillRequiredListInformation(viewModel);
 
             var day = this.DateProvider.CovertDateFromStringToDateTime(calendarDate);
+
+            int allTripsCount = this.TripServices.GetForDay(day).Count();
+            int totalPages = (int)Math.Ceiling(allTripsCount / (double)DefaultItemsPerPage);
+            int tripsToSkip = (page - 1) * DefaultItemsPerPage;
             var trips = this.TripServices
                 .GetForDay(day)
+                .Skip(tripsToSkip)
+                .Take(DefaultItemsPerPage)
                 .To<TripListViewModel>()
                 .ToList();
 
@@ -106,12 +111,15 @@
             viewModel.Date = day;
             viewModel.WeekDays = weekDays;
             viewModel.Trips = trips;
+            viewModel.TotalPages = totalPages;
+            viewModel.CurrentPage = page;
+            viewModel.TotalFoundTrips = allTripsCount;
 
             return this.View(viewModel);
         }
 
         [HttpGet]
-        public ActionResult Search(TripLstViewModel model)
+        public ActionResult Search(TripLstViewModel model, int page = 1)
         {
             if (!this.ModelState.IsValid)
             {
@@ -123,26 +131,17 @@
                 model.ItemsPerPage = DefaultItemsPerPage;
             }
 
-            if (string.IsNullOrEmpty(model.Sort))
-            {
-                model.Sort = DefaultSortDirection;
-            }
-
-            if (model.Sort.ToLower() != "ascending" && model.Sort.ToLower() != "descending")
-            {
-                model.Sort = DefaultSortDirection;
-            }
-
-            model.Sort = model.Sort.ToLower();
-
-            if (string.IsNullOrEmpty(model.OrderBy))
-            {
-                model.OrderBy = "dateOfLeaving";
-            }
-
             var dayOfLeaving = model.DateOfLeaving;
+
+            int filteredTripsCount = this.TripServices
+                .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice, model.OrderBy, model.Sort)
+                .Count();
+            int totalPages = (int)Math.Ceiling(filteredTripsCount / (double)DefaultItemsPerPage);
+            int tripsToSkip = (page - 1) * DefaultItemsPerPage;
             var trips = this.TripServices
                 .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice, model.OrderBy, model.Sort)
+                .Skip(tripsToSkip)
+                .Take(DefaultItemsPerPage)
                 .To<TripListViewModel>()
                 .ToList();
 
@@ -154,6 +153,9 @@
             model.Date = dayOfLeaving;
             model.WeekDays = weekDays;
             model.Trips = trips;
+            model.TotalPages = totalPages;
+            model.CurrentPage = page;
+            model.TotalFoundTrips = filteredTripsCount;
             this.FillRequiredListInformation(model);
 
             return this.View("~/Views/Trip/List.cshtml", model);
@@ -161,10 +163,10 @@
 
         private void FillRequiredListInformation(TripLstViewModel viewModel)
         {
-            viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
+            // viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
             viewModel.ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList();
             viewModel.TownsSelectList = this.TownProvider.GetTowns();
-            viewModel.OrderBySelectList = this.TripProvider.GetOrderBySelectList();
+            viewModel.OrderBySelectList = this.TripProvider.GetOrderBySelectList(viewModel.OrderBy);
             viewModel.AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList();
         }
 

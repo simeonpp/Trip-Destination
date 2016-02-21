@@ -27,13 +27,13 @@
 
         $sortDirectionAscending.on('click', function() {
             var inputSelector = "#Sort";
-            $(inputSelector).val('ascending');
+            $(inputSelector).val('ASC');
             $tripFilterForm.submit();
         })
 
         $sortDirectionDescending.on('click', function () {
             var inputSelector = "#Sort";
-            $(inputSelector).val('descending');
+            $(inputSelector).val('DESC');
             $tripFilterForm.submit();
         })
     }());

@@ -70,17 +70,19 @@
             return tripsPerPageSelectList;
         }
 
-        public IEnumerable<SelectListItem> GetOrderBySelectList()
+        public IEnumerable<SelectListItem> GetOrderBySelectList(string selectedValue)
         {
-            var oserBySelectList = new List<SelectListItem>
+            var oserBySelectList = new List<SelectListItem>();
+            foreach (var orderOption in WebApplicationConstants.OrderTripOptions)
             {
-                new SelectListItem { Text = "Order by date of leaving", Value = WebApplicationConstants.SortByDateOfLeaving },
-                new SelectListItem { Text = "Order by travel destination", Value = WebApplicationConstants.SortByDestinationTo },
-                new SelectListItem { Text = "Order by leaving from", Value = WebApplicationConstants.SortByDestinationFrom },
-                new SelectListItem { Text = "Order by available seats", Value = WebApplicationConstants.SortByAvailableSeats },
-                new SelectListItem { Text = "Order by price", Value = WebApplicationConstants.SortByPrice },
-                new SelectListItem { Text = "Order by driver name", Value = WebApplicationConstants.SortByDriverName }
-            };
+                SelectListItem currentSelectListItem = new SelectListItem { Text = orderOption.Value, Value = orderOption.Key };
+                if (orderOption.Key == selectedValue)
+                {
+                    currentSelectListItem.Selected = true;
+                }
+
+                oserBySelectList.Add(currentSelectListItem);
+            }
 
             return oserBySelectList;
         }

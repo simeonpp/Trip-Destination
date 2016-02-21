@@ -15,6 +15,10 @@
 
     public class TripServices : ITripServices
     {
+        public const string DefaultSortDirection = "ASC";
+
+        public const string DefaultOrder = "DateOfLeaving";
+
         private readonly IDbRepository<Trip> tripRepos;
 
         private readonly IDbRepository<PassengerTrip> passengerTripsRepos;
@@ -549,10 +553,55 @@
             string sortBy,
             string orderBy)
         {
+            if (string.IsNullOrEmpty(sortBy) || !WebApplicationConstants.OrderTripOptions.ContainsKey(sortBy))
+            {
+                sortBy = DefaultOrder;
+            }
+
+            if (string.IsNullOrEmpty(orderBy) || (orderBy.ToUpper() != "ASC" && orderBy.ToUpper() != "DESC"))
+            {
+                orderBy = DefaultSortDirection;
+            }
+
+            orderBy = orderBy.ToUpper();
+
+            var query = this.GetBaseFIlterQuery(fromId, toId, availableSeaets, dateOfLeaving, driverUsername, priceMin, priceMax);
+
+            switch (sortBy)
+            {
+                case "Driver":
+                    if (orderBy == "ASC")
+                    {
+                        query = query.OrderBy(t => t.Driver.UserName);
+                    }
+                    else
+                    {
+                        query = query.OrderByDescending(t => t.Driver.UserName);
+                    }
+
+                    break;
+                default:
+                    query = query.OrderBy(sortBy + " " + orderBy);
+                    break;
+            }
+
+            return query;
+        }
+
+        private IQueryable<Trip> GetBaseFIlterQuery(
+            int fromId,
+            int toId,
+            int availableSeaets,
+            DateTime dateOfLeaving,
+            string driverUsername,
+            decimal priceMin,
+            decimal priceMax)
+        {
             if (string.IsNullOrEmpty(driverUsername))
             {
                 driverUsername = string.Empty;
             }
+
             var filteredTrips = this.tripRepos
                 .All()
                 .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == dateOfLeaving
@@ -561,37 +610,9 @@
                             && t.Status == TripStatus.Open
                             && t.AvailableSeats >= availableSeaets
                             && t.Price >= priceMin && t.Price <= priceMax
-                            && t.Driver.UserName.Contains(driverUsername))
-                .OrderBy(sortBy + " " + orderBy);
+                            && t.Driver.UserName.Contains(driverUsername));
 
-            this.ApplyOrderAndSortFilter(filteredTrips, sortBy, orderBy);
             return filteredTrips;
-        }
-
-        private void ApplyOrderAndSortFilter(IQueryable<Trip> query, string sortBy, string orderBy)
-        {
-            if (!(sortBy != WebApplicationConstants.SortByDateOfLeaving ||
-                sortBy != WebApplicationConstants.SortByDestinationTo ||
-                sortBy != WebApplicationConstants.SortByDestinationFrom ||
-                sortBy != WebApplicationConstants.SortByAvailableSeats ||
-                sortBy != WebApplicationConstants.SortByPrice ||
-                sortBy != WebApplicationConstants.SortByDriverName))
-            {
-                sortBy = WebApplicationConstants.SortByDateOfLeaving;
-            }
-
-            if (orderBy == "ascending")
-            {
-                orderBy = "ASC";
-            }
-            else
-            {
-                orderBy = "DESC";
-            }
-
-            query
-                .OrderBy(sortBy + " " + orderBy);
-
         }
     }
 }

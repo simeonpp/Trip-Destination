@@ -1,4 +1,6 @@
-﻿namespace TripDestination.Common.Infrastructure.Constants
+﻿using System.Collections.Generic;
+
+namespace TripDestination.Common.Infrastructure.Constants
 {
     public class WebApplicationConstants
     {
@@ -19,11 +21,20 @@
         public const int MaxItemsPerPage = 24;
 
         // Ordering
-        public const string SortByDateOfLeaving = "DateOfLeaving";
-        public const string SortByDestinationTo = "ToId";
-        public const string SortByDestinationFrom = "FromId";
-        public const string SortByAvailableSeats = "AvailableSeats";
-        public const string SortByPrice = "Price";
-        public const string SortByDriverName = "Driver";
+        private static Dictionary<string, string> orderTripOptions = new Dictionary<string, string>()
+        {
+            { "DateOfLeaving", "date of leaving" },
+            { "AvailableSeats", "available seats" },
+            { "Price", "price" },
+            { "Driver", "driver name" }
+        };
+
+        public static Dictionary<string, string> OrderTripOptions
+        {
+            get
+            {
+                return orderTripOptions;
+            }
+        }
     }
 }
