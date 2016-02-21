@@ -202,7 +202,7 @@
     <Compile Include="Areas\Admin\Controllers\CarAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\PageAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PageParagraphController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PageParagraphAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TownAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CarAdminViewModel.cs" />
@@ -768,7 +768,8 @@
     <Content Include="Areas\Admin\Views\ContactAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PageAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PageAdminViewModel.cshtml" />
-    <Content Include="Areas\Admin\Views\PageParagraph\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PageParagraphAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PageParagraphViewModel.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

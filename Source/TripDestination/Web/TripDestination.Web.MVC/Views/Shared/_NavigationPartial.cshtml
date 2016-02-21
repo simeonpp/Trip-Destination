@@ -42,9 +42,10 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span><div class="clarification">Admin area</div></a>
                             <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index", "PageAdmin", new { area = "Admin" })">Pages</a></li>
+                                <li><a href="@Url.Action("Index", "PageParagraphAdmin", new { area = "Admin" })">Page paragraphs</a></li>
                                 <li><a href="@Url.Action("Index", "TripAdmin", new { area = "Admin" })">Trips</a></li>
                                 <li><a href="@Url.Action("Index", "CarAdmin", new { area = "Admin" })">Cars</a></li>
-                                <li><a href="@Url.Action("Index", "PageAdmin", new { area = "Admin" })">Pages</a></li>
                                 <li><a href="@Url.Action("Index", "TownAdmin", new { area = "Admin" })">Towns</a></li>
                                 <li><a href="@Url.Action("Index", "ContactAdmin", new { area = "Admin" })">Contact</a></li>
                             </ul>

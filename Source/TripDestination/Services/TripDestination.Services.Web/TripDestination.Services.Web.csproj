@@ -84,12 +84,14 @@
     <Compile Include="Providers\Contracts\IDateProvider.cs" />
     <Compile Include="Providers\Contracts\IIdentifierProvider.cs" />
     <Compile Include="Providers\Contracts\IMediaImageUrlProvider.cs" />
+    <Compile Include="Providers\Contracts\IPageParagraphTypeProvider.cs" />
     <Compile Include="Providers\Contracts\IRoleProvider.cs" />
     <Compile Include="Providers\Contracts\ITownProvider.cs" />
     <Compile Include="Providers\Contracts\ITripProvider.cs" />
     <Compile Include="Providers\DateProvider.cs" />
     <Compile Include="Providers\IdentifierProvider.cs" />
     <Compile Include="Providers\MediaImageUrlProvider.cs" />
+    <Compile Include="Providers\PageParagraphTypeProvider.cs" />
     <Compile Include="Providers\RoleProvider.cs" />
     <Compile Include="Providers\TownProvider.cs" />
     <Compile Include="Providers\TripProvider.cs" />
