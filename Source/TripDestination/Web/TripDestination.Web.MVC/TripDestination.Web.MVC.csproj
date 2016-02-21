@@ -863,6 +863,7 @@
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
     <Content Include="Views\Shared\_NoNavigationLayout.cshtml" />
     <Content Include="Views\Home\_CoverPartial.cshtml" />
+    <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

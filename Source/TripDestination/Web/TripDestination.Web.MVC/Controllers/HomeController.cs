@@ -6,13 +6,16 @@
     using TripDestination.Web.MVC.ViewModels.Home;
     using Services.Data.Contracts;
     using Services.Web.Helpers.Contracts;
-
+    using Services.Web.Providers.Contracts;
     public class HomeController : BaseController
     {
-        public HomeController(ITripServices tripServices, ITripHelper tripHelper)
+        private readonly ITownProvider townProvider;
+
+        public HomeController(ITripServices tripServices, ITripHelper tripHelper, ITownProvider townProvider)
         {
             this.TripServices = tripServices;
             this.TripHelper = tripHelper;
+            this.townProvider = townProvider;
         }
 
         public ITripServices TripServices { get; set; }
@@ -36,7 +39,8 @@
 
             HomepageViewModel viewModel = new HomepageViewModel()
             {
-                TopDestinations = topDestinations
+                TopDestinations = topDestinations,
+                TownsSelectList = this.townProvider.GetTowns()
             };
 
             return this.View(viewModel);

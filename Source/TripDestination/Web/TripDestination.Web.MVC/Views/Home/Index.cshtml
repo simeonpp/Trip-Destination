@@ -9,9 +9,7 @@
 }
 
 <div id="coverWrap">
-    @Html.Partial("_CoverPartial", new ViewDataDictionary {
-        { "TopDestinations", Model.TopDestinations }
-    })
+    @Html.Partial("_CoverPartial", Model)
 </div>
 
 <div class="cd-scrolling-bg" id="homeBody">
@@ -33,5 +31,6 @@
 </div>
 
 @section scripts {
-    @Scripts.Render("~/bundles/homepagel")
+    @Scripts.Render("~/bundles/homepage")
+    @Scripts.Render("~/bundles/datepicker")
 }

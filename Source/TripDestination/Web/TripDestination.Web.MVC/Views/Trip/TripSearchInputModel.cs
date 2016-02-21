@@ -26,10 +26,6 @@
         [PlaceHolder("Enter username")]
         public string DriverName { get; set; }
 
-        //[Required]
-        //[Display(Name = "Luggage space")]
-        //public SpaceForLugage LuggageSpcace { get; set; }
-
         [Required]
         [Display(Name = "Items per page")]
         public int ItemsPerPage { get; set; }
