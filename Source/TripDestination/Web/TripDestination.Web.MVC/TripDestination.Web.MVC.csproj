@@ -290,6 +290,7 @@
     <Compile Include="Views\Trip\TripSearchInputModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\images\cover-bg.png" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker-standalone.css" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.css" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />
@@ -630,6 +631,7 @@
     <Content Include="Assets\javascript\src\common\newsletter-subscriber.js" />
     <Content Include="Assets\javascript\src\once\custom-date-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
+    <Content Include="Assets\javascript\src\once\homepage.js" />
     <Content Include="Assets\javascript\src\once\load-more-comments.js" />
     <Content Include="Assets\javascript\src\once\registration.js" />
     <Content Include="Assets\javascript\src\once\add-comment.js" />
@@ -639,6 +641,7 @@
     <Content Include="Assets\javascript\src\once\trip-list.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\cover-bg.png" />
     <Content Include="Content\Kendo\kendo.common.min.css" />
     <Content Include="Content\Kendo\kendo.default.min.css" />
     <Content Include="Content\kiddolb.css">
@@ -858,7 +861,8 @@
     <Content Include="Views\Trip\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
-    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Shared\_NoNavigationLayout.cshtml" />
+    <Content Include="Views\Home\_CoverPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

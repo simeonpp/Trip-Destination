@@ -6,11 +6,7 @@
     @RenderSection("styles", required: false)
 }
 
-@Html.Action("NavigationPartial", "Layout", new { area = string.Empty })
-
-<div>
-    @RenderBody()
-</div>
+@RenderBody()
 
 @section baseScripts {
     @RenderSection("scripts", required: false)

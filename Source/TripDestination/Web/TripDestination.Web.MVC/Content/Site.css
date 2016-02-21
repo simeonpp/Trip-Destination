@@ -111,9 +111,9 @@ footer #topFooterWrap #newsletterWrap #newsletterButton {
 }
 body,
 html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 html,
 body {
@@ -343,7 +343,7 @@ a.button2 {
   height: 100%;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url("../images/cover-bg.png");
+  background-image: url("images/cover-bg.png");
   background-repeat: no-repeat;
   background-position: top center;
   overflow: hidden;

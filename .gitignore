@@ -155,10 +155,13 @@ publish/
 *.nuget.targets
 
 # Bower lib directories
-**/Source/TripDestination/Web/TripDestination.Web.MVC/Assets/javascript/lib*
+**/Source/TripDestination/Web/TripDestination.Web.MVC/Assets/javascript/lib/*
 
 # App_Data assets
 **/Source/TripDestination/Web/TripDestination.Web.MVC/App_Data/uploads/*
+
+# Image
+**/Source/TripDestination/Web/TripDestination.Web.MVC/Assets/images/*
 
 # Kendo assets
 **/Source/TripDestination/Web/TripDestination.Web.MVC/Libraries*

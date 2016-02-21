@@ -1,0 +1,108 @@
+﻿@{
+    IEnumerable<TopDestinationVIewModel> TopDestinations = (IEnumerable<TopDestinationVIewModel>)this.ViewData["TopDestinations"];
+}
+
+<div id="leftCoverWrap">
+    <div id="innerWrap">
+        <div id="logo"></div>
+        <div class="clear"></div>
+        <div id="topDestinationsWrap">
+            <ul id="topDestinationWrap">
+                <li class="topDestinationLi" data-from="Sofia" , data-to="Burgas">
+                    <div class="imgAndTextWrap">
+                        <div class="icon"></div>
+                        <div class="destinationsName">Sofia - Burgas</div>
+                    </div>
+                    <div class="radioButtonWrap">
+                        <div class="circleBoxActive"></div>
+                    </div>
+                </li>
+                <li class="topDestinationLi" data-from="Sofia" , data-to="Burgas">
+                    <div class="imgAndTextWrap">
+                        <div class="icon"></div>
+                        <div class="destinationsName">Varna - Plovdiv</div>
+                    </div>
+                    <div class="radioButtonWrap">
+                        <div class="circleBox"></div>
+                    </div>
+                </li>
+                <li class="topDestinationLi" data-from="Sofia" , data-to="Burgas">
+                    <div class="imgAndTextWrap">
+                        <div class="icon"></div>
+                        <div class="destinationsName">Burgas - Varna</div>
+                    </div>
+                    <div class="radioButtonWrap">
+                        <div class="circleBox"></div>
+                    </div>
+                </li>
+                <li class="topDestinationLi" data-from="Sofia" , data-to="Burgas">
+                    <div class="imgAndTextWrap">
+                        <div class="icon"></div>
+                        <div class="destinationsName">Plovdiv - Sofia</div>
+                    </div>
+                    <div class="radioButtonWrap">
+                        <div class="circleBox"></div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- end #topDestinationWrap -->
+        <div class="clear"></div>
+        <div id="socialLinksWrap">
+            <div id="linkWrap">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com" target="_blank">
+                            <img src="images/facebook-circle-icon.png" alt="Facebook circle icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/?lang=en" target="_blank">
+                            <img src="images/twitter-circle-icon.png" alt="Twitter circle icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/" target="_blank">
+                            <img src="images/google-plus-circle-icon.png" alt="Google plus circle icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/" target="_blank">
+                            <img src="images/youtube-circle-icon.png" alt="Youtube circle icon">
+                        </a>
+                    </li>
+                </ul>
+            </div> <!-- end #linkWrap -->
+            <div class="copyrightWrap">
+                <p>© 2016 | Simeon Petkov</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div> <!-- end #socialLinksWrap -->
+    </div> <!-- end #innerWrap -->
+</div> <!-- end #leftCoverWrap -->
+
+<div id="rightCoverWrap">
+    <div id="coverQuickSearchWrap">
+        <form action="quick-search.php" method="get">
+            <div class="form-group">
+                <label class="control-label" for="quickSearchFrom">From</label>
+                <input class="form-control" name="from" id="quickSearchFrom" type="text" placeholder="Starting destination...">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="quickSearchTo">To</label>
+                <input class="form-control" name="to" id="quickSearchTo" type="text" placeholder="Final destination...">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="quickSearchDate">Date of leaving</label>
+                <input class="form-control" name="date" id="quickSearchDate" type="text" placeholder="Starting destination...">
+            </div>
+
+            <button>Seach</button>
+        </form>
+    </div> <!-- end #quickSearchWrap -->
+</div> <!-- end #coverQuickSearchWrap -->
+
+<div id="hint-arrow">
+    <a href="#">
+        <img src="images/hint-arrow.png" alt="Down arrow">
+    </a>
+</div>
