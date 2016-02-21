@@ -23,5 +23,27 @@
 
             return dates;
         }
+
+        public DateTime CovertDateFromStringToDateTime(string date)
+        {
+            if (!string.IsNullOrEmpty(date))
+            {
+                var dateParts = date.Split(new char[] { '-' });
+                if (dateParts.Length == 3)
+                {
+                    int year, month, day;
+                    bool yearIsParsable = int.TryParse(dateParts[0], out year);
+                    bool mongthIsParsable = int.TryParse(dateParts[1], out month);
+                    bool dayIsParsable = int.TryParse(dateParts[2], out day);
+
+                    if (yearIsParsable && mongthIsParsable && dayIsParsable)
+                    {
+                        return new DateTime(year, month, day);
+                    }
+                }
+            }
+
+            return DateTime.Today;
+        }
     }
 }

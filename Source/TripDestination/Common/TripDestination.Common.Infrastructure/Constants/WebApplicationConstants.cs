@@ -17,5 +17,13 @@
         public const string ImageRouteUrl = "Media/Image";
 
         public const int MaxItemsPerPage = 24;
+
+        // Ordering
+        public const string SortByDateOfLeaving = "DateOfLeaving";
+        public const string SortByDestinationTo = "ToId";
+        public const string SortByDestinationFrom = "FromId";
+        public const string SortByAvailableSeats = "AvailableSeats";
+        public const string SortByPrice = "Price";
+        public const string SortByDriverName = "Driver";
     }
 }

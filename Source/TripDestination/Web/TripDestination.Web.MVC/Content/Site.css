@@ -954,6 +954,9 @@ ul.passengersUl li .lastName {
 #tripList form#tripFilterForm select {
   margin-bottom: 6px;
 }
+#tripList form#tripFilterForm input.hiddenInput {
+  display: none;
+}
 #tripList form#tripFilterForm .col-lg-12 {
   padding-left: 0 !important;
   padding-right: 0 !important;

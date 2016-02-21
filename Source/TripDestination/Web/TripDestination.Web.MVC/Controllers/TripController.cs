@@ -92,7 +92,7 @@
             TripLstViewModel viewModel = new TripLstViewModel();
             this.FillRequiredListInformation(viewModel);
 
-            var day = this.CovertDateFromStringToDateTime(calendarDate);
+            var day = this.DateProvider.CovertDateFromStringToDateTime(calendarDate);
             var trips = this.TripServices
                 .GetForDay(day)
                 .To<TripListViewModel>()
@@ -110,28 +110,6 @@
             return this.View(viewModel);
         }
 
-        private DateTime CovertDateFromStringToDateTime(string date)
-        {
-            if (!string.IsNullOrEmpty(date))
-            {
-                var dateParts = date.Split(new char[] { '-' });
-                if (dateParts.Length == 3)
-                {
-                    int year, month, day;
-                    bool yearIsParsable = int.TryParse(dateParts[0], out year);
-                    bool mongthIsParsable = int.TryParse(dateParts[1], out month);
-                    bool dayIsParsable = int.TryParse(dateParts[2], out day);
-
-                    if (yearIsParsable && mongthIsParsable && dayIsParsable)
-                    {
-                        return new DateTime(year, month, day);
-                    }
-                }
-            }
-
-            return DateTime.Today;
-        }
-
         [HttpGet]
         public ActionResult Search(TripLstViewModel model)
         {
@@ -145,7 +123,12 @@
                 model.ItemsPerPage = DefaultItemsPerPage;
             }
 
-            if (string.IsNullOrEmpty(model.Sort) || model.Sort.ToLower() != "ascending" || model.Sort.ToLower() != "descending")
+            if (string.IsNullOrEmpty(model.Sort))
+            {
+                model.Sort = DefaultSortDirection;
+            }
+
+            if (model.Sort.ToLower() != "ascending" && model.Sort.ToLower() != "descending")
             {
                 model.Sort = DefaultSortDirection;
             }
@@ -159,7 +142,7 @@
 
             var dayOfLeaving = model.DateOfLeaving;
             var trips = this.TripServices
-                .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice)
+                .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice, model.OrderBy, model.Sort)
                 .To<TripListViewModel>()
                 .ToList();
 

@@ -7,8 +7,34 @@
                 inputSelector = "#calendarDate",
                 formSelector = "#tripCalendarForm";
 
-            $(calendarDate).val(date);
+            $(inputSelector).val(date);
             $(formSelector).submit();
+        })
+
+        var $orderBySelectList = $('#orderBySelectList'),
+            $tripFilterForm = $('#tripFilterForm');
+        $orderBySelectList.on('change', function () {
+            var $this = $(this),
+                selectedValue = $this.val(),
+                inputSelector = "#OrderBy";
+
+            $(inputSelector).val(selectedValue);
+            $tripFilterForm.submit();
+        });
+
+        var $sortDirectionAscending = $('#sortDirectionAscending'),
+            $sortDirectionDescending = $('#sortDirectionDescending');
+
+        $sortDirectionAscending.on('click', function() {
+            var inputSelector = "#Sort";
+            $(inputSelector).val('ascending');
+            $tripFilterForm.submit();
+        })
+
+        $sortDirectionDescending.on('click', function () {
+            var inputSelector = "#Sort";
+            $(inputSelector).val('descending');
+            $tripFilterForm.submit();
         })
     }());
 

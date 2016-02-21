@@ -17,7 +17,9 @@
             DateTime dateOfLeaving,
             string driverUsername,
             decimal priceMin,
-            decimal priceMax);
+            decimal priceMax,
+            string sortBy,
+            string orderBy);
 
         Trip Create(
             int fromTownId,

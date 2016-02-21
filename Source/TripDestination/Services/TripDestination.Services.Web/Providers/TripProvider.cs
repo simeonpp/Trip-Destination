@@ -74,12 +74,12 @@
         {
             var oserBySelectList = new List<SelectListItem>
             {
-                new SelectListItem { Text = "Order by date of leaving", Value = "dateOfLeaving" },
-                new SelectListItem { Text = "Order by travel destination", Value = "to" },
-                new SelectListItem { Text = "Order by leaving from", Value = "from" },
-                new SelectListItem { Text = "Order by available seats", Value = "seats" },
-                new SelectListItem { Text = "Order by price", Value = "price" },
-                new SelectListItem { Text = "Order by driver name", Value = "driver" }
+                new SelectListItem { Text = "Order by date of leaving", Value = WebApplicationConstants.SortByDateOfLeaving },
+                new SelectListItem { Text = "Order by travel destination", Value = WebApplicationConstants.SortByDestinationTo },
+                new SelectListItem { Text = "Order by leaving from", Value = WebApplicationConstants.SortByDestinationFrom },
+                new SelectListItem { Text = "Order by available seats", Value = WebApplicationConstants.SortByAvailableSeats },
+                new SelectListItem { Text = "Order by price", Value = WebApplicationConstants.SortByPrice },
+                new SelectListItem { Text = "Order by driver name", Value = WebApplicationConstants.SortByDriverName }
             };
 
             return oserBySelectList;

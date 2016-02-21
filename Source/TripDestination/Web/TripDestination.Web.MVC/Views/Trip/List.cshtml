@@ -42,6 +42,9 @@
                     {
                         @Html.ValidationSummary()
 
+                        <input type="text" id="Sort" name="Sort" class="hiddenInput" />
+                        <input type="text" id="OrderBy" name="OrderBy" class="hiddenInput" />
+
                         @Html.EditorForModel()
                     }
 
@@ -64,7 +67,7 @@
                 </div>
 
                 <div class="col-md-4 pull-right">
-                    @Html.DropDownList("orderBy", Model.OrderBySelectList, new { @class = "form-control" })
+                    @Html.DropDownList("orderBySelectList", Model.OrderBySelectList, new { @class = "form-control" })
                 </div>
 
             </div>

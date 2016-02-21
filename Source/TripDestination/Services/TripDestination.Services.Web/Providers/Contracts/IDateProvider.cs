@@ -8,5 +8,7 @@
     public interface IDateProvider
     {
         IQueryable<WeekDay> GetWeekAhedDays(DateTime chosenDay);
+
+        DateTime CovertDateFromStringToDateTime(string date);
     }
 }
