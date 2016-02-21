@@ -238,7 +238,7 @@ namespace TripDestination.Web.MVC.Controllers
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
 
-                this.TempData.Add("Message", "Your password has been changed.");
+                this.TempData["Message"] = "Your password has been changed.";
                 return this.Redirect("/");
             }
 
