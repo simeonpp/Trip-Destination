@@ -1,0 +1,27 @@
+﻿
+@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.TownAdminViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Id);
+          columns.Bound(c => c.Name);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+          toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Scrollable(scr => scr.Height(650))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Towns_Read", "TownAdmin"))
+          .Create(create => create.Action("Towns_Create", "TownAdmin"))
+          .Update(update => update.Action("Towns_Update", "TownAdmin"))
+          .Destroy(destroy => destroy.Action("Towns_Destroy", "TownAdmin"))
+      )
+)

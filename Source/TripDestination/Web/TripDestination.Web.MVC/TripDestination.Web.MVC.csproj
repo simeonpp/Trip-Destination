@@ -200,8 +200,10 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CarAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TownAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CarAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\TownAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ProfileController.cs" />
@@ -754,6 +756,8 @@
     <Content Include="Assets\javascript\lib\urijs\contributing.md" />
     <Content Include="Assets\javascript\lib\urijs\README.md" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CustomDropDownList.cshtml" />
+    <Content Include="Areas\Admin\Views\TownAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TownAdminViewModel.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -875,6 +879,7 @@
     <Folder Include="Content\Kendo\images\" />
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Views\CarAdmin\" />
+    <Folder Include="Views\TownAdmin\" />
     <Folder Include="Views\TripAdmin\" />
   </ItemGroup>
   <ItemGroup>

@@ -6,5 +6,11 @@
     public interface ITownsServices
     {
         IQueryable<Town> GetAll();
+
+        Town Create(string name);
+
+        Town Edit(int id, string name);
+
+        void Delete(int id);
     }
 }
