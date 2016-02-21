@@ -34,6 +34,8 @@
 
                     @using (Html.BeginForm("Search", "Trip", FormMethod.Get, new { id = "tripFilterForm" }))
                     {
+                        @Html.ValidationSummary()
+
                         @Html.EditorForModel()
                     }
 

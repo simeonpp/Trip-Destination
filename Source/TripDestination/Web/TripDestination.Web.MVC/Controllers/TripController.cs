@@ -18,6 +18,9 @@
     using Common.Infrastructure.Constants;
     public class TripController : BaseController
     {
+        public const string DefaultSortDirection = "ascending";
+        public const int DefaultItemsPerPage = 9;
+
         public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider)
         {
             this.TripServices = tripServices;
@@ -85,6 +88,9 @@
         [HttpGet]
         public ActionResult List()
         {
+            TripLstViewModel viewModel = new TripLstViewModel();
+            this.FillRequiredListInformation(viewModel);
+
             var day = DateTime.Today;
             var trips = this.TripServices
                 .GetForDay(day)
@@ -96,17 +102,9 @@
                 .To<WeekDayViewModel>()
                 .ToList();
 
-            TripLstViewModel viewModel = new TripLstViewModel()
-            {
-                Date = day,
-                WeekDays = weekDays,
-                LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList(),
-                ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList(),
-                TownsSelectList = this.TownProvider.GetTowns(),
-                OrderBySelectList = this.TripProvider.GetOrderBySelectList(),
-                AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList(),
-                Trips = trips
-            };
+            viewModel.Date = day;
+            viewModel.WeekDays = weekDays;
+            viewModel.Trips = trips;
 
             return this.View(viewModel);
         }
@@ -119,9 +117,38 @@
                 return this.View(model);
             }
 
+            if (model.ItemsPerPage < 0 && model.ItemsPerPage > WebApplicationConstants.MaxItemsPerPage)
+            {
+                model.ItemsPerPage = DefaultItemsPerPage;
+            }
+
+            model.Sort = model.Sort.ToLower();
+            if (string.IsNullOrEmpty(model.Sort) || model.Sort.ToLower() != "ascending" || model.Sort.ToLower() != "descending")
+            {
+                model.Sort = DefaultSortDirection;
+            }
+
+            if (string.IsNullOrEmpty(model.OrderBy))
+            {
+                model.OrderBy = "dateOfLeaving";
+            }
+
+            TripLstViewModel viewModel = new TripLstViewModel();
+            this.FillRequiredListInformation(viewModel);
+
+
             //TripSearchInputModel searchModel = model.SearchInputModel;
 
-            return this.View();
+            return this.View(viewModel);
+        }
+
+        private void FillRequiredListInformation(TripLstViewModel viewModel)
+        {
+            viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
+            viewModel.ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList();
+            viewModel.TownsSelectList = this.TownProvider.GetTowns();
+            viewModel.OrderBySelectList = this.TripProvider.GetOrderBySelectList();
+            viewModel.AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList();
         }
 
         [HttpGet]

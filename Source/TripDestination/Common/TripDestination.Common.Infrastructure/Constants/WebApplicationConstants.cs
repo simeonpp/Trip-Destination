@@ -15,5 +15,7 @@
         public const int ImageMaxSizeInBytes = 1572864; // 1.5MB
         public const string ImageFolder = "~/App_Data/uploads";
         public const string ImageRouteUrl = "Media/Image";
+
+        public const int MaxItemsPerPage = 24;
     }
 }

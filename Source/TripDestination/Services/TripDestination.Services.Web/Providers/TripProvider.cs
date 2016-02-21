@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Services.Web.Providers
 {
+    using Common.Infrastructure.Constants;
     using Contracts;
     using Data.Contracts;
     using System;
@@ -60,17 +61,11 @@
 
         public IEnumerable<SelectListItem> GetTripsPerPageSelectList()
         {
-            var tripsPerPageSelectList = new List<SelectListItem>
+            var tripsPerPageSelectList = new List<SelectListItem>();
+            for (int i = 3; i <= WebApplicationConstants.MaxItemsPerPage; i += 3)
             {
-                new SelectListItem { Text = "3", Value = "3" },
-                new SelectListItem { Text = "6", Value = "6" },
-                new SelectListItem { Text = "9", Value = "9", Selected = true },
-                new SelectListItem { Text = "12", Value = "12" },
-                new SelectListItem { Text = "15", Value = "15" },
-                new SelectListItem { Text = "18", Value = "18" },
-                new SelectListItem { Text = "21", Value = "21" },
-                new SelectListItem { Text = "24", Value = "24" }
-            };
+                tripsPerPageSelectList.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+            }
 
             return tripsPerPageSelectList;
         }
