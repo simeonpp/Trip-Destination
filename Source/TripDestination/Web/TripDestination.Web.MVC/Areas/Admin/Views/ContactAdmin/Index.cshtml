@@ -1,0 +1,32 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Contact form administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.ContactFormAdminViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Id);
+          columns.Bound(c => c.Name);
+          columns.Bound(c => c.Subject);
+          columns.Bound(c => c.Message);
+          columns.Bound(c => c.Ip);
+          columns.Command(command => { command.Destroy(); }).Width(180);
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Filterable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Scrollable(scr => scr.Height(650))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Contact_Read", "ContactAdmin"))
+          .Destroy(destroy => destroy.Action("Contact_Destroy", "ContactAdmin"))
+      )
+    )
+
+</div>

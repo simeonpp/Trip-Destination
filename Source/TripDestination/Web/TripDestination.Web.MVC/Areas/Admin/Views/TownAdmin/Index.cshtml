@@ -1,5 +1,8 @@
-﻿
-@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.TownAdminViewModel>()
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Towns administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.TownAdminViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
@@ -7,12 +10,14 @@
           columns.Bound(c => c.Name);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
-      .ToolBar(toolbar => {
+      .ToolBar(toolbar =>
+      {
           toolbar.Create();
       })
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
       .Pageable()
-      .Sortable(sortable => {
+      .Sortable(sortable =>
+      {
           sortable.SortMode(GridSortMode.SingleColumn);
       })
       .Scrollable(scr => scr.Height(650))
@@ -24,4 +29,6 @@
           .Update(update => update.Action("Towns_Update", "TownAdmin"))
           .Destroy(destroy => destroy.Action("Towns_Destroy", "TownAdmin"))
       )
-)
+    )
+
+</div>

@@ -1,15 +1,12 @@
 ﻿namespace TripDestination.Web.MVC.Areas.Admin.Controllers
 {
-    using System.Data.Entity;
-    using System.Linq;
     using System.Web.Mvc;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using TripDestination.Data.Models;
     using Services.Data.Contracts;
     using Common.Infrastructure.Mapping;
     using ViewModels;
-    using System.Collections.Generic;
+
     public class TripAdminController : Controller
     {
         private readonly ITripServices tripServices;

@@ -38,6 +38,7 @@
             if (town != null)
             {
                 this.townRepos.Delete(town);
+                this.townRepos.Save();
             }
         }
 

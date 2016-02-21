@@ -1,7 +1,7 @@
 ﻿namespace TripDestination.Services.Data
 {
     using Contracts;
-    using System;
+    using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
 
@@ -29,6 +29,25 @@
             this.contactFormRepos.Save();
 
             return dbContactForm;
+        }
+
+        public void Delete(int id)
+        {
+            var contactForm = this.contactFormRepos
+                .All()
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
+
+            if (contactForm != null)
+            {
+                this.contactFormRepos.Delete(contactForm);
+                this.contactFormRepos.Save();
+            }
+        }
+
+        public IQueryable<ContactForm> GetAll()
+        {
+            return this.contactFormRepos.All();
         }
     }
 }

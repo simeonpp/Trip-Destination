@@ -33,7 +33,7 @@ namespace TripDestination.Web.MVC.Areas.Admin.Controllers
         {
             var result = this.townServices
                 .GetAll()
-                .To<TownAdminController>()
+                .To<TownAdminViewModel>()
                 .ToDataSourceResult(request);
 
             return this.Json(result);
