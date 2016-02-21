@@ -202,12 +202,14 @@
     <Compile Include="Areas\Admin\Controllers\CarAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\PageAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PageParagraphController.cs" />
     <Compile Include="Areas\Admin\Controllers\TownAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CarAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ContactFormAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\NewsletterAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PageAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\PageParagraphViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TownAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
@@ -765,6 +767,8 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TownAdminViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\ContactAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PageAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PageAdminViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\PageParagraph\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -887,6 +891,7 @@
     <Folder Include="Content\Kendo\textures\" />
     <Folder Include="Views\CarAdmin\" />
     <Folder Include="Views\PageAdmin\" />
+    <Folder Include="Views\PageParagraph\" />
     <Folder Include="Views\TownAdmin\" />
     <Folder Include="Views\TripAdmin\" />
   </ItemGroup>

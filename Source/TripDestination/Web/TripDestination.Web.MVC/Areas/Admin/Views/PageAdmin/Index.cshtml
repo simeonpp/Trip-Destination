@@ -1,0 +1,30 @@
+﻿
+@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PageAdminViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Id);
+          columns.Bound(c => c.Heading);
+          columns.Bound(c => c.SubHeading);
+          columns.Bound(c => c.Layout);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+          toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Pages_Read", "PageAdmin"))
+          .Create(create => create.Action("Pages_Create", "PageAdmin"))
+          .Update(update => update.Action("Pages_Update", "PageAdmin"))
+          .Destroy(destroy => destroy.Action("Pages_Destroy", "PageAdmin"))
+      )
+)

@@ -6,6 +6,7 @@
     using Common;
     using Models;
     using TripDestination.Services.Data.Contracts;
+    using System;
 
     public class PageServices : IPageServices
     {
@@ -45,6 +46,52 @@
                 .Where(pp => pp.PageId == page.Id);
 
             return paragraphs;
+        }
+
+        public Page Create(string heading, string subHeading, int layout)
+        {
+            string slug = heading.ToLower().Replace(' ', '-');
+
+            Page page = new Page()
+            {
+                Heading = heading,
+                SubHeading = subHeading,
+                Layout = layout,
+                Slug = slug
+            };
+
+            this.pageRepos.Add(page);
+            this.pageRepos.Save();
+
+            return page;
+        }
+
+        public Page Edit(int id, string heading, string subHeading, int layout)
+        {
+            var page = this.GetById(id);
+
+            if (page == null)
+            {
+                throw new Exception("No such page.");
+            }
+
+            page.Heading = heading;
+            page.SubHeading = subHeading;
+            page.Layout = layout;
+
+            this.pageRepos.Save();
+            return page;
+        }
+
+        public void Delete(int id)
+        {
+            var page = this.GetById(id);
+
+            if (page != null)
+            {
+                this.pageRepos.Delete(page);
+                this.pageRepos.Save();
+            }
         }
     }
 }
