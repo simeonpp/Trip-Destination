@@ -72,10 +72,19 @@
 
         public double GetAverateTripRating()
         {
-            double rating = this.ratingRepos
+            bool hasRatings = this.ratingRepos
+                .All()
+                .Where(r => r.IsDeleted == false)
+                .Any();
+
+            double rating = 0.0;
+            if (hasRatings)
+            {
+                rating = this.ratingRepos
                 .All()
                 .Where(r => r.IsDeleted == false)
                 .Average(r => r.Value);
+            }
 
             return rating;
         }
