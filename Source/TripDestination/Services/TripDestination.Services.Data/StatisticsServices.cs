@@ -23,6 +23,8 @@
 
         private readonly IDbRepository<Rating> ratingRepos;
 
+        private readonly IDbRepository<PassengerTrip> passengerTripRepos;
+
         private IUserServices userServices;
 
         private DateTime today = DateTime.Today;
@@ -33,7 +35,8 @@
             IDbRepository<TripComment> tripCommentRepos,
             IUserServices userServices,
             IDbRepository<View> viewRepos,
-            IDbRepository<Rating> ratingRepos)
+            IDbRepository<Rating> ratingRepos,
+            IDbRepository<PassengerTrip> passengerTripRepos)
         {
             this.tripRepos = tripRepos;
             this.userCommentRepos = userCommentRepos;
@@ -41,6 +44,7 @@
             this.userServices = userServices;
             this.viewRepos = viewRepos;
             this.ratingRepos = ratingRepos;
+            this.passengerTripRepos = passengerTripRepos;
         }
 
         public int GetTotalTripsCount()
@@ -175,9 +179,9 @@
 
         public int GetUserTripsAsPassengerCount(string userId)
         {
-            int result = this.tripRepos
+            int result = this.passengerTripRepos
                 .All()
-                .Select(t => t.Passengers.Where(p => p.UserId == userId))
+                .Where(p => p.UserId == userId)
                 .Count();
 
             return result;
