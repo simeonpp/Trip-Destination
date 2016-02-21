@@ -1,0 +1,24 @@
+﻿@{
+    int TotalPages = (int)this.ViewData["TotalPages"];
+    int CurrentPage = (int)this.ViewData["CurrentPage"];
+    string Url = (string)this.ViewData["Url"];
+}
+
+<ul class="pagination">
+    @if (CurrentPage > 1)
+    {
+        <li><a href="@Url?page=1">&laquo;</a></li>
+    }
+
+    @for (int i = 1; i <= TotalPages; i++)
+    {
+        <li @if (CurrentPage == i) { <text> class="active" </text>    }>
+            <a href="@Url?page=@i.ToString()">@i.ToString()</a>
+        </li>
+    }
+
+    @if (CurrentPage < TotalPages)
+    {
+        <li><a href="@Url?page=@TotalPages">&raquo;</a></li>
+    }
+</ul>

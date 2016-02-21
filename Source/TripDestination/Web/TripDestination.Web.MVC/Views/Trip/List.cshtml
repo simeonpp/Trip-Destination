@@ -11,7 +11,7 @@
                         <div id="dateWrap">
                             <div id="currentDay">@Model.Date.Day</div>
                             <div id="currentMonth">@Model.FormattedMonthForCalendar</div>
-                            <div id="foundTripsCount">@Model.Trips.Count() active trips</div>
+                            <div id="foundTripsCount">@Model.TotalFoundTrips active trips</div>
                         </div>
 
                         <!-- Fixed size -->
@@ -95,15 +95,11 @@
             </div>
 
             <div id="paginatorWrap">
-                <ul class="pagination">
-                    <li class="disabled"><a href="#">&laquo;</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
+                @Html.Partial("_PaginationPartial", new ViewDataDictionary {
+                    { "TotalPages", Model.TotalPages },
+                    { "CurrentPage", Model.CurrentPage },
+                    { "Url", "/Trip/List" },
+                })
             </div>
         </article>
     </section>

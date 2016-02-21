@@ -34,5 +34,13 @@
         public IEnumerable<SelectListItem> OrderBySelectList { get; set; }
 
         public IEnumerable<TripListViewModel> Trips { get; set; }
+
+        public int CurrentPage { get; set; }
+
+        public int TotalPages { get; set; }
+
+        public int TotalFoundTrips { get; set; }
+
+        public int Url { get; set; }
     }
 }
