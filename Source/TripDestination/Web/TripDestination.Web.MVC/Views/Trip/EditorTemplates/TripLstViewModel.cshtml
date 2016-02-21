@@ -6,10 +6,7 @@
         @Html.EditorFor(m => m.FromId, "CustomDropDownList", new { selectListItems = Model.TownsSelectList })
 
         <div class="row">
-            <div class="col-md-6">
-                @Html.EditorFor(m => m.Passengers, "CustomDropDownList", new { selectListItems = Model.AvailableSeatsSelectList })
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 @Html.EditorFor(m => m.DateOfLeaving)
             </div>
         </div>
@@ -22,7 +19,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                @Html.EditorFor(m => m.LuggageSpcace, "CustomDropDownList", new { selectListItems = Model.LuggageSpcaceSelectList })
+                @Html.EditorFor(m => m.Passengers, "CustomDropDownList", new { selectListItems = Model.AvailableSeatsSelectList })
             </div>
             <div class="col-md-6">
                 @Html.EditorFor(m => m.ItemsPerPage, "CustomDropDownList", new { selectListItems = Model.ItemPerPageSelectList })
