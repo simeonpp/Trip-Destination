@@ -543,17 +543,24 @@
             int toId,
             int availableSeaets,
             DateTime dateOfLeaving,
-            SpaceForLugage luggageSpace,
-            string driverName,
+            string driverUsername,
             decimal priceMin,
-            decimal priceMax,
-            string sortBy,
-            string sortDirection)
+            decimal priceMax)
         {
+            if (string.IsNullOrEmpty(driverUsername))
+            {
+                driverUsername = string.Empty;
+            }
+
             var filteredTrips = this.tripRepos
                 .All()
-                .Where("FromId = @0 and ToId = @1", fromId, toId);
-
+                .Where(t => DbFunctions.TruncateTime(t.DateOfLeaving) == dateOfLeaving
+                            && t.FromId == fromId
+                            && t.ToId == toId
+                            && t.Status == TripStatus.Open
+                            && t.AvailableSeats >= availableSeaets
+                            && t.Price >= priceMin && t.Price <= priceMax
+                            && t.Driver.UserName.Contains(driverUsername));
             return filteredTrips;
         }
     }

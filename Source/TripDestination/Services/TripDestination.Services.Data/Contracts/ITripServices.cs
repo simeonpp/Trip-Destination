@@ -15,12 +15,9 @@
             int toId,
             int availableSeaets,
             DateTime dateOfLeaving,
-            SpaceForLugage luggageSpace,
-            string driverName,
+            string driverUsername,
             decimal priceMin,
-            decimal priceMax,
-            string sortBy,
-            string sortDirection);
+            decimal priceMax);
 
         Trip Create(
             int fromTownId,

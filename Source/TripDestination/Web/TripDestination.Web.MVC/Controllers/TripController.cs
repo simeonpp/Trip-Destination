@@ -79,10 +79,11 @@
                     trip.Description,
                     trip.ETA,
                     trip.Price,
-                    currentUserId
-                );
+                    currentUserId);
 
-            return this.RedirectToAction("Detailed", "Trip", new { id = dbtrip.Id });
+            //string slug = string.Format("{0}-{1}", dbtrip.From.Name, dbtrip.To.Name);
+            string slug = string.Format("{0}-{1}", "A", "B");
+            return this.RedirectToRoute("TripDetails", new { id = dbtrip.Id, slug = slug });
         }
 
         [HttpGet]
@@ -122,24 +123,35 @@
                 model.ItemsPerPage = DefaultItemsPerPage;
             }
 
-            model.Sort = model.Sort.ToLower();
             if (string.IsNullOrEmpty(model.Sort) || model.Sort.ToLower() != "ascending" || model.Sort.ToLower() != "descending")
             {
                 model.Sort = DefaultSortDirection;
             }
+
+            model.Sort = model.Sort.ToLower();
 
             if (string.IsNullOrEmpty(model.OrderBy))
             {
                 model.OrderBy = "dateOfLeaving";
             }
 
-            TripLstViewModel viewModel = new TripLstViewModel();
-            this.FillRequiredListInformation(viewModel);
+            var dayOfLeaving = model.DateOfLeaving;
+            var trips = this.TripServices
+                .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice)
+                .To<TripListViewModel>()
+                .ToList();
 
+            var weekDays = this.DateProvider
+                .GetWeekAhedDays(dayOfLeaving)
+                .To<WeekDayViewModel>()
+                .ToList();
 
-            //TripSearchInputModel searchModel = model.SearchInputModel;
+            model.Date = dayOfLeaving;
+            model.WeekDays = weekDays;
+            model.Trips = trips;
+            this.FillRequiredListInformation(model);
 
-            return this.View(viewModel);
+            return this.View("~/Views/Trip/List.cshtml", model);
         }
 
         private void FillRequiredListInformation(TripLstViewModel viewModel)
