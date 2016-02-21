@@ -5,6 +5,10 @@
     ViewBag.Title = "Home Page";
 }
 
+@{
+    Layout = "~/Views/Shared/_NoNavigationLayout.cshtml";
+}
+
 <section id="welcomeMessageWrap">
     <article>
         <div class="wrapper">
@@ -18,6 +22,16 @@
 <h2>Top destination</h2>
 @if (Model.TopDestinations.Count() > 0)
 {
+    @*@using (Html.BeginForm("Search", "Trip", FormMethod.Get, new { id = "tripFilterForm" }))
+    {
+        @Html.ValidationSummary()
+
+        <input type="text" id="Sort" name="Sort" class="hiddenInput" />
+        <input type="text" id="OrderBy" name="OrderBy" class="hiddenInput" />
+
+        @Html.EditorForModel()
+    }*@
+
     <ul>
         @foreach (var tupleDestinations in Model.TopDestinations)
         {

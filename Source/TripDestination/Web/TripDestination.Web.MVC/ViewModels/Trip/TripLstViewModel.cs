@@ -36,7 +36,7 @@
 
         public IEnumerable<SelectListItem> AvailableSeatsSelectList { get; set; }
 
-        public IEnumerable<SelectListItem> OrderBySelectList { get; set; }
+        public IEnumerable<SelectListItem> OrderBySelectListWithSomeNameThatWillNotDoAnyConflictsBecauseMvcIsPlayingAJokeWithAllOfUs { get; set; }
 
         public IEnumerable<TripListViewModel> Trips { get; set; }
 

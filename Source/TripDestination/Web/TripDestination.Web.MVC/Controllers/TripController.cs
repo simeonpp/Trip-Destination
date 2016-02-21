@@ -166,7 +166,7 @@
             // viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
             viewModel.ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList();
             viewModel.TownsSelectList = this.TownProvider.GetTowns();
-            viewModel.OrderBySelectList = this.TripProvider.GetOrderBySelectList(viewModel.OrderBy);
+            viewModel.OrderBySelectListWithSomeNameThatWillNotDoAnyConflictsBecauseMvcIsPlayingAJokeWithAllOfUs = this.TripProvider.GetOrderBySelectList(viewModel.OrderBy);
             viewModel.AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList();
         }
 

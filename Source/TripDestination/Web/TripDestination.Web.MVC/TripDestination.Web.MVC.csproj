@@ -857,6 +857,8 @@
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Trip\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
+    <Content Include="Views\Shared\_BaseLayout.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
