@@ -12,6 +12,8 @@
 
     public class TripEditInputModel : IMapFrom<Trip>, IHaveCustomMappings
     {
+        public string DriverId { get; set; }
+
         public int Id { get; set; }
 
         public IEnumerable<SelectListItem> AddressPickUpSelectList { get; set; }

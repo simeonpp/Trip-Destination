@@ -206,7 +206,8 @@
                 throw new Exception("No such trip.");
             }
 
-            if (trip.Driver.Id != this.User.Identity.GetUserId())
+            string userId = this.User.Identity.GetUserId();
+            if (trip.Driver.Id != userId)
             {
                 throw new Exception("Not authorized to edit.");
             }
@@ -214,6 +215,7 @@
             var viewModel = this.Mapper.Map<TripEditInputModel>(trip);
             viewModel.AddressPickUpSelectList = this.TripProvider.GetAddressPickUpSelectList();
             viewModel.LeaftAvailabeSeatsSelectList = this.TripProvider.GetleftAvailableSeatsSelectList(trip);
+            viewModel.DriverId = userId;
 
             return this.View(viewModel);
         }

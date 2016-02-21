@@ -1,8 +1,10 @@
 ﻿namespace TripDestination.Web.MVC.Areas.UserProfile.Controllers.ChildActionControllers
 {
     using System.Web.Mvc;
+    using Common.Infrastructure.Constants;
     using Services.Data.Contracts;
     using ViewModels.ChildAction;
+
     public class ProfileChildActionController : Controller
     {
         private IStatisticsServices statisticsServices;
@@ -13,7 +15,7 @@
         }
 
         [ChildActionOnly]
-        //[OutputCache(Duration = CacheTimeConstants.UserProfileStatistics, VaryByParam = "username")]
+        [OutputCache(Duration = CacheTimeConstants.UserProfileStatistics, VaryByParam = "userId")]
         public ActionResult UserStatistics(string userId)
         {
             var viewModel = new UserStatisticsViewModel();

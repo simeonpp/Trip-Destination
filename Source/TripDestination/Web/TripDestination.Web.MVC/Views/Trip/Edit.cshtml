@@ -6,7 +6,7 @@
 
     <div class="wrapper row">
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <section id="editTripSection">
                 <h1>Edit trip details</h1>
                 <h2>Not saved information</h2>
@@ -20,6 +20,12 @@
                     }
                 </article>
 
+            </section>
+        </div>
+
+        <div class="col-md-4">
+            <section>
+                @Html.Action("UserStatistics", "ProfileChildAction", new { area = "UserProfile", userId = Model.DriverId })
             </section>
         </div>
 
