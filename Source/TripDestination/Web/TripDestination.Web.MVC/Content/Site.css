@@ -327,6 +327,17 @@ a.button2 {
   font-style: italic;
   color: #bdbdbd;
 }
+.noResultMessage {
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+  padding: 25px;
+  font-size: 1.5em;
+  text-align: center;
+  font-style: italic;
+  color: #a0a0a0;
+  background: #fff;
+}
 #coverWrap {
   width: 100%;
   height: 100%;
@@ -980,13 +991,11 @@ ul.passengersUl li .lastName {
   cursor: pointer;
   color: #fff;
   text-transform: uppercase;
+  background: #0d6fa2;
+  border: 1px solid #0a4a6b;
 }
 #tripList #orderSection #sortDirectionWrap #innerSortWrap .sortDirectionBtn a {
   color: #fff !important;
-}
-#tripList #orderSection #sortDirectionWrap #innerSortWrap #sortDirectionAscending {
-  border: 1px solid #7b1221;
-  background: #aa152b;
 }
 #tripList #orderSection #sortDirectionWrap #innerSortWrap #sortDirectionDescending {
   margin-right: 0;
@@ -1009,8 +1018,8 @@ ul.passengersUl li .lastName {
   border: 1px solid #c8c8c8;
 }
 #tripList #orderSection #sortDirectionWrap #innerSortWrap .active {
-  background: #0d6fa2;
-  border: 1px solid #0a4a6b;
+  border: 1px solid #7b1221;
+  background: #aa152b;
 }
 #tripList ul.tripsList li {
   width: 32%;

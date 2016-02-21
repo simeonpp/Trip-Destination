@@ -1,5 +1,10 @@
 ﻿@model TripLstViewModel
 
+@{ 
+    string sortDirectionAscendingClass = Model.Sort == "ASC" ? "active" : string.Empty;
+    string sortDirectionDescendingClass = Model.Sort == "ASC" ? string.Empty : "active";
+}
+
 <div id="tripList">
 
     <section class="noTopMargin noBottomMargin">
@@ -61,8 +66,8 @@
                 <div id="sortDirectionWrap" class="col-md-8">
                     <div id="innerSortWrap">
                         <div id="sortDirectionSeparator">Or</div>
-                        <div id="sortDirectionAscending" class="sortDirectionBtn"><a href="#">Ascending</a></div>
-                        <div id="sortDirectionDescending" class="active sortDirectionBtn"><a href="#">Descending</a></div>
+                        <div id="sortDirectionAscending" class="sortDirectionBtn @sortDirectionAscendingClass"><a href="#">Ascending</a></div>
+                        <div id="sortDirectionDescending" class="sortDirectionBtn @sortDirectionDescendingClass"><a href="#">Descending</a></div>
                     </div>
                 </div>
 
@@ -88,11 +93,11 @@
                 }
                 else
                 {
-                    <text>
-                        No trips were added today.
-                    </text>
+                    <div class="noResultMessage">
+                        No trips were found. Please try with different search parameters.
+                    </div>
                 }
-            </div>
+            </di>
 
             <div id="paginatorWrap">
                 @Html.Partial("_PaginationPartial", new ViewDataDictionary {

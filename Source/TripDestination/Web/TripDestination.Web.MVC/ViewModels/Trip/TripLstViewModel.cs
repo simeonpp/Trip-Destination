@@ -7,6 +7,11 @@
     using System.Web.Mvc;
     public class TripLstViewModel : TripSearchInputModel
     {
+        public TripLstViewModel()
+        {
+            this.Sort = "ASC";
+        }
+
         public DateTime Date { get; set; }
 
         public string FormattedMonthForCalendar
