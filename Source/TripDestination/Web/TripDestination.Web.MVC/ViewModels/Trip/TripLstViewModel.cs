@@ -9,6 +9,10 @@
     {
         public DateTime Date { get; set; }
 
+        public string Sort { get; set; }
+
+        public string OrderBy { get; set; }
+
         public IEnumerable<WeekDayViewModel> WeekDays { get; set; }
 
         public IEnumerable<SelectListItem> TownsSelectList { get; set; }

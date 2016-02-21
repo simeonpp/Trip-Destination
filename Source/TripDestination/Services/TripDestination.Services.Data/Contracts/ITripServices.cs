@@ -10,6 +10,18 @@
     {
         IQueryable<Trip> GetAll();
 
+        IQueryable<Trip> GetDynamicFIltered(
+            int fromId,
+            int toId,
+            int availableSeaets,
+            DateTime dateOfLeaving,
+            SpaceForLugage luggageSpace,
+            string driverName,
+            decimal priceMin,
+            decimal priceMax,
+            string sortBy,
+            string sortDirection);
+
         Trip Create(
             int fromTownId,
             int toTownId,

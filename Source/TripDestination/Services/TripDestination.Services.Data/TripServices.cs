@@ -11,6 +11,8 @@
     using TripDestination.Services.Data.Models;
     using TripDestination.Common.Infrastructure.Constants;
     using TripDestination.Services.Data;
+    using System.Linq.Dynamic;
+
     public class TripServices : ITripServices
     {
         private readonly IDbRepository<Trip> tripRepos;
@@ -534,6 +536,25 @@
 
             int likesCount = likes - dislikes;
             return likesCount;
+        }
+
+        public IQueryable<Trip> GetDynamicFIltered(
+            int fromId,
+            int toId,
+            int availableSeaets,
+            DateTime dateOfLeaving,
+            SpaceForLugage luggageSpace,
+            string driverName,
+            decimal priceMin,
+            decimal priceMax,
+            string sortBy,
+            string sortDirection)
+        {
+            var filteredTrips = this.tripRepos
+                .All()
+                .Where("FromId = @0 and ToId = @1", fromId, toId);
+
+            return filteredTrips;
         }
     }
 }
