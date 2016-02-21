@@ -11,6 +11,8 @@
 
         string[] GetUserRoles(string id);
 
+        int GetUsersCountInRole(string role);
+
         BaseResponseAjaxModel AddComment(string userId, string fromUserId, string commentText);
 
         BaseResponseAjaxModel LoadComments(string userId, int offset);

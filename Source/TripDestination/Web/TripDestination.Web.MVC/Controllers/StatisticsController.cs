@@ -1,29 +1,33 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
+    using Common.Infrastructure.Constants;
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels.Statistics;
 
     public class StatisticsController : BaseController
     {
-        public StatisticsController(IStatisticsServices statisticsServices)
-        {
-            this.StatisticsServices = statisticsServices;
-        }
+        private readonly IStatisticsServices statisticsServices;
 
-        public IStatisticsServices StatisticsServices { get; set; }
+        private readonly IUserServices userServices;
+
+        public StatisticsController(IStatisticsServices statisticsServices, IUserServices userServices)
+        {
+            this.statisticsServices = statisticsServices;
+            this.userServices = userServices;
+        }
 
         [HttpGet]
         public ActionResult Index()
         {
             StatisticsViewModel viewModel = new StatisticsViewModel()
             {
-                TripsCount = this.StatisticsServices.GetTotalTripsCount(),
-                TopDestination = this.StatisticsServices.GetTopDestination(),
-                UsersCount = 0 /* this.StatisticsServices.GetUserCount() */,
-                DriversCount = this.StatisticsServices.GetDriversCount(),
-                AverageTripRating = 0 /* this.StatisticsServices.GetAverateTripRating() */,
-                TripViews = 0 /* this.StatisticsServices.GetTripViews() */
+                TripsCount = this.statisticsServices.GetTotalTripsCount(),
+                TopDestination = this.statisticsServices.GetTopDestination(),
+                UsersCount = this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
+                DriversCount = this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
+                AverageTripRating = this.statisticsServices.GetAverateTripRating(),
+                TripViews = this.statisticsServices.GetTripViews()
             };
 
             return this.View(viewModel);

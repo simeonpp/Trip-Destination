@@ -7,5 +7,7 @@
     public class HomepageViewModel
     {
         public IEnumerable<TopDestinationVIewModel> TopDestinations { get; set; }
+
+
     }
 }

@@ -11,14 +11,21 @@
     using TripDestination.Data.Data;
     using TripDestination.Data.Models;
     using System;
+    using System.Linq;
 
     public class UserServices : IUserServices
     {
         private readonly IDbGenericRepository<User, string> userRepos;
 
+        private readonly UserManager<User> userManager;
+
+        private readonly TripDestinationDbContext dbContext;
+
         public UserServices(IDbGenericRepository<User, string> userRepos)
         {
             this.userRepos = userRepos;
+            this.dbContext = new TripDestinationDbContext();
+            this.userManager = new UserManager<User>(new UserStore<User>(this.dbContext));
         }
 
         public User GetById(string id)
@@ -41,9 +48,16 @@
 
         public string[] GetUserRoles(string id)
         {
-            var usermanager = new UserManager<User>(new UserStore<User>(new TripDestinationDbContext()));
-            var roles = usermanager.GetRoles(id);
+            var roles = this.userManager.GetRoles(id);
             return roles.ToArray();
+        }
+
+        public int GetUsersCountInRole(string role)
+        {
+            var roleStore = new RoleStore<IdentityRole>(this.dbContext);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            int count = roleManager.FindByName(role).Users.Count;
+            return count;
         }
 
         public BaseResponseAjaxModel AddComment(string userId, string fromUserId, string commentText)

@@ -6,11 +6,7 @@
         int GetTotalTripsCount();
 
         string GetTopDestination();
-
-        int GetUserCount();
-
-        int GetDriversCount();
-
+        
         double GetAverateTripRating();
 
         int GetTripViews();
@@ -22,7 +18,7 @@
         int TripsGetTodayFinishedCount();
 
         string TripsGetTodayTopDestination();
-        
+
         int GetUserCommentsCount(string userId);
 
         int GetUserTripsAsDriverCount(string userId);

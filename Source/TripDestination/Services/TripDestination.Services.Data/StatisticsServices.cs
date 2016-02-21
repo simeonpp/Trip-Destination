@@ -19,16 +19,28 @@
 
         private readonly IDbRepository<TripComment> tripCommentRepos;
 
-        // private IDbRepository<User> userRepos;
+        private readonly IDbRepository<View> viewRepos;
+
+        private readonly IDbRepository<Rating> ratingRepos;
+
+        private IUserServices userServices;
 
         private DateTime today = DateTime.Today;
 
-        public StatisticsServices(IDbRepository<Trip> tripRepos, IDbRepository<UserComment> userCommentRepos, IDbRepository<TripComment> tripCommentRepos)
+        public StatisticsServices(
+            IDbRepository<Trip> tripRepos,
+            IDbRepository<UserComment> userCommentRepos,
+            IDbRepository<TripComment> tripCommentRepos,
+            IUserServices userServices,
+            IDbRepository<View> viewRepos,
+            IDbRepository<Rating> ratingRepos)
         {
             this.tripRepos = tripRepos;
             this.userCommentRepos = userCommentRepos;
             this.tripCommentRepos = tripCommentRepos;
-            // this.userRepos = userRepos;
+            this.userServices = userServices;
+            this.viewRepos = viewRepos;
+            this.ratingRepos = ratingRepos;
         }
 
         public int GetTotalTripsCount()
@@ -58,46 +70,24 @@
             return townAsString;
         }
 
-        public int GetUserCount()
-        {            
-            // int count = this.userRepos
-            //    .All()
-            //    .Count();
-
-            // return count;
-
-            throw new NotImplementedException();
-        }
-
-        public int GetDriversCount()
-        {
-            // TODO: Refactor this to use ITripDestinationDbContext
-            var asd = new TripDestinationDbContext();
-
-            var roleStore = new RoleStore<IdentityRole>(asd);
-            var roleManager = new RoleManager<IdentityRole>(roleStore);
-            int count = roleManager.FindByName(RoleConstants.AdminRole).Users.Count;
-            return count;
-        }
-
         public double GetAverateTripRating()
         {
-            double rating = this.tripRepos
+            double rating = this.ratingRepos
                 .All()
-                .Select(t => t.Ratings.Average(r => r.Value))
-                .First();
+                .Where(r => r.IsDeleted == false)
+                .Average(r => r.Value);
 
             return rating;
         }
 
         public int GetTripViews()
         {
-            int views = this.tripRepos
+            int viewsCount = this.viewRepos
                 .All()
-                .Select(t => t.Views.Count())
-                .First();
+                .Where(v => v.IsDeleted == false)
+                .Count();
 
-            return views;
+            return viewsCount;
         }
 
         public int TripsGetTodayCreatedCount()
