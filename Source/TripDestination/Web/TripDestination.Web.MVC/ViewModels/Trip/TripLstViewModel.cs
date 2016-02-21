@@ -9,6 +9,14 @@
     {
         public DateTime Date { get; set; }
 
+        public string FormattedMonthForCalendar
+        {
+            get
+            {
+                return this.Date.ToString("MMMM").Substring(0, 3);
+            }
+        }
+
         public string Sort { get; set; }
 
         public string OrderBy { get; set; }

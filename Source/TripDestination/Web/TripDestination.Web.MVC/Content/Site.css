@@ -940,6 +940,9 @@ ul.passengersUl li .lastName {
   background: #aa152b;
   color: #fff !important;
 }
+#tripList form#tripCalendarForm {
+  display: none;
+}
 #tripList form#tripFilterForm {
   margin-top: 12px;
   color: #fff;

@@ -64,6 +64,9 @@ namespace TripDestination.Web.MVC
                       "~/Content/Kendo/kendo.common.min.css",
                       "~/Content/Kendo/kendo.default.min.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/trip-list").Include(
+                "~/Assets/javascript/src/once/trip-list.js"));
+
             // BundleTable.EnableOptimizations = true;
         }
     }

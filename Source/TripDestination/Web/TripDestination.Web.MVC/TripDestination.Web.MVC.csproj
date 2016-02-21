@@ -625,6 +625,7 @@
     <Content Include="Assets\javascript\src\once\trip-detailed-approve-join-request.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-join-request.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-like.js" />
+    <Content Include="Assets\javascript\src\once\trip-list.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Kendo\kendo.common.min.css" />

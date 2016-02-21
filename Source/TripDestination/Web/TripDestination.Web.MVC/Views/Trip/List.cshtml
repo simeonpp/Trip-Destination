@@ -10,7 +10,7 @@
                     <div id="tripDateCalendarWrap">
                         <div id="dateWrap">
                             <div id="currentDay">@Model.Date.Day</div>
-                            <div id="currentMonth">@Model.Date.ToString("MMMM").Substring(0, 3)</div>
+                            <div id="currentMonth">@Model.FormattedMonthForCalendar</div>
                             <div id="foundTripsCount">@Model.Trips.Count() active trips</div>
                         </div>
 
@@ -19,13 +19,19 @@
                             <ul class="weekDaysUl">
                                 @foreach (var date in Model.WeekDays)
                                 {
-                                    <li @if (date.IsActive) { <text> class="active" </text> }>
-                                        <a href="#">
-                                            @date.Datetime.DayOfWeek.ToString().Substring(0, 2)
+                                    <li @if (date.IsActive) { <text> class="active" </text>  }>
+                                        <a href="#" class="calendarDateLink" data-date="@date.FormattedDateNoTime">
+                                            @date.FormattedDayOfWeek
                                         </a>
                                     </li>
                                 }
                             </ul>
+
+                            @using (Html.BeginForm("List", "Trip", FormMethod.Get, new { id = "tripCalendarForm" }))
+                            {
+                                <input type="text" id="calendarDate" name="calendarDate" />
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -108,26 +114,8 @@
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/datepicker")
+    @Scripts.Render("~/bundles/trip-list")
 }
-
-
-@*<h1>List</h1>
-
-    @if (Model.Trips.Count() > 0)
-    {
-        <ul>
-            @foreach (var trip in Model.Trips)
-            {
-                Html.RenderPartial("_TripListLiPartial", trip);
-            }
-        </ul>
-    }
-    else
-    {
-        <text>
-            No found trips for @Model.Date
-        </text>
-    }*@
 
 
 
