@@ -15,7 +15,7 @@
 </section>
 
 
-@*<h2>Top destination</h2>
+<h2>Top destination</h2>
 @if (Model.TopDestinations.Count() > 0)
 {
     <ul>
@@ -24,7 +24,7 @@
             <li>@tupleDestinations.FromTown - @tupleDestinations.ToTown</li>
         }
     </ul>
-}*@
+}
 
 @Html.Action("TodayTripsPartial", "HomeChildAction")
 

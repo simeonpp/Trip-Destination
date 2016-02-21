@@ -616,6 +616,17 @@
     <Content Include="Assets\javascript\lib\toastr\toastr.js" />
     <Content Include="Assets\javascript\lib\toastr\toastr.min.css" />
     <Content Include="Assets\javascript\lib\toastr\toastr.min.js" />
+    <Content Include="Assets\javascript\lib\urijs\LICENSE.txt" />
+    <Content Include="Assets\javascript\lib\urijs\src\IPv6.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\jquery.URI.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\jquery.URI.min.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\punycode.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\SecondLevelDomains.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\URI.fragmentQuery.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\URI.fragmentURI.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\URI.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\URI.min.js" />
+    <Content Include="Assets\javascript\lib\urijs\src\URITemplate.js" />
     <Content Include="Assets\javascript\src\common\newsletter-subscriber.js" />
     <Content Include="Assets\javascript\src\once\custom-date-pickers-activator.js" />
     <Content Include="Assets\javascript\src\once\custom-datetime-pickers-activator.js" />
@@ -734,6 +745,11 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CarAdminViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\TripAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TripAdminViewModel.cshtml" />
+    <Content Include="Assets\javascript\lib\urijs\.bower.json" />
+    <Content Include="Assets\javascript\lib\urijs\bower.json" />
+    <Content Include="Assets\javascript\lib\urijs\CHANGELOG.md" />
+    <Content Include="Assets\javascript\lib\urijs\contributing.md" />
+    <Content Include="Assets\javascript\lib\urijs\README.md" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

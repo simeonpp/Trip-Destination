@@ -18,9 +18,6 @@
 
         public IEnumerable<SelectListItem> LeaftAvailabeSeatsSelectList { get; set; }
 
-
-
-
         public Town From { get; set; }
 
         public Town To { get; set; }

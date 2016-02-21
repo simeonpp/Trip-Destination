@@ -7,18 +7,18 @@
 <ul class="pagination">
     @if (CurrentPage > 1)
     {
-        <li><a href="@Url?page=1">&laquo;</a></li>
+        <li><a href="#" class="paginationLink" data-page="1">&laquo;</a></li>
     }
 
     @for (int i = 1; i <= TotalPages; i++)
     {
         <li @if (CurrentPage == i) { <text> class="active" </text>    }>
-            <a href="@Url?page=@i.ToString()">@i.ToString()</a>
+            <a href="#" class="paginationLink" data-page="@i.ToString()">@i.ToString()</a>
         </li>
     }
 
     @if (CurrentPage < TotalPages)
     {
-        <li><a href="@Url?page=@TotalPages">&raquo;</a></li>
+        <li><a href="#" class="paginationLink" data-page="@TotalPages">&raquo;</a></li>
     }
 </ul>

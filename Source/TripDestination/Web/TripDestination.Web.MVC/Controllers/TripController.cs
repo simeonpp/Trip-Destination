@@ -18,7 +18,7 @@
     using Common.Infrastructure.Constants;
     public class TripController : BaseController
     {
-        public const int DefaultItemsPerPage = 3;
+        public const int DefaultItemsPerPage = 9;
 
         public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider)
         {

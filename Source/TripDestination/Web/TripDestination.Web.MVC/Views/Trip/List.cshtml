@@ -97,8 +97,7 @@
             <div id="paginatorWrap">
                 @Html.Partial("_PaginationPartial", new ViewDataDictionary {
                     { "TotalPages", Model.TotalPages },
-                    { "CurrentPage", Model.CurrentPage },
-                    { "Url", "/Trip/List" },
+                    { "CurrentPage", Model.CurrentPage }
                 })
             </div>
         </article>
@@ -114,6 +113,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/datepicker")
     @Scripts.Render("~/bundles/trip-list")
+    @Scripts.Render("~/bundles/uri-js")
 }
 
 
