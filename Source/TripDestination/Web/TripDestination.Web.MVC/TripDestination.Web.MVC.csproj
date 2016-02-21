@@ -753,6 +753,7 @@
     <Content Include="Assets\javascript\lib\urijs\CHANGELOG.md" />
     <Content Include="Assets\javascript\lib\urijs\contributing.md" />
     <Content Include="Assets\javascript\lib\urijs\README.md" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\CustomDropDownList.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

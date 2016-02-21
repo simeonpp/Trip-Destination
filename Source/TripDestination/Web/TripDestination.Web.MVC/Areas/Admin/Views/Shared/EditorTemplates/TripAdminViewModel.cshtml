@@ -1,73 +1,22 @@
 ﻿@model TripAdminViewModel
-
-@*<div class="form-group">
-        @Html.LabelFor(m => m.FromId, new { @class = "col-md-2 control-label" })
+<div class="form-group">
+        @Html.LabelFor(m => m.PlaceOfLeaving, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FromId, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.PlaceOfLeaving, new { @class = "form-control" })
         </div>
-    </div>*@
+</div>
 
-@*<div class="form-group">
-        @Html.LabelFor(m => m.ToId, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ToId, new { @class = "form-control" })
-        </div>
-    </div>*@
-
-<div class="form-group">
-    @Html.LabelFor(m => m.DateOfLeaving, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @(Html.Kendo().DatePicker()
-              .Name("DateOfLeaving")
-              .Value("10/10/2011")
-              .HtmlAttributes(new { style = "width: 100%" })
-        )
+<div class="row">
+    <div class="col-md-12">
+        @Html.EditorFor(m => m.PickUpFromAddress, "CustomDropDownList", new { selectListItems = Model.PickUpSelectList })
     </div>
 </div>
 
-
-
-<div class="form-group">
-    @Html.LabelFor(m => m.ETA, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.ETA, new { @class = "form-control" })
+<div class="row">
+    <div class="col-md-12">
+        @Html.EditorFor(m => m.AvailableSeats, "CustomDropDownList", new { selectListItems = Model.AvailabeSeatsSelectList })
     </div>
 </div>
-
-<div class="form-group">
-    @Html.LabelFor(m => m.PlaceOfLeaving, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.PlaceOfLeaving, new { @class = "form-control" })
-    </div>
-</div>
-
-@*<div class="form-group">
-    @Html.LabelFor(m => m.PickUpFromAddress, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.PickUpFromAddress, new { @class = "form-control" })
-    </div>
-</div>*@
-
-<div class="form-group">
-    @Html.LabelFor(m => m.AvailableSeats, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.AvailableSeats, new { @class = "form-control" })
-    </div>
-</div>
-
-<div class="form-group">
-    @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
-    </div>
-</div>
-
-@*<div class="form-group">
-    @Html.LabelFor(m => m.Status, new { @class = "col-md-2 control-label" })
-    <div class="col-md-10">
-        @Html.TextBoxFor(m => m.Status, new { @class = "form-control" })
-    </div>
-</div>*@
 
 <div class="form-group">
     @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })

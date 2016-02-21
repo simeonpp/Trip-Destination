@@ -39,15 +39,12 @@
         {
             if (this.ModelState.IsValid)
             {
-                this.tripServices.Edit(
+                this.tripServices.AdminEdit(
                     trip.Id,
-                    trip.DateOfLeaving,
                     trip.AvailableSeats,
                     trip.PlaceOfLeaving,
                     trip.PickUpFromAddress,
-                    trip.Description,
-                    trip.ETA,
-                    new List<string>());
+                    trip.Description);
             }
 
             return this.Json(new[] { trip }.ToDataSourceResult(request, this.ModelState));

@@ -155,6 +155,22 @@
             return dbTrip;
         }
 
+        public Trip AdminEdit(int tripId, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description)
+        {
+            var dbTrip = this.GetById(tripId);
+
+            int availableSeats = leftAvailableSeats;
+            dbTrip.AvailableSeats = availableSeats;
+            dbTrip.PlaceOfLeaving = placeOfLeaving;
+            dbTrip.PickUpFromAddress = pickUpFromAddress;
+            dbTrip.Description = description;
+
+            this.passengerTripsRepos.Save();
+            this.tripRepos.Save();
+
+            return dbTrip;
+        }
+
         public void Delete(int id, string userId)
         {
             var dbTrip = this.GetById(id);

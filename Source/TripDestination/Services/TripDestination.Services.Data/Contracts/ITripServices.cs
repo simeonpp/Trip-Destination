@@ -55,6 +55,13 @@
             DateTime ETA,
             IEnumerable<string> usernamesToBeRemoved);
 
+        Trip AdminEdit(
+            int tripId,
+            int leftAvailableSeats,
+            string placeOfLeaving,
+            bool pickUpFromAddress,
+            string description);
+
         void Delete(int id, string userId);
 
         void AdminDelete(int id);

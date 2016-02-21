@@ -6,6 +6,8 @@
       .Name("grid")
       .Columns(columns =>
       {
+          columns.Bound(c => c.FromName);
+          columns.Bound(c => c.ToName);
           columns.Bound(c => c.DateOfLeaving).Format("{0:yyyy-MM-dd HH:mm}");
           columns.Bound(c => c.ETA).Format("{0:yyyy-MM-dd HH:mm}");
           columns.Bound(c => c.PlaceOfLeaving);

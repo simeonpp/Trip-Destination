@@ -1,0 +1,10 @@
+﻿@{ 
+    var selectListItems = (IEnumerable<SelectListItem>) this.ViewBag.selectListItems;
+}
+
+<div class="col-md-10">
+    @Html.LabelFor(m => m, new { @class = "col-md-10 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m, selectListItems, new { @class = "form-control" })
+    </div>
+</div>
