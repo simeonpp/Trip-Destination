@@ -11,6 +11,8 @@
 
         IQueryable<Notification> GetForUser(string userId);
 
+        IQueryable<Notification> GetNotSeenForUser(string userId);
+
         void SetAsSeen(int id);
 
         BaseResponseAjaxModel ApproveNotification(int notificationId, string userId);

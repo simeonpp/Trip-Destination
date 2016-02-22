@@ -31,7 +31,7 @@
 
             var currentUserId = this.User.Identity.GetUserId();
             var notifications = this.TripNotificationServices
-                .GetForUser(currentUserId)
+                .GetNotSeenForUser(currentUserId)
                 .To<TripNotificationViewModel>()
                 .ToList();
 
