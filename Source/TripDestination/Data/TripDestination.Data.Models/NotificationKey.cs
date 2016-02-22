@@ -11,7 +11,7 @@
         JoinTripRequest = 21,
         JoinTripApproved = 22,
         JoinTripDisApproved = 23,
-        CloseTripDriverRequest = 24,
+        FinishTripDriverRequest = 24,
         TripFinished = 25,
         TripChanged = 26,
         DriverRemovePassenger = 27,

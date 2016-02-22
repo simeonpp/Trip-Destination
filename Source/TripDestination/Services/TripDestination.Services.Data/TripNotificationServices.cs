@@ -1,5 +1,7 @@
 ﻿namespace TripDestination.Services.Data
 {
+    using Common.Infrastructure.Constants;
+    using Common.Infrastructure.Models;
     using Contracts;
     using System;
     using System.Data.Entity;
@@ -19,7 +21,7 @@
             this.notificationTypeRepos = notificationTypeRepos;
         }
 
-        public Notification GetById(int id)
+        public TripNotification GetById(int id)
         {
             return this.tripNotificationRepos
                 .All()
@@ -126,6 +128,50 @@
 
             dbNotification.Seen = true;
             this.tripNotificationRepos.Save();
+        }
+
+        public BaseResponseAjaxModel ApproveNotification(int notificationId, string userId)
+        {
+            var response = new BaseResponseAjaxModel();
+            var notification = this.GetById(notificationId);
+
+            if (notification != null)
+            {
+                response.ErrorMessage = "No such notification.";
+            }
+
+            if (notification.ForUserId != userId)
+            {
+                response.ErrorMessage = "Only the owner of the notifcation can perfom this action";
+            }
+
+            if (notification.ActionHasBeenTaken == true)
+            {
+                response.ErrorMessage = "Action for this notification has been already taken.";
+            }
+
+            notification.ActionHasBeenTaken = true;
+
+            if (notification.Type.Key == NotificationKey.JoinTripApproved)
+            {
+                this.Create(
+                notification.TripId,
+                userId,
+                notification.FromUserId,
+                NotificationConstants.TripRequestApprovedTitle,
+                string.Format(NotificationConstants.TripRequestApprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving("dd/MM/yyyy HH:mm")),
+                NotificationKey.JoinTripApproved,
+                notification.Trip.DateOfLeaving);
+            }
+
+            if (notification.Type.Key == NotificationKey.FinishTripDriverRequest)
+            {
+                notification.Trip.Status = TripStatus.Finished;
+            }
+
+            this.tripNotificationRepos.Save();
+            response.Status = true;
+            return response;
         }
     }
 }

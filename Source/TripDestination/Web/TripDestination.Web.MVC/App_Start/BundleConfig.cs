@@ -73,6 +73,9 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/homepage").Include(
                 "~/Assets/javascript/src/once/homepage.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/notifications").Include(
+                "~/Assets/javascript/src/once/notifications.js"));
+
             // BundleTable.EnableOptimizations = true;
         }
     }

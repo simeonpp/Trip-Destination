@@ -32,14 +32,14 @@
                                     <td>
                                         @if (notification.ActionModel.CanApprove)
                                         {
-                                            <div class="actionButton approve">
+                                            <div class="actionButton approveNotification" data-id="@notification.Id">
                                                 Approve
                                             </div>
                                         }
 
                                         @if (notification.ActionModel.CanDisapprove)
                                         {
-                                            <div class="actionButton disapprove">
+                                            <div class="actionButton disapproveNotification" data-id="@notification.Id">
                                                 Disapprove
                                             </div>
                                         }
@@ -59,4 +59,15 @@
     </section>
 
 </div>
+
+using (Html.BeginForm())
+        {
+<div id="ajaxAFT">
+    @Html.AntiForgeryToken()
+</div>
+        }
+
+@section scripts {
+    @Scripts.Render("~/bundles/notifications")
+}
 
