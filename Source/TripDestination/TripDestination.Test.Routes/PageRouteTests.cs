@@ -14,7 +14,7 @@
         [Test]
         public void PageRouteByIdShouldWorkCorrectlyWithoutSlug()
         {
-            string Url = "/Page/" + pageId;
+            string Url = string.Format("/Page/{0}", pageId);
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
             routeCollection.ShouldMap(Url).To<PageController>(c => c.Index(pageId));
@@ -24,7 +24,7 @@
         public void PageRouteByIdShouldWorkCorrectlyWithSlug()
         {
             string randomSlug = "adasdadqwdwe";
-            string Url = "/Page/" + pageId + "/" + randomSlug;
+            string Url = string.Format("/Page/{0}/{1}", pageId, randomSlug);
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
             routeCollection.ShouldMap(Url).To<PageController>(c => c.Index(pageId));

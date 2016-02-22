@@ -14,7 +14,7 @@
         [Test]
         public void TripRouteDetailsShouldWorkCorrectlyWithoutSlug()
         {
-            string Url = "/Trip/" + pageId;
+            string Url = string.Format("/Trip/{0}", pageId);
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
             routeCollection.ShouldMap(Url).To<TripController>(c => c.Details(pageId));
@@ -24,7 +24,7 @@
         public void TripRouteDetailsShouldWorkCorrectlyWithSlug()
         {
             string randomSlug = "Sofia-Burgas";
-            string Url = "/Trip/" + pageId + "/" + randomSlug;
+            string Url = string.Format("/Trip/{0}/{1}", pageId, randomSlug);
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
             routeCollection.ShouldMap(Url).To<TripController>(c => c.Details(pageId));
@@ -36,7 +36,7 @@
             string calendarDate = "2016-01-01";
             int page = 1;
 
-            string Url = "/Trip/List?calendarDate=" + calendarDate + "&page=" + page;
+            string Url = string.Format("/Trip/List?calendarDate={0}&page={1}", calendarDate, page);
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
             routeCollection.ShouldMap(Url).To<TripController>(c => c.List(calendarDate, page));
