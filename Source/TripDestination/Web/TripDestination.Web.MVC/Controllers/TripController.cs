@@ -71,7 +71,7 @@
 
             string currentUserId = this.User.Identity.GetUserId();
 
-            Trip dbTrip = this.TripServices.Create(
+            Trip serviceResponceTrip = this.TripServices.Create(
                     trip.FromId,
                     trip.ToId,
                     trip.DateOfLeaving,
@@ -84,17 +84,16 @@
                     currentUserId);
 
             this.tripNotificationServices.Create(
-                dbTrip.Id,
+                serviceResponceTrip.Id,
                 currentUserId,
                 currentUserId,
                 NotificationConstants.CloseTripDriverRequestTitle,
-                string.Format(NotificationConstants.CloseTripDriverRequestFormat, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                string.Format(NotificationConstants.CloseTripDriverRequestFormat, serviceResponceTrip.FromId, serviceResponceTrip.ToId, serviceResponceTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
                 NotificationKey.CloseTripDriverRequest,
-                dbTrip.DateOfLeaving.AddDays(NotificationConstants.CloseTripDriverRequestAvaialableDaysAfterTripFinished),
-                dbTrip.DateOfLeaving);
+                serviceResponceTrip.DateOfLeaving.AddDays(NotificationConstants.CloseTripDriverRequestAvaialableDaysAfterTripFinished),
+                serviceResponceTrip.DateOfLeaving);
 
-            string slug = string.Format("{0}-{1}", dbTrip.From.Name, dbTrip.To.Name);
-            return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = slug });
+            return this.RedirectToRoute("TripDetails", new { id = serviceResponceTrip.Id });
         }
 
         [HttpGet]
@@ -185,7 +184,7 @@
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var trip = this.TripServices.GetById(id);
+            var trip = this.TripServices.GetByIdWithStatusCheck(id);
 
             var viewModel = this.Mapper
                 .Map<TripDetailedViewModel>(trip);
