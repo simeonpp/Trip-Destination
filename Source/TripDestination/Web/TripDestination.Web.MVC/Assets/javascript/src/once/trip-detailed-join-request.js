@@ -77,6 +77,7 @@
                 if (response.Status) {
                     removePendingMessage();
                     addJoinTripButton();
+                    removePassengerFromList(response.Data);
                     toastr.success("You have successfully leave this trip.");
                 } else {
                     if (response.ErrorMessage) {
@@ -116,5 +117,17 @@
         var template = Handlebars.compile(sourceTemplate);
         var renderedTemplateHTML = template({});
         $tripActionWrap.append(renderedTemplateHTML);
+    }
+
+    function removePassengerFromList(data) {
+        var $passengersCount = $('#passengersCount'),
+            $leftAvailableSeats = $('#availableSeats'),
+            $fullTripDetailsAvailableSeats = $('#fullTripDetailsAvailableSeats');
+
+        $('ul#passengersList li[data-passengerUsernam="' + data.UserName + '"').append(renderedTempalteHTML);
+
+        $passengersCount.text(data.PassengersCount);
+        $leftAvailableSeats.text(data.AvailableSeatsCount);
+        $fullTripDetailsAvailableSeats.text(data.AvailableSeatsCount);
     }
 })

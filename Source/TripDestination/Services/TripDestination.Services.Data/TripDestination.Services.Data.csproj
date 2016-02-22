@@ -79,6 +79,7 @@
     <Compile Include="Contracts\IViewServices.cs" />
     <Compile Include="Models\ApprovedJoinRequestResponseModel.cs" />
     <Compile Include="Models\CommentResponseModel.cs" />
+    <Compile Include="Models\LeftTripResponseModel.cs" />
     <Compile Include="Models\LoadedCommentsResponseModel.cs" />
     <Compile Include="NewsletterServices.cs" />
     <Compile Include="TripNotificationServices.cs" />

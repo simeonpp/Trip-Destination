@@ -303,6 +303,8 @@
                 return response;
             }
 
+            var passengerToLeave = this.userServices.GetById(userId);
+
             passengerTrip.IsDeleted = true;
             this.tripRepos.Save();
 
@@ -316,6 +318,12 @@
                 dbTrip.DateOfLeaving);
 
             response.Status = true;
+            response.Data = new LeftTripResponseModel()
+            {
+                PassengersCount = dbTrip.Passengers.Where(p => p.Approved == true && p.IsDeleted == false).Count(),
+                AvailableSeatsCount = dbTrip.AvailableSeats,
+                UserName = passengerToLeave.UserName
+            };
             return response;
 
         }
