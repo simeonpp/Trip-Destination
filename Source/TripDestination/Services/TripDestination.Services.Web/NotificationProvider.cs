@@ -33,12 +33,13 @@
                     case NotificationKey.RejectAdminRequest:
                         break;
                     case NotificationKey.JoinTripRequest:
-                        bool tripRequestIsRejected = this.tripServices.CheckIfUserIsJoinedTrip(tripId, userId);
+                        bool tripRequestIsRejected = this.tripServices.CheckIfUserHasPendingRequest(tripId, userId);
                         if (tripRequestIsRejected)
                         {
                             result.CanApprove = true;
                             result.CanDisapprove = true;
                         }
+
                         break;
                     case NotificationKey.JoinTripApproved:
                         break;

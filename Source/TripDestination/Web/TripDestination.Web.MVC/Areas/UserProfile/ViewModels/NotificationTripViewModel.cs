@@ -12,6 +12,8 @@
     {
         public int Id { get; set; }
 
+        public string FromUserId { get; set; }
+
         public TripViewModelForNotification Trip { get; set; }
 
         public NotificationTypeViewModel Type { get; set; }
