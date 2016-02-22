@@ -81,6 +81,7 @@
     <Compile Include="Models\CommentResponseModel.cs" />
     <Compile Include="Models\LeftTripResponseModel.cs" />
     <Compile Include="Models\LoadedCommentsResponseModel.cs" />
+    <Compile Include="Models\NotificationAvailableActionModel.cs" />
     <Compile Include="NewsletterServices.cs" />
     <Compile Include="TripNotificationServices.cs" />
     <Compile Include="PageParagraphServices.cs" />

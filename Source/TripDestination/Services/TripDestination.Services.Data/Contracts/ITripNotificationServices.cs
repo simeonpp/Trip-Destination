@@ -29,6 +29,6 @@
 
         IQueryable<Notification> GetForUser(string userId);
 
-        void SetAsSeen(Notification notification);
+        void SetAsSeen(int id);
     }
 }

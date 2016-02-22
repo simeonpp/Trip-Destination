@@ -13,6 +13,7 @@
             this.CreatedOn = DateTime.Now;
             this.AvailableAfter = DateTime.Now;
             this.DueTo = DateTime.Now.AddDays(15);
+            this.ActionHasBeenTaken = false;
         }
 
         [Required]
@@ -42,5 +43,7 @@
 
         [Required]
         public DateTime DueTo { get; set; }
+
+        public bool ActionHasBeenTaken { get; set; }
     }
 }

@@ -115,10 +115,16 @@
             return notificiations;
         }
 
-        public void SetAsSeen(Notification notification)
+        public void SetAsSeen(int id)
         {
-            notification.Type = notification.Type;
-            notification.Seen = true;
+            var dbNotification = this.GetById(id);
+
+            if (dbNotification == null)
+            {
+                throw new Exception("Notification not found.");
+            }
+
+            dbNotification.Seen = true;
             this.tripNotificationRepos.Save();
         }
     }

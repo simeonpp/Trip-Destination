@@ -29,7 +29,21 @@
                                     <td>@notification.Title</td>
                                     <td><a href="@notification.Trip.Url">@notification.Trip.From.Name - @notification.Trip.From.Name</a></td>
                                     <td>@notification.MessageFormatted</td>
-                                    <td>Approve / Disapprove</td>
+                                    <td>
+                                        @if (notification.ActionModel.CanApprove)
+                                        {
+                                            <div class="actionButton approve">
+                                                Approve
+                                            </div>
+                                        }
+
+                                        @if (notification.ActionModel.CanDisapprove)
+                                        {
+                                            <div class="actionButton disapprove">
+                                                Disapprove
+                                            </div>
+                                        }
+                                    </td>
                                 </tr>
                             }
                         </tbody>

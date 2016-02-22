@@ -5,6 +5,8 @@
 
     public class NotificationTypeViewModel : IMapFrom<NotificationType>
     {
+        public NotificationKey Key { get; set; }
+
         public string Description { get; set; }
     }
 }

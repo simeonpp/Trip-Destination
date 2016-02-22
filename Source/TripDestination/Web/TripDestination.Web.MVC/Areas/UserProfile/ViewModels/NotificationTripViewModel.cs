@@ -2,6 +2,7 @@
 {
     using Common.Infrastructure.Mapping;
     using Data.Models;
+    using Services.Data.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -40,6 +41,8 @@
             }
         }
 
+        public bool ActionHasBeenTaken { get; set; }
+
         public string StyleClassName
         {
             get
@@ -48,5 +51,7 @@
                 return styleClassName;
             }
         }
+
+        public NotificationAvailableActionModel ActionModel { get; set; }
     }
 }

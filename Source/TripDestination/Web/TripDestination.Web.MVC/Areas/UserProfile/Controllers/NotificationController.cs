@@ -9,18 +9,21 @@
     using System.Web.Mvc;
     using ViewModels;
     using System.Linq;
-
+    using Services.Web.Providers.Contracts;
     [Authorize]
     public class NotificationController : BaseController
     {
         private readonly ITripNotificationServices tripNotificationServices;
 
+        private readonly INotificationProvider notificationProvider;
+
         private readonly IUserServices userSerives;
 
-        public NotificationController(ITripNotificationServices tripNotificationServices, IUserServices userSerives)
+        public NotificationController(ITripNotificationServices tripNotificationServices, IUserServices userSerives, INotificationProvider notificationProvider)
         {
             this.tripNotificationServices = tripNotificationServices;
             this.userSerives = userSerives;
+            this.notificationProvider = notificationProvider;
         }
 
         [HttpGet]
@@ -35,12 +38,14 @@
                 .To<NotificationTripViewModel>()
                 .ToList();
 
-            foreach (var notif in notification.ToList())
+            foreach (var notif in viewModel.Notifications)
             {
                 if (notif.Seen == false)
                 {
-                    this.tripNotificationServices.SetAsSeen(notif);
+                    this.tripNotificationServices.SetAsSeen(notif.Id);
                 }
+
+                notif.ActionModel = this.notificationProvider.GetAvailableActionModel(notif.Type.Key, notif.ActionHasBeenTaken);
             }
 
             var user = this.userSerives.GetById(userId);
