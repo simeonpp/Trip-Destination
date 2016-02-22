@@ -285,6 +285,7 @@
     <Compile Include="ViewModels\Shared\PhotoViewModel.cs" />
     <Compile Include="ViewModels\Shared\TodaysStatisticsViewModel.cs" />
     <Compile Include="ViewModels\Shared\TripListViewModel.cs" />
+    <Compile Include="ViewModels\Shared\TripNotificationViewModel.cs" />
     <Compile Include="ViewModels\Shared\UserCommentViewModel.cs" />
     <Compile Include="ViewModels\Statistics\StatisticsViewModel.cs" />
     <Compile Include="ViewModels\Trip\PassengerTripEditInputModel.cs" />

@@ -10,12 +10,15 @@
 
     public class LayoutController : Controller
     {
-        public LayoutController(IPageServices pageServices)
+        public LayoutController(IPageServices pageServices, ITripNotificationServices TripNotificationServices)
         {
             this.PageServices = pageServices;
+            this.TripNotificationServices = TripNotificationServices;
         }
 
         public IPageServices PageServices { get; set; }
+
+        public ITripNotificationServices TripNotificationServices { get; set; }
 
         [ChildActionOnly]
         //[OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
@@ -26,10 +29,17 @@
                 .To<PageViewModel>()
                 .ToList();
 
+            var currentUserId = this.User.Identity.GetUserId();
+            var notifications = this.TripNotificationServices
+                .GetForUser(currentUserId)
+                .To<TripNotificationViewModel>()
+                .ToList();
+
             var viewModel = new NavigationViewModel()
             {
                 Pages = pages,
-                CurrentUsername = this.User.Identity.GetUserName()
+                CurrentUsername = this.User.Identity.GetUserName(),
+                Notifications = notifications
             };
 
             return this.PartialView("~/Views/Shared/_NavigationPartial.cshtml", viewModel);

@@ -65,6 +65,8 @@
                     {
                         @Html.AntiForgeryToken()
                     }
+
+                    <li><a href="@Url.Action("Index", "Notification", new { area = "UserProfile" })">@Model.Notifications.Count()</a></li>
                 }
                 else
                 {

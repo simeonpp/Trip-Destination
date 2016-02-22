@@ -2,6 +2,7 @@
 {
     using Contracts;
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
@@ -39,7 +40,7 @@
 
             TripNotification tripNotification = new TripNotification()
             {
-                TripID = tripId,
+                TripId = tripId,
                 FromUserId = fromUserId,
                 ForUserId = forUserId,
                 Title = title,
@@ -77,7 +78,7 @@
 
             TripNotification tripNotification = new TripNotification()
             {
-                TripID = tripId,
+                TripId = tripId,
                 FromUserId = fromUserId,
                 ForUserId = forUserId,
                 Title = title,
@@ -91,6 +92,19 @@
             this.tripNotificationRepos.Add(tripNotification);
             this.tripNotificationRepos.Save();
             return tripNotification;
+        }
+
+        public IQueryable<Notification> GetForUser(string userId)
+        {
+            var now = DateTime.Now;
+            var notificiations = this.tripNotificationRepos
+                .All()
+                .Where(n => n.ForUserId == userId 
+                        && DbFunctions.TruncateTime(n.AvailableAfter) > now
+                        && DbFunctions.TruncateTime(n.DueTo) < now
+                        && n.IsDeleted == false);
+
+            return notificiations;
         }
     }
 }

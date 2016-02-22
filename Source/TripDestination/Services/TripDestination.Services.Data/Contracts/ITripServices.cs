@@ -35,6 +35,8 @@
 
         Trip GetById(int id);
 
+        Trip GetByIdWithStatusCheck(int id);
+
         IQueryable<Trip> GetForDay(DateTime day);
 
         IQueryable<Trip> GetLatest(int count);

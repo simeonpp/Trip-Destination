@@ -9,5 +9,7 @@
         public string CurrentUsername { get; set; }
 
         public string CurrentUserFullName { get; set; }
+
+        public IEnumerable<TripNotificationViewModel> Notifications { get; set; }
     }
 }

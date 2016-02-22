@@ -5,7 +5,7 @@
     public class TripNotification : Notification
     {
         [Required]
-        public int TripID { get; set; }
+        public int TripId { get; set; }
 
         public virtual Trip Trip { get; set; }
 

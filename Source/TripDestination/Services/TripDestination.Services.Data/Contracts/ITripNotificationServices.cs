@@ -1,6 +1,7 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
     using System;
+    using System.Linq;
     using TripDestination.Data.Models;
 
     public interface ITripNotificationServices
@@ -23,5 +24,7 @@
             NotificationKey keyType,
             DateTime dueTo,
             DateTime availableAfter);
+
+        IQueryable<Notification> GetForUser(string userId);
     }
 }

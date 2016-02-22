@@ -58,6 +58,7 @@
 
             this.tripRepos.Add(trip);
             this.tripRepos.Save();
+            this.tripRepos.Reload(trip);
 
             return trip;
         }
@@ -68,6 +69,23 @@
                 .All()
                 .Where(t => t.Id == id)
                 .FirstOrDefault();
+
+            return trip;
+        }
+
+        public Trip GetByIdWithStatusCheck(int id)
+        {
+            Trip trip = this.tripRepos
+                .All()
+                .Where(t => t.Id == id)
+                .FirstOrDefault();
+
+            var now = DateTime.Now;
+            if (trip.Status == TripStatus.Open && (trip.DateOfLeaving - now).Ticks < 0 && (trip.ETA - now).Ticks > 0)
+            {
+                trip.Status = TripStatus.InProgress;
+                this.tripRepos.Save();
+            }
 
             return trip;
         }
