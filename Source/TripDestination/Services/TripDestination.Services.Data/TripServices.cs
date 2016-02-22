@@ -308,6 +308,12 @@
             passengerTrip.IsDeleted = true;
             this.tripRepos.Save();
 
+            // Add 1 available seat to trip
+            if (passengerTrip.Approved == true)
+            {
+                dbTrip.AvailableSeats = dbTrip.AvailableSeats + 1;
+            }
+
             this.tripNotificationServices.Create(
                 dbTrip.Id,
                 userId,

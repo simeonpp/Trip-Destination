@@ -124,7 +124,8 @@
             $leftAvailableSeats = $('#availableSeats'),
             $fullTripDetailsAvailableSeats = $('#fullTripDetailsAvailableSeats');
 
-        $('ul#passengersList li[data-passengerUsernam="' + data.UserName + '"').append(renderedTempalteHTML);
+        var liToBeRemove = $('ul#passengersList li[data-passengerusername="' + data.UserName + '"');
+        liToBeRemove.remove();
 
         $passengersCount.text(data.PassengersCount);
         $leftAvailableSeats.text(data.AvailableSeatsCount);
