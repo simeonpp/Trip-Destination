@@ -68,6 +68,7 @@
     <Compile Include="Contracts\ICarServices.cs" />
     <Compile Include="Contracts\IContactFormServices.cs" />
     <Compile Include="Contracts\INewsletterServices.cs" />
+    <Compile Include="Contracts\ITripNotificationServices.cs" />
     <Compile Include="Contracts\IPageParagraphServices.cs" />
     <Compile Include="Contracts\IPageServices.cs" />
     <Compile Include="Contracts\IPhotoServices.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Models\CommentResponseModel.cs" />
     <Compile Include="Models\LoadedCommentsResponseModel.cs" />
     <Compile Include="NewsletterServices.cs" />
+    <Compile Include="TripNotificationServices.cs" />
     <Compile Include="PageParagraphServices.cs" />
     <Compile Include="PageServices.cs" />
     <Compile Include="PhotoServices.cs" />

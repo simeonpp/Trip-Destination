@@ -25,11 +25,14 @@
 
         private readonly IUserServices userServices;
 
-        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices)
+        private readonly ITripNotificationServices notificationServices;
+
+        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices, ITripNotificationServices notificationServices)
         {
             this.tripRepos = tripRepos;
             this.passengerTripsRepos = passengerTripsRepos;
             this.userServices = userServices;
+            this.notificationServices = notificationServices;
         }
 
         public IQueryable<Trip> GetAll()

@@ -5,7 +5,7 @@
     using Common.Models;
     using TripDestination.Common.Infrastructure.Constants;
 
-    public class Notification : BaseModel<int>
+    public abstract class Notification : BaseModel<int>
     {
         public Notification()
         {
@@ -18,10 +18,9 @@
         [Required]
         public NotificationType Type { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
+        public string ForUserId { get; set; }
 
-        public User User { get; set; }
+        public virtual User ForUser { get; set; }
 
         [Required]
         public bool Seen { get; set; }
@@ -35,7 +34,7 @@
         [MinLength(ModelConstants.NotificationMessageMinLength, ErrorMessage = "Notification message can no be less than 10 symbols long.")]
         [MaxLength(ModelConstants.NotificationMessageMaxLength, ErrorMessage = "Notification message can no be more than 500 symbols long.")]
         public string Message { get; set; }
-        
+
         [Required]
         public DateTime AvailableAfter { get; set; }
 

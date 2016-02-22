@@ -78,7 +78,7 @@
 
         public virtual IDbSet<Newsletter> Newsletters { get; set; }
 
-        public virtual IDbSet<Notification> Notifications { get; set; }
+        public virtual IDbSet<TripNotification> TripNotifications { get; set; }
 
         public virtual IDbSet<NotificationType> NotificationTypes { get; set; }
 

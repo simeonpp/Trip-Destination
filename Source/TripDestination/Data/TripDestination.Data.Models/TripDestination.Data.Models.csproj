@@ -106,6 +106,7 @@
     <Compile Include="SpaceForLugage.cs" />
     <Compile Include="Town.cs" />
     <Compile Include="Trip.cs" />
+    <Compile Include="TripNotification.cs" />
     <Compile Include="TripStatus.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserComment.cs" />

@@ -1,0 +1,16 @@
+﻿namespace TripDestination.Data.Models
+{
+    using System.ComponentModel.DataAnnotations;
+
+    public class TripNotification : Notification
+    {
+        [Required]
+        public int TripID { get; set; }
+
+        public virtual Trip Trip { get; set; }
+
+        public string FromUserId { get; set; }
+
+        public virtual User FromUser { get; set; }
+    }
+}
