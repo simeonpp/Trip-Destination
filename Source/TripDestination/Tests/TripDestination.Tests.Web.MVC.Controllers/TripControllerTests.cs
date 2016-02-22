@@ -71,6 +71,13 @@
                 {
                     new Trip() { From = new Town { Name = "Sofia" }, To = new Town { Name = "Burgas" } }
                 }.AsQueryable());
+            tripServicesMock.Setup(x => x.GetByIdWithStatusCheck(It.IsAny<int>()))
+                .Returns(new Trip
+                {
+                    AvailableSeats = 3,
+                    FromId = 1,
+                    ToId = 2
+                });
 
             var statisticsServiceMock = new Mock<IStatisticsServices>();
             var viewServicesMock = new Mock<IViewServices>();
@@ -97,7 +104,7 @@
         }
 
         [Test]
-        public void ListShouldRenderCorrectViewWeekDays()
+        public void ListShouldRenderCorrectViewWithCorrectData()
         {
             this.TripController.WithCallTo(x => x.List("2016-1-1", 1))
                 .ShouldRenderView("List")
