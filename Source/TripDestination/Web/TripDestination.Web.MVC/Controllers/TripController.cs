@@ -20,7 +20,7 @@
     {
         public const int DefaultItemsPerPage = 9;
 
-        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, ITripNotificationServices tripNotificationServices)
+        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, INotificationServices notificationServices)
         {
             this.TripServices = tripServices;
             this.StatisticsServices = statisticsServices;
@@ -28,7 +28,7 @@
             this.TownProvider = townProvider;
             this.DateProvider = dateProvider;
             this.TripProvider = tripProvider;
-            this.tripNotificationServices = tripNotificationServices;
+            this.NotificationServices = notificationServices;
         }
 
         public ITripServices TripServices { get; set; }
@@ -43,7 +43,7 @@
 
         public ITripProvider TripProvider { get; set; }
 
-        public ITripNotificationServices tripNotificationServices { get; set; }
+        public INotificationServices NotificationServices { get; set; }
 
         [HttpGet]
         [Authorize]
@@ -83,7 +83,7 @@
                     trip.Price,
                     currentUserId);
 
-            this.tripNotificationServices.Create(
+            this.NotificationServices.Create(
                 serviceResponceTrip.Id,
                 currentUserId,
                 currentUserId,

@@ -13,14 +13,11 @@
     {
         private readonly IDbRepository<TripNotification> tripNotificationRepos;
 
-        private readonly IDbRepository<NotificationType> notificationTypeRepos;
-
         private readonly ITripServices tripServices;
 
-        public TripNotificationServices(IDbRepository<TripNotification> tripNotificationRepos, IDbRepository<NotificationType> notificationTypeRepos, ITripServices tripServices)
+        public TripNotificationServices(IDbRepository<TripNotification> tripNotificationRepos, ITripServices tripServices)
         {
             this.tripNotificationRepos = tripNotificationRepos;
-            this.notificationTypeRepos = notificationTypeRepos;
             this.tripServices = tripServices;
         }
 
@@ -30,81 +27,6 @@
                 .All()
                 .Where(n => n.Id == id)
                 .FirstOrDefault();
-        }
-
-        public TripNotification Create(
-            int tripId,
-            string fromUserId,
-            string forUserId,
-            string title,
-            string message,
-            NotificationKey keyType,
-            DateTime dueTo)
-        {
-            NotificationType type = this.notificationTypeRepos
-                .All()
-                .Where(t => t.Key == keyType)
-                .FirstOrDefault();
-
-            if (type == null)
-            {
-                throw new Exception("No such type, given key type " + keyType);
-            }
-
-            TripNotification tripNotification = new TripNotification()
-            {
-                TripId = tripId,
-                FromUserId = fromUserId,
-                ForUserId = forUserId,
-                Title = title,
-                Message = message,
-                Seen = false,
-                AvailableAfter = DateTime.Now,
-                DueTo = dueTo,
-                Type = type
-            };
-
-            this.tripNotificationRepos.Add(tripNotification);
-            this.tripNotificationRepos.Save();
-            return tripNotification;
-        }
-
-        public TripNotification Create(
-            int tripId,
-            string fromUserId,
-            string forUserId,
-            string title,
-            string message,
-            NotificationKey keyType,
-            DateTime dueTo,
-            DateTime availableAfter)
-        {
-            NotificationType type = this.notificationTypeRepos
-                .All()
-                .Where(t => t.Key == keyType)
-                .FirstOrDefault();
-
-            if (type == null)
-            {
-                throw new Exception("No such type, given key type " + keyType);
-            }
-
-            TripNotification tripNotification = new TripNotification()
-            {
-                TripId = tripId,
-                FromUserId = fromUserId,
-                ForUserId = forUserId,
-                Title = title,
-                Message = message,
-                Seen = false,
-                AvailableAfter = availableAfter,
-                DueTo = dueTo,
-                Type = type
-            };
-
-            this.tripNotificationRepos.Add(tripNotification);
-            this.tripNotificationRepos.Save();
-            return tripNotification;
         }
 
         public IQueryable<Notification> GetForUser(string userId)

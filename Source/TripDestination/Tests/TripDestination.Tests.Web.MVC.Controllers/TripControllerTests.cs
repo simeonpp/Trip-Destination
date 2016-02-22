@@ -81,7 +81,7 @@
 
             var statisticsServiceMock = new Mock<IStatisticsServices>();
             var viewServicesMock = new Mock<IViewServices>();
-            var tripNotificationServicesMock = new Mock<ITripNotificationServices>();
+            var notificationServicesMock = new Mock<INotificationServices>();
             
             var tripController = new TripController(
                 tripServicesMock.Object,
@@ -90,7 +90,7 @@
                 viewServicesMock.Object,
                 dateProviderMock.Object,
                 tripProvider.Object,
-                tripNotificationServicesMock.Object);
+                notificationServicesMock.Object);
             
             this.TripController = tripController;
         }

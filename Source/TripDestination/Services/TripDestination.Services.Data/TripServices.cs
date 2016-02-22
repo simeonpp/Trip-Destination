@@ -25,14 +25,14 @@
 
         private readonly IUserServices userServices;
 
-        private readonly ITripNotificationServices tripNotificationServices;
+        private readonly INotificationServices notificationServices;
 
-        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices, ITripNotificationServices tripNotificationServices)
+        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices, INotificationServices notificationServices)
         {
             this.tripRepos = tripRepos;
             this.passengerTripsRepos = passengerTripsRepos;
             this.userServices = userServices;
-            this.tripNotificationServices = tripNotificationServices;
+            this.notificationServices = notificationServices;
         }
 
         public IQueryable<Trip> GetAll()
@@ -166,7 +166,7 @@
 
                 if (passengerToRemove != null)
                 {
-                    this.tripNotificationServices.Create(
+                    this.notificationServices.Create(
                     dbTrip.Id,
                     dbTrip.DriverId,
                     passengerToRemove.UserId,
@@ -181,7 +181,7 @@
 
             foreach (var passenger in dbTrip.Passengers.Where(p => p.Approved == true))
             {
-                this.tripNotificationServices.Create(
+                this.notificationServices.Create(
                     dbTrip.Id,
                     dbTrip.DriverId,
                     passenger.UserId,
@@ -287,7 +287,7 @@
             this.tripRepos.Save();
 
             var passenger = this.userServices.GetById(userId);
-            this.tripNotificationServices.Create(
+            this.notificationServices.Create(
                 dbTrip.Id,
                 userId,
                 dbTrip.DriverId,
@@ -332,7 +332,7 @@
                 dbTrip.AvailableSeats = dbTrip.AvailableSeats + 1;
             }
 
-            this.tripNotificationServices.Create(
+            this.notificationServices.Create(
                 dbTrip.Id,
                 userId,
                 dbTrip.Driver.Id,
@@ -483,7 +483,7 @@
             dbTrip.AvailableSeats = dbTrip.AvailableSeats - 1;
             this.tripRepos.Save();
 
-            this.tripNotificationServices.Create(
+            this.notificationServices.Create(
                 dbTrip.Id,
                 actionUserId,
                 passengerTrip.UserId,
@@ -534,7 +534,7 @@
                 return response;
             }
 
-            this.tripNotificationServices.Create(
+            this.notificationServices.Create(
                 dbTrip.Id,
                 actionUserId,
                 passengerTrip.UserId,
