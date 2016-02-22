@@ -891,11 +891,6 @@
     <Folder Include="Content\Kendo\fonts\" />
     <Folder Include="Content\Kendo\images\" />
     <Folder Include="Content\Kendo\textures\" />
-    <Folder Include="Views\CarAdmin\" />
-    <Folder Include="Views\PageAdmin\" />
-    <Folder Include="Views\PageParagraph\" />
-    <Folder Include="Views\TownAdmin\" />
-    <Folder Include="Views\TripAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

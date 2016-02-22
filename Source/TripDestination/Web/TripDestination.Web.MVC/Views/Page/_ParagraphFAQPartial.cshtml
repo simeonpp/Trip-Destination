@@ -5,6 +5,6 @@
     <div class="wrapper row">
         <div class="faqQuestionNumber">Question @this.ViewData["index"]</div>
         <div class="feqQuqestion">@Model.Heading</div>
-        <p>@Html.Raw(Model.Text)</p>
+        <p>@Html.Raw(Model.TextSanitized)</p>
     </div>
 </article>

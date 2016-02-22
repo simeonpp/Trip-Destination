@@ -14,8 +14,9 @@
                 from = $this.attr('data-from'),
                 to = $this.attr('data-to');
 
-            $('.topDestinationLi').removeClass('active');
-            $this.addClass('active');
+
+            //$('.radioButtonWrap').removeClass('active');
+            //$radioButtonWrap.addClass('active');
 
             $("#FromId option").filter(function () {
                 return $(this).text() == from;
