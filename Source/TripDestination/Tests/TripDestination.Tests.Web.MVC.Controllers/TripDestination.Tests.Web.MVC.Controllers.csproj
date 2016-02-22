@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TripControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -105,6 +106,10 @@
     <ProjectReference Include="..\..\Services\TripDestination.Services.Web\TripDestination.Services.Web.csproj">
       <Project>{23b9986c-4889-4365-b91f-6976b81f417a}</Project>
       <Name>TripDestination.Services.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\TripDestination.Web.Infrastructure\TripDestination.Web.Infrastructure.csproj">
+      <Project>{21e57dd3-ee97-4dfd-9230-b633cbd3fc4f}</Project>
+      <Name>TripDestination.Web.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Web\TripDestination.Web.MVC\TripDestination.Web.MVC.csproj">
       <Project>{85ab4cdf-39ea-4ac2-939d-09e51ec80a5a}</Project>

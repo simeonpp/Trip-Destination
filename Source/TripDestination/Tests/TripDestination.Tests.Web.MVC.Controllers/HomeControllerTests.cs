@@ -22,7 +22,7 @@
         private const string fromTown = "Sofia";
         private const string toTown = "Burgas";
         
-        HomeController HomeController;
+        private HomeController HomeController;
 
         [SetUp]
         public void Init()
@@ -61,13 +61,13 @@
             var homeController = new HomeController(tripServicesMock.Object, tripHelperMock.Object, townHelperMock.Object);
             homeController.Cache = new HttpCacheServices();
 
-            HomeController = homeController;
+            this.HomeController = homeController;
         }
 
         [Test]
         public void IndexShouldRenderCorrectView()
         {
-            HomeController.WithCallTo(x => x.Index())
+            this.HomeController.WithCallTo(x => x.Index())
                 .ShouldRenderView("Index")
                 .WithModel<HomepageViewModel>();
         }
@@ -75,7 +75,7 @@
         [Test]
         public void IndexShouldRenderCorrectViewWithCorrectTopDestinations()
         {
-            HomeController.WithCallTo(x => x.Index())
+            this.HomeController.WithCallTo(x => x.Index())
                 .ShouldRenderView("Index")
                 .WithModel<HomepageViewModel>(
                     vm =>
@@ -89,7 +89,7 @@
         [Test]
         public void IndexShouldRenderCorrectViewWithCorrectLatestTripTownsSelectList()
         {
-            HomeController.WithCallTo(x => x.Index())
+            this.HomeController.WithCallTo(x => x.Index())
                 .ShouldRenderView("Index")
                 .WithModel<HomepageViewModel>(
                     vm =>
