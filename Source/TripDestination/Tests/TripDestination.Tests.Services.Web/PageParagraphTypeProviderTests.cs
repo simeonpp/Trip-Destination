@@ -1,16 +1,21 @@
 ﻿namespace TripDestination.Tests.Services.Web
 {
     using System.Linq;
-    using System.Collections.Generic;
-    using Moq;
     using NUnit.Framework;
-    using TripDestination.Services.Data.Contracts;
-    using TripDestination.Services.Web.Helpers.Contracts;
-    using TripDestination.Services.Web.Helpers;
+    using TripDestination.Services.Web.Providers;
+    using TripDestination.Services.Web.Providers.Contracts;
+    using Data.Models;
+    using System;
 
     [TestFixture]
     class PageParagraphTypeProviderTests
     {
-
+        [Test]
+        public void GetPagePargraphTypesShouldReturnCorrectNumber()
+        {
+            IPageParagraphTypeProvider tripHelper = new PageParagraphTypeProvider();
+            var actual = tripHelper.GetPagePargraphTypes();
+            Assert.AreEqual(Enum.GetNames(typeof(PageParagraphType)).Length, actual.Count());
+        }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="DateProviderTests.cs" />
     <Compile Include="IdentifierProviderTests.cs" />
     <Compile Include="MediaImageUrlProviderTests.cs" />
+    <Compile Include="PageParagraphTypeProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TownProviderTests.cs" />
     <Compile Include="TripHelperTests.cs" />
