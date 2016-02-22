@@ -84,8 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MediaRouteTests.cs" />
     <Compile Include="PageRouteTests.cs" />
-    <Compile Include="ProfileRouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TripRouteTests.cs" />
   </ItemGroup>

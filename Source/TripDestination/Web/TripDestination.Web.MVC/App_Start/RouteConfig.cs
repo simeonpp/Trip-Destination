@@ -30,7 +30,8 @@ namespace TripDestination.Web.MVC
             routes.MapRoute(
                 name: "MediaImage",
                 url: WebApplicationConstants.ImageRouteUrl + "/{username}/{guid}/{size}",
-                defaults: new { controller = "Image", action = "Index", size = UrlParameter.Optional });
+                defaults: new { controller = "Image", action = "Index", size = UrlParameter.Optional },
+                constraints: new { size = @"\d+" });
 
             routes.MapRoute(
                 name: "Default",

@@ -7,6 +7,7 @@
     using Services.Data.Contracts;
     using Services.Web.Helpers.Contracts;
     using Services.Web.Providers.Contracts;
+
     public class HomeController : BaseController
     {
         private readonly ITownProvider townProvider;
