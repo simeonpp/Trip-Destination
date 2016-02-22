@@ -15,6 +15,7 @@
     using Services.Web.Services;
     using Services.Web.Providers.Contracts;
     using System.Web.Mvc;
+
     [TestFixture]
     public class HomeControllerTests
     {
@@ -50,12 +51,25 @@
 
             var townHelperMock = new Mock<ITownProvider>();
             townHelperMock.Setup(x => x.GetTowns())
-                .Returns(new List<SelectListItem>());
+                .Returns(new List<SelectListItem>()
+                {
+                    new SelectListItem { Text = "A", Value = "A" },
+                    new SelectListItem { Text = "B", Value = "B" },
+                    new SelectListItem { Text = "C", Value = "C" },
+                });
 
             var homeController = new HomeController(tripServicesMock.Object, tripHelperMock.Object, townHelperMock.Object);
             homeController.Cache = new HttpCacheServices();
 
             HomeController = homeController;
+        }
+
+        [Test]
+        public void IndexShouldRenderCorrectView()
+        {
+            HomeController.WithCallTo(x => x.Index())
+                .ShouldRenderView("Index")
+                .WithModel<HomepageViewModel>();
         }
 
         [Test]
@@ -72,35 +86,19 @@
                 );
         }
 
-
-        //[Test]
-        //public void IndexShouldRenderCorrectViewWithCorrectTodayTrips()
-        //{
-        //    HomeController.WithCallTo(x => x.Index())
-        //        .ShouldRenderView("Index")
-        //        .WithModel<HomepageViewModel>(
-        //            vm =>
-        //            {
-        //                Assert.AreEqual(1, vm.TodayTrips.Count());
-        //                Assert.AreEqual(fromTown, vm.TodayTrips.FirstOrDefault().From.Name);
-        //                Assert.AreEqual(toTown, vm.TodayTrips.FirstOrDefault().To.Name);
-        //            }
-        //        );
-        //}
-
-        //[Test]
-        //public void IndexShouldRenderCorrectViewWithCorrectLatestTrips()
-        //{
-        //    HomeController.WithCallTo(x => x.Index())
-        //        .ShouldRenderView("Index")
-        //        .WithModel<HomepageViewModel>(
-        //            vm =>
-        //            {
-        //                Assert.AreEqual(2, vm.LatestTrips.Count());
-        //                Assert.AreEqual(fromTown, vm.LatestTrips.FirstOrDefault().From.Name);
-        //                Assert.AreEqual(toTown, vm.LatestTrips.FirstOrDefault().To.Name);
-        //            }
-        //        );
-        //}
+        [Test]
+        public void IndexShouldRenderCorrectViewWithCorrectLatestTripTownsSelectList()
+        {
+            HomeController.WithCallTo(x => x.Index())
+                .ShouldRenderView("Index")
+                .WithModel<HomepageViewModel>(
+                    vm =>
+                    {
+                        Assert.AreEqual("A", vm.TownsSelectList.FirstOrDefault().Text);
+                        Assert.AreEqual("B", vm.TownsSelectList.ElementAt(1).Text);
+                        Assert.AreEqual("C", vm.TownsSelectList.ElementAt(2).Text);
+                    }
+                );
+        }
     }
 }
