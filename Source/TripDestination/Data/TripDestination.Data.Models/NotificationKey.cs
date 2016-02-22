@@ -8,11 +8,13 @@
         RejectAdminRequest = 13,
 
         // Code 2 - Trip related
-        JointTripRequest = 21,
-        CloseTripDriverRequest = 22,
-        TripFinished = 23,
-        TripChanged = 24,
-        DriverRemovePassenger = 25,
-        PassengerLeftTrip = 26
+        JoinTripRequest = 21,
+        JoinTripApproved = 22,
+        JoinTripDisApproved = 23,
+        CloseTripDriverRequest = 24,
+        TripFinished = 25,
+        TripChanged = 26,
+        DriverRemovePassenger = 27,
+        PassengerLeftTrip = 28
     }
 }

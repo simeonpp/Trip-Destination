@@ -25,14 +25,14 @@
 
         private readonly IUserServices userServices;
 
-        private readonly ITripNotificationServices notificationServices;
+        private readonly ITripNotificationServices tripNotificationServices;
 
-        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices, ITripNotificationServices notificationServices)
+        public TripServices(IDbRepository<Trip> tripRepos, IDbRepository<PassengerTrip> passengerTripsRepos, IUserServices userServices, ITripNotificationServices tripNotificationServices)
         {
             this.tripRepos = tripRepos;
             this.passengerTripsRepos = passengerTripsRepos;
             this.userServices = userServices;
-            this.notificationServices = notificationServices;
+            this.tripNotificationServices = tripNotificationServices;
         }
 
         public IQueryable<Trip> GetAll()
@@ -148,8 +148,29 @@
 
                 if (passengerToRemove != null)
                 {
+                    this.tripNotificationServices.Create(
+                    dbTrip.Id,
+                    dbTrip.DriverId,
+                    passengerToRemove.UserId,
+                    NotificationConstants.DriverRemovePassegerTitle,
+                    string.Format(NotificationConstants.DriverRemovePassegerFormat, dbTrip.Driver.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                    NotificationKey.DriverRemovePassenger,
+                    dbTrip.DateOfLeaving);
+
                     this.passengerTripsRepos.HardDelete(passengerToRemove);
                 }
+            }
+
+            foreach (var passenger in dbTrip.Passengers.Where(p => p.Approved == true))
+            {
+                this.tripNotificationServices.Create(
+                    dbTrip.Id,
+                    dbTrip.DriverId,
+                    passenger.UserId,
+                    NotificationConstants.TripChangedTitle,
+                    string.Format(NotificationConstants.TripChangedpMessageFormat, dbTrip.Driver.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                    NotificationKey.TripChanged,
+                    dbTrip.DateOfLeaving);
             }
 
             this.passengerTripsRepos.Save();
@@ -247,6 +268,16 @@
             dbTrip.Passengers.Add(passengerTrip);
             this.tripRepos.Save();
 
+            var passenger = this.userServices.GetById(userId);
+            this.tripNotificationServices.Create(
+                dbTrip.Id,
+                userId,
+                dbTrip.DriverId,
+                NotificationConstants.JoinTripRequestTitle,
+                string.Format(NotificationConstants.JoinTripRequestMessageFormat, passenger.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.JoinTripRequest,
+                dbTrip.DateOfLeaving);
+
             response.Status = true;
             return response;
         }
@@ -275,6 +306,15 @@
             passengerTrip.IsDeleted = true;
             this.tripRepos.Save();
 
+            this.tripNotificationServices.Create(
+                dbTrip.Id,
+                userId,
+                dbTrip.Driver.Id,
+                NotificationConstants.PassengerLeftTripTitle,
+                string.Format(NotificationConstants.PassengerLeftTripMessageFormat, passengerTrip.User.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.PassengerLeftTrip,
+                dbTrip.DateOfLeaving);
+
             response.Status = true;
             return response;
 
@@ -291,6 +331,22 @@
                     .Any();
 
                 return hasPendingRequest;
+            }
+
+            return false;
+        }
+
+        public bool CheckIfUserIsJoinedTrip(int tripId, string userId)
+        {
+            var dbTrip = this.GetById(tripId);
+
+            if (dbTrip != null)
+            {
+                bool userIsJoinedTrip = dbTrip.Passengers
+                    .Where(p => p.UserId == userId && p.Approved == true && p.IsDeleted == false)
+                    .Any();
+
+                return userIsJoinedTrip;
             }
 
             return false;
@@ -395,6 +451,15 @@
             dbTrip.AvailableSeats = dbTrip.AvailableSeats - 1;
             this.tripRepos.Save();
 
+            this.tripNotificationServices.Create(
+                dbTrip.Id,
+                actionUserId,
+                passengerTrip.UserId,
+                NotificationConstants.TripRequestApprovedTitle,
+                string.Format(NotificationConstants.TripRequestApprovedFormat, passengerTrip.User.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.JoinTripApproved,
+                dbTrip.DateOfLeaving);
+
             response.Status = true;
             response.Data = new ApprovedJoinRequestResponseModel()
             {
@@ -436,6 +501,15 @@
                 response.ErrorMessage = "Such join request does not exist.";
                 return response;
             }
+
+            this.tripNotificationServices.Create(
+                dbTrip.Id,
+                actionUserId,
+                passengerTrip.UserId,
+                NotificationConstants.TripRequestDisaprovedTitle,
+                string.Format(NotificationConstants.TripRequestDisaprovedFormat, passengerTrip.User.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.JoinTripDisApproved,
+                dbTrip.DateOfLeaving);
 
             passengerTrip.IsDeleted = true;
             this.tripRepos.Save();

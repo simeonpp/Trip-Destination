@@ -10,6 +10,8 @@
             string fromUserId,
             string forUserId,
             string title,
-            string message);
+            string message,
+            NotificationKey keyType,
+            DateTime dueTo);
     }
 }

@@ -22,6 +22,8 @@
 
         public bool CurrentUserIsWaitingJoinRequest { get; set; }
 
+        public bool CurrentUserIsJoinedTrip { get; set; }
+
         public bool HasMoreTripComments { get; set; }
 
         public bool HasMoreUserComments { get; set; }

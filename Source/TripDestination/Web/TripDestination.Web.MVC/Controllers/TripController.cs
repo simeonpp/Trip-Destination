@@ -186,6 +186,7 @@
                 var userId = this.User.Identity.GetUserId();
                 viewModel.CurrectUserIsDriver = trip.Driver.Id == this.User.Identity.GetUserId();
                 viewModel.CurrentUserIsWaitingJoinRequest = this.TripServices.CheckIfUserHasPendingRequest(id, userId);
+                viewModel.CurrentUserIsJoinedTrip = this.TripServices.CheckIfUserIsJoinedTrip(id, userId);
                 viewModel.HasMoreTripComments = this.TripServices.CheckIfTripHasMoreCommentsToLoad(id, WebApplicationConstants.CommentsOfset);
                 viewModel.HasMoreUserComments = this.UserServices.CheckIfTripHasMoreCommentsToLoad(trip.DriverId, WebApplicationConstants.CommentsOfset);
                 viewModel.CurrentUserLikedTrip = this.TripServices.CheckIfUserLikedTrip(trip, userId);

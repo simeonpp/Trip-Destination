@@ -16,6 +16,7 @@
                 type: "POST",
                 url: '/TripAjax/DisapproveJoinRequest',
                 data: {
+                    __RequestVerificationToken: ajaxAFT,
                     tripId: tripId,
                     username: username
                 },
@@ -46,10 +47,10 @@
 
         if ($.inArray(username, pendingUsernames)) {
             $.ajax({
-                __RequestVerificationToken: ajaxAFT,
                 type: "POST",
                 url: '/TripAjax/ApproveJoinRequest',
                 data: {
+                    __RequestVerificationToken: ajaxAFT,
                     tripId: tripId,
                     username: username
                 },
