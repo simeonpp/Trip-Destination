@@ -19,6 +19,14 @@
             this.notificationTypeRepos = notificationTypeRepos;
         }
 
+        public Notification GetById(int id)
+        {
+            return this.tripNotificationRepos
+                .All()
+                .Where(n => n.Id == id)
+                .FirstOrDefault();
+        }
+
         public TripNotification Create(
             int tripId,
             string fromUserId,
@@ -99,12 +107,19 @@
             var now = DateTime.Now;
             var notificiations = this.tripNotificationRepos
                 .All()
-                .Where(n => n.ForUserId == userId 
-                        && DbFunctions.TruncateTime(n.AvailableAfter) > now
-                        && DbFunctions.TruncateTime(n.DueTo) < now
+                .Where(n => n.ForUserId == userId
+                        && DbFunctions.TruncateTime(n.AvailableAfter) < now
+                        && DbFunctions.TruncateTime(n.DueTo) > now
                         && n.IsDeleted == false);
 
             return notificiations;
+        }
+
+        public void SetAsSeen(Notification notification)
+        {
+            notification.Type = notification.Type;
+            notification.Seen = true;
+            this.tripNotificationRepos.Save();
         }
     }
 }

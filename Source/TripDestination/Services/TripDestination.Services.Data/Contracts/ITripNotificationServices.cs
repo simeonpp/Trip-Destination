@@ -6,6 +6,8 @@
 
     public interface ITripNotificationServices
     {
+        Notification GetById(int id);
+
         TripNotification Create(
             int tripId,
             string fromUserId,
@@ -26,5 +28,7 @@
             DateTime availableAfter);
 
         IQueryable<Notification> GetForUser(string userId);
+
+        void SetAsSeen(Notification notification);
     }
 }

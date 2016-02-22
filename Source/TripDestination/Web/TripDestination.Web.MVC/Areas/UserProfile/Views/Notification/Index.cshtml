@@ -1,0 +1,48 @@
+﻿@model NotificationPageViewModel
+
+<div id="myNotifications">
+    
+    <section>
+        <h1>@Model.User.FirstName's notifications list</h1>
+        <h2>Your notifications</h2>
+        <div class="wrapper">
+            <article>
+
+                @if (Model.Notifications.Count() > 0)
+                {
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="date">Date created</th>
+                                <th>Type</th>
+                                <th>Trip</th>
+                                <th>Message</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var notification in Model.Notifications)
+                            {   
+                                <tr class="@notification.StyleClassName">
+                                    <td>@notification.CreatedOnFormatted</td>
+                                    <td>@notification.Title</td>
+                                    <td><a href="@notification.Trip.Url">@notification.Trip.From.Name - @notification.Trip.From.Name</a></td>
+                                    <td>@notification.MessageFormatted</td>
+                                    <td>Approve / Disapprove</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>You have not any trip yet. Please join one of our trips and enjoy!</p>
+                }
+
+            </article>
+        </div>
+    </section>
+
+</div>
+

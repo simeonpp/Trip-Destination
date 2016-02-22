@@ -23,10 +23,18 @@
                     { "Phone", Model.User.PhoneNumber },
                     { "Description", Model.User.SanitizedDescription }
                 })
-            </section>
 
-            <section>
-                
+                <article style="margin-top: 2px">
+                    <h5 style="margin-top: 5px">Comments <span id="commentsCount-user">(@Model.TotalComments)</span></h5>
+                    <h6>Latest comments about @Model.User.FirstName</h6>
+
+                    @Html.Partial("_CommentsPartial", new ViewDataDictionary {
+                        { "Comments", Model.Comments },
+                        { "Identifier", "user" },
+                        { "id", Model.User.Id },
+                        { "HasMoreComments", Model.HasMoreComments }
+                    })
+                </article>
             </section>
         </div>
 
@@ -37,6 +45,16 @@
         </div>
 
     </div>
-    
 
 </div> @*end #myProfile*@
+
+using (Html.BeginForm())
+{
+    <div id="ajaxAFT">
+        @Html.AntiForgeryToken()
+    </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/comments")
+}

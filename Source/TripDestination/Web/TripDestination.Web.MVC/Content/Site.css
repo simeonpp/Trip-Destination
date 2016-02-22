@@ -342,6 +342,9 @@ a.button2 {
 input.hiddenInput {
   display: none;
 }
+.loadMoreComments {
+  margin-top: 25px;
+}
 #coverWrap {
   width: 100%;
   height: 100%;
@@ -1314,6 +1317,9 @@ table.tripsTable .statusOpen {
 }
 table.tripsTable .statusReadyToGo {
   color: #0094ff;
+}
+#myNotifications tr.notSeen {
+  background: #8cffd6;
 }
 #cookies OL {
   counter-reset: item;

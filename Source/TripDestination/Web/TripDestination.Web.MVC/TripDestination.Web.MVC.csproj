@@ -213,6 +213,7 @@
     <Compile Include="Areas\Admin\ViewModels\TownAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
+    <Compile Include="Areas\UserProfile\Controllers\NotificationController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ProfileController.cs" />
     <Compile Include="Areas\UserProfile\UserProfileAreaRegistration.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\BaseEditModel.cs" />
@@ -222,9 +223,14 @@
     <Compile Include="Areas\UserProfile\ViewModels\ChildAction\UserStatisticsViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\EditCarInputModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\EditProfileInputModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\NotificationPageViewModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\NotificationTypeViewModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\NotificationTripViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\PhotoViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\ProfileViewModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\TownViewModel.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\TripDriverViewModel.cs" />
+    <Compile Include="Areas\UserProfile\ViewModels\TripViewModelForNotification.cs" />
     <Compile Include="Areas\UserProfile\ViewModels\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AJAX\NewsletterAjaxController.cs" />
@@ -770,6 +776,7 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PageAdminViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\PageParagraphAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PageParagraphViewModel.cshtml" />
+    <Content Include="Areas\UserProfile\Views\Notification\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

@@ -7,7 +7,10 @@
     using TripDestination.Web.MVC.Controllers;
     using ViewModels;
     using Microsoft.AspNet.Identity;
-    using Services.Web.Providers;
+    using MVC.ViewModels.Shared;
+    using Common.Infrastructure.Mapping;
+    using System.Linq;
+
     public class ProfileController : BaseController
     {
         private IUserServices userServices;
@@ -25,6 +28,9 @@
         {
             User user = this.userServices.GetByUsername(username);
             var viewModel = this.GetBasicInfo(user);
+            viewModel.Comments = this.UserServices.GetComments(user.Id).To<BaseCommentViewModel>().ToList();
+            viewModel.TotalComments = this.UserServices.GetTotatlComments(user.Id);
+            viewModel.HasMoreComments = viewModel.TotalComments - viewModel.Comments.Count() > 0 ? true : false;
             return this.View("~/Areas/UserProfile/Views/Profile/Index.cshtml", viewModel);
         }
 

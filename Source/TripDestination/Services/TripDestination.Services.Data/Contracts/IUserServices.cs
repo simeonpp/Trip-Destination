@@ -23,5 +23,7 @@
         User Update(string userId, string email, string firstName, string lastName, string phoneNumber, string description);
 
         IQueryable<UserComment> GetComments(string userId);
+
+        int GetTotatlComments(string userId);
     }
 }

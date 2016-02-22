@@ -196,5 +196,16 @@
 
             return comments;
         }
+
+        public int GetTotatlComments(string userId)
+        {
+            int commentForUserCount = this.userCommentRepos
+                .All()
+                .Where(c => c.UserId == userId && c.IsDeleted == false)
+                .OrderByDescending(c => c.CreatedOn)
+                .Count();
+
+            return commentForUserCount;
+        }
     }
 }

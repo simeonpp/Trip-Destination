@@ -16,7 +16,9 @@
         }
 
         [Required]
-        public NotificationType Type { get; set; }
+        public int TypeId { get; set; }
+
+        public virtual NotificationType Type { get; set; }
 
         public string ForUserId { get; set; }
 
