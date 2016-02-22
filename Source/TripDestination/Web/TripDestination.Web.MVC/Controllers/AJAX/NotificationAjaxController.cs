@@ -22,5 +22,15 @@
             var serviceReponse = this.tripNotificationServices.ApproveNotification(id, userId);
             return this.Json(serviceReponse);
         }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult DisapproveNotification(int id)
+        {
+            string userId = this.User.Identity.GetUserId();
+            var serviceReponse = this.tripNotificationServices.DisapproveNotification(id, userId);
+            return this.Json(serviceReponse);
+        }
     }
 }

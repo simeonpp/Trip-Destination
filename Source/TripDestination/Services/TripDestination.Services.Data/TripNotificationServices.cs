@@ -135,38 +135,83 @@
             var response = new BaseResponseAjaxModel();
             var notification = this.GetById(notificationId);
 
-            if (notification != null)
+            if (notification == null)
             {
                 response.ErrorMessage = "No such notification.";
+                return response;
             }
 
             if (notification.ForUserId != userId)
             {
                 response.ErrorMessage = "Only the owner of the notifcation can perfom this action";
+                return response;
             }
 
             if (notification.ActionHasBeenTaken == true)
             {
                 response.ErrorMessage = "Action for this notification has been already taken.";
+                return response;
             }
 
             notification.ActionHasBeenTaken = true;
 
-            if (notification.Type.Key == NotificationKey.JoinTripApproved)
+            if (notification.Type.Key == NotificationKey.JoinTripRequest)
             {
                 this.Create(
-                notification.TripId,
-                userId,
-                notification.FromUserId,
-                NotificationConstants.TripRequestApprovedTitle,
-                string.Format(NotificationConstants.TripRequestApprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
-                NotificationKey.JoinTripApproved,
-                notification.Trip.DateOfLeaving);
+                    notification.TripId,
+                    userId,
+                    notification.FromUserId,
+                    NotificationConstants.TripRequestApprovedTitle,
+                    string.Format(NotificationConstants.TripRequestApprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                    NotificationKey.JoinTripApproved,
+                    notification.Trip.DateOfLeaving);
             }
 
             if (notification.Type.Key == NotificationKey.FinishTripDriverRequest)
             {
                 notification.Trip.Status = TripStatus.Finished;
+            }
+
+            this.tripNotificationRepos.Save();
+            response.Status = true;
+            return response;
+        }
+
+        public BaseResponseAjaxModel DisapproveNotification(int notificationId, string userId)
+        {
+            var response = new BaseResponseAjaxModel();
+            var notification = this.GetById(notificationId);
+
+            if (notification == null)
+            {
+                response.ErrorMessage = "No such notification.";
+                return response;
+            }
+
+            if (notification.ForUserId != userId)
+            {
+                response.ErrorMessage = "Only the owner of the notifcation can perfom this action";
+                return response;
+            }
+
+            if (notification.ActionHasBeenTaken == true)
+            {
+                response.ErrorMessage = "Action for this notification has been already taken.";
+                return response;
+            }
+
+            notification.ActionHasBeenTaken = true;
+
+            if (notification.Type.Key == NotificationKey.JoinTripRequest)
+            {
+                this.Create(
+                    notification.TripId,
+                    userId,
+                    notification.FromUserId,
+                    NotificationConstants.TripRequestDisaprovedTitle,
+                    string.Format(NotificationConstants.TripRequestDisaprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                    NotificationKey.JoinTripDisApproved,
+                    notification.Trip.DateOfLeaving);
             }
 
             this.tripNotificationRepos.Save();

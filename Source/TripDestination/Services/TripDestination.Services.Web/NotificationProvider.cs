@@ -35,7 +35,6 @@
                         break;
                     case NotificationKey.FinishTripDriverRequest:
                         result.CanApprove = true;
-                        result.CanDisapprove = true;
                         break;
                     case NotificationKey.TripFinished:
                         break;
