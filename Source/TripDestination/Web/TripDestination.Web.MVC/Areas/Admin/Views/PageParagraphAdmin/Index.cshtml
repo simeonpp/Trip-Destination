@@ -1,34 +1,46 @@
-﻿
-@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PageParagraphViewModel>()
-      .Name("grid")
-      .Columns(columns =>
-      {
-          columns.Bound(c => c.Id);
-          columns.Bound(c => c.MainHeading);
-          columns.Bound(c => c.MainSubHeading);
-          columns.Bound(c => c.Type);
-          columns.Bound(c => c.Heading);
-          columns.Bound(c => c.Text);
-          columns.Bound(c => c.AdditionalHeading);
-          columns.Bound(c => c.AdditionalText);
-          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
-      })
-      .ToolBar(toolbar => {
-          toolbar.Create();
-      })
-      .Editable(editable => editable.Mode(GridEditMode.PopUp))
-      .Pageable()
-      .Sortable(sortable => {
-          sortable.SortMode(GridSortMode.SingleColumn);
-      })
-      .Filterable()
-      .Scrollable()
-      .DataSource(dataSource => dataSource
-          .Ajax()
-          .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("PageParagraphs_Read", "PageParagraphAdmin"))
-          .Create(create => create.Action("PageParagraphs_Create", "PageParagraphAdmin"))
-          .Update(update => update.Action("PageParagraphs_Update", "PageParagraphAdmin"))
-          .Destroy(destroy => destroy.Action("PageParagraphs_Destroy", "PageParagraphAdmin"))
-      )
-)
+﻿<div class="adminKendoTableWrap">
+
+<h1>Page paragraphs administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PageParagraphViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.MainHeading);
+              columns.Bound(c => c.MainSubHeading);
+              columns.Bound(c => c.Type);
+              columns.Bound(c => c.Heading);
+              columns.Bound(c => c.Text);
+              columns.Bound(c => c.AdditionalHeading);
+              columns.Bound(c => c.AdditionalText);
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          })
+          .ToolBar(toolbar => {
+              toolbar.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable => {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("PageParagraphs_Read", "PageParagraphAdmin"))
+              .Create(create => create.Action("PageParagraphs_Create", "PageParagraphAdmin"))
+              .Update(update => update.Action("PageParagraphs_Update", "PageParagraphAdmin"))
+              .Destroy(destroy => destroy.Action("PageParagraphs_Destroy", "PageParagraphAdmin"))
+          )
+    )
+
+    <style>
+        div.k-edit-form-container
+        {
+            width: auto;
+        }
+    </style>
+
+</div>

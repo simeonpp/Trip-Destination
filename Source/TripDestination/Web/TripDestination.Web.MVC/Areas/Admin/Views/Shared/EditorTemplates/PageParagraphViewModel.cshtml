@@ -36,6 +36,17 @@
 </div>
 
 <div class="form-group">
+    @Html.EditorFor(m => m.Text)
+</div>
+
+<div class="form-group">
+    @(Html.Kendo().EditorFor(m => m.Text)
+        .HtmlAttributes(new { style = "height:440px" })
+        .Resizable(resizable => resizable.Content(true).Toolbar(true))
+    )
+</div>
+
+<div class="form-group">
     @Html.LabelFor(m => m.AdditionalHeading, new { @class = "col-md-2 control-label" })
     <div class="col-md-10">
         @Html.TextBoxFor(m => m.AdditionalHeading, new { @class = "form-control" })

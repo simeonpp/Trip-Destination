@@ -13,7 +13,7 @@
 
             foreach (var type in Enum.GetValues(typeof(PageParagraphType)))
             {
-                pageParagraphSelectList.Add(new SelectListItem { Text = type.ToString(), Value = 2.ToString() });
+                pageParagraphSelectList.Add(new SelectListItem { Text = type.ToString(), Value = ((int)type).ToString() });
             }
 
             return pageParagraphSelectList;
