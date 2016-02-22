@@ -4,9 +4,11 @@
     using System;
     using Data.Models;
     using TripDestination.Data.Models;
-
+    using Data.Contracts;
     public class NotificationProvider : INotificationProvider
     {
+        private readonly ITripServices tripServices;
+
         public NotificationAvailableActionModel GetAvailableActionModel(NotificationKey key, bool actionHasBeenTaken)
         {
             var result = new NotificationAvailableActionModel
