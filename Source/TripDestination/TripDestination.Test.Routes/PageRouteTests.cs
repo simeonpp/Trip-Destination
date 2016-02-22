@@ -12,7 +12,7 @@
         private const int pageId = 15;
 
         [Test]
-        public void RouteByIdShouldWorkCorrectlyWithoutSlug()
+        public void PageRouteByIdShouldWorkCorrectlyWithoutSlug()
         {
             string Url = "/Page/" + pageId;
             var routeCollection = new RouteCollection();
@@ -21,7 +21,7 @@
         }
 
         [Test]
-        public void RouteByIdShouldWorkCorrectlyWithSlug()
+        public void PageRouteByIdShouldWorkCorrectlyWithSlug()
         {
             string randomSlug = "adasdadqwdwe";
             string Url = "/Page/" + pageId + "/" + randomSlug;
