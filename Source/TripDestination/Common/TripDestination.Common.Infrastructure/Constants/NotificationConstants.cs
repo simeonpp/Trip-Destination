@@ -19,5 +19,9 @@
 
         public const string TripRequestApprovedTitle = "Your trip request was approved";
         public const string TripRequestApprovedFormat = "{0} approved you trip request from {1} to {2} on {3}";
+
+        public const int CloseTripDriverRequestAvaialableDaysAfterTripFinished = 10;
+        public const string CloseTripDriverRequestTitle = "Close your trip";
+        public const string CloseTripDriverRequestFormat = "Please close your trip from {0} to {1} on {2}";
     }
 }

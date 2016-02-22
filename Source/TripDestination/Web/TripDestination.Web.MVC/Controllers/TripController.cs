@@ -20,7 +20,7 @@
     {
         public const int DefaultItemsPerPage = 9;
 
-        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider)
+        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, ITripNotificationServices tripNotificationServices)
         {
             this.TripServices = tripServices;
             this.StatisticsServices = statisticsServices;
@@ -28,6 +28,7 @@
             this.TownProvider = townProvider;
             this.DateProvider = dateProvider;
             this.TripProvider = tripProvider;
+            this.tripNotificationServices = tripNotificationServices;
         }
 
         public ITripServices TripServices { get; set; }
@@ -41,6 +42,8 @@
         public IDateProvider DateProvider { get; set; }
 
         public ITripProvider TripProvider { get; set; }
+
+        public ITripNotificationServices tripNotificationServices { get; set; }
 
         [HttpGet]
         [Authorize]
@@ -68,7 +71,7 @@
 
             string currentUserId = this.User.Identity.GetUserId();
 
-            Trip dbtrip = this.TripServices.Create(
+            Trip dbTrip = this.TripServices.Create(
                     trip.FromId,
                     trip.ToId,
                     trip.DateOfLeaving,
@@ -80,9 +83,18 @@
                     trip.Price,
                     currentUserId);
 
-            //string slug = string.Format("{0}-{1}", dbtrip.From.Name, dbtrip.To.Name);
-            string slug = string.Format("{0}-{1}", "A", "B");
-            return this.RedirectToRoute("TripDetails", new { id = dbtrip.Id, slug = slug });
+            this.tripNotificationServices.Create(
+                dbTrip.Id,
+                currentUserId,
+                currentUserId,
+                NotificationConstants.CloseTripDriverRequestTitle,
+                string.Format(NotificationConstants.CloseTripDriverRequestFormat, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.CloseTripDriverRequest,
+                dbTrip.DateOfLeaving.AddDays(NotificationConstants.CloseTripDriverRequestAvaialableDaysAfterTripFinished),
+                dbTrip.DateOfLeaving);
+
+            string slug = string.Format("{0}-{1}", dbTrip.From.Name, dbTrip.To.Name);
+            return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = slug });
         }
 
         [HttpGet]

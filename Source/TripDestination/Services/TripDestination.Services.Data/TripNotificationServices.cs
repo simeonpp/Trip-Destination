@@ -49,7 +49,45 @@
                 DueTo = dueTo,
                 Type = type
             };
-            
+
+            this.tripNotificationRepos.Add(tripNotification);
+            this.tripNotificationRepos.Save();
+            return tripNotification;
+        }
+
+        public TripNotification Create(
+            int tripId,
+            string fromUserId,
+            string forUserId,
+            string title,
+            string message,
+            NotificationKey keyType,
+            DateTime dueTo,
+            DateTime availableAfter)
+        {
+            NotificationType type = this.notificationTypeRepos
+                .All()
+                .Where(t => t.Key == keyType)
+                .FirstOrDefault();
+
+            if (type == null)
+            {
+                throw new Exception("No such type, given key type " + keyType);
+            }
+
+            TripNotification tripNotification = new TripNotification()
+            {
+                TripID = tripId,
+                FromUserId = fromUserId,
+                ForUserId = forUserId,
+                Title = title,
+                Message = message,
+                Seen = false,
+                AvailableAfter = availableAfter,
+                DueTo = dueTo,
+                Type = type
+            };
+
             this.tripNotificationRepos.Add(tripNotification);
             this.tripNotificationRepos.Save();
             return tripNotification;
