@@ -10,8 +10,13 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendo")
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
 </head>
 <body>    
+
+    <div id="koleda">ASDXXX</div>
+
     @RenderBody()
 
     @Html.Action("FooterPartial", "Layout", new { area = string.Empty })

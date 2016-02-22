@@ -61,6 +61,7 @@
     <Compile Include="Mapping\IMapTo.cs" />
     <Compile Include="Mapping\QueryableExtensions.cs" />
     <Compile Include="Models\BaseResponseAjaxModel.cs" />
+    <Compile Include="Models\BaseSignalRModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

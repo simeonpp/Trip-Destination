@@ -28,7 +28,8 @@ namespace TripDestination.Web.MVC
                 "~/Assets/javascript/lib/handlebars/handlebars.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                "~/Assets/javascript/src/common/newsletter-subscriber.js"));
+                "~/Assets/javascript/src/common/newsletter-subscriber.js",
+                "~/Assets/javascript/src/common/notification-signalr.js"));
 
             // DateTime picker
             bundles.Add(new ScriptBundle("~/bundles/datetimepicker").Include(
