@@ -1,16 +1,16 @@
 ﻿namespace TripDestination.Test.Routes
 {
+    using System.Web.Routing;
     using MvcRouteTester;
     using NUnit.Framework;
-    using System.Web.Routing;
-    using Web.MVC;
     using Web.MVC.Controllers;
+    using Web.MVC;
 
     [TestFixture]
-    class PageRouteTests
+    public class PageRouteTests
     {
         [Test]
-        public void TestRouteById()
+        public void RouteByIdShouldWorkCorrectly()
         {
             const int pageId = 15;
 
