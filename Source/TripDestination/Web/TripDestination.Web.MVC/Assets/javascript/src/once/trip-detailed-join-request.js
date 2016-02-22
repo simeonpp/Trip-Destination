@@ -61,6 +61,34 @@
         })
     });
 
+    $('body').on('click', '#leaveTripButton', function () {
+        var $leaveTripButton = $('#leaveTripButton');
+
+        $.ajax({
+            type: "POST",
+            url: '/TripAjax/LeaveTrip',
+            data: {
+                __RequestVerificationToken: ajaxAFT,
+                tripid: tripId
+            },
+            success: function (response) {
+                $leaveTripButton.remove();
+
+                if (response.Status) {
+                    removePendingMessage();
+                    addJoinTripButton();
+                    toastr.success("You have successfully leave this trip.");
+                } else {
+                    if (response.ErrorMessage) {
+                        toastr.error(response.ErrorMessage);
+                    } else {
+                        toastr.error("Unable to leave this trip.");
+                    }
+                }
+            }
+        })
+    });
+
     function addPendingMessage() {
         var sourceTemplate   = $("#pendingJoinRequestTemplate").html();
         var template = Handlebars.compile(sourceTemplate);

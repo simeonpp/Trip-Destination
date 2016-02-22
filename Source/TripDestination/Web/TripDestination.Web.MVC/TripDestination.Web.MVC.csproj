@@ -881,6 +881,7 @@
     <Content Include="Views\Shared\_NoNavigationLayout.cshtml" />
     <Content Include="Views\Home\_CoverPartial.cshtml" />
     <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Trip\_PassengerJoinedtPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

@@ -13,6 +13,7 @@
     IEnumerable<PassengerTripViewModel> PendingApprovePassengers = (IEnumerable<PassengerTripViewModel>)this.ViewData["PendingApprovePassengers"];
     int TripId = (int)this.ViewData["TripId"];
     bool CurrentUserIsWaitingJoinRequest = (bool)this.ViewData["CurrentUserIsWaitingJoinRequest"];
+    bool CurrentUserIsJoinedTrip = (bool)this.ViewData["CurrentUserIsJoinedTrip"];
     bool CurrentUserLikedTrip = (bool)this.ViewData["CurrentUserLikedTrip"];
 }
 
@@ -96,7 +97,12 @@
                         @Html.Partial("_PassengerPendingRequestPartial")
                     }
 
-                    if (AvailableSeats > 0 && !CurrentUserIsWaitingJoinRequest)
+                    if (CurrentUserIsJoinedTrip)
+                    {
+                        @Html.Partial("_PassengerJoinedtPartial")
+                    }
+
+                    if (AvailableSeats > 0 && !CurrentUserIsWaitingJoinRequest && !CurrentUserIsJoinedTrip)
                     {
                         @Html.Partial("_PassengerActionButtonPartial")
                     }
