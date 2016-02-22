@@ -7,7 +7,7 @@
 
     public interface ITripNotificationServices
     {
-        Notification GetById(int id);
+        TripNotification GetById(int id);
 
         TripNotification Create(
             int tripId,

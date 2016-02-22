@@ -159,7 +159,7 @@
                 userId,
                 notification.FromUserId,
                 NotificationConstants.TripRequestApprovedTitle,
-                string.Format(NotificationConstants.TripRequestApprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving("dd/MM/yyyy HH:mm")),
+                string.Format(NotificationConstants.TripRequestApprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
                 NotificationKey.JoinTripApproved,
                 notification.Trip.DateOfLeaving);
             }

@@ -89,7 +89,7 @@
                 currentUserId,
                 NotificationConstants.CloseTripDriverRequestTitle,
                 string.Format(NotificationConstants.CloseTripDriverRequestFormat, serviceResponceTrip.FromId, serviceResponceTrip.ToId, serviceResponceTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
-                NotificationKey.CloseTripDriverRequest,
+                NotificationKey.FinishTripDriverRequest,
                 serviceResponceTrip.DateOfLeaving.AddDays(NotificationConstants.CloseTripDriverRequestAvaialableDaysAfterTripFinished),
                 serviceResponceTrip.DateOfLeaving);
 

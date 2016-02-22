@@ -33,7 +33,7 @@
                         break;
                     case NotificationKey.JoinTripDisApproved:
                         break;
-                    case NotificationKey.CloseTripDriverRequest:
+                    case NotificationKey.FinishTripDriverRequest:
                         result.CanApprove = true;
                         result.CanDisapprove = true;
                         break;

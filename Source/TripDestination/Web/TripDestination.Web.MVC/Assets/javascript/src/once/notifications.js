@@ -16,20 +16,21 @@
                 },
                 success: function (response) {
                     if (response.Status) {
-                        $commentArea.val('');
-                        addCommentToCommentsList(identifier, response.Data, false);
-                        updateCommentsCount(commentsCountSpanSelector, response.Data.CommentTotalCount);
-                        updateLoadMoreTripCommentsButtonOffset(loadMoreTripCommentsSelector);
-                        toastr.success("You comment was successfully added.");
+                        removeActionButtons(id);
+                        toastr.success("You successfully approved this notification.");
                     } else {
                         if (response.ErrorMessage) {
                             toastr.error(response.ErrorMessage);
                         } else {
-                            toastr.error("Comment can not be add to this trip. Please contact our team.");
+                            toastr.error("Notification can not be approved right now. Please contact our team.");
                         }
                     }
                 }
             })
         })
+
+        function removeActionButtons(id) {
+            $('.actionButton[data-id="' + id + '"]').remove();
+        }
     })
 })
