@@ -300,7 +300,6 @@
     <Compile Include="Views\Trip\TripSearchInputModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\images\cover-bg.png" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker-standalone.css" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.css" />
     <Content Include="Assets\javascript\lib\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />

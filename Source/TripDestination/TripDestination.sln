@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Tests.Web.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Web.Infrastructure", "Web\TripDestination.Web.Infrastructure\TripDestination.Web.Infrastructure.csproj", "{21E57DD3-EE97-4DFD-9230-B633CBD3FC4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripDestination.Test.Routes", "TripDestination.Test.Routes\TripDestination.Test.Routes.csproj", "{49E1F65A-B59C-4FC8-991A-D0D918B93686}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{21E57DD3-EE97-4DFD-9230-B633CBD3FC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21E57DD3-EE97-4DFD-9230-B633CBD3FC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21E57DD3-EE97-4DFD-9230-B633CBD3FC4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E1F65A-B59C-4FC8-991A-D0D918B93686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E1F65A-B59C-4FC8-991A-D0D918B93686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E1F65A-B59C-4FC8-991A-D0D918B93686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E1F65A-B59C-4FC8-991A-D0D918B93686}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{946CE469-34E0-4B54-92C7-18185E4EBB29} = {6A65B084-53DF-41D6-83EF-4A4153846677}
 		{CD495831-6559-43F7-A460-1F1BDD9B740A} = {C0E00898-C258-48F7-963A-B9D4A169E803}
 		{21E57DD3-EE97-4DFD-9230-B633CBD3FC4F} = {3432B3B4-FEA8-4B78-BA0B-D66946F06B83}
+		{49E1F65A-B59C-4FC8-991A-D0D918B93686} = {C0E00898-C258-48F7-963A-B9D4A169E803}
 	EndGlobalSection
 EndGlobal
