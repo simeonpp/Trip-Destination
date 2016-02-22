@@ -112,6 +112,8 @@
 
         public IEnumerable<BaseCommentViewModel> Comments { get; set; }
 
+        public IEnumerable<BaseCommentViewModel> DriverComments { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public string CreatedOnFormatted
@@ -133,13 +135,11 @@
                 .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
                                                                         .Where(c => c.IsDeleted == false)
                                                                         .OrderByDescending(c => c.CreatedOn)
-                                                                        .Take(WebApplicationConstants.CommentsOfset)
-                ));
+                                                                        .Take(WebApplicationConstants.CommentsOfset)));
 
             configuration.CreateMap<Trip, TripDetailedViewModel>("PendingApprovePassengers")
                 .ForMember(x => x.PendingApprovePassengers, opt => opt.MapFrom(x => x.Passengers
-                                                                        .Where(p => p.Approved == false && p.IsDeleted == false)
-                ));
+                                                                        .Where(p => p.Approved == false && p.IsDeleted == false)));
 
             configuration.CreateMap<Trip, TripDetailedViewModel>("ViewsCount")
                 .ForMember(x => x.ViewsCount, opt => opt.MapFrom(x => x.Views.Count()));

@@ -2,6 +2,7 @@
 {
     using Common.Infrastructure.Models;
     using TripDestination.Data.Models;
+    using System.Linq;
 
     public interface IUserServices
     {
@@ -20,5 +21,7 @@
         bool CheckIfTripHasMoreCommentsToLoad(string userId, int currentLoadedComments);
 
         User Update(string userId, string email, string firstName, string lastName, string phoneNumber, string description);
+
+        IQueryable<UserComment> GetComments(string userId);
     }
 }

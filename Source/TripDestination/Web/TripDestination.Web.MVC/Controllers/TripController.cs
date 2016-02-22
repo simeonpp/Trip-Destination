@@ -204,6 +204,7 @@
                 viewModel.LikesCount = this.TripServices.GetLikesCount(trip);
             }
 
+            viewModel.DriverComments = this.UserServices.GetComments(trip.DriverId).To<BaseCommentViewModel>().ToList();
             return this.View(viewModel);
         }
 

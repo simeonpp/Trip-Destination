@@ -33,8 +33,8 @@
             }
         }
 
-        public ICollection<BaseCommentViewModel> Comments { get; set; }
-
         public CarViewModel Car { get; set; }
+
+        public ICollection<BaseCommentViewModel> Comments { get; set; }
     }
 }

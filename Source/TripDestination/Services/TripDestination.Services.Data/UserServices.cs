@@ -21,11 +21,14 @@
 
         private readonly TripDestinationDbContext dbContext;
 
-        public UserServices(IDbGenericRepository<User, string> userRepos)
+        private readonly IDbRepository<UserComment> userCommentRepos;
+
+        public UserServices(IDbGenericRepository<User, string> userRepos, IDbRepository<UserComment> userCommentRepos)
         {
             this.userRepos = userRepos;
             this.dbContext = new TripDestinationDbContext();
             this.userManager = new UserManager<User>(new UserStore<User>(this.dbContext));
+            this.userCommentRepos = userCommentRepos;
         }
 
         public User GetById(string id)
@@ -181,6 +184,17 @@
 
             this.userRepos.Save();
             return dbUser;
+        }
+
+        public IQueryable<UserComment> GetComments(string userId)
+        {
+            var comments = this.userCommentRepos
+                .All()
+                .Where(c => c.UserId == userId && c.IsDeleted == false)
+                .OrderByDescending(c => c.CreatedOn)
+                .Take(WebApplicationConstants.CommentsOfset);
+
+            return comments;
         }
     }
 }

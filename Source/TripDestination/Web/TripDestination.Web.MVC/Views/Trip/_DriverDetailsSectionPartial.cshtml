@@ -2,6 +2,7 @@
     ExtendedUserViewModel Driver = (ExtendedUserViewModel)this.ViewData["Driver"];
     bool HasMoreUserComments = (bool)this.ViewData["HasMoreUserComments"];
     int tripId = (int)this.ViewData["TripId"];
+    IEnumerable<BaseCommentViewModel> DriverComments = (IEnumerable<BaseCommentViewModel>)this.ViewData["DriverComments"];
 }
 
 <h1>Driver Details</h1>
@@ -66,10 +67,10 @@
         <h6>Latest comments about @Driver.FirstName</h6>
 
         @Html.Partial("_CommentsPartial", new ViewDataDictionary {
-            { "Comments", Driver.Comments },
+            { "Comments", DriverComments },
             { "Identifier", "user" },
             { "id", Driver.Id },
-            { "HasMoreComments", HasMoreUserComments },
+            { "HasMoreComments", HasMoreUserComments }
         })
 
     </div>
