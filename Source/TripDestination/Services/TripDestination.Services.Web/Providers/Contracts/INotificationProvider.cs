@@ -5,6 +5,6 @@
     using TripDestination.Data.Models;
     public interface INotificationProvider
     {
-        NotificationAvailableActionModel GetAvailableActionModel(NotificationKey key, bool actionHasBeenTaken);
+        NotificationAvailableActionModel GetAvailableActionModel(NotificationKey key, bool actionHasBeenTaken, int tripId, string userId);
     }
 }

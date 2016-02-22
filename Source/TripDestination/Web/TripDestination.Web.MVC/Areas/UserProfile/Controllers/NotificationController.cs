@@ -45,7 +45,7 @@
                     this.tripNotificationServices.SetAsSeen(notif.Id);
                 }
 
-                notif.ActionModel = this.notificationProvider.GetAvailableActionModel(notif.Type.Key, notif.ActionHasBeenTaken);
+                notif.ActionModel = this.notificationProvider.GetAvailableActionModel(notif.Type.Key, notif.ActionHasBeenTaken, notif.Trip.Id, userId);
             }
 
             var user = this.userSerives.GetById(userId);

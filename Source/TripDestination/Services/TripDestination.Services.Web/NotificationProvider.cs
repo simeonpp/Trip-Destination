@@ -9,7 +9,12 @@
     {
         private readonly ITripServices tripServices;
 
-        public NotificationAvailableActionModel GetAvailableActionModel(NotificationKey key, bool actionHasBeenTaken)
+        public NotificationProvider(ITripServices tripServices)
+        {
+            this.tripServices = tripServices;
+        }
+
+        public NotificationAvailableActionModel GetAvailableActionModel(NotificationKey key, bool actionHasBeenTaken, int tripId, string userId)
         {
             var result = new NotificationAvailableActionModel
             {
@@ -28,8 +33,12 @@
                     case NotificationKey.RejectAdminRequest:
                         break;
                     case NotificationKey.JoinTripRequest:
-                        result.CanApprove = true;
-                        result.CanDisapprove = true;
+                        bool tripRequestIsRejected = this.tripServices.CheckIfUserIsJoinedTrip(tripId, userId);
+                        if (tripRequestIsRejected)
+                        {
+                            result.CanApprove = true;
+                            result.CanDisapprove = true;
+                        }
                         break;
                     case NotificationKey.JoinTripApproved:
                         break;
