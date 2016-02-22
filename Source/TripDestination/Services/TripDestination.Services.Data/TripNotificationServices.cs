@@ -15,10 +15,13 @@
 
         private readonly IDbRepository<NotificationType> notificationTypeRepos;
 
-        public TripNotificationServices(IDbRepository<TripNotification> tripNotificationRepos, IDbRepository<NotificationType> notificationTypeRepos)
+        private readonly ITripServices tripServices;
+
+        public TripNotificationServices(IDbRepository<TripNotification> tripNotificationRepos, IDbRepository<NotificationType> notificationTypeRepos, ITripServices tripServices)
         {
             this.tripNotificationRepos = tripNotificationRepos;
             this.notificationTypeRepos = notificationTypeRepos;
+            this.tripServices = tripServices;
         }
 
         public TripNotification GetById(int id)
@@ -157,23 +160,16 @@
 
             if (notification.Type.Key == NotificationKey.JoinTripRequest)
             {
-                this.Create(
-                    notification.TripId,
-                    userId,
-                    notification.FromUserId,
-                    NotificationConstants.TripRequestApprovedTitle,
-                    string.Format(NotificationConstants.TripRequestApprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
-                    NotificationKey.JoinTripApproved,
-                    notification.Trip.DateOfLeaving);
+                return this.tripServices.ApproveJoinRequest(notification.TripId, notification.FromUser.UserName, userId);
             }
 
             if (notification.Type.Key == NotificationKey.FinishTripDriverRequest)
             {
                 notification.Trip.Status = TripStatus.Finished;
+                this.tripNotificationRepos.Save();
+                response.Status = true;
             }
 
-            this.tripNotificationRepos.Save();
-            response.Status = true;
             return response;
         }
 
@@ -204,18 +200,9 @@
 
             if (notification.Type.Key == NotificationKey.JoinTripRequest)
             {
-                this.Create(
-                    notification.TripId,
-                    userId,
-                    notification.FromUserId,
-                    NotificationConstants.TripRequestDisaprovedTitle,
-                    string.Format(NotificationConstants.TripRequestDisaprovedFormat, notification.ForUser.UserName, notification.Trip.From.Name, notification.Trip.To.Name, notification.Trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
-                    NotificationKey.JoinTripDisApproved,
-                    notification.Trip.DateOfLeaving);
+                return this.tripServices.DisapproveJoinRequest(notification.TripId, notification.FromUser.UserName, userId);
             }
 
-            this.tripNotificationRepos.Save();
-            response.Status = true;
             return response;
         }
     }
