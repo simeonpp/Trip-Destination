@@ -16,6 +16,9 @@
         private const int Layout = 86;
         private const int PageId = 435345;
 
+        private const string ParagraphMainHeading = "random paragrah main heading";
+        private const string ParagraphMainSubHeading = "random paragraph subheading";
+
         private IPageServices pageService;
 
         [SetUp]
@@ -25,11 +28,21 @@
             pageDbRepositoryMock.Setup(x => x.All())
                 .Returns(new List<Page>()
                 {
-                    new Page { Id = 435345, Heading = Heading, Layout = Layout, SubHeading = SubHeading }
+                    new Page
+                    {
+                        Id = 435345,
+                        Heading = Heading,
+                        Layout = Layout,
+                        SubHeading = SubHeading
+                    }
                 }.AsQueryable());
 
             var paragraphDbRepositoryMock = new Mock<IDbRepository<PageParagraph>>();
-
+            paragraphDbRepositoryMock.Setup(x => x.All())
+                .Returns(new List<PageParagraph>()
+                {
+                    new PageParagraph { PageId = PageId, MainHeading = ParagraphMainHeading, MainSubHeading = ParagraphMainSubHeading }
+                }.AsQueryable());
 
             var pageService = new PageServices(pageDbRepositoryMock.Object, paragraphDbRepositoryMock.Object);
             this.pageService = pageService;
@@ -59,6 +72,22 @@
             Assert.AreEqual(Heading, actual.Heading);
             Assert.AreEqual(SubHeading, actual.SubHeading);
             Assert.AreEqual(Layout, actual.Layout);
+        }
+
+        [Test]
+        public void GetParagraphsByPageShouldReutrnCorrectParagraphNumber()
+        {
+            var actual = this.pageService.GetParagraphsByPage(new Page() { Id = PageId });
+            Assert.AreEqual(1, actual.Count());
+        }
+
+        [Test]
+        public void GetParagraphsByPageShouldReutrnCorrectPageParagraphData()
+        {
+            var actual = this.pageService.GetParagraphsByPage(new Page() { Id = PageId });
+            Assert.AreEqual(ParagraphMainHeading, actual.FirstOrDefault().MainHeading);
+            Assert.AreEqual(ParagraphMainSubHeading, actual.FirstOrDefault().MainSubHeading);
+            Assert.AreEqual(PageId, actual.FirstOrDefault().PageId);
         }
     }
 }
