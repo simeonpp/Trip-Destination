@@ -9,12 +9,22 @@
     [TestFixture]
     public class PageRouteTests
     {
-        [Test]
-        public void RouteByIdShouldWorkCorrectly()
-        {
-            const int pageId = 15;
+        private const int pageId = 15;
 
+        [Test]
+        public void RouteByIdShouldWorkCorrectlyWithoutSlug()
+        {
             string Url = "/Page/" + pageId;
+            var routeCollection = new RouteCollection();
+            RouteConfig.RegisterRoutes(routeCollection);
+            routeCollection.ShouldMap(Url).To<PageController>(c => c.Index(pageId));
+        }
+
+        [Test]
+        public void RouteByIdShouldWorkCorrectlyWithSlug()
+        {
+            string randomSlug = "adasdadqwdwe";
+            string Url = "/Page/" + pageId + "/" + randomSlug;
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
             routeCollection.ShouldMap(Url).To<PageController>(c => c.Index(pageId));

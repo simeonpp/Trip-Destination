@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="PageRouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TripDetailsRouteTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
