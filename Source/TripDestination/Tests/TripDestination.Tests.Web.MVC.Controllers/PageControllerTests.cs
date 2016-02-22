@@ -8,15 +8,8 @@
     using Data.Models;
     using System.Linq;
     using System.Collections.Generic;
-    using Services.Web.Helpers.Contracts;
-    using System;
     using TestStack.FluentMVCTesting;
-    using TripDestination.Web.MVC.ViewModels.Home;
-    using Services.Web.Services;
-    using Services.Web.Providers.Contracts;
-    using System.Web.Mvc;
     using TripDestination.Web.MVC.ViewModels.Page;
-    using AutoMapper;
 
     [TestFixture]
     public class PageControllerTests
