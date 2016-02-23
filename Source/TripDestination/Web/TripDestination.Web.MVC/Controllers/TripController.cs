@@ -174,15 +174,6 @@
             return this.View("~/Views/Trip/List.cshtml", model);
         }
 
-        private void FillRequiredListInformation(TripLstViewModel viewModel)
-        {
-            // viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
-            viewModel.ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList();
-            viewModel.TownsSelectList = this.TownProvider.GetTowns();
-            viewModel.OrderBySelectListWithSomeNameThatWillNotDoAnyConflictsBecauseMvcIsPlayingAJokeWithAllOfUs = this.TripProvider.GetOrderBySelectList(viewModel.OrderBy);
-            viewModel.AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList();
-        }
-
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -283,5 +274,13 @@
             return this.RedirectToAction("List");
         }
 
+        private void FillRequiredListInformation(TripLstViewModel viewModel)
+        {
+            // viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
+            viewModel.ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList();
+            viewModel.TownsSelectList = this.TownProvider.GetTowns();
+            viewModel.OrderBySelectListWithSomeNameThatWillNotDoAnyConflictsBecauseMvcIsPlayingAJokeWithAllOfUs = this.TripProvider.GetOrderBySelectList(viewModel.OrderBy);
+            viewModel.AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList();
+        }
     }
 }

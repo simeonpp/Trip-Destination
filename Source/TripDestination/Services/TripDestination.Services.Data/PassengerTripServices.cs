@@ -15,14 +15,6 @@
             this.passengerTripResos = passengerTripResos;
         }
 
-        private PassengerTrip GetById(int id)
-        {
-            return this.passengerTripResos
-                .All()
-                .Where(pt => pt.Id == id).
-                FirstOrDefault();
-        }
-
         public void Delete(int id)
         {
             var passengerTrip = this.GetById(id);
@@ -39,6 +31,14 @@
         public IQueryable<PassengerTrip> GetAll()
         {
             return this.passengerTripResos.All();
+        }
+
+        private PassengerTrip GetById(int id)
+        {
+            return this.passengerTripResos
+                .All()
+                .Where(pt => pt.Id == id).
+                FirstOrDefault();
         }
     }
 }

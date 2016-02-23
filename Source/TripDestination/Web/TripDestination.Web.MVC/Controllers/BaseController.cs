@@ -8,6 +8,7 @@
     using Services.Web.Services.Contracts;
     using Services.Data.Contracts;
     using Microsoft.AspNet.Identity;
+
     public abstract class BaseController : Controller
     {
         // Need to be public, otherwise Autofac will no be able to autowire it
@@ -16,11 +17,11 @@
         // Need to be public, otherwise Autofac will no be able to autowire it
         public ICacheServices Cache { get; set; }
 
+        public MapperConfiguration MapperConfiguration { get; set; }
+
         protected User CurrentUser { get; set; }
 
         protected IMapper Mapper { get; private set; }
-
-        public MapperConfiguration MapperConfiguration { get; set; }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {

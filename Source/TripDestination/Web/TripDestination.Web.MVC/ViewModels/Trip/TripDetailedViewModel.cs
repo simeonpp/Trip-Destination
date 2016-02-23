@@ -128,8 +128,7 @@
         {
             configuration.CreateMap<Trip, TripDetailedViewModel>("Passengers")
                 .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers
-                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)
-                ));
+                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)));
 
             configuration.CreateMap<Trip, TripDetailedViewModel>("Comments")
                 .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments

@@ -9,11 +9,11 @@
 
     public static class AutoMapperConfig
     {
+        private static object syncRoot = new object();
+
         public static IMapper Mapper { get; private set; }
 
         public static MapperConfiguration Configuration { get; private set; }
-
-        private static object syncRoot = new Object();
 
         public static void Register(Assembly assembly)
         {

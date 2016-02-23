@@ -62,6 +62,5 @@
 
             return this.View("~/Areas/UserProfile/Views/Notification/Index.cshtml", viewModel);
         }
-
     }
 }

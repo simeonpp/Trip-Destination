@@ -29,6 +29,5 @@
         void Delete(int id);
 
         IQueryable<Car> GetAll();
-
     }
 }

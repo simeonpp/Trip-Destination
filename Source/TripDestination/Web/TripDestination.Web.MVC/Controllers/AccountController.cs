@@ -295,13 +295,7 @@
             // If we got this far, something failed, redisplay form
             return this.View(model);
         }
-
-        private void FillRequiredRegistrationSelectList(RegisterViewModel viewModel)
-        {
-            viewModel.AvailableRolesSelectList = this.roleProvider.GetPublicUserRolesSelectList();
-            viewModel.AvailableSeatsSelectList = this.carProvider.GetAvailableSeatsSelectList();
-            viewModel.AvailableLuggageSelectList = this.carProvider.GetAvailableLuggageSelectList();
-        }
+        
 
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -311,6 +305,7 @@
             {
                 return this.View("Error");
             }
+
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return this.View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -373,12 +368,14 @@
             {
                 return this.View(model);
             }
+
             var user = await this.UserManager.FindByNameAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return this.RedirectToAction("ResetPasswordConfirmation", "Account");
             }
+
             var result = await this.UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
@@ -415,6 +412,7 @@
             {
                 return this.View("Error");
             }
+
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
@@ -436,6 +434,7 @@
             {
                 return View("Error");
             }
+
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
@@ -443,7 +442,7 @@
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            var loginInfo = await this.AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
@@ -487,6 +486,7 @@
                 {
                     return View("ExternalLoginFailure");
                 }
+
                 var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -498,6 +498,7 @@
                         return RedirectToLocal(returnUrl);
                     }
                 }
+
                 this.AddErrors(result);
             }
 
@@ -545,19 +546,19 @@
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return this.HttpContext.GetOwinContext().Authentication;
-            }
-        }
-
         public IRoleProvider RoleProvider
         {
             get
             {
                 return roleProvider;
+            }
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return this.HttpContext.GetOwinContext().Authentication;
             }
         }
 
@@ -575,6 +576,7 @@
             {
                 return this.Redirect(returnUrl);
             }
+
             return this.RedirectToAction("Index", "Home");
         }
 
@@ -605,9 +607,17 @@
                 {
                     properties.Dictionary[XsrfKey] = this.UserId;
                 }
+
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, this.LoginProvider);
             }
         }
         #endregion
+
+        private void FillRequiredRegistrationSelectList(RegisterViewModel viewModel)
+        {
+            viewModel.AvailableRolesSelectList = this.roleProvider.GetPublicUserRolesSelectList();
+            viewModel.AvailableSeatsSelectList = this.carProvider.GetAvailableSeatsSelectList();
+            viewModel.AvailableLuggageSelectList = carProvider.GetAvailableLuggageSelectList();
+        }
     }
 }

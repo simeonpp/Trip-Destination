@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace TripDestination.Common.Infrastructure.Constants
+﻿namespace TripDestination.Common.Infrastructure.Constants
 {
+    using System.Collections.Generic;
+
     public class WebApplicationConstants
     {
         public const int HomepageTripsPerSectionCount = 4;

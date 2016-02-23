@@ -17,8 +17,7 @@ namespace TripDestination.Web.MVC.Areas.UserProfile
             context.MapRoute(
                 "UserProfile_default",
                 "UserProfile/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                new { action = "Index", id = UrlParameter.Optional });
         }
     }
 }

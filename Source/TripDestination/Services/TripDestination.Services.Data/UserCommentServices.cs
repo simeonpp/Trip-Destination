@@ -15,14 +15,6 @@
             this.userCommentRepositories = userCommentRepositories;
         }
 
-        private UserComment GetById(int id)
-        {
-            return this.userCommentRepositories
-                .All()
-                .Where(uc => uc.Id == id)
-                .FirstOrDefault();
-        }
-
         public void Delete(int id)
         {
             var userComment = this.GetById(id);
@@ -53,6 +45,14 @@
         public IQueryable<UserComment> GetAll()
         {
             return this.userCommentRepositories.All();
+        }
+
+        private UserComment GetById(int id)
+        {
+            return this.userCommentRepositories
+                .All()
+                .Where(uc => uc.Id == id)
+                .FirstOrDefault();
         }
     }
 }

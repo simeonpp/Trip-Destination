@@ -19,9 +19,9 @@
             this.DbSet = this.Context.Set<T>();
         }
 
-        private IDbSet<T> DbSet { get; }
-
         public DbContext Context { get; }
+
+        private IDbSet<T> DbSet { get; }
 
         public IQueryable<T> All()
         {
@@ -58,7 +58,6 @@
         {
             try
             {
-
                 this.Context.SaveChanges();
             }
             catch(Exception ex)

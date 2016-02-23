@@ -354,7 +354,6 @@
             };
             response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
             return response;
-
         }
 
         public bool CheckIfUserHasPendingRequest(int tripId, string userId)
@@ -588,7 +587,6 @@
                     CommentText = c.Text
                 })
                 .ToList();
-
 
             if (comments.Count() > 0)
             {

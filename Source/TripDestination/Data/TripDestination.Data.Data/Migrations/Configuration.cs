@@ -119,7 +119,6 @@ namespace TripDestination.Data.Data.Migrations
 
                 context.SaveChanges();
             }
-
         }
 
         private void SeedTowns(TripDestinationDbContext context)

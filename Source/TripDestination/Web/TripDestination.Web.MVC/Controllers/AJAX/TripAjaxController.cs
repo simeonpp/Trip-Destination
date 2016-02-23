@@ -35,7 +35,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult LeaveTrip(int tripId)
         {
-            string userId = this.User.Identity.GetUserId(); ;
+            string userId = this.User.Identity.GetUserId();
             var serviceResponse = this.tripServices.LeaveTrip(tripId, userId);
             NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
             return this.Json(serviceResponse);

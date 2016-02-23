@@ -11,7 +11,6 @@
     using TripDestination.Data.Data;
     using TripDestination.Data.Models;
     using System;
-    using System.Linq;
 
     public class UserServices : IUserServices
     {
