@@ -15,7 +15,7 @@
                 <li class="active"><a href="@Url.Action("Index", "Home", new { area = string.Empty })">Home <div class="clarification">Welcome</div></a></li>
                 <li><a href="@Url.Action("List", "Trip", new { area = string.Empty })">Discover  <div class="clarification">Trips</div></a></li>
 
-                @if (this.User.IsInRole(RoleConstants.DriverRole) || this.User.IsInRole(RoleConstants.AdminRole))
+                @if (this.User.IsInRole(RoleConstants.DriverRole))
                 {
                     <li><a href="@Url.Action("Create", "Trip", new { area = string.Empty })">Create  <div class="clarification">New trip</div></a></li>
                 }
