@@ -1,0 +1,35 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Page paragraphs administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.UserCommentsAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Username);
+              columns.Bound(c => c.Author);
+              columns.Bound(c => c.Text);
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          })
+          .ToolBar(toolbar =>
+          {
+              toolbar.Create();
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("UserComments_Read", "UserCommentAdmin"))
+              .Update(update => update.Action("UserComments_Update", "UserCommentAdmin"))
+              .Destroy(destroy => destroy.Action("UserComments_Destroy", "UserCommentAdmin"))
+          )
+    )
+</div>

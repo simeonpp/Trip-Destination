@@ -2,12 +2,11 @@
 {
     using System.Linq;
     using TripDestination.Data.Models;
-
-    public interface IViewServices
+    public interface IUserCommentServices
     {
-        IQueryable<View> GetAll();
+        IQueryable<UserComment> GetAll();
 
-        void AddView(Trip trip, string ip);
+        UserComment Edit(int id, string text);
 
         void Delete(int id);
     }

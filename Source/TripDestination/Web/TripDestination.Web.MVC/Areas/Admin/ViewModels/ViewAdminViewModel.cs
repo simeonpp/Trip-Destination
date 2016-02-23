@@ -1,9 +1,11 @@
 ﻿namespace TripDestination.Web.MVC.Areas.Admin.ViewModels
 {
-    using Glimpse.Mvc.AlternateType;
+    using Data.Models;
     using System;
+    using System.Web.Mvc;
     using TripDestination.Common.Infrastructure.Mapping;
 
+    [Bind(Exclude = "CreatedOn")]
     public class ViewAdminViewModel : IMapFrom<View>
     {
         public int Id { get; set; }

@@ -9,12 +9,8 @@
               columns.Bound(c => c.Id);
               columns.Bound(c => c.TripId);
               columns.Bound(c => c.Ip);
-              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}"); ;
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
               columns.Command(command => { command.Destroy(); }).Width(180);
-          })
-          .ToolBar(toolbar =>
-          {
-              toolbar.Create();
           })
           .Pageable()
           .Sortable(sortable =>

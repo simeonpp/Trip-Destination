@@ -32,7 +32,7 @@
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Views_Destroy([DataSourceRequest]DataSourceRequest request, PageParagraphViewModel view)
+        public ActionResult Views_Destroy([DataSourceRequest]DataSourceRequest request, ViewAdminViewModel view)
         {
             if (this.ModelState.IsValid)
             {
