@@ -1,9 +1,9 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
     using System;
-    using TripDestination.Data.Models;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
+    using TripDestination.Data.Models;
     using Common.Infrastructure.Models;
 
     public interface ITripServices
@@ -29,7 +29,7 @@
             string placeOfLeaving,
             bool pickUpFromAddress,
             string description,
-            DateTime ETA,
+            DateTime eta,
             decimal price,
             string driverId);
 
@@ -54,7 +54,7 @@
             string placeOfLeaving,
             bool pickUpFromAddress,
             string description,
-            DateTime ETA,
+            DateTime eta,
             IEnumerable<string> usernamesToBeRemoved);
 
         Trip AdminEdit(

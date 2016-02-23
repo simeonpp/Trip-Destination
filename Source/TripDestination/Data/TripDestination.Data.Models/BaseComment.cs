@@ -4,7 +4,6 @@
     using System.ComponentModel.DataAnnotations;
     using TripDestination.Common.Infrastructure.Constants;
 
-
     public abstract class BaseComment : BaseModel<int>
     {
         [Required]

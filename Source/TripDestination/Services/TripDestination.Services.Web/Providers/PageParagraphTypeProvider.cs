@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Web.Mvc;
     using TripDestination.Data.Models;
+
     public class PageParagraphTypeProvider : IPageParagraphTypeProvider
     {
         public IEnumerable<SelectListItem> GetPagePargraphTypes()

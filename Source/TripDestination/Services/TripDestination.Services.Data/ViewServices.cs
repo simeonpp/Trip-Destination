@@ -5,6 +5,7 @@
     using Contracts;
     using TripDestination.Data.Models;
     using TripDestination.Data.Common;
+
     public class ViewServices : IViewServices
     {
         private readonly IDbRepository<View> viewRepos;

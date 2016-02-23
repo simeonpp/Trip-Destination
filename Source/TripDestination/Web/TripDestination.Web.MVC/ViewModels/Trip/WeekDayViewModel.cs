@@ -1,7 +1,7 @@
 ﻿namespace TripDestination.Web.MVC.ViewModels.Trip
 {
-    using Common.Infrastructure.Mapping;
     using System;
+    using Common.Infrastructure.Mapping;
 
     public class WeekDayViewModel : IMapFrom<TripDestination.Web.Infrastructure.Models.WeekDay>
     {

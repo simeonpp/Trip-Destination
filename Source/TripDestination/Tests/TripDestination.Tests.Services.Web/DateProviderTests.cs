@@ -10,6 +10,7 @@
     using TripDestination.Services.Web.Providers.Contracts;
     using TripDestination.Services.Web.Providers;
     using System;
+
     [TestFixture]
     public class DateProviderTests
     {

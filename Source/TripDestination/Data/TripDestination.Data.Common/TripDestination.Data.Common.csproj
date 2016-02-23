@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbGenericRepository{T}.cs" />
+    <Compile Include="DbGenericRepository{T,TKey}.cs" />
     <Compile Include="DbRepository{T}.cs" />
     <Compile Include="IDbRepository{T}.cs" />
     <Compile Include="Models\BaseModel{TKey}.cs" />

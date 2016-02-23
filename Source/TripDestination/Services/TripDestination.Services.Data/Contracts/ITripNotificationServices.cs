@@ -1,7 +1,6 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
     using Common.Infrastructure.Models;
-    using System;
     using System.Linq;
     using TripDestination.Data.Models;
 

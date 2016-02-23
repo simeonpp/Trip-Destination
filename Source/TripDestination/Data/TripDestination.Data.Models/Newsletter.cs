@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
     using TripDestination.Common.Infrastructure.Constants;
+
     public class Newsletter : BaseModel<int>
     {
         [Required]

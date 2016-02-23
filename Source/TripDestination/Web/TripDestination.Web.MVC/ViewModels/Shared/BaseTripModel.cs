@@ -10,15 +10,16 @@
     {
         [Required]
         [Display(Name = "From")]
-        //[MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "From town name can no be less than 4 symbols long.")]
-        //[MaxLength(ModelConstants.TownNameMaxLength, ErrorMessage = "From town name can no be more than 50 symbols long.")]
-        public int FromId { get; set; }
 
+        // [MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "From town name can no be less than 4 symbols long.")]
+        // [MaxLength(ModelConstants.TownNameMaxLength, ErrorMessage = "From town name can no be more than 50 symbols long.")]
+        public int FromId { get; set; }
 
         [Required]
         [Display(Name = "To")]
-        //[MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "From town name can no be less than 4 symbols long.")]
-        //[MaxLength(ModelConstants.TownNameMaxLength, ErrorMessage = "From town name can no be more than 50 symbols long.")]
+
+        // [MinLength(ModelConstants.TownNameMinLength, ErrorMessage = "From town name can no be less than 4 symbols long.")]
+        // [MaxLength(ModelConstants.TownNameMaxLength, ErrorMessage = "From town name can no be more than 50 symbols long.")]
         public int ToId { get; set; }
 
         [Required]

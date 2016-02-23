@@ -4,6 +4,7 @@
     using Common.Infrastructure.Constants;
     using System.ComponentModel.DataAnnotations;
     using Infrastructure.Attributes;
+
     public abstract class BaseTripExtentendedModel : BaseTripModel
     {
         [Required]

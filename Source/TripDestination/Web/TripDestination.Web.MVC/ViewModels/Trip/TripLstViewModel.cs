@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using Views.Trip;
     using System.Web.Mvc;
+
     public class TripLstViewModel : TripSearchInputModel
     {
         public TripLstViewModel()

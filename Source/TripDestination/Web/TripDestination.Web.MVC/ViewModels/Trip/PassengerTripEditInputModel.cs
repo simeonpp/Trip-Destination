@@ -18,7 +18,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<PassengerTrip, PassengerTripEditInputModel>("Username")
-                .ForMember(x => x.Username , opt => opt.MapFrom(x => x.User.UserName));
+                .ForMember(x => x.Username, opt => opt.MapFrom(x => x.User.UserName));
 
             configuration.CreateMap<PassengerTrip, PassengerTripEditInputModel>("FirstName")
                 .ForMember(x => x.FirstName, opt => opt.MapFrom(x => x.User.FirstName));

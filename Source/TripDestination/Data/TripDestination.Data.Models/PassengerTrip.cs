@@ -1,9 +1,7 @@
 ﻿namespace TripDestination.Data.Models
 {
     using Common.Models;
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class PassengerTrip : BaseModel<int>
     {

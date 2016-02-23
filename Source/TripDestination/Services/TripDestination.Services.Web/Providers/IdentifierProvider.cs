@@ -17,7 +17,7 @@
         {
             var base64EncodedBytes = Convert.FromBase64String(urlId);
             var bytesAsString = Encoding.UTF8.GetString(base64EncodedBytes);
-            string idAsString = bytesAsString.Replace(ServicesWebConstants.IdentifierProviderSalt, String.Empty);
+            string idAsString = bytesAsString.Replace(ServicesWebConstants.IdentifierProviderSalt, string.Empty);
             int id = int.Parse(idAsString);
 
             return id;

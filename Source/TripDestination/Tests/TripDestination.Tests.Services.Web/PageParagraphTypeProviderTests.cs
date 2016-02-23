@@ -1,14 +1,14 @@
 ﻿namespace TripDestination.Tests.Services.Web
 {
+    using System;
     using System.Linq;
     using NUnit.Framework;
     using TripDestination.Services.Web.Providers;
     using TripDestination.Services.Web.Providers.Contracts;
     using Data.Models;
-    using System;
 
     [TestFixture]
-    class PageParagraphTypeProviderTests
+    public class PageParagraphTypeProviderTests
     {
         [Test]
         public void GetPagePargraphTypesShouldReturnCorrectNumber()

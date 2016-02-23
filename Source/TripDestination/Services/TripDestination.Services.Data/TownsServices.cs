@@ -1,10 +1,10 @@
 ﻿namespace TripDestination.Data.Services
 {
+    using System;
     using Common;
     using Models;
     using System.Linq;
     using TripDestination.Services.Data.Contracts;
-    using System;
 
     public class TownsServices : ITownsServices
     {

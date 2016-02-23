@@ -3,6 +3,7 @@
     using System.Web.Mvc;
     using System.Collections.Generic;
     using TripDestination.Data.Models;
+
     public interface ITripProvider
     {
         IEnumerable<SelectListItem> GetAvailableSeatsSelectList();

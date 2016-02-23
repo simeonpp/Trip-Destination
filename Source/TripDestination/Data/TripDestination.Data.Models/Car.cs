@@ -1,11 +1,10 @@
 ﻿namespace TripDestination.Data.Models
 {
+    using System.Web.Mvc;
     using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
     using TripDestination.Common.Infrastructure.Constants;
     using Common.Models;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web.Mvc;
 
     public class Car : BaseModel<int>
     {

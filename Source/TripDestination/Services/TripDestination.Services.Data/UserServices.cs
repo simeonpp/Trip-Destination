@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Services.Data
 {
+    using System;
     using Common.Infrastructure.Constants;
     using Common.Infrastructure.Models;
     using Contracts;
@@ -10,7 +11,6 @@
     using TripDestination.Data.Common;
     using TripDestination.Data.Data;
     using TripDestination.Data.Models;
-    using System;
 
     public class UserServices : IUserServices
     {
@@ -134,7 +134,6 @@
                     CommentText = c.Text
                 })
                 .ToList();
-
 
             if (comments.Count() > 0)
             {

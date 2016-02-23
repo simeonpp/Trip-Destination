@@ -1,9 +1,8 @@
 ﻿namespace TripDestination.Services.Data
 {
-    using Common.Infrastructure.Constants;
+    using System;
     using Common.Infrastructure.Models;
     using Contracts;
-    using System;
     using System.Data.Entity;
     using System.Linq;
     using TripDestination.Data.Common;

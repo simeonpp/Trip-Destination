@@ -4,7 +4,6 @@
     using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
-    using System;
 
     public class PhotoServices : IPhotoServices
     {

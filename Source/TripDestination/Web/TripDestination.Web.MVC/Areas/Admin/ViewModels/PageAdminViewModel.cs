@@ -9,7 +9,6 @@
     using System.Linq;
     using System.Web;
 
-
     public class PageAdminViewModel : IMapFrom<Page>
     {
         public int Id { get; set; }

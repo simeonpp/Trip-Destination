@@ -2,11 +2,11 @@
 {
     using System;
     using System.Linq;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using TripDestination.Services.Data.Contracts;
     using Common;
     using Models;
-    using System.Collections.Generic;
     using TripDestination.Common.Infrastructure.Models;
     using TripDestination.Services.Data.Models;
     using TripDestination.Common.Infrastructure.Constants;
@@ -40,7 +40,7 @@
             return this.tripRepos.All();
         }
 
-        public Trip Create(int fromTownId, int toTownId, DateTime dateOfLeaving, int availableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, decimal price, string driverId)
+        public Trip Create(int fromTownId, int toTownId, DateTime dateOfLeaving, int availableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime eta, decimal price, string driverId)
         {
             Trip trip = new Trip()
             {
@@ -49,7 +49,7 @@
                 ToId = toTownId,
                 DriverId = driverId,
                 Description = description,
-                ETA = ETA,
+                ETA = eta,
                 PlaceOfLeaving = placeOfLeaving,
                 PickUpFromAddress = pickUpFromAddress,
                 AvailableSeats = availableSeats,
@@ -145,7 +145,7 @@
             return passengers;
         }
 
-        public BaseResponseAjaxModel Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, IEnumerable<string> usernamesToBeRemoved)
+        public BaseResponseAjaxModel Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime eta, IEnumerable<string> usernamesToBeRemoved)
         {
             var dbTrip = this.GetById(tripId);
 
@@ -156,7 +156,7 @@
             dbTrip.PlaceOfLeaving = placeOfLeaving;
             dbTrip.PickUpFromAddress = pickUpFromAddress;
             dbTrip.Description = description;
-            dbTrip.ETA = ETA;
+            dbTrip.ETA = eta;
 
             foreach (var username in usernamesToBeRemoved)
             {

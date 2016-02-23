@@ -14,6 +14,38 @@
         {
         }
 
+        public virtual IDbSet<Car> Cars { get; set; }
+
+        public virtual IDbSet<TripComment> TripComments { get; set; }
+
+        public virtual IDbSet<UserComment> UserComments { get; set; }
+
+        public virtual IDbSet<Like> Likes { get; set; }
+
+        public virtual IDbSet<Newsletter> Newsletters { get; set; }
+
+        public virtual IDbSet<TripNotification> TripNotifications { get; set; }
+
+        public virtual IDbSet<NotificationType> NotificationTypes { get; set; }
+
+        public virtual IDbSet<PassengerTrip> PassengerTrips { get; set; }
+
+        public virtual IDbSet<Photo> Photos { get; set; }
+
+        public virtual IDbSet<Rating> Ratings { get; set; }
+
+        public virtual IDbSet<Town> Towns { get; set; }
+
+        public virtual IDbSet<Trip> Trips { get; set; }
+
+        public virtual IDbSet<View> Views { get; set; }
+
+        public virtual IDbSet<Page> Pages { get; set; }
+
+        public virtual IDbSet<PageParagraph> PageParagraphs { get; set; }
+
+        public virtual IDbSet<ContactForm> ContactForms { get; set; }
+
         public static TripDestinationDbContext Create()
         {
             return new TripDestinationDbContext();
@@ -67,37 +99,5 @@
                 }
             }
         }
-
-        public virtual IDbSet<Car> Cars { get; set; }
-
-        public virtual IDbSet<TripComment> TripComments { get; set; }
-
-        public virtual IDbSet<UserComment> UserComments { get; set; }
-
-        public virtual IDbSet<Like> Likes { get; set; }
-
-        public virtual IDbSet<Newsletter> Newsletters { get; set; }
-
-        public virtual IDbSet<TripNotification> TripNotifications { get; set; }
-
-        public virtual IDbSet<NotificationType> NotificationTypes { get; set; }
-
-        public virtual IDbSet<PassengerTrip> PassengerTrips { get; set; }
-
-        public virtual IDbSet<Photo> Photos { get; set; }
-
-        public virtual IDbSet<Rating> Ratings { get; set; }
-
-        public virtual IDbSet<Town> Towns { get; set; }
-
-        public virtual IDbSet<Trip> Trips { get; set; }
-
-        public virtual IDbSet<View> Views { get; set; }
-
-        public virtual IDbSet<Page> Pages { get; set; }
-
-        public virtual IDbSet<PageParagraph> PageParagraphs { get; set; }
-
-        public virtual IDbSet<ContactForm> ContactForms { get; set; }
     }
 }

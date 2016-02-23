@@ -7,7 +7,6 @@
     using TripDestination.Web.MVC.Areas.Admin.ViewModels;
     using TripDestination.Common.Infrastructure.Mapping;
 
-
     public class PageParagraphAdminController : Controller
     {
         private readonly IPageParagraphServices pageParagraphServices;

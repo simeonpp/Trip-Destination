@@ -7,6 +7,7 @@
     using System.Drawing;
     using Services.Web.Services.Contracts;
     using Common.Infrastructure.Constants;
+
     public class TempController : BaseController
     {
         private readonly IImageProccessorServices imageProccessorServices;
@@ -27,9 +28,9 @@
         {
             if (file != null && file.ContentLength > 0)
             {
-                var USERNAME = "pesho";
+                var username = "pesho";
                 var uploadsFolderPath = this.Server.MapPath("~/App_Data/uploads");
-                var folderToBeuploadFiles = Path.Combine(uploadsFolderPath, USERNAME);
+                var folderToBeuploadFiles = Path.Combine(uploadsFolderPath, username);
 
                 if (!Directory.Exists(folderToBeuploadFiles))
                 {
@@ -47,7 +48,8 @@
                 if (sizeInBytes < WebApplicationConstants.ImageMaxSizeInBytes && (extension == ".jpg" || extension == ".png"))
                 {
                     file.SaveAs(filePath);
-                    //this.imageProccessorServices.ResizeAndSaveImage(file, 210, filePath, extension);
+
+                    // this.imageProccessorServices.ResizeAndSaveImage(file, 210, filePath, extension);
                 }
             }
 

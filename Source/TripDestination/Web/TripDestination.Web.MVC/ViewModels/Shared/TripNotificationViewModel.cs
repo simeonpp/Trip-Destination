@@ -9,8 +9,7 @@
 
     public class TripNotificationViewModel : IMapFrom<TripNotification>
     {
-        //public BaseTripModel Trip { get; set; }
-
+        // public BaseTripModel Trip { get; set; }
         public BaseUserViewModel FromUser { get; set; }
 
         public bool Seen { get; set; }

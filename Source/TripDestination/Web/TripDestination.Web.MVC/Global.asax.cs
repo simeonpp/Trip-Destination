@@ -5,7 +5,8 @@
     using System.Web.Routing;
     using Common.Infrastructure.Mapping;
     using System.Reflection;
-    public class MvcApplication : System.Web.HttpApplication
+
+    public class Global : System.Web.HttpApplication
     {
         protected void Application_Start()
         {

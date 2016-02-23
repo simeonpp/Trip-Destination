@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using TripDestination.Web.MVC.ViewModels.Shared;
 
-
     public class ProfileViewModel
     {
         public UserViewModel User { get; set; }

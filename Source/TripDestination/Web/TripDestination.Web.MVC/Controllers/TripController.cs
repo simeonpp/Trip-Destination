@@ -18,6 +18,7 @@
     using Common.Infrastructure.Constants;
     using Hubs;
     using Common.Infrastructure.Models;
+
     public class TripController : BaseController
     {
         public const int DefaultItemsPerPage = 9;
@@ -261,7 +262,7 @@
                 usernamesToBeRemoved);
 
             NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
-            return this.RedirectToRoute("TripDetails", new { id = trip.Id, slug = trip.From.Name, area = "" });
+            return this.RedirectToRoute("TripDetails", new { id = trip.Id, slug = trip.From.Name, area = string.Empty });
         }
 
         [HttpPost]

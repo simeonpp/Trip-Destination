@@ -60,8 +60,10 @@
             {
                 this.Context.SaveChanges();
             }
-            catch(Exception ex)
-            { }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         public void Reload(T entity)

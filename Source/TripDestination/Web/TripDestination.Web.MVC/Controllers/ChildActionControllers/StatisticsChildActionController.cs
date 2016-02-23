@@ -4,6 +4,7 @@
     using Services.Data.Contracts;
     using ViewModels.Shared;
     using Common.Infrastructure.Constants;
+
     public class StatisticsChildActionController : Controller
     {
         public StatisticsChildActionController(IStatisticsServices statisticsServices)

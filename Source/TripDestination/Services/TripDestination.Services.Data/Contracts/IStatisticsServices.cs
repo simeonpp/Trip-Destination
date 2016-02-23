@@ -6,7 +6,7 @@
         int GetTotalTripsCount();
 
         string GetTopDestination();
-        
+
         double GetAverateTripRating();
 
         int GetTripViews();

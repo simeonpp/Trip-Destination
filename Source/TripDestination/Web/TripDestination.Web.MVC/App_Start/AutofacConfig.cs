@@ -19,6 +19,7 @@
     using Services.Web.Providers.Contracts;
     using Services.Web.Helpers.Contracts;
     using Infrastructure.HtmlSanitizer;
+
     public static class AutofacConfig
     {
         public static void Register()
@@ -26,7 +27,7 @@
             var builder = new ContainerBuilder();
 
             // Register your MVC controllers.
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(typeof(Global).Assembly);
 
             // OPTIONAL: Register model binders that require DI.
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());

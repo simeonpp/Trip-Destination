@@ -1,8 +1,8 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
-    using Common.Infrastructure.Models;
     using System;
     using System.Collections.Generic;
+    using Common.Infrastructure.Models;
     using TripDestination.Data.Models;
 
     public interface INotificationServices

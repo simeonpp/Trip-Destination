@@ -4,8 +4,15 @@ namespace TripDestination.Web.MVC
     using Glimpse.Core.Extensibility;
     using TripDestination.Common.Infrastructure.Constants;
 
-    public class GlimpseSecurityPolicy:IRuntimePolicy
+    public class GlimpseSecurityPolicy : IRuntimePolicy
     {
+        public RuntimeEvent ExecuteOn
+        {
+            // The RuntimeEvent.ExecuteResource is only needed in case you create a security policy
+            // Have a look at http://blog.getglimpse.com/2013/12/09/protect-glimpse-axd-with-your-custom-runtime-policy/ for more details
+            get { return RuntimeEvent.EndRequest | RuntimeEvent.ExecuteResource; }
+        }
+
         public RuntimePolicy Execute(IRuntimePolicyContext policyContext)
         {
             // You can perform a check like the one below to control Glimpse's permissions within your application.
@@ -17,13 +24,6 @@ namespace TripDestination.Web.MVC
             }
 
             return RuntimePolicy.On;
-        }
-
-        public RuntimeEvent ExecuteOn
-        {
-			// The RuntimeEvent.ExecuteResource is only needed in case you create a security policy
-			// Have a look at http://blog.getglimpse.com/2013/12/09/protect-glimpse-axd-with-your-custom-runtime-policy/ for more details
-            get { return RuntimeEvent.EndRequest | RuntimeEvent.ExecuteResource; }
         }
     }
 }

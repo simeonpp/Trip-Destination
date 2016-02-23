@@ -34,7 +34,7 @@
             }
 
             var ip = this.Request.ServerVariables["REMOTE_ADDR"];
-            ContactForm contactForm =  this.ContactFormServices.Create(formData.Name, formData.Email, formData.Subject, formData.Message, ip);
+            ContactForm contactForm = this.ContactFormServices.Create(formData.Name, formData.Email, formData.Subject, formData.Message, ip);
             this.TempData[WebApplicationConstants.TempDataKeyForContactForm] = SuccessSendMessage;
 
             return this.RedirectToAction("Index");

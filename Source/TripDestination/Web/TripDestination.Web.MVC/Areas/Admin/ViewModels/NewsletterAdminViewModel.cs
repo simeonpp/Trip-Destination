@@ -7,7 +7,6 @@
     using System.Linq;
     using System.Web;
 
-
     public class NewsletterAdminViewModel : IMapFrom<Newsletter>
     {
         public int Id { get; set; }

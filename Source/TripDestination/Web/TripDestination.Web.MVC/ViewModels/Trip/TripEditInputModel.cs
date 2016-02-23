@@ -65,8 +65,7 @@
         {
             configuration.CreateMap<Trip, TripEditInputModel>("Passengers")
                 .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers
-                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)
-                ));
+                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)));
         }
     }
 }

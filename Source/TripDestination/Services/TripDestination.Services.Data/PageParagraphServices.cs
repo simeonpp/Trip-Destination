@@ -1,8 +1,8 @@
 ﻿namespace TripDestination.Services.Data
 {
+    using System;
     using System.Linq;
     using Contracts;
-    using System;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
 

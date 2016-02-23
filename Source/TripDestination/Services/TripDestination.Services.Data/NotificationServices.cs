@@ -1,13 +1,14 @@
 ﻿namespace TripDestination.Services.Data
 {
-    using Contracts;
     using System;
+    using Contracts;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
     using System.Linq;
     using System.Collections.Generic;
     using System.Data.Entity;
     using Common.Infrastructure.Models;
+
     public class NotificationServices : INotificationServices
     {
         private readonly IDbRepository<TripNotification> tripNotificationRepos;

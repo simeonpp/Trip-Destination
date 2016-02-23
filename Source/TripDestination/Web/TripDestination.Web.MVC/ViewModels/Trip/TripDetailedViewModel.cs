@@ -9,6 +9,7 @@
     using System.Linq;
     using Common.Infrastructure.Constants;
     using Infrastructure.HtmlSanitizer;
+
     public class TripDetailedViewModel : IMapFrom<Trip>, IHaveCustomMappings
     {
         private readonly ISanitizer htmlSanitizer;

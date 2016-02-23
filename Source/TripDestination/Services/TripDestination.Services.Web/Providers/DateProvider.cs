@@ -5,6 +5,7 @@
     using Contracts;
     using System.Linq;
     using TripDestination.Web.Infrastructure.Models;
+
     public class DateProvider : IDateProvider
     {
         public IQueryable<WeekDay> GetWeekAhedDays(DateTime chosenDay)

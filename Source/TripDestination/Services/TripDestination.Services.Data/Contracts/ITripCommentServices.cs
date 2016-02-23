@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using TripDestination.Data.Models;
+
     public interface ITripCommentServices
     {
         IQueryable<TripComment> GetAll();

@@ -10,10 +10,10 @@
 
     public class LayoutController : Controller
     {
-        public LayoutController(IPageServices pageServices, ITripNotificationServices TripNotificationServices)
+        public LayoutController(IPageServices pageServices, ITripNotificationServices tripNotificationServices)
         {
             this.PageServices = pageServices;
-            this.TripNotificationServices = TripNotificationServices;
+            this.TripNotificationServices = tripNotificationServices;
         }
 
         public IPageServices PageServices { get; set; }
@@ -21,7 +21,8 @@
         public ITripNotificationServices TripNotificationServices { get; set; }
 
         [ChildActionOnly]
-        //[OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
+
+        // [OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
         public ActionResult NavigationPartial()
         {
             var pages = this.PageServices

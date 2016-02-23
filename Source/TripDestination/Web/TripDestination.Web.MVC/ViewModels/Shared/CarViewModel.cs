@@ -4,6 +4,7 @@
     using Data.Models;
     using Infrastructure.HtmlSanitizer;
     using System.Collections.Generic;
+
     public class CarViewModel : IMapFrom<Car>
     {
         private readonly ISanitizer htmlSanitizer;

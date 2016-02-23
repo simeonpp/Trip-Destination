@@ -16,7 +16,7 @@
         public bool Approved { get; set; }
 
         public string Username { get; set; }
-        
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<PassengerTrip, PassengerTripAdminViewModel>("Username")

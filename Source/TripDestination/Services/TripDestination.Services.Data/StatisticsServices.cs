@@ -1,14 +1,10 @@
 ﻿namespace TripDestination.Data.Services
 {
-    using Common;
-    using Data;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
     using System;
+    using Common;
+    using Models;
     using System.Data.Entity;
     using System.Linq;
-    using TripDestination.Common.Infrastructure.Constants;
     using TripDestination.Services.Data.Contracts;
 
     public class StatisticsServices : IStatisticsServices
@@ -145,7 +141,7 @@
 
             if (town == null)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             string townAsString = town.TownName;

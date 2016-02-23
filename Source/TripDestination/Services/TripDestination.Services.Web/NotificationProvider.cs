@@ -5,6 +5,7 @@
     using Data.Models;
     using TripDestination.Data.Models;
     using Data.Contracts;
+
     public class NotificationProvider : INotificationProvider
     {
         private readonly ITripServices tripServices;

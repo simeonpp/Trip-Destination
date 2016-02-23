@@ -10,6 +10,7 @@
     using ViewModels;
     using Services.Web.Providers.Contracts;
     using System;
+
     [Authorize]
     public class NotificationController : BaseController
     {

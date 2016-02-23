@@ -1,13 +1,13 @@
 namespace TripDestination.Data.Data.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
     using System;
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using TripDestination.Common.Infrastructure.Constants;
 
     public sealed class Configuration : DbMigrationsConfiguration<TripDestinationDbContext>
@@ -100,7 +100,8 @@ namespace TripDestination.Data.Data.Migrations
         {
             if (!context.NotificationTypes.Any())
             {
-                var upperCaseReplaceExpression = new Regex(@"
+                var upperCaseReplaceExpression = new Regex(
+                    @"
                 (?<=[A-Z])(?=[A-Z][a-z]) |
                  (?<=[^A-Z])(?=[A-Z]) |
                  (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace);
@@ -135,7 +136,7 @@ namespace TripDestination.Data.Data.Migrations
 
                     foreach (string town in towns)
                     {
-                        if (!String.IsNullOrEmpty(town))
+                        if (!string.IsNullOrEmpty(town))
                         {
                             Town dbTownToBeSaved = new Town
                             {

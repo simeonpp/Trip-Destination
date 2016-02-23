@@ -2,17 +2,17 @@
 
 namespace TripDestination.Web.MVC.Areas.UserProfile
 {
-    public class UserProfileAreaRegistration : AreaRegistration 
+    public class UserProfileAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "UserProfile";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "UserProfile_default",

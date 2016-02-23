@@ -3,6 +3,7 @@
     using Common.Infrastructure.Mapping;
     using Data.Models;
     using Infrastructure.HtmlSanitizer;
+
     public class PageParagraphViewModel : IMapFrom<PageParagraph>
     {
         private readonly ISanitizer htmlSanitizer;

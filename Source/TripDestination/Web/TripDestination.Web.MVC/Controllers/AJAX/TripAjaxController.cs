@@ -7,6 +7,7 @@
     using Common.Infrastructure.Models;
     using Data.Models;
     using Hubs;
+
     public class TripAjaxController : Controller
     {
         private readonly ITripServices tripServices;
@@ -91,7 +92,8 @@
             {
                 int identifier = int.Parse(id);
                 serviceResponse = this.tripServices.LoadComments(identifier, offset);
-            } else
+            }
+            else
             {
                 throw new Exception(string.Format("type {0} is not supported, it must be a trip for this controller", type));
             }
@@ -105,7 +107,7 @@
         public ActionResult LikeDislikeTrip(int tripId, bool value)
         {
             var userId = this.User.Identity.GetUserId();
-            var serviceResponse= this.tripServices.LikeDislike(tripId, userId, value);
+            var serviceResponse = this.tripServices.LikeDislike(tripId, userId, value);
             return this.Json(serviceResponse);
         }
     }

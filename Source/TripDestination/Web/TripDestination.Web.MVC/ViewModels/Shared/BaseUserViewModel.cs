@@ -8,6 +8,7 @@
     using Common.Infrastructure.Constants;
     using System.Linq;
     using System.Collections.Generic;
+
     public class BaseUserViewModel : IMapFrom<User>, IHaveCustomMappings
     {
         private readonly IMediaImageUrlProvider imageUrlProvider;

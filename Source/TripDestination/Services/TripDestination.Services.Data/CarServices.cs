@@ -2,7 +2,6 @@
 {
     using Contracts;
     using System;
-    using System.Collections.Generic;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
     using System.Linq;

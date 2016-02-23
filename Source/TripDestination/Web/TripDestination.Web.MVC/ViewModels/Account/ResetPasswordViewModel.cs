@@ -2,7 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-
     public class ResetPasswordViewModel
     {
         [Required]
