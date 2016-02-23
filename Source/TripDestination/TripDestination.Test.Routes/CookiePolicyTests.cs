@@ -5,21 +5,21 @@
     using NUnit.Framework;
     using Web.MVC;
     using Web.MVC.Controllers.Media;
-
+    using Web.MVC.Controllers;
     [TestFixture]
-    public class MediaRouteTests
+    public class CookiePolicyTests
     {
         private const string username = "pesho";
         private const string guid = "aasdas-232-asd";
         private const int size = 480;
 
         [Test]
-        public void MediaRouteDetailsShouldWorkCorrectly()
+        public void CookiePOlicyShouldWorkCorrectly()
         {
-            string Url = string.Format("/Media/Image/{0}/{1}/{2}", username, guid, size);
+            string Url = "/CookiePolicy";
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
-            routeCollection.ShouldMap(Url).To<ImageController>(c => c.Index(username, guid, size));
+            routeCollection.ShouldMap(Url).To<CookiePolicyController>(c => c.Index());
         }
     }
 }

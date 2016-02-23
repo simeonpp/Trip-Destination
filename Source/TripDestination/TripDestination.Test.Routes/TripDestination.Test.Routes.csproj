@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CookiePolicyTests.cs" />
     <Compile Include="MediaRouteTests.cs" />
     <Compile Include="PageRouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
