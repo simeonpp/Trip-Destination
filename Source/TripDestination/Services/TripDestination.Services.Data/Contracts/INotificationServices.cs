@@ -1,6 +1,8 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
+    using Common.Infrastructure.Models;
     using System;
+    using System.Collections.Generic;
     using TripDestination.Data.Models;
 
     public interface INotificationServices
@@ -23,5 +25,7 @@
             NotificationKey keyType,
             DateTime dueTo,
             DateTime availableAfter);
+
+        BaseSignalRModel SendNotifications(IEnumerable<string> userIds);
     }
 }

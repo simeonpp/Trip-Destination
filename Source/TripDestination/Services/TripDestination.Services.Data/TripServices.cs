@@ -145,7 +145,7 @@
             return passengers;
         }
 
-        public Trip Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, IEnumerable<string> usernamesToBeRemoved)
+        public BaseResponseAjaxModel Edit(int tripId, DateTime dateOfLeaving, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description, DateTime ETA, IEnumerable<string> usernamesToBeRemoved)
         {
             var dbTrip = this.GetById(tripId);
 
@@ -194,7 +194,10 @@
             this.passengerTripsRepos.Save();
             this.tripRepos.Save();
 
-            return dbTrip;
+            var response = new BaseResponseAjaxModel();
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
+
+            return response;
         }
 
         public Trip AdminEdit(int tripId, int leftAvailableSeats, string placeOfLeaving, bool pickUpFromAddress, string description)
@@ -297,6 +300,7 @@
                 dbTrip.DateOfLeaving);
 
             response.Status = true;
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
             return response;
         }
 
@@ -348,6 +352,7 @@
                 AvailableSeatsCount = dbTrip.AvailableSeats,
                 UserName = passengerToLeave.UserName
             };
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
             return response;
 
         }
@@ -503,6 +508,7 @@
                 ImageSrc = "http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg", // TODO: Implement imageSrc
                 UserProfileLink = "www.google.com", // TODO: Implement URL
             };
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
 
             return response;
         }
@@ -551,6 +557,7 @@
             {
                 PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
             };
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
 
             return response;
         }

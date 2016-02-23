@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.Hubs
 {
+    using System.Linq;
     using System.Threading.Tasks;
     using Common.Infrastructure.Models;
     using Microsoft.AspNet.Identity;
@@ -11,10 +12,25 @@
     {
         private static readonly ConnectionMapping<string> Connections = new ConnectionMapping<string>();
 
+        public static void UpdateNotify(BaseSignalRModel model)
+        {
+            IHubContext context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+            foreach (var userNotificationCounts in model.UsersNotificationCounts)
+            {
+                string userId = userNotificationCounts.Item1;
+                int notSeendNorificationCounts = userNotificationCounts.Item2;
+                context.Clients.Group(userId).addMessage(notSeendNorificationCounts);
+            }
+        }
+
         public override Task OnConnected()
         {
-            string name = this.Context.User.Identity.Name;
-            Connections.Add(name, this.Context.ConnectionId);
+            if (this.Context.User.Identity.IsAuthenticated)
+            {
+                string userId = this.Context.User.Identity.GetUserId();
+                this.Groups.Add(this.Context.ConnectionId, userId);
+            }
+
             return base.OnConnected();
         }
 
@@ -34,18 +50,6 @@
             }
 
             return base.OnReconnected();
-        }
-
-        public void SendMessage(string message)
-        {
-            var msg = string.Format("{0}: {1}", this.Context.ConnectionId, message);
-            UpdateNotify(new BaseSignalRModel() { NotificationCount = 2 });
-        }
-
-        public static void UpdateNotify(BaseSignalRModel model)
-        {
-            IHubContext context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
-            context.Clients.All.addMessage(model);
         }
     }
 }

@@ -206,8 +206,6 @@
                 viewModel.LikesCount = this.TripServices.GetLikesCount(trip);
             }
 
-            NotificationHub.UpdateNotify(new BaseSignalRModel() { NotificationCount = 5 });
-
             viewModel.DriverComments = this.UserServices.GetComments(trip.DriverId).To<BaseCommentViewModel>().ToList();
             return this.View(viewModel);
         }
@@ -261,7 +259,7 @@
                 usernamesToBeRemoved = js.Deserialize<string[]>(editModel.UsernamesToBeRemoved);
             }
 
-            var dbTrip = this.TripServices.Edit(
+            var serviceResponse = this.TripServices.Edit(
                 trip.Id,
                 editModel.DateOfLeaving,
                 editModel.LeftAvailableSeats,
@@ -271,7 +269,8 @@
                 editModel.ETA,
                 usernamesToBeRemoved);
 
-            return this.RedirectToRoute("TripDetails", new { id = dbTrip.Id, slug = trip.From.Name, area = "" });
+            NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
+            return this.RedirectToRoute("TripDetails", new { id = trip.Id, slug = trip.From.Name, area = "" });
         }
 
         [HttpPost]

@@ -47,7 +47,7 @@
 
         IQueryable<PassengerTrip> GetPassengers(Trip trip);
 
-        Trip Edit(
+        BaseResponseAjaxModel Edit(
             int tripId,
             DateTime dateOfLeaving,
             int leftAvailableSeats,

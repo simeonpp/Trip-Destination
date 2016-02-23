@@ -5,13 +5,18 @@
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using Common.Infrastructure.Models;
+    using Data.Models;
+    using Hubs;
     public class TripAjaxController : Controller
     {
         private readonly ITripServices tripServices;
 
-        public TripAjaxController(ITripServices tripServices)
+        private readonly ITripNotificationServices tripNotificaitonServices;
+
+        public TripAjaxController(ITripServices tripServices, ITripNotificationServices tripNotificaitonServices)
         {
             this.tripServices = tripServices;
+            this.tripNotificaitonServices = tripNotificaitonServices;
         }
 
         [Authorize]
@@ -21,6 +26,7 @@
         {
             string userId = this.User.Identity.GetUserId();
             var serviceResponse = this.tripServices.JoinRequest(tripId, userId);
+            NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
             return this.Json(serviceResponse);
         }
 
@@ -31,6 +37,7 @@
         {
             string userId = this.User.Identity.GetUserId(); ;
             var serviceResponse = this.tripServices.LeaveTrip(tripId, userId);
+            NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
             return this.Json(serviceResponse);
         }
 
@@ -52,6 +59,7 @@
         {
             string userId = this.User.Identity.GetUserId();
             var serviceResponse = this.tripServices.ApproveJoinRequest(tripId, username, userId);
+            NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
             return this.Json(serviceResponse);
         }
 
@@ -62,6 +70,7 @@
         {
             string userId = this.User.Identity.GetUserId();
             var serviceResponse = this.tripServices.DisapproveJoinRequest(tripId, username, userId);
+            NotificationHub.UpdateNotify(serviceResponse.SignalRModel);
             return this.Json(serviceResponse);
         }
 
