@@ -20,9 +20,9 @@
 
         public IEnumerable<SelectListItem> LeaftAvailabeSeatsSelectList { get; set; }
 
-        public Town From { get; set; }
+        public string FromTownName { get; set; }
 
-        public Town To { get; set; }
+        public string ToTownName { get; set; }
 
         [Required]
         [MinLength(ModelConstants.TripPlaceOfLeavingMinLength, ErrorMessage = "Trip place of leaving can no be less than 5 symbols long.")]
@@ -66,6 +66,12 @@
             configuration.CreateMap<Trip, TripEditInputModel>("Passengers")
                 .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers
                                                                         .Where(p => p.Approved == true && p.IsDeleted == false)));
+
+            configuration.CreateMap<Trip, TripEditInputModel>("FromTownName")
+                .ForMember(x => x.FromTownName, opt => opt.MapFrom(x => x.From.Name));
+
+            configuration.CreateMap<Trip, TripEditInputModel>("ToTownName")
+                .ForMember(x => x.ToTownName, opt => opt.MapFrom(x => x.To.Name));
         }
     }
 }

@@ -6,7 +6,13 @@
 
 <div id="tripEdit">
 
-    @Html.Partial("_TopSectionPartial", new { From = Model.From.Name, To = Model.To.Name, FortammetDateOfLeaving = Model.FormattedDateOfLeaving })
+    <section id="topHead" class="noTopMargin noBottomMargin">
+        @Html.Partial("_TopSectionPartial", new ViewDataDictionary {
+            { "From", Model.FromTownName },
+            { "To", Model.ToTownName },
+            { "FortammetDateOfLeaving", Model.FormattedDateOfLeaving }
+        })
+    </section>
 
     <div class="wrapper row">
 
