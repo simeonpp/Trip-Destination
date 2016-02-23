@@ -12,7 +12,7 @@
     using TripDestination.Common.Infrastructure.Constants;
     using TripDestination.Services.Data;
     using System.Linq.Dynamic;
-
+    using System.Globalization;
     public class TripServices : ITripServices
     {
         public const string DefaultSortDirection = "ASC";
@@ -683,7 +683,8 @@
             string sortBy,
             string orderBy)
         {
-            if (string.IsNullOrEmpty(sortBy) || !WebApplicationConstants.OrderTripOptions.ContainsKey(sortBy))
+            if (string.IsNullOrEmpty(sortBy) 
+                || !WebApplicationConstants.OrderTripOptions.ContainsKey(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sortBy)))
             {
                 sortBy = DefaultOrder;
             }
@@ -697,22 +698,20 @@
 
             var query = this.GetBaseFIlterQuery(fromId, toId, availableSeaets, dateOfLeaving, driverUsername, priceMin, priceMax);
 
-            switch (sortBy)
+            if (sortBy == "Driver" || sortBy == "driver name")
             {
-                case "Driver":
-                    if (orderBy == "ASC")
-                    {
-                        query = query.OrderBy(t => t.Driver.UserName);
-                    }
-                    else
-                    {
-                        query = query.OrderByDescending(t => t.Driver.UserName);
-                    }
-
-                    break;
-                default:
-                    query = query.OrderBy(sortBy + " " + orderBy);
-                    break;
+                if (orderBy == "ASC")
+                {
+                    query = query.OrderBy(t => t.Driver.UserName);
+                }
+                else
+                {
+                    query = query.OrderByDescending(t => t.Driver.UserName);
+                }
+            }
+            else
+            {
+                query = query.OrderBy(sortBy + " " + orderBy);
             }
 
             return query;

@@ -5,8 +5,19 @@
 }
 
 @{ 
-    string sortDirectionAscendingClass = Model.Sort == "ASC" ? "active" : string.Empty;
-    string sortDirectionDescendingClass = Model.Sort == "ASC" ? string.Empty : "active";
+    string sortDirectionAscendingClass;
+    string sortDirectionDescendingClass;
+
+    if (Model.Sort == null)
+    {
+        sortDirectionAscendingClass = "active";
+        sortDirectionDescendingClass = string.Empty;
+    }
+    else
+    {
+        sortDirectionAscendingClass = Model.Sort == "ASC" ? "active" : string.Empty;
+        sortDirectionDescendingClass = Model.Sort == "ASC" ? string.Empty : "active";
+    }
 }
 
 <div id="tripList">

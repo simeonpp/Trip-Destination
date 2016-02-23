@@ -82,7 +82,7 @@
             foreach (var orderOption in WebApplicationConstants.OrderTripOptions)
             {
                 SelectListItem currentSelectListItem = new SelectListItem { Text = orderOption.Value, Value = orderOption.Key };
-                if (orderOption.Key.ToLower() == selectedValue.ToLower())
+                if (selectedValue != null && orderOption.Key.ToLower() == selectedValue.ToLower())
                 {
                     currentSelectListItem.Selected = true;
                 }
