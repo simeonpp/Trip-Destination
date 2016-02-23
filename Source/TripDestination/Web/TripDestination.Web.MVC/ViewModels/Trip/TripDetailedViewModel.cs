@@ -128,21 +128,28 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Trip, TripDetailedViewModel>("Passengers")
-                .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers
-                                                                        .Where(p => p.Approved == true && p.IsDeleted == false)));
+                .ForMember(x => x.Passengers, opt => opt.MapFrom(x => x.Passengers.Any() ? 
+                                                                    x.Passengers.Where(p => p.Approved == true && p.IsDeleted == false)
+                                                                    :
+                                                                    new List<PassengerTrip>()));
 
             configuration.CreateMap<Trip, TripDetailedViewModel>("Comments")
-                .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
-                                                                        .Where(c => c.IsDeleted == false)
-                                                                        .OrderByDescending(c => c.CreatedOn)
-                                                                        .Take(WebApplicationConstants.CommentsOfset)));
+                .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments.Any() ?
+                                                                    x.Comments
+                                                                    .Where(c => c.IsDeleted == false)
+                                                                    .OrderByDescending(c => c.CreatedOn)
+                                                                    .Take(WebApplicationConstants.CommentsOfset)
+                                                                    :
+                                                                    new List<TripComment>()));
 
             configuration.CreateMap<Trip, TripDetailedViewModel>("PendingApprovePassengers")
-                .ForMember(x => x.PendingApprovePassengers, opt => opt.MapFrom(x => x.Passengers
-                                                                        .Where(p => p.Approved == false && p.IsDeleted == false)));
+                .ForMember(x => x.PendingApprovePassengers, opt => opt.MapFrom(x => x.Passengers.Any() ? 
+                                                                    x.Passengers.Where(p => p.Approved == false && p.IsDeleted == false)
+                                                                    :
+                                                                    new List<PassengerTrip>()));
 
             configuration.CreateMap<Trip, TripDetailedViewModel>("ViewsCount")
-                .ForMember(x => x.ViewsCount, opt => opt.MapFrom(x => x.Views.Count()));
+                .ForMember(x => x.ViewsCount, opt => opt.MapFrom(x => x.Views.Any() ? x.Views.Count() : 0));
         }
     }
 }

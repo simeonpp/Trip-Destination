@@ -23,9 +23,10 @@
     {
         public const int DefaultItemsPerPage = 9;
 
-        public TripController(ITripServices tripServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, INotificationServices notificationServices)
+        public TripController(ITripServices tripServices, IRatingServices ratingServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, INotificationServices notificationServices)
         {
             this.TripServices = tripServices;
+            this.RatingServices = ratingServices;
             this.StatisticsServices = statisticsServices;
             this.ViewServices = viewServices;
             this.TownProvider = townProvider;
@@ -35,6 +36,8 @@
         }
 
         public ITripServices TripServices { get; set; }
+
+        public IRatingServices RatingServices { get; set; }
 
         public ITownProvider TownProvider { get; set; }
 
@@ -94,7 +97,7 @@
                 string.Format(NotificationConstants.CloseTripDriverRequestFormat, serviceResponceTrip.FromId, serviceResponceTrip.ToId, serviceResponceTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
                 NotificationKey.FinishTripDriverRequest,
                 serviceResponceTrip.DateOfLeaving.AddDays(NotificationConstants.CloseTripDriverRequestAvaialableDaysAfterTripFinished),
-                serviceResponceTrip.DateOfLeaving);
+                serviceResponceTrip.ETA);
 
             return this.RedirectToRoute("TripDetails", new { id = serviceResponceTrip.Id });
         }
@@ -322,11 +325,17 @@
 
             if (trip.DriverId == userId)
             {
+                foreach (var passengerRating in model.PassengerRatings)
+                {
+                    this.RatingServices.RateUser(passengerRating.Item1, userId, passengerRating.Item2);
+                }
 
+                this.TempData[WebApplicationConstants.TempDataMessageKey] = "You have succesfully rate your passengers.";
             }
             else
             {
-
+                this.RatingServices.RateUser(trip.DriverId, userId, model.DriverRating);
+                this.TempData[WebApplicationConstants.TempDataMessageKey] = "You have succesfully rate this driver.";
             }
 
             return this.RedirectToAction("Details", new { id = model.TripId }); ;

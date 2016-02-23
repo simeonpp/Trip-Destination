@@ -8,8 +8,8 @@ namespace TripDestination.Web.MVC
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            RegisterBundles(bundles);
             RegisterScripts(bundles);
+            RegisterStyles(bundles);
 
             // BundleTable.EnableOptimizations = true;
         }
@@ -77,7 +77,7 @@ namespace TripDestination.Web.MVC
                 "~/Assets/javascript/lib/urijs/src/URI.min.js"));
         }
 
-        private void RegisterStyles(BundleCollection bundles)
+        private static void RegisterStyles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

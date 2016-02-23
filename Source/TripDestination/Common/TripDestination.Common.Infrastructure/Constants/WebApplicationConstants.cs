@@ -22,6 +22,8 @@
 
         public const int MaxItemsPerPage = 24;
 
+        public const string TempDataMessageKey = "TempDataMessageKey";
+
         // Ordering
         private static Dictionary<string, string> orderTripOptions = new Dictionary<string, string>()
         {

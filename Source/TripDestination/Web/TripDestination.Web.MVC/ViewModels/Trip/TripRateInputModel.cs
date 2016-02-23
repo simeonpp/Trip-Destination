@@ -12,8 +12,8 @@
 
         public IEnumerable<BaseUserViewModel> Passengers { get; set; }
 
-        public double DriverRating { get; set; }
+        public int DriverRating { get; set; }
 
-        public IEnumerable<Tuple<string, double>> PassengerRatings { get; set; }
+        public IEnumerable<Tuple<string, int>> PassengerRatings { get; set; }
     }
 }

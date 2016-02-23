@@ -1,0 +1,25 @@
+﻿@model TripRateInputModel
+
+@{
+    ViewBag.Title = "Trip edit";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+
+    @Html.AntiForgeryToken();
+
+    @if (Model.CurrentUserIsDriver)
+    {
+        foreach(var passenger in Model.Passengers)
+        {
+
+        }
+    }
+    else
+    {
+        @Html.EditorFor(m => m.DriverRating);
+    }
+}

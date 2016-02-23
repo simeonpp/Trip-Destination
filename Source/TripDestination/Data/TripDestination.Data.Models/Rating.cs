@@ -6,15 +6,13 @@
 
     public class Rating : BaseModel<int>
     {
-        [Required]
-        public int TripId { get; set; }
+        public string FromUserId { get; set; }
 
-        public Trip Trip { get; set; }
+        public User FromUser { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
+        public string RatedUserId { get; set; }
 
-        public User User { get; set; }
+        public User RatedUser { get; set; }
 
         [Required]
         [Range(ModelConstants.RatingValueMin, ModelConstants.RatingValueMax, ErrorMessage = "Rating must be between 0.0 and 5.0.")]

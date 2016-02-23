@@ -334,6 +334,7 @@
     <Compile Include="ViewModels\Trip\TripEditInputModel.cs" />
     <Compile Include="ViewModels\Trip\TripInputVIewModel.cs" />
     <Compile Include="ViewModels\Trip\TripLstViewModel.cs" />
+    <Compile Include="ViewModels\Trip\TripRateInputModel.cs" />
     <Compile Include="ViewModels\Trip\TripViewModel.cs" />
     <Compile Include="ViewModels\Trip\WeekDayViewModel.cs" />
     <Compile Include="Views\Trip\TripSearchInputModel.cs" />
@@ -941,6 +942,7 @@
     <Content Include="Views\Home\_CoverPartial.cshtml" />
     <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Trip\_PassengerJoinedtPartial.cshtml" />
+    <Content Include="Views\Trip\Rate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

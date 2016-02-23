@@ -9,7 +9,7 @@
     using Services.Data.Contracts;
     using Microsoft.AspNet.Identity;
     using System.Web.Mvc.Filters;
-
+    using Common.Infrastructure.Constants;
     public abstract class BaseController : Controller
     {
         // Need to be public, otherwise Autofac will no be able to autowire it
@@ -24,7 +24,7 @@
 
         protected IMapper Mapper { get; private set; }
 
-        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        protected override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (this.User.Identity.IsAuthenticated)
             {
@@ -35,8 +35,9 @@
             this.Mapper = AutoMapperConfig.Mapper;
 
             this.ViewData["cookiePolicySeen"] = this.Request.Cookies.Get("cookiePolicySeen") == null ? false : true;
+            this.ViewData["messages"] = this.TempData[WebApplicationConstants.TempDataMessageKey];
 
-            base.OnActionExecuted(filterContext);
+            base.OnAuthorization(filterContext);
         }
     }
 }

@@ -15,6 +15,7 @@
         public static void UpdateNotify(BaseSignalRModel model)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+
             foreach (var userNotificationCounts in model.UsersNotificationCounts)
             {
                 string userId = userNotificationCounts.Item1;

@@ -12,7 +12,7 @@
         {
             get
             {
-                return string.IsNullOrEmpty(this.Url);
+                return !string.IsNullOrEmpty(this.Url);
             }
         }
     }
