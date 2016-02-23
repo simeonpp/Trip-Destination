@@ -504,8 +504,8 @@
                 PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
                 FirstName = passengerTrip.User.FirstName,
                 LastName = passengerTrip.User.LastName,
-                ImageSrc = "http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg", // TODO: Implement imageSrc
-                UserProfileLink = "www.google.com", // TODO: Implement URL
+                ImageSrc = ServicesDataProvider.GetProfileUrl(passengerTrip.User.UserName, passengerTrip.User.FirstName, passengerTrip.User.LastName),
+                UserProfileLink = ServicesDataProvider.GetUserImageSmallUrl(passengerTrip.User.Avatar.FileName)
             };
             response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
 
