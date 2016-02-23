@@ -3,10 +3,10 @@
     using System.Linq;
     using TripDestination.Data.Models;
 
-    public interface IPhotoServices
+    public interface IPassengerTripServices
     {
-        Photo GetByFileName(string fileName);
+        IQueryable<PassengerTrip> GetAll();
 
-        IQueryable<Photo> GetAll();
+        void Delete(int id);
     }
 }

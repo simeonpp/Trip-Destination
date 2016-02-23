@@ -19,7 +19,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<UserComment, UserCommentsAdminViewModel>("Author")
+            configuration.CreateMap<TripComment, TripCommentAdminViewModel>("Author")
                 .ForMember(x => x.Author, opt => opt.MapFrom(x => x.Author.UserName));
         }
     }

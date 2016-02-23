@@ -1,16 +1,17 @@
 ﻿<div class="adminKendoTableWrap">
 
-    <h1>Trip comments administration</h1>
+    <h1>Photo administration</h1>
 
-    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.TripCommentAdminViewModel>()
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PhotosAdminViewModel>()
           .Name("grid")
           .Columns(columns =>
           {
-              columns.Bound(c => c.TripId);
-              columns.Bound(c => c.Author);
-              columns.Bound(c => c.Text);
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.ContentType);
+              columns.Bound(c => c.FileName);
+              columns.Bound(c => c.OriginalName);
+              columns.Bound(c => c.SizeInBytes);
               columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
-              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
           })
           .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Pageable()
@@ -23,9 +24,8 @@
           .DataSource(dataSource => dataSource
               .Ajax()
               .Model(model => model.Id(p => p.Id))
-              .Read(read => read.Action("TripComments_Read", "TripCommentAdmin"))
-              .Update(update => update.Action("Trip_Update", "TripCommentAdmin"))
-              .Destroy(destroy => destroy.Action("Trip_Destroy", "TripCommentAdmin"))
+              .Read(read => read.Action("Photo_Read", "PhotosAdmin"))
           )
     )
+
 </div>

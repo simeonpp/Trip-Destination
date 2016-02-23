@@ -69,6 +69,7 @@
     <Compile Include="Contracts\IContactFormServices.cs" />
     <Compile Include="Contracts\INewsletterServices.cs" />
     <Compile Include="Contracts\INotificationServices.cs" />
+    <Compile Include="Contracts\IPassengerTripServices.cs" />
     <Compile Include="Contracts\ITripCommentServices.cs" />
     <Compile Include="Contracts\ITripNotificationServices.cs" />
     <Compile Include="Contracts\IPageParagraphServices.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Models\NotificationAvailableActionModel.cs" />
     <Compile Include="NewsletterServices.cs" />
     <Compile Include="NotificationServices.cs" />
+    <Compile Include="PassengerTripServices.cs" />
     <Compile Include="TripCommentServices.cs" />
     <Compile Include="TripNotificationServices.cs" />
     <Compile Include="PageParagraphServices.cs" />

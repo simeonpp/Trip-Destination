@@ -4,6 +4,7 @@
     using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
+    using System;
 
     public class PhotoServices : IPhotoServices
     {
@@ -12,6 +13,11 @@
         public PhotoServices(IDbGenericRepository<Photo, int> photoRepos)
         {
             this.photoRepos = photoRepos;
+        }
+
+        public IQueryable<Photo> GetAll()
+        {
+            return this.photoRepos.All();
         }
 
         public Photo GetByFileName(string fileName)
