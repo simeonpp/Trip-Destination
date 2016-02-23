@@ -81,7 +81,7 @@
         public const int NotificationTypeDescriptionMaxLength = 500;
 
         // Page
-        public const int PageHeadingMinLength = 5;
+        public const int PageHeadingMinLength = 3;
         public const int PageHeadingMaxLength = 50;
 
         public const int PageSubHeadingMinLength = 5;

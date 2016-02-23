@@ -55,6 +55,7 @@
         public string Heading { get; set; }
 
         [Required]
+        [AllowHtml]
         [DataType(DataType.MultilineText)]
         [MinLength(ModelConstants.PageParagraphTextMinLength, ErrorMessage = "Page paragraph text can no be less than 5 symbols long.")]
         [MaxLength(ModelConstants.PageParagraphTextMaxLength, ErrorMessage = "Page paragraph text can no be more than 50 symbols long.")]
@@ -64,6 +65,7 @@
         [MaxLength(ModelConstants.PageParagraphHeadingMaxLength, ErrorMessage = "Page paragraph additional heading can no be more than 50 symbols long.")]
         public string AdditionalHeading { get; set; }
 
+        [AllowHtml]
         [MinLength(ModelConstants.PageParagraphTextMinLength, ErrorMessage = "Page paragraph additional text can no be less than 5 symbols long.")]
         [MaxLength(ModelConstants.PageParagraphTextMaxLength, ErrorMessage = "Page paragraph additional text can no be more than 50 symbols long.")]
         public string AdditionalText { get; set; }
