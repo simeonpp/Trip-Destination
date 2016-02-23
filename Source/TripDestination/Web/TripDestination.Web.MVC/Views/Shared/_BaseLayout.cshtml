@@ -16,16 +16,16 @@
 <body>
     @RenderBody()
 
-    @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
-
-    if (!this.ViewData["cookiePolicySeen"])
+    @*@if (!this.ViewData["cookiePolicySeen"])
     {
         <div id="cookiePolicyBox">
             <a href="@Url.Action("Index", "CookiePolicy")">
                 This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. Find out more.
             </a>
         </div>
-    }
+    }*@
+
+    @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
 
     @Scripts.Render("~/bundles/site-libs")
     @Scripts.Render("~/bundles/site")

@@ -832,7 +832,7 @@ ul.passengersUl li .lastName {
 #likeNotLikeButtonsWrap .dislikeButton {
   width: 83px;
   height: 36px;
-  background-color: #ffc0cb;
+  background-image: url("../Assets/images/dislike-button.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
