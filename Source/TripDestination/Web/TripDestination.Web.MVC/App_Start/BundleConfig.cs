@@ -8,24 +8,26 @@ namespace TripDestination.Web.MVC
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            RegisterBundles(bundles);
+            RegisterScripts(bundles);
+
+            // BundleTable.EnableOptimizations = true;
+        }
+
+        private static void RegisterScripts(BundleCollection bundles)
+        {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Assets/javascript/lib/toastr/toastr.min.css",
-                      "~/Content/reset.css",
-                      "~/Content/site.css"));
-
-             // Common
-             bundles.Add(new ScriptBundle("~/bundles/site-libs").Include(
-                 "~/Scripts/bootstrap.js",
-                 "~/Scripts/respond.js",
-                "~/Assets/javascript/lib/toastr/toastr.min.js",
-                "~/Assets/javascript/lib/handlebars/handlebars.min.js"));
+            // Common
+            bundles.Add(new ScriptBundle("~/bundles/site-libs").Include(
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/respond.js",
+               "~/Assets/javascript/lib/toastr/toastr.min.js",
+               "~/Assets/javascript/lib/handlebars/handlebars.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                 "~/Assets/javascript/src/common/newsletter-subscriber.js",
@@ -61,10 +63,6 @@ namespace TripDestination.Web.MVC
                 "~/Scripts/Kendo/kendo.all.min.js",
                 "~/Scripts/Kendo/kendo.aspnetmvc.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/kendo-css").Include(
-                      "~/Content/Kendo/kendo.common.min.css",
-                      "~/Content/Kendo/kendo.default.min.css"));
-
             bundles.Add(new ScriptBundle("~/bundles/trip-list").Include(
                 "~/Assets/javascript/src/once/trip-list.js"));
 
@@ -77,8 +75,19 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/pagination").Include(
                 "~/Assets/javascript/src/once/pagination.js",
                 "~/Assets/javascript/lib/urijs/src/URI.min.js"));
+        }
 
-            // BundleTable.EnableOptimizations = true;
+        private void RegisterStyles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Assets/javascript/lib/toastr/toastr.min.css",
+                      "~/Content/reset.css",
+                      "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo-css").Include(
+                      "~/Content/Kendo/kendo.common.min.css",
+                      "~/Content/Kendo/kendo.default.min.css"));
         }
     }
 }
