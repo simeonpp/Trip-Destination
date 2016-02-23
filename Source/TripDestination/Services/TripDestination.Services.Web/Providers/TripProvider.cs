@@ -106,5 +106,12 @@
 
             return leftAvailableSeatsSelectList;
         }
+
+        public bool UserCanRateTrip(Trip trip, string userId)
+        {
+            bool result = trip.Status == TripStatus.Finished
+                && (trip.DriverId == userId || trip.Passengers.Any(p => p.UserId == userId));
+            return result;
+        }
     }
 }

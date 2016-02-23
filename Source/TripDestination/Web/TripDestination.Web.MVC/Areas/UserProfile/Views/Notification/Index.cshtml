@@ -43,6 +43,11 @@
                                                 Disapprove
                                             </div>
                                         }
+
+                                        @if (notification.ActionModel.HasUrlAction)
+                                        { 
+                                            <a href="@notification.ActionModel.Url">Link</a>
+                                        }
                                     </td>
                                 </tr>
                             }

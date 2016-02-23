@@ -275,6 +275,63 @@
             return this.RedirectToAction("List");
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult Rate(int tripId)
+        {
+            string userId = this.User.Identity.GetUserId();
+            Trip trip = this.TripServices.GetById(tripId);
+            bool userCanRate = this.TripProvider.UserCanRateTrip(trip, userId);
+
+            if (!userCanRate)
+            {
+                return this.RedirectToRoute("/");
+            }
+
+            var viewModel = new TripRateInputModel()
+            {
+                TripId = tripId,
+                CurrentUserIsDriver = trip.DriverId == userId
+            };
+
+            var passengers = trip.Passengers.Select(p => p.User);
+            var mapperdPassnegers = passengers.AsQueryable().To<BaseUserViewModel>().ToList();
+            viewModel.Passengers = mapperdPassnegers;
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rate(TripRateInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            string userId = this.User.Identity.GetUserId();
+            Trip trip = this.TripServices.GetById(model.TripId);
+            bool userCanRate = this.TripProvider.UserCanRateTrip(trip, userId);
+
+            if (!userCanRate)
+            {
+                return this.RedirectToRoute("/");
+            }
+
+            if (trip.DriverId == userId)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            return this.RedirectToAction("Details", new { id = model.TripId }); ;
+        }
+
         private void FillRequiredListInformation(TripLstViewModel viewModel)
         {
             // viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
