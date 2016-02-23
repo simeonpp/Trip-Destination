@@ -11,6 +11,7 @@
               columns.Bound(c => c.Username);
               columns.Bound(c => c.Approved);
               columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+              columns.Command(command => { command.Destroy(); }).Width(180);
           })
           .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Pageable()
