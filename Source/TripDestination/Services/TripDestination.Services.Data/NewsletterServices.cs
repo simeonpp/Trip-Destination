@@ -5,6 +5,7 @@
     using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
+    using System;
 
     public class NewsletterServices : INewsletterServices
     {
@@ -44,6 +45,32 @@
             }
 
             return responseData;
+        }
+
+        public void Delete(int id)
+        {
+            var newsletter = this.GetById(id);
+
+            if (newsletter == null)
+            {
+                throw new Exception("Newsletter not found.");
+            }
+
+            this.newsletterRepos.Delete(newsletter);
+            this.newsletterRepos.Save();
+        }
+
+        public IQueryable<Newsletter> GetAll()
+        {
+            return this.newsletterRepos.All();
+        }
+
+        private Newsletter GetById(int id)
+        {
+            return this.newsletterRepos
+                .All()
+                .Where(n => n.Id == id)
+                .FirstOrDefault();
         }
     }
 }

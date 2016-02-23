@@ -1,11 +1,13 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
-    using Common.Infrastructure.Models;
     using System.Linq;
+    using Common.Infrastructure.Models;
     using TripDestination.Data.Models;
 
     public interface ITripNotificationServices
     {
+        IQueryable<TripNotification> GetAll();
+
         TripNotification GetById(int id);
 
         IQueryable<Notification> GetForUser(string userId);

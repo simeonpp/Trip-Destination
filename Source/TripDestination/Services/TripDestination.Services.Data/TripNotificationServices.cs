@@ -142,5 +142,10 @@
 
             return response;
         }
+
+        public IQueryable<TripNotification> GetAll()
+        {
+            return this.tripNotificationRepos.All();
+        }
     }
 }

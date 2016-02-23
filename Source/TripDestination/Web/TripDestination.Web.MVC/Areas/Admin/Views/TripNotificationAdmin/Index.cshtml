@@ -1,0 +1,33 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Notifications administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.TripNotificationAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.FromUserName);
+              columns.Bound(c => c.ForUserName);
+              columns.Bound(c => c.ActionHasBeenTaken);
+              columns.Bound(c => c.Seen);
+              columns.Bound(c => c.Title);
+              columns.Bound(c => c.Message);
+              columns.Bound(c => c.TripId);
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("TripNotification_Read", "TripNotificationAdmin"))
+          )
+    )
+
+</div>

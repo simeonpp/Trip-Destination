@@ -1,0 +1,32 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Page paragraphs administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.NewsletterAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.Email);
+              columns.Bound(c => c.Ip);
+              columns.Bound(c => c.UserAgent);
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+              columns.Command(command => { command.Destroy(); }).Width(180);
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("Newsletter_Read", "NewsletterAdmin"))
+              .Destroy(destroy => destroy.Action("Newsletter_Destroy", "NewsletterAdmin"))
+          )
+    )
+
+</div>
