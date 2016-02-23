@@ -1,0 +1,33 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Likes administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.LikeAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.TripId);
+              columns.Bound(c => c.UserName);
+              columns.Bound(c => c.Value);
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("Likes_Read", "TripLikeAdmin"))
+              .Update(update => update.Action("Like_Update", "TripLikeAdmin"))
+              .Destroy(destroy => destroy.Action("Like_Destroy", "TripLikeAdmin"))
+          )
+    )
+
+</div>

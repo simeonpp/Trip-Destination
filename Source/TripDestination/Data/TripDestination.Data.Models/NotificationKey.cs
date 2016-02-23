@@ -2,11 +2,6 @@
 {
     public enum NotificationKey
     {
-        // Code 1 - User related
-        AdminRoleRequest = 11,
-        ApprovelAdminRequest = 12,
-        RejectAdminRequest = 13,
-
         // Code 2 - Trip related
         JoinTripRequest = 21,
         JoinTripApproved = 22,

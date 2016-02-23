@@ -1,0 +1,38 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Users administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.UsersAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.Username);
+              columns.Bound(c => c.FirstName);
+              columns.Bound(c => c.LastName);
+              columns.Bound(c => c.Email);
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          })
+          .ToolBar(toolbar =>
+          {
+              toolbar.Create()
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("Users_Read", "UsersAdmin"))
+              .Create(create => create.Action("Users_CreateAdmin", "UsersAdmin"))
+              .Update(update => update.Action("Users_Update", "UsersAdmin"))
+              .Destroy(destroy => destroy.Action("Users_Destroy", "UsersAdmin"))
+          )
+    )
+
+</div>

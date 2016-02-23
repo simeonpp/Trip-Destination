@@ -8,6 +8,14 @@
     {
         User GetById(string id);
 
+        IQueryable<User> GetAll();
+
+        User CreateAdmin(string username, string email, string password, string firstName, string lastName);
+
+        User Edit(string userId, string email, string firstName, string lastName);
+
+        void Delete(string userID);
+
         User GetByUsername(string username);
 
         string[] GetUserRoles(string id);

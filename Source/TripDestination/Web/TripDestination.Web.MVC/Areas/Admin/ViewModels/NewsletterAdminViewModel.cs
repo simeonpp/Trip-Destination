@@ -3,10 +3,9 @@
     using Common.Infrastructure.Mapping;
     using Data.Models;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using System.Web.Mvc;
 
+    [Bind(Exclude = "CreatedOn")]
     public class NewsletterAdminViewModel : IMapFrom<Newsletter>
     {
         public int Id { get; set; }

@@ -205,5 +205,54 @@
 
             return commentForUserCount;
         }
+
+        public IQueryable<User> GetAll()
+        {
+            return this.userRepos.All();
+        }
+
+        public User CreateAdmin(string username, string email, string password, string firstName, string lastName)
+        {
+            var user = new User
+            {
+                UserName = username,
+                Email = email,
+                FirstName = firstName,
+                LastName = lastName
+            };
+
+            var userManager = new UserManager<User>(new UserStore<User>(new TripDestinationDbContext()));
+            userManager.Create(user, password);
+            userManager.AddToRole(user.Id, RoleConstants.AdminRole);
+            return user;
+        }
+
+        public User Edit(string userId, string email, string password, string firstName, string lastName)
+        {
+            var user = this.GetById(userId);
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            user.Email = email;
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            return user;
+        }
+
+        public void Delete(string userID)
+        {
+            var user = this.GetById(userID);
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            this.userRepos.Delete(user);
+            this.userRepos.Save();
+        }
     }
 }
