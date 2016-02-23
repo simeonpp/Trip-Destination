@@ -67,8 +67,10 @@
     <Compile Include="ContactFormServices.cs" />
     <Compile Include="Contracts\ICarServices.cs" />
     <Compile Include="Contracts\IContactFormServices.cs" />
+    <Compile Include="Contracts\ILikeServices.cs" />
     <Compile Include="Contracts\INewsletterServices.cs" />
     <Compile Include="Contracts\INotificationServices.cs" />
+    <Compile Include="Contracts\INotificationTypeServices.cs" />
     <Compile Include="Contracts\IPassengerTripServices.cs" />
     <Compile Include="Contracts\ITripCommentServices.cs" />
     <Compile Include="Contracts\ITripNotificationServices.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Contracts\IUserCommentServices.cs" />
     <Compile Include="Contracts\IUserServices.cs" />
     <Compile Include="Contracts\IViewServices.cs" />
+    <Compile Include="LikeServices.cs" />
     <Compile Include="Models\ApprovedJoinRequestResponseModel.cs" />
     <Compile Include="Models\CommentResponseModel.cs" />
     <Compile Include="Models\LeftTripResponseModel.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Models\NotificationAvailableActionModel.cs" />
     <Compile Include="NewsletterServices.cs" />
     <Compile Include="NotificationServices.cs" />
+    <Compile Include="NotificationTypeServices.cs" />
     <Compile Include="PassengerTripServices.cs" />
     <Compile Include="TripCommentServices.cs" />
     <Compile Include="TripNotificationServices.cs" />

@@ -8,6 +8,7 @@
     using Services.Web.Services.Contracts;
     using Services.Data.Contracts;
     using Microsoft.AspNet.Identity;
+    using System.Web.Mvc.Filters;
 
     public abstract class BaseController : Controller
     {
@@ -23,7 +24,7 @@
 
         protected IMapper Mapper { get; private set; }
 
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             if (this.User.Identity.IsAuthenticated)
             {
@@ -35,7 +36,7 @@
 
             this.ViewData["cookiePolicySeen"] = this.Request.Cookies.Get("cookiePolicySeen") == null ? false : true;
 
-            base.OnActionExecuting(filterContext);
+            base.OnActionExecuted(filterContext);
         }
     }
 }

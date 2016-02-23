@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - Trip Desstination</title>
     @RenderSection("baseStyles", required: false)
     @Styles.Render("~/Content/kendo-css")
-    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/css")*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendo")
@@ -16,14 +16,16 @@
 <body>
     @RenderBody()
 
-    @*@if (!this.ViewData["cookiePolicySeen"])
-    {
-        <div id="cookiePolicyBox">
-            <a href="@Url.Action("Index", "CookiePolicy")">
-                This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. Find out more.
-            </a>
-        </div>
-    }*@
+    <text>
+        @if (!(bool)this.ViewData["cookiePolicySeen"])
+        {
+            <div id="cookiePolicyBox">
+                <a href="@Url.Action("Index", "CookiePolicy")">
+                    This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. Find out more.
+                </a>
+            </div>
+        }
+    </text>
 
     @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
 

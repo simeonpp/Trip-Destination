@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.Controllers
 {
+    using Common.Infrastructure.Constants;
     using System;
     using System.Web;
     using System.Web.Mvc;
@@ -8,10 +9,10 @@
     {
         public ActionResult Index()
         {
-            HttpCookie cookiePolicySeen = new HttpCookie("cookiePolicySeen");
-            cookiePolicySeen.Value = "true";
-            cookiePolicySeen.Expires = DateTime.Now.AddDays(10);
-            this.Response.Cookies.Add(cookiePolicySeen);
+            HttpCookie cookiePolicy = new HttpCookie(WebApplicationConstants.CookiePolicyCookieKey);
+            cookiePolicy[WebApplicationConstants.CookiePolicyCookieKey] = "true";
+            cookiePolicy.Expires = DateTime.Now.AddDays(5);
+            this.HttpContext.Response.Cookies.Add(cookiePolicy);
             return this.View();
         }
     }

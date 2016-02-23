@@ -18,6 +18,8 @@
         public const string ImageFolder = "~/App_Data/uploads";
         public const string ImageRouteUrl = "Media/Image";
 
+        public const string CookiePolicyCookieKey = "cookiePolicySeen";
+
         public const int MaxItemsPerPage = 24;
 
         // Ordering

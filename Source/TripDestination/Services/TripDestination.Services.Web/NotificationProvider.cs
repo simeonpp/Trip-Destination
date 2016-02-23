@@ -27,12 +27,6 @@
             {
                 switch (key)
                 {
-                    case NotificationKey.AdminRoleRequest:
-                        break;
-                    case NotificationKey.ApprovelAdminRequest:
-                        break;
-                    case NotificationKey.RejectAdminRequest:
-                        break;
                     case NotificationKey.JoinTripRequest:
                         bool tripRequestIsRejected = this.tripServices.CheckIfUserHasPendingRequest(tripId, userId);
                         if (tripRequestIsRejected)

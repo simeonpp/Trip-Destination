@@ -227,7 +227,20 @@
             return user;
         }
 
-        public User Edit(string userId, string email, string password, string firstName, string lastName)
+        public void Delete(string userID)
+        {
+            var user = this.GetById(userID);
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            this.userRepos.Delete(user);
+            this.userRepos.Save();
+        }
+
+        public User Edit(string userId, string email, string firstName, string lastName)
         {
             var user = this.GetById(userId);
 
@@ -240,19 +253,6 @@
             user.FirstName = firstName;
             user.LastName = lastName;
             return user;
-        }
-
-        public void Delete(string userID)
-        {
-            var user = this.GetById(userID);
-
-            if (user == null)
-            {
-                throw new Exception("User not found.");
-            }
-
-            this.userRepos.Delete(user);
-            this.userRepos.Save();
         }
     }
 }
