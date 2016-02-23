@@ -13,10 +13,19 @@
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs" type="text/javascript"></script>
 </head>
-<body>    
+<body>
     @RenderBody()
 
     @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
+
+    @if (this.ViewData["cookiePolicySeen"] != null)
+    {
+        <div id="cookiePolicyBox">
+            <a href="@Url.Action("Index", "CookiePolicy")">
+                This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. Find out more.
+            </a>
+        </div>
+    }
 
     @Scripts.Render("~/bundles/site-libs")
     @Scripts.Render("~/bundles/site")

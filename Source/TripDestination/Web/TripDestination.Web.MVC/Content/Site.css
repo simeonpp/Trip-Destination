@@ -1531,6 +1531,17 @@ footer #footerWrap #logoFooterWrap {
 footer #footerWrap #logoFooterWrap img {
   width: 100%;
 }
-div.k-edit-form-container {
+#cookiePolicyBox {
+  background: rgba(255,255,255,0.6);
+  color: #000;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#cookiePolicyBox div.k-edit-form-container {
   width: auto;
 }
