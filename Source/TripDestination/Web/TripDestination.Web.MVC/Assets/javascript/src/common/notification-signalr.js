@@ -2,15 +2,15 @@
 
     $.connection.hub.start();
 
-    var notificationSignalR = $.connection.notification;
+    var chat = $.connection.notificationHub;
 
-    $('#koleda').click(function () {
-        notificationSignalR.server.joinRoom(msg);
+    $('#send-message').click(function () {
+        chat.server.sendMessage("asd");
     });
 
-    notificationSignalR.client.notificationUpdate = notificationUpdate;
+    chat.client.addMessage = addMessage;
 });
 
-function notificationUpdate(data) {
-    console.log(data);
+function addMessage(data) {
+    $('#notificationsCount').text(data.NotificationCount);
 }

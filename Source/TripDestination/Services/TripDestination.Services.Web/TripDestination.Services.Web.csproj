@@ -97,6 +97,8 @@
     <Compile Include="Providers\RoleProvider.cs" />
     <Compile Include="Providers\TownProvider.cs" />
     <Compile Include="Providers\TripProvider.cs" />
+    <Compile Include="Services\ConnectionMapping.cs" />
+    <Compile Include="Services\Contracts\IConnectionMapping.cs" />
     <Compile Include="Services\Contracts\IImageProccessorServices.cs" />
     <Compile Include="Services\HttpCacheServices.cs" />
     <Compile Include="Services\Contracts\ICacheServices.cs" />

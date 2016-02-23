@@ -16,6 +16,8 @@
     using System.Net.Http;
     using System.Web.Script.Serialization;
     using Common.Infrastructure.Constants;
+    using Hubs;
+    using Common.Infrastructure.Models;
     public class TripController : BaseController
     {
         public const int DefaultItemsPerPage = 9;
@@ -203,6 +205,8 @@
                 viewModel.CurrentUserLikedTrip = this.TripServices.CheckIfUserLikedTrip(trip, userId);
                 viewModel.LikesCount = this.TripServices.GetLikesCount(trip);
             }
+
+            NotificationHub.UpdateNotify(new BaseSignalRModel() { NotificationCount = 5 });
 
             viewModel.DriverComments = this.UserServices.GetComments(trip.DriverId).To<BaseCommentViewModel>().ToList();
             return this.View(viewModel);
