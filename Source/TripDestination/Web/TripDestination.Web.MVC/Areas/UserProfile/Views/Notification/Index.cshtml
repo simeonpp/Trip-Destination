@@ -48,6 +48,13 @@
                             }
                         </tbody>
                     </table>
+
+                    <div id="paginatorWrap">
+                        @Html.Partial("_PaginationPartial", new ViewDataDictionary {
+                            { "TotalPages", Model.TotalPages },
+                            { "CurrentPage", Model.CurrentPage }
+                        })
+                    </div>
                 }
                 else
                 {

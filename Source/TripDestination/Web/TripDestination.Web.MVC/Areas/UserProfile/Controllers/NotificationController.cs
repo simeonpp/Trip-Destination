@@ -8,11 +8,13 @@
     using System.Linq;
     using System.Web.Mvc;
     using ViewModels;
-    using System.Linq;
     using Services.Web.Providers.Contracts;
+    using System;
     [Authorize]
     public class NotificationController : BaseController
     {
+        public const int DefaultItemsPerPage = 2;
+
         private readonly ITripNotificationServices tripNotificationServices;
 
         private readonly INotificationProvider notificationProvider;
@@ -27,15 +29,19 @@
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-
             string userId = this.User.Identity.GetUserId();
             var viewModel = new NotificationPageViewModel();
 
             var notification = this.tripNotificationServices.GetForUser(userId);
+            int allNotificationCount = notification.Count();
+            int totalPages = (int)Math.Ceiling(allNotificationCount / (double)DefaultItemsPerPage);
+            int notificationsToSkip = (page - 1) * DefaultItemsPerPage;
             viewModel.Notifications = notification
                 .To<NotificationTripViewModel>()
+                .Skip(notificationsToSkip)
+                .Take(DefaultItemsPerPage)
                 .ToList();
 
             foreach (var notif in viewModel.Notifications)
@@ -50,6 +56,9 @@
 
             var user = this.userSerives.GetById(userId);
             viewModel.User = this.Mapper.Map<BaseUserViewModel>(user);
+
+            viewModel.CurrentPage = page;
+            viewModel.TotalPages = totalPages;
 
             return this.View("~/Areas/UserProfile/Views/Notification/Index.cshtml", viewModel);
         }
