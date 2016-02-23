@@ -15,27 +15,26 @@
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="fr-group col-md-6 col-md-offset-3">
-                @Html.LabelFor(m => m.Username, new { @class = "col-md-12 control-label" })
-                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
 
-            <div class="fr-group col-md-6 col-md-offset-3">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-12 control-label" })
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            </div>
+                    <div class="fr-group col-md-12">
+                        @Html.LabelFor(m => m.Username, new { @class = "col-md-12" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    </div>
 
-            <div class="fr-group col-md-6 col-md-offset-3">
-                <div class="checkbox">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe)
+                    <div class="fr-group col-md-12">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-12" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+
+                    <div class="fr-group col-md-12">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+
                 </div>
-            </div>
-
-            <div class="fr-group col-md-6 col-md-offset-3">
-                <input type="submit" value="Log in" class="btn btn-default" />
             </div>
         }
 

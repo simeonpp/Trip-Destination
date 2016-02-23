@@ -1384,25 +1384,74 @@ table.tripsTable
 //=============================
 .loginRegWrap
   width 100%
+  margin-top 45px
 
   h2
     font-size 4em !important
-    margin 25px 0 35px !important
-	color #000000 !important 
+    margin 15px 0 35px !important
+    color #000000 !important
 
   form
     label
       width 100%
       display block
       color #555
-	  text-align left !important
+      text-align left !important
 
     input
       width 100%
-      padding 10% !important
+      margin-bottom 15px
+      padding 25px !important
       border 1px solid #ccc
       background white
       @extends .boxSizing
+
+    input[type="checkbox"]
+      padding 6px !important
+
+    input[type="submit"]
+      margin-top 20px
+      padding 15px !important
+
+  #registerNEwAccountWrap
+    a
+      display block
+      margin-top 10px
+      margin-bottom 40px
+      text-decoration underline
+      padding 10px 0
+      text-align center
+      @extends .boxSizing
+
+.registerRegWrap
+  width 100%
+  margin-top 45px
+
+  h2
+    font-size 2.5em !important
+    margin 15px 0 35px !important
+    color #000000 !important
+    text-align left
+
+  form
+    input
+      width 100%
+      margin-bottom 6px
+      padding 23px !important
+      border 1px solid #ccc
+      background white
+      @extends .boxSizing
+
+    input[type="file"]
+      padding 6px 12px !important
+
+    input[type="submit"]
+      margin-top 10px
+      padding 8px !important
+      background #d2322d !important
+      border-color #ac2925 !important
+      color white !important
+
 
 //=============================
 // FOOTER

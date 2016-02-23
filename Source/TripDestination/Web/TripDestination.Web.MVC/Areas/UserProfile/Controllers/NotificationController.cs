@@ -13,7 +13,7 @@
     [Authorize]
     public class NotificationController : BaseController
     {
-        public const int DefaultItemsPerPage = 2;
+        public const int DefaultItemsPerPage = 15;
 
         private readonly ITripNotificationServices tripNotificationServices;
 

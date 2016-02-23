@@ -68,14 +68,15 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/trip-list").Include(
                 "~/Assets/javascript/src/once/trip-list.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/uri-js").Include(
-                "~/Assets/javascript/lib/urijs/src/URI.min.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/homepage").Include(
                 "~/Assets/javascript/src/once/homepage.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/notifications").Include(
                 "~/Assets/javascript/src/once/notifications.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/pagination").Include(
+                "~/Assets/javascript/src/once/pagination.js",
+                "~/Assets/javascript/lib/urijs/src/URI.min.js"));
 
             // BundleTable.EnableOptimizations = true;
         }

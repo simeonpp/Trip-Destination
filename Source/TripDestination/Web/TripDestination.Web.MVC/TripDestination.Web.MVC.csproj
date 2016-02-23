@@ -670,6 +670,7 @@
     <Content Include="Assets\javascript\src\once\homepage.js" />
     <Content Include="Assets\javascript\src\once\load-more-comments.js" />
     <Content Include="Assets\javascript\src\once\notifications.js" />
+    <Content Include="Assets\javascript\src\once\pagination.js" />
     <Content Include="Assets\javascript\src\once\registration.js" />
     <Content Include="Assets\javascript\src\once\add-comment.js" />
     <Content Include="Assets\javascript\src\once\trip-detailed-approve-join-request.js" />
