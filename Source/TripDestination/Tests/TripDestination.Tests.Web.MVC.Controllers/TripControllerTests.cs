@@ -33,6 +33,8 @@
                     new SelectListItem { Text = 1.ToString(), Value = 1.ToString() }
                 });
 
+            var ratingServices = new Mock<IRatingServices>();
+
             var townProviderHelper = new Mock<ITownProvider>();
             townProviderHelper.Setup(x => x.GetTowns())
                 .Returns(new List<SelectListItem>()
@@ -81,6 +83,7 @@
             
             var tripController = new TripController(
                 tripServicesMock.Object,
+                ratingServices.Object,
                 townProviderHelper.Object,
                 statisticsServiceMock.Object,
                 viewServicesMock.Object,
