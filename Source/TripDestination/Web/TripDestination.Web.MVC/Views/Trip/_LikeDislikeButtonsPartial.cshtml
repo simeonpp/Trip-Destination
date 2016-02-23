@@ -5,28 +5,20 @@
 <div class="halfTableCell">
     <div id="likeNotLikeButtonsWrap">
 
-        <div id="likeDislikeTripButton" class="likeDislikeTripButton"
-             @if (CurrentUserLikedTrip)
-             {
-                 @:data-value="dislike"
-             }
-             else
-             {
-                 @:data-value="like"
-             }
-             >
+        @{
+            string className = CurrentUserLikedTrip ? "dislikeButton" : "likeButton";
+        }
 
-            @if (CurrentUserLikedTrip)
-            {
-                @:Dislike
-            }
-            else
-            {
-                @:Like
-            }
-
+        <div id="likeDislikeTripButton" class="@className"
+        @if (CurrentUserLikedTrip)
+        {
+            @: data-value="dislike"
+        }
+        else
+        {
+             @: data-value="like"
+        }>
         </div>
-        TOBEREMOVED
 
     </div>
 </div>

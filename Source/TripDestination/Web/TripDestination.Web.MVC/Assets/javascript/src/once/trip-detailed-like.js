@@ -46,12 +46,14 @@
     }
 
     function addDislikeButton() {
-        $likeDislikeTripButton.text('Dislike');
+        $likeDislikeTripButton.removeClass('likeButton');
+        $likeDislikeTripButton.addClass('dislikeButton');
         $likeDislikeTripButton.attr('data-value', 'dislike');
     }
 
     function addLikeButton() {
-        $likeDislikeTripButton.text('Like');
+        $likeDislikeTripButton.removeClass('dislikeButton');
+        $likeDislikeTripButton.addClass('likeButton');
         $likeDislikeTripButton.attr('data-value', 'like');
     }
 })

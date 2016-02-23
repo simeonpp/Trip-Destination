@@ -817,10 +817,22 @@ ul.passengersUl li .lastName {
   font-size: 1.2rem;
   line-height: 1.2rem;
 }
-.likeButton {
+#likeNotLikeButtonsWrap {
+  float: right;
+}
+#likeNotLikeButtonsWrap .likeButton {
   width: 83px;
   height: 36px;
   background-image: url("../Assets/images/like-button.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  cursor: pointer;
+}
+#likeNotLikeButtonsWrap .dislikeButton {
+  width: 83px;
+  height: 36px;
+  background-color: #ffc0cb;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
