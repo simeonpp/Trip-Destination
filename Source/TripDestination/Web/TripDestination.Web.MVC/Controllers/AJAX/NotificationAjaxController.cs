@@ -1,5 +1,6 @@
 ﻿namespace TripDestination.Web.MVC.Controllers.AJAX
 {
+    using Hubs;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
     using System.Web.Mvc;
@@ -20,6 +21,7 @@
         {
             string userId = this.User.Identity.GetUserId();
             var serviceReponse = this.tripNotificationServices.ApproveNotification(id, userId);
+            NotificationHub.UpdateNotify(serviceReponse.SignalRModel);
             return this.Json(serviceReponse);
         }
 
@@ -30,6 +32,7 @@
         {
             string userId = this.User.Identity.GetUserId();
             var serviceReponse = this.tripNotificationServices.DisapproveNotification(id, userId);
+            NotificationHub.UpdateNotify(serviceReponse.SignalRModel);
             return this.Json(serviceReponse);
         }
     }

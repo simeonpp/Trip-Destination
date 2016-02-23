@@ -213,6 +213,7 @@
     <Compile Include="Areas\Admin\Controllers\PageParagraphAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TownAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ViewAdminController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CarAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ContactFormAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\NewsletterAdminViewModel.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Areas\Admin\ViewModels\PageParagraphViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TownAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ViewAdminViewModel.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\NotificationController.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ProfileController.cs" />
@@ -789,6 +791,7 @@
     <Content Include="Areas\Admin\Views\PageParagraphAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\PageParagraphViewModel.cshtml" />
     <Content Include="Areas\UserProfile\Views\Notification\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\View\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

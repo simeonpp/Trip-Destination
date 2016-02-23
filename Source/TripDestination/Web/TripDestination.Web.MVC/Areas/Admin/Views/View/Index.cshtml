@@ -1,0 +1,34 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Views administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.ViewAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.TripId);
+              columns.Bound(c => c.Ip);
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}"); ;
+              columns.Command(command => { command.Destroy(); }).Width(180);
+          })
+          .ToolBar(toolbar =>
+          {
+              toolbar.Create();
+          })
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("View_Read", "ViewAdmin"))
+              .Destroy(destroy => destroy.Action("Views_Destroy", "ViewAdmin"))
+          )
+    )
+
+</div>

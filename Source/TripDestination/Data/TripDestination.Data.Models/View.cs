@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
     using TripDestination.Common.Infrastructure.Constants;
+
     public class View : BaseModel<int>
     {
         [Required]

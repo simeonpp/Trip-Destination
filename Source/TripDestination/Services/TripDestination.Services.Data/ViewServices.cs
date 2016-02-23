@@ -32,5 +32,27 @@
                 this.viewRepos.Save();
             }
         }
+
+        public void Delete(int id)
+        {
+            var view = this.viewRepos
+                .All()
+                .Where(v => v.Id == id)
+                .FirstOrDefault();
+
+            if (view == null)
+            {
+                throw new Exception("No such view.");
+            }
+
+            this.viewRepos.Delete(view);
+            this.viewRepos.Save();
+        }
+
+        public IQueryable<View> GetAll()
+        {
+            return this.viewRepos
+                .All();
+        }
     }
 }

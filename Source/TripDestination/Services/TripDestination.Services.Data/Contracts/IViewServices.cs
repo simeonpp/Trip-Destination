@@ -1,9 +1,14 @@
 ﻿namespace TripDestination.Services.Data.Contracts
 {
     using TripDestination.Data.Models;
+    using System.Linq;
 
     public interface IViewServices
     {
-        void AddView(Trip trip, string ip);
+        IQueryable<View> GetAll();
+
+        void AddView(Trip trip, string ip);        
+        
+        Delete(int id);
     }
 }
