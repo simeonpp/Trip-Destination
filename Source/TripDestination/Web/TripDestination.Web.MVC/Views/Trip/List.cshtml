@@ -1,5 +1,9 @@
 ﻿@model TripLstViewModel
 
+@{
+    ViewBag.Title = "Trip list";
+}
+
 @{ 
     string sortDirectionAscendingClass = Model.Sort == "ASC" ? "active" : string.Empty;
     string sortDirectionDescendingClass = Model.Sort == "ASC" ? string.Empty : "active";

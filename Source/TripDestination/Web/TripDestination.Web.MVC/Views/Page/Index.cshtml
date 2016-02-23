@@ -1,5 +1,9 @@
 ﻿@model TripDestination.Web.MVC.ViewModels.Page.PageViewModel
 
+@{
+    ViewBag.Title = Model.PageTitle;
+}
+
 @if (Model.Paragraphs.Count() > 0)
 {
     for(int i = 0; i < Model.Paragraphs.Count(); i++)

@@ -33,6 +33,7 @@
 
             PageViewModel videModel = new PageViewModel()
             {
+                PageTitle = page.Heading,
                 Paragraphs = paragraphs
             };
 

@@ -4,6 +4,8 @@
 
     public class PageViewModel
     {
+        public string PageTitle { get; set; }
+
         public List<PageParagraphViewModel> Paragraphs { get; set; }
     }
 }
