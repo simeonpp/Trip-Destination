@@ -3,11 +3,12 @@
     using Common.Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using MVC.Controllers;
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels;
 
-    public class UserCommentAdminController : Controller
+    public class UserCommentAdminController : BaseController
     {
         private readonly IUserCommentServices userCommentServices;
 

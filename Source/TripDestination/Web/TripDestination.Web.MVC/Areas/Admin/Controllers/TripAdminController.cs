@@ -6,8 +6,9 @@
     using Services.Data.Contracts;
     using Common.Infrastructure.Mapping;
     using ViewModels;
+    using MVC.Controllers;
 
-    public class TripAdminController : Controller
+    public class TripAdminController : BaseController
     {
         private readonly ITripServices tripServices;
 

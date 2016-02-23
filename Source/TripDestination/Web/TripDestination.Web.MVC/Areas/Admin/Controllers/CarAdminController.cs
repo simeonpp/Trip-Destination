@@ -8,8 +8,9 @@
     using Services.Data.Contracts;
     using TripDestination.Data.Models;
     using ViewModels;
+    using MVC.Controllers;
 
-    public class CarAdminController : Controller
+    public class CarAdminController : BaseController
     {
         private readonly ICarServices carServices;
 

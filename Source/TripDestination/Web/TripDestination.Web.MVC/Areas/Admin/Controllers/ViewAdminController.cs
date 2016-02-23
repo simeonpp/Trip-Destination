@@ -3,11 +3,12 @@
     using Common.Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using MVC.Controllers;
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels;
 
-    public class ViewAdminController : Controller
+    public class ViewAdminController : BaseController
     {
         private readonly IViewServices viewServices;
 

@@ -6,8 +6,9 @@
     using Kendo.Mvc.UI;
     using Services.Data.Contracts;
     using ViewModels;
+    using MVC.Controllers;
 
-    public class TripLikeAdminController : Controller
+    public class TripLikeAdminController : BaseController
     {
         private readonly ILikeServices likeServices;
 

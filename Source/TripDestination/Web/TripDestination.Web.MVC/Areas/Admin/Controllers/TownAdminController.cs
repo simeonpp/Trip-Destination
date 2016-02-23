@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-using TripDestination.Data.Models;
-using TripDestination.Services.Data.Contracts;
-using TripDestination.Common.Infrastructure.Mapping;
-using TripDestination.Web.MVC.Areas.Admin.ViewModels;
-
-namespace TripDestination.Web.MVC.Areas.Admin.Controllers
+﻿namespace TripDestination.Web.MVC.Areas.Admin.Controllers
 {
-    public class TownAdminController : Controller
+    using System.Web.Mvc;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using TripDestination.Services.Data.Contracts;
+    using TripDestination.Common.Infrastructure.Mapping;
+    using TripDestination.Web.MVC.Areas.Admin.ViewModels;
+    using TripDestination.Web.MVC.Controllers;
+
+    public class TownAdminController : BaseController
     {
         private readonly ITownsServices townServices;
 

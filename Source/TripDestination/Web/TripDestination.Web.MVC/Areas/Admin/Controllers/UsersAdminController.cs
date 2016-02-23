@@ -3,10 +3,12 @@
     using Common.Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using MVC.Controllers;
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels;
-    public class UsersAdminController : Controller
+
+    public class UsersAdminController : BaseController
     {
         private readonly IUserServices userServices;
 
