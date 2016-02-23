@@ -12,10 +12,6 @@
               columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
               columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
           })
-          .ToolBar(toolbar =>
-          {
-              toolbar.Create();
-          })
           .Editable(editable => editable.Mode(GridEditMode.PopUp))
           .Pageable()
           .Sortable(sortable =>

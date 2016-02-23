@@ -76,6 +76,7 @@
     <Compile Include="Contracts\IStatisticsServices.cs" />
     <Compile Include="Contracts\ITownsServices.cs" />
     <Compile Include="Contracts\ITripServices.cs" />
+    <Compile Include="Contracts\IUserCommentServices.cs" />
     <Compile Include="Contracts\IUserServices.cs" />
     <Compile Include="Contracts\IViewServices.cs" />
     <Compile Include="Models\ApprovedJoinRequestResponseModel.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="StatisticsServices.cs" />
     <Compile Include="TownsServices.cs" />
     <Compile Include="TripServices.cs" />
+    <Compile Include="UserCommentServices.cs" />
     <Compile Include="UserServices.cs" />
     <Compile Include="ViewServices.cs" />
   </ItemGroup>

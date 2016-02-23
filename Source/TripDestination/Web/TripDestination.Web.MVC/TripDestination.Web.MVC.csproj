@@ -795,6 +795,7 @@
     <Content Include="Areas\UserProfile\Views\Notification\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ViewAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\UserCommentAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\UserCommentsAdminViewModel.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
