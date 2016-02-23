@@ -213,6 +213,7 @@
     <Compile Include="Areas\Admin\Controllers\PageParagraphAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TownAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TripCommentAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserCommentAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ViewAdminController.cs" />
     <Compile Include="Areas\Admin\ViewModels\CarAdminViewModel.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Areas\Admin\ViewModels\PageParagraphViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TownAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\TripCommentAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\UserCommentsAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ViewAdminViewModel.cs" />
     <Compile Include="Areas\UserProfile\Controllers\ChildActionControllers\ProfileChildActionController.cs" />
@@ -796,6 +798,8 @@
     <Content Include="Areas\Admin\Views\ViewAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\UserCommentAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\UserCommentsAdminViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TripCommentAdminViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\TripCommentAdmin\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
