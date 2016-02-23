@@ -85,30 +85,34 @@
 
         <div id="buttonsWrap">
             <div id="buttonsAction">
-                @if (CurrectUserIsDriver)
+                @if (CurrectUserIsDriver && Status == "Open")
                 {
                     @Html.Partial("_PendingApprovePassengersPartial", PendingApprovePassengers)
                     @Html.Partial("_DriverActionButtonsPartial", new ViewDataDictionary { { "TripId", TripId } })
                 }
                 else
                 {
-                    if (CurrentUserIsWaitingJoinRequest)
+                    if (CurrentUserIsWaitingJoinRequest && Status == "Open")
                     {
                         @Html.Partial("_PassengerPendingRequestPartial")
                     }
 
-                    if (CurrentUserIsJoinedTrip)
+                    if (CurrentUserIsJoinedTrip && Status == "Open")
                     {
                         @Html.Partial("_PassengerJoinedtPartial")
                     }
 
-                    if (AvailableSeats > 0 && !CurrentUserIsWaitingJoinRequest && !CurrentUserIsJoinedTrip)
+                    if (AvailableSeats > 0 && !CurrentUserIsWaitingJoinRequest && !CurrentUserIsJoinedTrip && Status == "Open")
                     {
                         @Html.Partial("_PassengerActionButtonPartial")
                     }
 
-                    @Html.Partial("_LikeDislikeButtonsPartial", new ViewDataDictionary { { "CurrentUserLikedTrip", CurrentUserLikedTrip } })
-                    @Html.Partial("_PassengerActionButtonsTemplatesPartial", new ViewDataDictionary { { "CurrentUserLikedTrip", CurrentUserLikedTrip } })
+                    if (Status == "Open")
+                    {
+                        @Html.Partial("_LikeDislikeButtonsPartial", new ViewDataDictionary { { "CurrentUserLikedTrip", CurrentUserLikedTrip } })
+                        @Html.Partial("_PassengerActionButtonsTemplatesPartial", new ViewDataDictionary { { "CurrentUserLikedTrip", CurrentUserLikedTrip } })
+                    }
+
                 }
 
             </div> @* End #buttonsAction*@

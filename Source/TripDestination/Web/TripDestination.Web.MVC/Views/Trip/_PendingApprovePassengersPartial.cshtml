@@ -4,7 +4,7 @@
     int pendingApprovePassengersCount = Model.Count();
 }
 
-<div class="tripMessage tripInfoMessage">You have <span id="pendingApprovePassengersCount">@pendingApprovePassengersCount</span> pending users waiting to join your trip.</div>
+<div id="tripMessage" class="tripMessage tripInfoMessage">You have <span id="pendingApprovePassengersCount">@pendingApprovePassengersCount</span> pending users waiting to join your trip.</div>
 
 @if (pendingApprovePassengersCount > 0)
 {
@@ -14,23 +14,16 @@
             {
                 <li class="row">
                     <div class="col-md-3">
-                        <div class="image" style="background-image: url('@pendingUser.User.AvatarUrlSmall')"></div>
+                        <div class="image"><img src="@pendingUser.User.AvatarUrlSmall" /></div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="passengerName"><a href="#">@pendingUser.User.FirstName @pendingUser.User.LastName</a></div>
-                        <div class="rating">
-                            <ul class="ratingUl">
-                                <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                <li><img src="images/star-icon.png" alt="Star icon"></li>
-                                <li><img src="images/star-icon.png" alt="Star icon"></li>
-                            </ul>
+                    <div class="col-md-9">
+                        <div class="passengerName"><a href="@pendingUser.User.ProfileUrl">@pendingUser.User.FirstName <span class="bold uppercase">@pendingUser.User.LastName</span></a></div>
+                        <div class="row">
+                            <div class="col-md-12" data-username="@pendingUser.User.UserName">
+                                <div class="approvePassengerJoinRequest button">Approve</div>
+                                <div class="disapprovePassengerJoinRequest button2">Disapprove</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3" data-username="@pendingUser.User.UserName">
-                        <div class="approvePassengerJoinRequest button">Approve</div>
-                        <div class="disapprovePassengerJoinRequest button2">Disapprove</div>
                     </div>
                 </li>
             }

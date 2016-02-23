@@ -221,6 +221,13 @@ input.hiddenInput
 .loadMoreComments
   margin-top 25px
 
+
+.bold
+  font-weight bold
+
+.uppercase
+  text-transform uppercase
+
 //=============================
 // COVER WRAP
 //=============================
@@ -1072,7 +1079,7 @@ ul.passengersUl
       margin-right 10%
 
     #deleteTripButton
-      width 90%
+      width 100%
       margin-left 10%
 
     ul.pendingUsersUl
@@ -1080,15 +1087,24 @@ ul.passengersUl
 
       li
         width 100%
-        border 1px solid lightgray
-        margin-bottom 10px
+        border-bottom 2px solid lightgray
+        margin-bottom 25px
+        padding-bottom 10pxb
         @extends .clearFix
 
+        &last:child
+          border-bottom none
+
+        .button
+          margin 15px 0
+
         .image
-          width 50px
-          height 50px
+          width 100%
           float left
           background lightpink
+
+          image
+            width 100%
 
         .info
           width 350px
@@ -1180,6 +1196,12 @@ ul.commentsUl
 
       #buttonsFromWrap
         margin-top 35px
+
+        .editTripSave
+          width 100%
+          display block
+          margin-top 15px
+
 
 //=============================
 // STATISTICS

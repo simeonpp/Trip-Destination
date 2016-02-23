@@ -16,11 +16,14 @@
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
 
-            foreach (var userNotificationCounts in model.UsersNotificationCounts)
+            if (model != null)
             {
-                string userId = userNotificationCounts.Item1;
-                int notSeendNorificationCounts = userNotificationCounts.Item2;
-                context.Clients.Group(userId).addMessage(notSeendNorificationCounts);
+                foreach (var userNotificationCounts in model.UsersNotificationCounts)
+                {
+                    string userId = userNotificationCounts.Item1;
+                    int notSeendNorificationCounts = userNotificationCounts.Item2;
+                    context.Clients.Group(userId).addMessage(notSeendNorificationCounts);
+                }
             }
         }
 
