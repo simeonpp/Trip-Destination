@@ -1,0 +1,31 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Passenger trip administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PassengerTripAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.TripId);
+              columns.Bound(c => c.Username);
+              columns.Bound(c => c.Approved);
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("PassengerTrip_Read", "PassengerTripAdmin"))
+              .Destroy(destroy => destroy.Action("PassengerTrip_Destroy", "PassengerTripAdmin"))
+          )
+    )
+
+</div>
