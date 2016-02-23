@@ -504,8 +504,8 @@
                 PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
                 FirstName = passengerTrip.User.FirstName,
                 LastName = passengerTrip.User.LastName,
-                ImageSrc = ServicesDataProvider.GetProfileUrl(passengerTrip.User.UserName, passengerTrip.User.FirstName, passengerTrip.User.LastName),
-                UserProfileLink = ServicesDataProvider.GetUserImageSmallUrl(passengerTrip.User.Avatar.FileName)
+                ImageSrc = ServicesDataProvider.GetUserImageSmallUrl(passengerTrip.User.Avatar.FileName),
+                UserProfileLink = ServicesDataProvider.GetProfileUrl(passengerTrip.User.UserName, passengerTrip.User.FirstName, passengerTrip.User.LastName)
             };
             response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
 

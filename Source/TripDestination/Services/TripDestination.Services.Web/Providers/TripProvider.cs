@@ -64,7 +64,13 @@
             var tripsPerPageSelectList = new List<SelectListItem>();
             for (int i = 3; i <= WebApplicationConstants.MaxItemsPerPage; i += 3)
             {
-                tripsPerPageSelectList.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+                var item = new SelectListItem { Text = i.ToString(), Value = i.ToString() };
+                if (i == 9)
+                {
+                    item.Selected = true;
+                }
+
+                tripsPerPageSelectList.Add(item);
             }
 
             return tripsPerPageSelectList;
