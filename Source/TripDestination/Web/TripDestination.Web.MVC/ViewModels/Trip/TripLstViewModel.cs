@@ -46,5 +46,7 @@
         public int TotalPages { get; set; }
 
         public int TotalFoundTrips { get; set; }
+
+        public string SelectedDateAsString { get; set; }
     }
 }

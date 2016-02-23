@@ -12,11 +12,11 @@
         })
 
         var $orderBySelectList = $('#orderBySelectList'),
-            $tripFilterForm = $('#tripFilterForm');
+            $tripFilterForm = $('#tripFilterForm'),
+            inputSelector = "#OrderBy";
         $orderBySelectList.on('change', function () {
             var $this = $(this),
-                selectedValue = $this.val(),
-                inputSelector = "#OrderBy";
+                selectedValue = $this.val();
 
             $(inputSelector).val(selectedValue);
             $tripFilterForm.submit();
@@ -28,13 +28,20 @@
         $sortDirectionAscending.on('click', function() {
             var inputSelector = "#Sort";
             $(inputSelector).val('ASC');
+            getAndSetOrderToForm();
             $tripFilterForm.submit();
         })
 
         $sortDirectionDescending.on('click', function () {
             var inputSelector = "#Sort";
             $(inputSelector).val('DESC');
+            getAndSetOrderToForm();
             $tripFilterForm.submit();
         })
+
+        function getAndSetOrderToForm() {
+            var selectedValue = $("#orderBySelectList option:selected").text();
+            $(inputSelector).val(selectedValue);
+        }
     }());
 })

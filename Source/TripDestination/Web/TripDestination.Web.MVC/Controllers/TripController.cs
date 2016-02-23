@@ -153,12 +153,12 @@
             int filteredTripsCount = this.TripServices
                 .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice, model.OrderBy, model.Sort)
                 .Count();
-            int totalPages = (int)Math.Ceiling(filteredTripsCount / (double)DefaultItemsPerPage);
-            int tripsToSkip = (page - 1) * DefaultItemsPerPage;
+            int totalPages = (int)Math.Ceiling(filteredTripsCount / (double)model.ItemsPerPage);
+            int tripsToSkip = (page - 1) * model.ItemsPerPage;
             var trips = this.TripServices
                 .GetDynamicFIltered(model.FromId, model.ToId, model.Passengers, model.DateOfLeaving, model.DriverName, model.MinPrice, model.MaxPrice, model.OrderBy, model.Sort)
                 .Skip(tripsToSkip)
-                .Take(DefaultItemsPerPage)
+                .Take(model.ItemsPerPage)
                 .To<TripListViewModel>()
                 .ToList();
 
@@ -173,6 +173,7 @@
             model.TotalPages = totalPages;
             model.CurrentPage = page;
             model.TotalFoundTrips = filteredTripsCount;
+            model.SelectedDateAsString = model.DateOfLeaving.ToString("yyyy-MM-dd");
             this.FillRequiredListInformation(model);
 
             return this.View("~/Views/Trip/List.cshtml", model);
