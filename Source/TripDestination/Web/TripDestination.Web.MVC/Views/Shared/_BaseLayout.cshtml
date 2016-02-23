@@ -18,7 +18,7 @@
 
     @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
 
-    @if (this.ViewData["cookiePolicySeen"] != null)
+    if (!this.ViewData["cookiePolicySeen"])
     {
         <div id="cookiePolicyBox">
             <a href="@Url.Action("Index", "CookiePolicy")">

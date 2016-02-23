@@ -5,6 +5,7 @@
 });
 
 function addMessage(data) {
-    $('#notificationsCount').text(data);
+    $('#notificationsCount').text(data)
+        .addClass('notificationActive');
     toastr.info("New notification.");
 }

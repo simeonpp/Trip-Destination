@@ -32,6 +32,8 @@
             this.MapperConfiguration = AutoMapperConfig.Configuration;
             this.Mapper = AutoMapperConfig.Mapper;
 
+            this.ViewData["cookiePolicySeen"] = this.Request.Cookies.Get("cookiePolicySeen") == null ? false : true;
+
             base.OnActionExecuting(filterContext);
         }
     }

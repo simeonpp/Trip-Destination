@@ -67,12 +67,16 @@
                         </ul>
                     </li>
 
+                    <li id="notificationsCountLi">
+                        <a href="@Url.Action("Index", "Notification", new { area = "UserProfile" })">
+                            <span id="notificationsCount">@Model.Notifications.Count()</span>
+                        </a>
+                    </li>
+
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                     {
                         @Html.AntiForgeryToken()
                     }
-
-                    <li><a href="@Url.Action("Index", "Notification", new { area = "UserProfile" })"><span id="notificationsCount">@Model.Notifications.Count()</span></a></li>
                 }
                 else
                 {

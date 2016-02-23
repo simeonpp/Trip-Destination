@@ -865,6 +865,38 @@ ul.passengersUl li .lastName {
     width: 1024px !important;
   }
 }
+#notificationsCountLi {
+  width: 40px;
+}
+#notificationsCountLi a {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+#notificationsCountLi:hover {
+  background-color: #dfdfdf;
+}
+#notificationsCountLi #notificationsCount {
+  display: block;
+  background: #8e8e8e;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  line-height: 2.5rem;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+#notificationsCountLi #notificationsCount:hover {
+  background: #b7b7b7;
+}
+#notificationsCountLi .notificationActive {
+  background: #aa152b !important;
+}
 #welcomeMessageWrap h1 {
   text-transform: none !important;
   border: 1px solid #000;
