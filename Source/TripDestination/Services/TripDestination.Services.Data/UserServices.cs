@@ -213,12 +213,23 @@
 
         public User CreateAdmin(string username, string email, string password, string firstName, string lastName)
         {
+            var emptyPhoto = new Photo()
+            {
+                ContentType = "image/jpeg",
+                Extension = "jpg",
+                OriginalName = "none",
+                SizeInBytes = 0,
+                CreatedOn = DateTime.Now,
+                FileName = new string('x', 30)
+            };
+
             var user = new User
             {
                 UserName = username,
                 Email = email,
                 FirstName = firstName,
-                LastName = lastName
+                LastName = lastName,
+                Avatar = emptyPhoto
             };
 
             var userManager = new UserManager<User>(new UserStore<User>(new TripDestinationDbContext()));
