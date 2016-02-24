@@ -273,6 +273,7 @@
     <Compile Include="Controllers\ChildActionControllers\StatisticsChildActionController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CookiePolicyController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageMessageId.cs" />

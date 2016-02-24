@@ -44,7 +44,7 @@
                         result.CanApprove = true;
                         break;
                     case NotificationKey.TripFinished:
-                        result.Url = string.Format("Trip/Rate/{0}", tripId);
+                        result.Url = string.Format("/Trip/Rate/{0}", tripId);
                         break;
                     case NotificationKey.TripChanged:
                         break;

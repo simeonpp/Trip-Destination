@@ -14,6 +14,6 @@
 
         public int DriverRating { get; set; }
 
-        public IEnumerable<Tuple<string, int>> PassengerRatings { get; set; }
+        public ICollection<int> PassengerRatings { get; set; }
     }
 }

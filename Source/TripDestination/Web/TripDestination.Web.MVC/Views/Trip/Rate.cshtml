@@ -5,21 +5,29 @@
 }
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Rate", "Trip", FormMethod.Post))
 {
     @Html.ValidationSummary();
 
     @Html.AntiForgeryToken();
 
-    @if (Model.CurrentUserIsDriver)
+    if (Model.CurrentUserIsDriver)
     {
-        foreach(var passenger in Model.Passengers)
-        {
+        
+        <text>Please rate your passengers for trip: </text>
 
+        foreach (var passenger in Model.Passengers)
+        {
+            <input name="TripId" value="@Model.TripId" hidden="hidden" class="hidden" />
+            <text>For user @passenger.UserName</text>
+            <input type="number" min="=1" max="5" name="PassengerRatings" />
+
+            <br />
         }
     }
     else
     {
         @Html.EditorFor(m => m.DriverRating);
     }
+    <input type="submit" value="Rate" />
 }

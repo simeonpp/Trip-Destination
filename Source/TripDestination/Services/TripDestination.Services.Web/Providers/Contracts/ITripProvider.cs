@@ -19,5 +19,7 @@
         IEnumerable<SelectListItem> GetleftAvailableSeatsSelectList(Trip trip);
 
         bool UserCanRateTrip(Trip trip, string userId);
+
+        int GetValidRate(int rate);
     }
 }

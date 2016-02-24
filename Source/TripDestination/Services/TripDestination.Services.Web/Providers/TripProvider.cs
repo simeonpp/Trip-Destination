@@ -120,5 +120,12 @@
                 && !trip.Ratings.Any(r => r.FromUserId == userId);
             return result;
         }
+
+        public int GetValidRate(int rate)
+        {
+            rate = rate > 5 ? 5 : rate;
+            rate = rate < 1 ? 1 : rate;
+            return rate;
+        }
     }
 }

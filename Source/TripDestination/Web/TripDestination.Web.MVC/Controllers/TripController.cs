@@ -39,6 +39,8 @@
 
         public IRatingServices RatingServices { get; set; }
 
+        public ITripNotificationServices TripNotificationServices { get; set; }
+
         public ITownProvider TownProvider { get; set; }
 
         public IStatisticsServices StatisticsServices { get; set; }
@@ -330,22 +332,28 @@
                 return this.RedirectToRoute("/");
             }
 
+            TripNotification tripNotification = this.Trip
+
             if (trip.DriverId == userId)
             {
-                foreach (var passengerRating in model.PassengerRatings)
+                var passengers = trip.Passengers.Select(p => p.UserId).ToList(); ;
+                for (int i = 0; i < passengers.Count; i++)
                 {
-                    this.RatingServices.RateUser(passengerRating.Item1, userId, passengerRating.Item2);
+                    string passengerUsername = passengers.ElementAt(i);
+                    int passengerRating = this.TripProvider.GetValidRate(model.PassengerRatings.ElementAt(i));
+                    this.RatingServices.RateUser(passengerUsername, userId, passengerRating);
                 }
 
                 this.TempData[WebApplicationConstants.TempDataMessageKey] = "You have succesfully rate your passengers.";
             }
             else
             {
-                this.RatingServices.RateUser(trip.DriverId, userId, model.DriverRating);
+                int driverRating = this.TripProvider.GetValidRate(model.DriverRating);
+                this.RatingServices.RateUser(trip.DriverId, userId, driverRating);
                 this.TempData[WebApplicationConstants.TempDataMessageKey] = "You have succesfully rate this driver.";
             }
 
-            return this.RedirectToAction("Details", new { id = model.TripId }); ;
+            return this.RedirectToRoute("TripDetails", new { id = model.TripId, slug = string.Format("{0}-{1}", trip.From.Name, trip.To.Name) });
         }
 
         private void FillRequiredListInformation(TripLstViewModel viewModel)

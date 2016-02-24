@@ -147,6 +147,12 @@
             return response;
         }
 
+        public void SetTripFinishActionHasBeenTakenToTrue(TripNotification tripNotification)
+        {
+            tripNotification.ActionHasBeenTaken = true;
+            this.tripNotificationRepos.Save();
+        }
+
         public IQueryable<TripNotification> GetAll()
         {
             return this.tripNotificationRepos.All();

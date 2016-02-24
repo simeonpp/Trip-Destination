@@ -11,7 +11,7 @@ namespace TripDestination.Web.MVC
             RegisterScripts(bundles);
             RegisterStyles(bundles);
 
-            // BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
 
         private static void RegisterScripts(BundleCollection bundles)

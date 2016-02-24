@@ -19,5 +19,7 @@
         BaseResponseAjaxModel ApproveNotification(int notificationId, string userId);
 
         BaseResponseAjaxModel DisapproveNotification(int notificationId, string userId);
+
+        void SetTripFinishActionHasBeenTakenToTrue(TripNotification tripNotification);
     }
 }
