@@ -512,8 +512,8 @@
                 ImageSrc = ServicesDataProvider.GetUserImageSmallUrl(passengerTrip.User.Avatar.FileName),
                 UserProfileLink = ServicesDataProvider.GetProfileUrl(passengerTrip.User.UserName, passengerTrip.User.FirstName, passengerTrip.User.LastName)
             };
-            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
 
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { passengerTrip.UserId });
             return response;
         }
 
@@ -561,7 +561,7 @@
             {
                 PendingApproveUsersCount = dbTrip.Passengers.Where(p => p.Approved == false && p.IsDeleted == false).Count(),
             };
-            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
+            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { passengerTrip.UserId });
 
             return response;
         }
