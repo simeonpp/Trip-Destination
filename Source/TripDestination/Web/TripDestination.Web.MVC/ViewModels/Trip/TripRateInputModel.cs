@@ -10,7 +10,7 @@
 
         public bool CurrentUserIsDriver { get; set; }
 
-        public IEnumerable<BaseUserViewModel> Passengers { get; set; }
+        public ICollection<BaseUserViewModel> Passengers { get; set; }
 
         public int DriverRating { get; set; }
 

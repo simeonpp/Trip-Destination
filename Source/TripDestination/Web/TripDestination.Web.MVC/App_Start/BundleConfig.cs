@@ -11,7 +11,7 @@ namespace TripDestination.Web.MVC
             RegisterScripts(bundles);
             RegisterStyles(bundles);
 
-            BundleTable.EnableOptimizations = true;
+            // BundleTable.EnableOptimizations = true;
         }
 
         private static void RegisterScripts(BundleCollection bundles)
@@ -78,6 +78,9 @@ namespace TripDestination.Web.MVC
 
             bundles.Add(new ScriptBundle("~/bundles/trip-edit").Include(
                 "~/Assets/javascript/src/once/trip-edit.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/rating").Include(
+                "~/Assets/javascript/src/once/rating.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
