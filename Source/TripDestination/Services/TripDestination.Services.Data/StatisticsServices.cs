@@ -185,12 +185,21 @@
 
         public int GetRatingForUser(string userId)
         {
-            double rating = this.ratingRepos
+            bool hasAny = this.ratingRepos
                 .All()
                 .Where(r => r.RatedUserId == userId && r.IsDeleted == false)
-                .Sum(r => r.Value);
+                .Any();
 
-            return (int)Math.Round(rating);
+            if (hasAny)
+            {
+                double rating = this.ratingRepos
+                .All()
+                .Where(r => r.RatedUserId == userId && r.IsDeleted == false)
+                .Average(r => r.Value);
+                return (int)Math.Round(rating);
+            }
+
+            return 0;
         }
     }
 }
