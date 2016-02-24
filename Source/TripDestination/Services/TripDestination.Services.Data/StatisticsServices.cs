@@ -182,5 +182,15 @@
 
             return result;
         }
+
+        public int GetRatingForUser(string userId)
+        {
+            double rating = this.ratingRepos
+                .All()
+                .Where(r => r.RatedUserId == userId && r.IsDeleted == false)
+                .Sum(r => r.Value);
+
+            return (int)Math.Round(rating);
+        }
     }
 }

@@ -212,6 +212,7 @@
             }
 
             viewModel.DriverComments = this.UserServices.GetComments(trip.DriverId).To<BaseCommentViewModel>().ToList();
+            viewModel.Driver.Rating = this.StatisticsServices.GetRatingForUser(trip.DriverId);
             return this.View(viewModel);
         }
 

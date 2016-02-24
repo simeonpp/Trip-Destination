@@ -24,5 +24,7 @@
         int GetUserTripsAsDriverCount(string userId);
 
         int GetUserTripsAsPassengerCount(string userId);
+
+        int GetRatingForUser(string userId);
     }
 }
