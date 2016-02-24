@@ -6,5 +6,9 @@
     public class BaseSignalRModel
     {
         public IEnumerable<Tuple<string, int>> UsersNotificationCounts { get; set; }
+
+        public bool RedirectToUrl { get; set; }
+
+        public string UrlToRedirectTo { get; set; }
     }
 }

@@ -93,5 +93,7 @@
         BaseResponseAjaxModel LikeDislike(int tripId, string userId, bool value);
 
         int GetLikesCount(Trip trip);
+
+        BaseSignalRModel NotifyTripPassengersForTripFinish(Trip trip);
     }
 }

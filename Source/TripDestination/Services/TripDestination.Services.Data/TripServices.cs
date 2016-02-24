@@ -517,6 +517,16 @@
             return response;
         }
 
+        public BaseSignalRModel NotifyTripPassengersForTripFinish(Trip trip)
+        {
+            var passengerIds = trip.Passengers
+                    .Where(p => p.Approved == true && p.IsDeleted == false)
+                    .Select(p => p.UserId)
+                    .ToList();
+
+            return this.notificationServices.SendNotifications(passengerIds);
+        }
+
         public BaseResponseAjaxModel DisapproveJoinRequest(int tripId, string username, string actionUserId)
         {
             var dbTrip = this.GetById(tripId);

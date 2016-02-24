@@ -17,6 +17,10 @@
                 if (response.Status) {
                     removeActionButtons(id);
                     toastr.success("You successfully approved this notification.");
+
+                    if (response.RedirectToUrl) {
+                        window.location.href = response.UrlToRedirectTo;
+                    }
                 } else {
                     if (response.ErrorMessage) {
                         toastr.error(response.ErrorMessage);

@@ -1,10 +1,10 @@
 ﻿namespace TripDestination.Services.Data
 {
     using System;
+    using System.Linq;
     using Common.Infrastructure.Models;
     using Contracts;
     using System.Data.Entity;
-    using System.Linq;
     using TripDestination.Data.Common;
     using TripDestination.Data.Models;
 
@@ -105,6 +105,10 @@
                 notification.Trip.Status = TripStatus.Finished;
                 this.tripNotificationRepos.Save();
                 response.Status = true;
+
+                response.SignalRModel = this.tripServices.NotifyTripPassengersForTripFinish(notification.Trip);
+                response.SignalRModel.RedirectToUrl = true;
+                response.SignalRModel.UrlToRedirectTo = string.Format("/Trip/Rate/{0}/{1}-{2}", notification.TripId, notification.Trip.From.Name, notification.Trip.To.Name);
             }
 
             return response;
