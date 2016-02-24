@@ -287,10 +287,10 @@
 
         [Authorize]
         [HttpGet]
-        public ActionResult Rate(int tripId)
+        public ActionResult Rate(int id)
         {
             string userId = this.User.Identity.GetUserId();
-            Trip trip = this.TripServices.GetById(tripId);
+            Trip trip = this.TripServices.GetById(id);
             bool userCanRate = this.TripProvider.UserCanRateTrip(trip, userId);
 
             if (!userCanRate)
@@ -300,7 +300,7 @@
 
             var viewModel = new TripRateInputModel()
             {
-                TripId = tripId,
+                TripId = id,
                 CurrentUserIsDriver = trip.DriverId == userId
             };
 

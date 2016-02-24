@@ -28,6 +28,12 @@ namespace TripDestination.Web.MVC
                 constraints: new { id = @"\d+" });
 
             routes.MapRoute(
+                name: "TripRate",
+                url: "Trip/Rate/{id}/{slug}",
+                defaults: new { controller = "Trip", action = "Rate", slug = UrlParameter.Optional },
+                constraints: new { id = @"\d+" });
+
+            routes.MapRoute(
                 name: "Profile",
                 url: "User/{username}/{slug}",
                 defaults: new { controller = "Profile", action = "Index", area = "UserProfile", slug = UrlParameter.Optional });
