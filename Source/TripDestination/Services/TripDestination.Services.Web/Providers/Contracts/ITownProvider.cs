@@ -6,5 +6,7 @@
     public interface ITownProvider
     {
         IEnumerable<SelectListItem> GetTowns();
+
+        IEnumerable<SelectListItem> GetCachedTowns();
     }
 }

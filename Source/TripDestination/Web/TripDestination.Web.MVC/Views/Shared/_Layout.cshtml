@@ -6,11 +6,17 @@
     @RenderSection("styles", required: false)
 }
 
-@Html.Action("NavigationPartial", "Layout", new { area = string.Empty })
+@section navigation {
+    @Html.Action("NavigationPartial", "Layout", new { area = string.Empty })
+}
 
 <div>
     @RenderBody()
 </div>
+
+@section footer {
+    @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
+}
 
 @section baseScripts {
     @RenderSection("scripts", required: false)

@@ -46,6 +46,8 @@
 
         public string Description { get; set; }
 
+        public int Rating { get; set; }
+
         public string SanitizedDescription
         {
             get

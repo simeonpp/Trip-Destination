@@ -17,10 +17,13 @@
 
         private ICarServices carServices;
 
-        public ProfileController(IUserServices userServices, ICarServices carServices)
+        private IStatisticsServices statisticsServices;
+
+        public ProfileController(IUserServices userServices, ICarServices carServices, IStatisticsServices statisticsServices)
         {
             this.userServices = userServices;
             this.carServices = carServices;
+            this.statisticsServices = statisticsServices;
         }
 
         [HttpGet]
@@ -154,6 +157,8 @@
                 User = this.Mapper.Map<UserViewModel>(user),
                 CurrentUsername = this.User.Identity.GetUserName()
             };
+
+            basicViewModel.User.Rating = this.statisticsServices.GetRatingForUser(user.Id);
 
             return basicViewModel;
         }

@@ -50,7 +50,7 @@
                 });
 
             var townHelperMock = new Mock<ITownProvider>();
-            townHelperMock.Setup(x => x.GetTowns())
+            townHelperMock.Setup(x => x.GetCachedTowns())
                 .Returns(new List<SelectListItem>()
                 {
                     new SelectListItem { Text = "A", Value = "A" },

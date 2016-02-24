@@ -1,5 +1,12 @@
-﻿
-@(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PageAdminViewModel>()
+﻿@{
+    ViewBag.Title = "Page administration";
+}
+
+<div class="adminKendoTableWrap">
+
+    <h1>Page administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.PageAdminViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
@@ -9,12 +16,14 @@
           columns.Bound(c => c.Layout);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
-      .ToolBar(toolbar => {
+      .ToolBar(toolbar =>
+      {
           toolbar.Create();
       })
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
       .Pageable()
-      .Sortable(sortable => {
+      .Sortable(sortable =>
+      {
           sortable.SortMode(GridSortMode.SingleColumn);
       })
       .Filterable()
@@ -27,4 +36,7 @@
           .Update(update => update.Action("Pages_Update", "PageAdmin"))
           .Destroy(destroy => destroy.Action("Pages_Destroy", "PageAdmin"))
       )
-)
+    )
+
+    )
+</div>

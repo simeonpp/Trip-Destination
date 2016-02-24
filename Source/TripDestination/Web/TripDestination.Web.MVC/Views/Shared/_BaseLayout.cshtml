@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Trip Destination" />
+    <link rel="shortcut icon" href="~/Assets//images/favicon.ico" type="image/x-icon" />
+
     <title>@ViewBag.Title - Trip Desstination</title>
     @RenderSection("baseStyles", required: false)
     @Styles.Render("~/Content/kendo-css")
@@ -14,7 +17,11 @@
     <script src="~/signalr/hubs" type="text/javascript"></script>
 </head>
 <body>
+    @RenderSection("navigation", required: false)
+
     @RenderBody()
+
+    @RenderSection("footer", required: true)
 
     <text>
         @if (!(bool)this.ViewData["cookiePolicySeen"])
@@ -33,9 +40,7 @@
             <script>toastr.info(@this.ViewData["messages"]);</script>
         }
     </text>
-
-    @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
-
+    
     @Scripts.Render("~/bundles/site-libs")
     @Scripts.Render("~/bundles/site")
     @RenderSection("baseScripts", required: false)

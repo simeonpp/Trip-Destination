@@ -60,7 +60,7 @@
         {
             TripInputVIewModel viewModel = new TripInputVIewModel()
             {
-                TownsSelectList = this.TownProvider.GetTowns(),
+                TownsSelectList = this.TownProvider.GetCachedTowns(),
                 AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList(),
                 AddressPickUpSelectList = this.TripProvider.GetAddressPickUpSelectList()
             };
@@ -371,7 +371,7 @@
         {
             // viewModel.LuggageSpcaceSelectList = this.TripProvider.GetLuggageSpcaceSelectList();
             viewModel.ItemPerPageSelectList = this.TripProvider.GetTripsPerPageSelectList();
-            viewModel.TownsSelectList = this.TownProvider.GetTowns();
+            viewModel.TownsSelectList = this.TownProvider.GetCachedTowns();
             viewModel.OrderBySelectListWithSomeNameThatWillNotDoAnyConflictsBecauseMvcIsPlayingAJokeWithAllOfUs = this.TripProvider.GetOrderBySelectList(viewModel.OrderBy);
             viewModel.AvailableSeatsSelectList = this.TripProvider.GetAvailableSeatsSelectList();
         }

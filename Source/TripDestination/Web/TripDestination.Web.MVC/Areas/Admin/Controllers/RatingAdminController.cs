@@ -3,11 +3,13 @@
     using Common.Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using System.Linq;
+    using MVC.Controllers;
     using Services.Data.Contracts;
     using System.Web.Mvc;
     using ViewModels;
 
-    public class RatingAdminController : Controller
+    public class RatingAdminController : BaseController
     {
         private readonly IRatingServices ratingServices;
 
@@ -36,7 +38,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var dbRating = this.ratingServices.Edit(rating.Id, rating.Value);
+                var dbRating = this.ratingServices.Edit(rating.Id, (int)rating.Value);
             }
 
             return this.Json(new[] { rating }.ToDataSourceResult(request, this.ModelState));

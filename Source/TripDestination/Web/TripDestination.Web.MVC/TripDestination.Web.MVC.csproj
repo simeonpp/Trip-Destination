@@ -218,6 +218,7 @@
     <Compile Include="Areas\Admin\Controllers\PageParagraphAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\PassengerTripAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhotosAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RatingAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TownAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TripCommentAdminController.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Areas\Admin\ViewModels\PageParagraphViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PassengerTripAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\PhotosAdminViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RatingAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TownAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripAdminViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\TripCommentAdminViewModel.cs" />
@@ -831,6 +833,8 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\LikeAdminViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\UsersAdminViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RatingAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\RatingAdminViewModel.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -941,11 +945,11 @@
     <Content Include="Views\Trip\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\_PaginationPartial.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
-    <Content Include="Views\Shared\_NoNavigationLayout.cshtml" />
     <Content Include="Views\Home\_CoverPartial.cshtml" />
     <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Trip\_PassengerJoinedtPartial.cshtml" />
     <Content Include="Views\Trip\Rate.cshtml" />
+    <Content Include="Views\Shared\_NoNavigationLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

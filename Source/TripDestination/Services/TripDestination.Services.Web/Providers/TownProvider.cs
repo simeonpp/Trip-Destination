@@ -7,6 +7,8 @@
     using System.Linq;
     using Services.Contracts;
     using Common.Infrastructure.Constants;
+    using System;
+
     public class TownProvider : ITownProvider
     {
         public TownProvider(ITownsServices townServices, ICacheServices CacheServices)
@@ -21,19 +23,26 @@
 
         public IEnumerable<SelectListItem> GetTowns()
         {
-            var towns = this.CacheServices.Get(
-                "towns",
-                () => this.TownServices
+            var towns = this.TownServices
                     .GetAll()
                     .Select(t => new SelectListItem
                     {
                         Value = t.Id.ToString(),
                         Text = t.Name
                     })
-                    .ToList(),
-                CacheTimeConstants.Towns);
+                    .ToList();
 
             return towns;
+        }
+
+        public IEnumerable<SelectListItem> GetCachedTowns()
+        {
+            var cachedTowns = this.CacheServices.Get(
+                "towns",
+                this.GetTowns,
+                CacheTimeConstants.Towns);
+
+            return cachedTowns;
         }
     }
 }

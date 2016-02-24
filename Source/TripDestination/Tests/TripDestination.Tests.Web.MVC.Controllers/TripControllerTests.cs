@@ -36,7 +36,7 @@
             var ratingServices = new Mock<IRatingServices>();
 
             var townProviderHelper = new Mock<ITownProvider>();
-            townProviderHelper.Setup(x => x.GetTowns())
+            townProviderHelper.Setup(x => x.GetCachedTowns())
                 .Returns(new List<SelectListItem>()
                 {
                     new SelectListItem { Text = "Sofia", Value = "Sofia" }

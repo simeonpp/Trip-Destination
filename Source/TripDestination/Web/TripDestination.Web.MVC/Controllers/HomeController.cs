@@ -41,7 +41,7 @@
             HomepageViewModel viewModel = new HomepageViewModel()
             {
                 TopDestinations = topDestinations,
-                TownsSelectList = this.townProvider.GetTowns()
+                TownsSelectList = this.townProvider.GetCachedTowns()
             };
 
             return this.View(viewModel);

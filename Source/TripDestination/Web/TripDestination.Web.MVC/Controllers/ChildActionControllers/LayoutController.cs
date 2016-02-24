@@ -26,7 +26,7 @@
         [ChildActionOnly]
         public ActionResult NavigationPartial()
         {
-            var page = this.CacheServices.Get(
+            var pages = this.CacheServices.Get(
                 "navigationPages",
                 () => this.PageServices
                 .GetAll()

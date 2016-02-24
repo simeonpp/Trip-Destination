@@ -8,6 +8,10 @@
 
 @RenderBody()
 
+@section footer {
+    @Html.Action("FooterPartial", "Layout", new { area = string.Empty })
+}
+
 @section baseScripts {
     @RenderSection("scripts", required: false)
 }

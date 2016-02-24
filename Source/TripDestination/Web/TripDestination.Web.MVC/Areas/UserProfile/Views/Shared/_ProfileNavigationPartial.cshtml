@@ -4,6 +4,7 @@
     string LastName = (string)this.ViewData["LastName"];
     string Role = (string)this.ViewData["Role"];
     string Username = (string)this.ViewData["Username"];
+    int Rating = (int)this.ViewData["Rating"];
     string CurrentUsername = (string)this.ViewData["CurrentUsername"];
 }
 
@@ -21,6 +22,44 @@
                 <div class="col-md-6">
                     <div class="name">@FirstName @LastName</div>
                     <div class="role">@Role</div>
+                </div>
+                <div class="col-md-6">
+                    <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating" value="5"
+                         @if (Rating == 5)
+                         { @: checked
+                         } 
+                         /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4"
+                        @if (Rating == 4)
+                        { 
+                            @: checked
+                        } 
+                        /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3"
+                        @if (Rating == 3)
+                        { 
+                            @: checked
+                         } 
+                         /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2"
+                        @if (Rating == 2)
+                        { 
+                            @: checked
+                        } 
+                        /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1"
+                        @if (Rating == 1)
+                        { 
+                            @: checked
+                        }
+                        /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    </fieldset>
+
+                    <style>
+                        @@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+                    </style>
+
                 </div>
             </div>
 

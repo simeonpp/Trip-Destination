@@ -16,7 +16,7 @@
 
         public string RatedUserUserName { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
