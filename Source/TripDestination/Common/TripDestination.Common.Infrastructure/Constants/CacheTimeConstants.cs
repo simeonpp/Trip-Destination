@@ -3,7 +3,7 @@
     public class CacheTimeConstants
     {
         // Layout
-        public const int NavigationPartial = 60 * 60 * 60;
+        public const int NavigationPages = 60 * 60 * 60;
 
         // Home
         public const int HomeTopDestination = 60 * 15;
@@ -15,5 +15,8 @@
 
         // User profile
         public const int UserProfileStatistics = 60 * 60 * 60;
+
+        // Towns
+        public const int Towns = 60 * 60 * 60 * 5; // 5 hours
     }
 }

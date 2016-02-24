@@ -20,14 +20,44 @@
         [HttpGet]
         public ActionResult Index()
         {
+            var tripCount = this.Cache.Get(
+                "statisticsTripCpimt",
+                () => this.statisticsServices.GetTotalTripsCount(),
+                CacheTimeConstants.StatisticsTodaysTrips);
+
+            var topDestomatopm = this.Cache.Get(
+                "topDestination",
+                () => this.statisticsServices.GetTopDestination(),
+                CacheTimeConstants.StatisticsTodaysTrips);
+
+            var usersCount = this.Cache.Get(
+                "usersCount",
+                () => this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
+                CacheTimeConstants.StatisticsTodaysTrips);
+
+            var driversCount = this.Cache.Get(
+                "driversCount",
+                () => this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
+                CacheTimeConstants.StatisticsTodaysTrips);
+
+            var averageTripRating = this.Cache.Get(
+                "averageTripRating",
+                () => string.Format("{0:N2}", this.statisticsServices.GetAverateTripRating()),
+                CacheTimeConstants.StatisticsTodaysTrips);
+
+            var tripViews = this.Cache.Get(
+                "tripViews",
+                () => this.statisticsServices.GetTripViews(),
+                CacheTimeConstants.StatisticsTodaysTrips);
+
             StatisticsViewModel viewModel = new StatisticsViewModel()
             {
-                TripsCount = this.statisticsServices.GetTotalTripsCount(),
-                TopDestination = this.statisticsServices.GetTopDestination(),
-                UsersCount = this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
-                DriversCount = this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
-                AverageTripRating = string.Format("{0:N2}", this.statisticsServices.GetAverateTripRating()),
-                TripViews = this.statisticsServices.GetTripViews()
+                TripsCount = tripCount,
+                TopDestination = topDestomatopm,
+                UsersCount = usersCount,
+                DriversCount = driversCount,
+                AverageTripRating = averageTripRating,
+                TripViews = tripViews
             };
 
             return this.View(viewModel);

@@ -7,28 +7,32 @@
     using ViewModels.Shared;
     using Common.Infrastructure.Constants;
     using Microsoft.AspNet.Identity;
-
+    using Services.Web.Services.Contracts;
     public class LayoutController : Controller
     {
-        public LayoutController(IPageServices pageServices, ITripNotificationServices tripNotificationServices)
+        public LayoutController(IPageServices pageServices, ITripNotificationServices tripNotificationServices, ICacheServices CacheServices)
         {
             this.PageServices = pageServices;
             this.TripNotificationServices = tripNotificationServices;
+            this.CacheServices = CacheServices;
         }
 
         public IPageServices PageServices { get; set; }
 
         public ITripNotificationServices TripNotificationServices { get; set; }
 
-        [ChildActionOnly]
+        public ICacheServices CacheServices { get; set; }
 
-        // [OutputCache(Duration = CacheTimeConstants.NavigationPartial)]
+        [ChildActionOnly]
         public ActionResult NavigationPartial()
         {
-            var pages = this.PageServices
+            var page = this.CacheServices.Get(
+                "navigationPages",
+                () => this.PageServices
                 .GetAll()
                 .To<PageViewModel>()
-                .ToList();
+                .ToList(),
+                CacheTimeConstants.NavigationPages);
 
             var currentUserId = this.User.Identity.GetUserId();
             var notifications = this.TripNotificationServices
