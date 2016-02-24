@@ -158,6 +158,8 @@
             dbTrip.Description = description;
             dbTrip.ETA = eta;
 
+            var userIdsToBeNotified = new List<string>();
+
             foreach (var username in usernamesToBeRemoved)
             {
                 PassengerTrip passengerToRemove = dbTrip.Passengers
@@ -175,6 +177,7 @@
                     NotificationKey.DriverRemovePassenger,
                     dbTrip.DateOfLeaving);
 
+                    userIdsToBeNotified.Add(passengerToRemove.UserId);
                     this.passengerTripsRepos.HardDelete(passengerToRemove);
                 }
             }
@@ -189,13 +192,15 @@
                     string.Format(NotificationConstants.TripChangedpMessageFormat, dbTrip.Driver.UserName, dbTrip.From.Name, dbTrip.To.Name, dbTrip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
                     NotificationKey.TripChanged,
                     dbTrip.DateOfLeaving);
+
+                userIdsToBeNotified.Add(passenger.UserId);
             }
 
             this.passengerTripsRepos.Save();
             this.tripRepos.Save();
 
             var response = new BaseResponseAjaxModel();
-            response.SignalRModel = this.notificationServices.SendNotifications(new string[] { dbTrip.DriverId });
+            response.SignalRModel = this.notificationServices.SendNotifications(userIdsToBeNotified);
 
             return response;
         }

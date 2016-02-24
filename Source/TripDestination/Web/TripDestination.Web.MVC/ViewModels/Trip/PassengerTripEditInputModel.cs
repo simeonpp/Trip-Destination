@@ -2,11 +2,11 @@
 {
     using Common.Infrastructure.Mapping;
     using Data.Models;
-    using System;
     using AutoMapper;
     using Services.Web.Providers.Contracts;
     using Common.Infrastructure.Constants;
     using Services.Web.Providers;
+
     public class PassengerTripEditInputModel : IMapFrom<PassengerTrip>, IHaveCustomMappings
     {
         private readonly IMediaImageUrlProvider imageUrlProvider;
@@ -43,8 +43,8 @@
             configuration.CreateMap<PassengerTrip, PassengerTripEditInputModel>("LastName")
                 .ForMember(x => x.LastName, opt => opt.MapFrom(x => x.User.LastName));
 
-            configuration.CreateMap<User, PassengerTripEditInputModel>("AvatarFilename")
-                .ForMember(x => x.AvatarFilename, opt => opt.MapFrom(x => x.Avatar.FileName));
+            configuration.CreateMap<PassengerTrip, PassengerTripEditInputModel>("AvatarFilename")
+                .ForMember(x => x.AvatarFilename, opt => opt.MapFrom(x => x.User.Avatar.FileName));
         }
     }
 }

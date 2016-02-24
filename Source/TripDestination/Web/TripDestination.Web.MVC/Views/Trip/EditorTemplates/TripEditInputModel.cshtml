@@ -41,12 +41,12 @@
                     <div class="firstName">@passenger.FirstName</div>
                     <div class="lastName">@passenger.LastName</div>
                 </a>
-                <div class="removePassengerButton button" data-username="@passenger.Username">Remove</div>
+                <div class="removePassengerButton btn btn-default" data-username="@passenger.Username">Remove</div>
             </li>
         }        
     </ul>
     
-    @Html.TextBoxFor(m => m.UsernamesToBeRemoved)
+    @Html.TextBoxFor(m => m.UsernamesToBeRemoved, new { hidden = "hidden" })
 }
 else
 {
@@ -57,6 +57,6 @@ else
 <div id="buttonsFromWrap" class="row">
     <div class="col-md-12">
         <a href="@Url.RouteUrl("TripDetails", new { id = Model.Id, slug = Model.FromTownName + "-" + Model.ToTownName })" class="button2">Cancel</a>
-        <input type="submit" class="button editTripSave" value="Save changes" hidden="hidden">
+        <input type="submit" class="button editTripSave" value="Save changes">
     </div>
 </div>
