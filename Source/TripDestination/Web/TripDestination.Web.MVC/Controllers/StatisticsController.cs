@@ -26,7 +26,7 @@
                 TopDestination = this.statisticsServices.GetTopDestination(),
                 UsersCount = this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
                 DriversCount = this.userServices.GetUsersCountInRole(RoleConstants.PassengerRole),
-                AverageTripRating = this.statisticsServices.GetAverateTripRating(),
+                AverageTripRating = string.Format("{0:N2}", this.statisticsServices.GetAverateTripRating()),
                 TripViews = this.statisticsServices.GetTripViews()
             };
 

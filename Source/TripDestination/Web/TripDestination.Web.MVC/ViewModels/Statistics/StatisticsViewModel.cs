@@ -13,7 +13,7 @@
 
         public int DriversCount { get; set; }
 
-        public double AverageTripRating { get; set; }
+        public string AverageTripRating { get; set; }
 
         public int TripViews { get; set; }
 
