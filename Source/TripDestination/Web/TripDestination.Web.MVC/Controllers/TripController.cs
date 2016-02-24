@@ -70,9 +70,14 @@
         [ValidateAntiForgeryToken]
         public ActionResult Index(TripInputVIewModel trip)
         {
+            if (trip.FromId == trip.ToId)
+            {
+                this.ModelState.AddModelError("From", "From and To towns should be different");
+            }
+
             if (!this.ModelState.IsValid)
             {
-                    return this.View(trip);
+                return this.View("~/Views/Trip/Create.cshtml" ,trip);
             }
 
             string currentUserId = this.User.Identity.GetUserId();
