@@ -23,5 +23,9 @@
         public const int CloseTripDriverRequestAvaialableDaysAfterTripFinished = 10;
         public const string CloseTripDriverRequestTitle = "Close your trip";
         public const string CloseTripDriverRequestFormat = "Please close your trip from {0} to {1} on {2}";
+
+        public const string TripFinishTitle = "Trip finished.";
+        public const string TripFinishRequestPassengerFormat = "Please rate the driver ({0}) of trip: {1} - {2} on {3}";
+        public const string TripFinishRequestDriverFormat = "Please rate your passengers from trip {0} - {1} on {2}";
     }
 }

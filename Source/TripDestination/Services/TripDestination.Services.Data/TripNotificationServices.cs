@@ -106,7 +106,7 @@
                 this.tripNotificationRepos.Save();
                 response.Status = true;
 
-                response.SignalRModel = this.tripServices.NotifyTripPassengersForTripFinish(notification.Trip);
+                response.SignalRModel = this.tripServices.NotifyTripPassengersAndDriverForTripFinish(notification.Trip, userId);
                 response.SignalRModel.RedirectToUrl = true;
                 response.SignalRModel.UrlToRedirectTo = string.Format("/Trip/Rate/{0}/{1}-{2}", notification.TripId, notification.Trip.From.Name, notification.Trip.To.Name);
             }

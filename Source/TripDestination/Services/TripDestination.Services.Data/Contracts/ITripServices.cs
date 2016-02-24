@@ -94,6 +94,6 @@
 
         int GetLikesCount(Trip trip);
 
-        BaseSignalRModel NotifyTripPassengersForTripFinish(Trip trip);
+        BaseSignalRModel NotifyTripPassengersAndDriverForTripFinish(Trip trip, string userId);
     }
 }

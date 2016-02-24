@@ -517,12 +517,33 @@
             return response;
         }
 
-        public BaseSignalRModel NotifyTripPassengersForTripFinish(Trip trip)
+        public BaseSignalRModel NotifyTripPassengersAndDriverForTripFinish(Trip trip, string userId)
         {
             var passengerIds = trip.Passengers
                     .Where(p => p.Approved == true && p.IsDeleted == false)
                     .Select(p => p.UserId)
                     .ToList();
+
+            foreach (var passengerId in passengerIds)
+            {
+                this.notificationServices.Create(
+                trip.Id,
+                userId,
+                passengerId,
+                NotificationConstants.TripFinishTitle,
+                string.Format(NotificationConstants.TripFinishRequestPassengerFormat, trip.Driver.UserName, trip.From.Name, trip.To.Name, trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.TripFinished,
+                DateTime.Now.AddDays(7));
+            }
+
+            this.notificationServices.Create(
+                trip.Id,
+                userId,
+                trip.DriverId,
+                NotificationConstants.TripFinishTitle,
+                string.Format(NotificationConstants.TripFinishRequestDriverFormat, trip.From.Name, trip.To.Name, trip.DateOfLeaving.ToString("dd/MM/yyyy HH:mm")),
+                NotificationKey.TripFinished,
+                DateTime.Now.AddDays(7));
 
             return this.notificationServices.SendNotifications(passengerIds);
         }

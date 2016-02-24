@@ -18,8 +18,8 @@
                     removeActionButtons(id);
                     toastr.success("You successfully approved this notification.");
 
-                    if (response.RedirectToUrl) {
-                        window.location.href = response.UrlToRedirectTo;
+                    if (response.SignalRModel.RedirectToUrl) {
+                        window.location.href = response.SignalRModel.UrlToRedirectTo;
                     }
                 } else {
                     if (response.ErrorMessage) {

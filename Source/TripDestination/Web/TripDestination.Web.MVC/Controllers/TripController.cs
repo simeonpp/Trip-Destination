@@ -77,7 +77,8 @@
 
             if (!this.ModelState.IsValid)
             {
-                return this.View("~/Views/Trip/Create.cshtml" ,trip);
+                this.TempData[WebApplicationConstants.TempDataMessageKey] = "From and To towns should be different";
+                return this.RedirectToAction("Create");
             }
 
             string currentUserId = this.User.Identity.GetUserId();
