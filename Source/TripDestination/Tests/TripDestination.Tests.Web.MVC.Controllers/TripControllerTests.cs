@@ -77,6 +77,8 @@
                     ToId = 2
                 });
 
+            var tripNotificationServicesMock = new Mock<ITripNotificationServices>();
+
             var statisticsServiceMock = new Mock<IStatisticsServices>();
             var viewServicesMock = new Mock<IViewServices>();
             var notificationServicesMock = new Mock<INotificationServices>();
@@ -84,6 +86,7 @@
             var tripController = new TripController(
                 tripServicesMock.Object,
                 ratingServices.Object,
+                tripNotificationServicesMock.Object,
                 townProviderHelper.Object,
                 statisticsServiceMock.Object,
                 viewServicesMock.Object,

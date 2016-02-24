@@ -14,10 +14,13 @@
 
         private readonly ITripServices tripServices;
 
-        public TripNotificationServices(IDbRepository<TripNotification> tripNotificationRepos, ITripServices tripServices)
+        private readonly INotificationTypeServices notificationTypeServices;
+
+        public TripNotificationServices(IDbRepository<TripNotification> tripNotificationRepos, ITripServices tripServices, INotificationTypeServices notificationTypeServices)
         {
             this.tripNotificationRepos = tripNotificationRepos;
             this.tripServices = tripServices;
+            this.notificationTypeServices = notificationTypeServices;
         }
 
         public TripNotification GetById(int id)
@@ -151,6 +154,23 @@
         {
             tripNotification.ActionHasBeenTaken = true;
             this.tripNotificationRepos.Save();
+        }
+
+        public TripNotification GetTripFinishTripNotificationByTripAndForUser(int tripId, string userId)
+        {
+            var notificationType = this.notificationTypeServices.GetByKey(NotificationKey.TripFinished);
+
+            if (notificationType == null)
+            {
+                throw new Exception("No such Notification type");
+            }
+
+            TripNotification tripNotification = this.tripNotificationRepos
+                .All()
+                .Where(tn => tn.Type.Key == notificationType.Key && tn.TripId == tripId && tn.ForUserId == userId)
+                .FirstOrDefault();
+
+            return tripNotification;
         }
 
         public IQueryable<TripNotification> GetAll()

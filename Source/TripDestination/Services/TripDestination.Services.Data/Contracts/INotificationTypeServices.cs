@@ -5,5 +5,7 @@
     public interface INotificationTypeServices
     {
         IQueryable<NotificationType> GetAll();
+
+        NotificationType GetByKey(NotificationKey key);
     }
 }

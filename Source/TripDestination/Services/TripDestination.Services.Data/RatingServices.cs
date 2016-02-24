@@ -16,7 +16,7 @@
             this.tipNotificationServices = tipNotificationServices;
         }
 
-        public void RateUser(string userToRateId, string fromUserId, int rating, TripNotificationServices tripNotification)
+        public void RateUser(string userToRateId, string fromUserId, int rating, TripNotification tripNotification)
         {
             Rating ratingToBeSaved = new Rating()
             {

@@ -23,10 +23,11 @@
     {
         public const int DefaultItemsPerPage = 9;
 
-        public TripController(ITripServices tripServices, IRatingServices ratingServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, INotificationServices notificationServices)
+        public TripController(ITripServices tripServices, IRatingServices ratingServices, ITripNotificationServices tripNotificationServices, ITownProvider townProvider, IStatisticsServices statisticsServices, IViewServices viewServices, IDateProvider dateProvider, ITripProvider tripProvider, INotificationServices notificationServices)
         {
             this.TripServices = tripServices;
             this.RatingServices = ratingServices;
+            this.TripNotificationServices = tripNotificationServices;
             this.StatisticsServices = statisticsServices;
             this.ViewServices = viewServices;
             this.TownProvider = townProvider;
@@ -332,7 +333,7 @@
                 return this.RedirectToRoute("/");
             }
 
-            TripNotification tripNotification = this.Trip
+            TripNotification tripNotification = this.TripNotificationServices.GetTripFinishTripNotificationByTripAndForUser(model.TripId, userId);
 
             if (trip.DriverId == userId)
             {
@@ -341,7 +342,7 @@
                 {
                     string passengerUsername = passengers.ElementAt(i);
                     int passengerRating = this.TripProvider.GetValidRate(model.PassengerRatings.ElementAt(i));
-                    this.RatingServices.RateUser(passengerUsername, userId, passengerRating);
+                    this.RatingServices.RateUser(passengerUsername, userId, passengerRating, tripNotification);
                 }
 
                 this.TempData[WebApplicationConstants.TempDataMessageKey] = "You have succesfully rate your passengers.";
@@ -349,7 +350,7 @@
             else
             {
                 int driverRating = this.TripProvider.GetValidRate(model.DriverRating);
-                this.RatingServices.RateUser(trip.DriverId, userId, driverRating);
+                this.RatingServices.RateUser(trip.DriverId, userId, driverRating, tripNotification);
                 this.TempData[WebApplicationConstants.TempDataMessageKey] = "You have succesfully rate this driver.";
             }
 

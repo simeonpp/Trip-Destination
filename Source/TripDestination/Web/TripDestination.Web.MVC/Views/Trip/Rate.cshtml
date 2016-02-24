@@ -11,14 +11,15 @@
 
     @Html.AntiForgeryToken();
 
+    <input name="TripId" value="@Model.TripId" hidden="hidden" class="hidden" />
+
     if (Model.CurrentUserIsDriver)
     {
-        
+
         <text>Please rate your passengers for trip: </text>
 
         foreach (var passenger in Model.Passengers)
         {
-            <input name="TripId" value="@Model.TripId" hidden="hidden" class="hidden" />
             <text>For user @passenger.UserName</text>
             <input type="number" min="=1" max="5" name="PassengerRatings" />
 
@@ -28,6 +29,15 @@
     else
     {
         @Html.EditorFor(m => m.DriverRating);
+
+        asd
+        <fieldset class="adjustableRating">
+            <input type="radio" id="Astar5" name="rating2" value="5" /><label class="full" for="Astar5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="Astar4" name="rating2" value="4" /><label class="full" for="Astar4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="Astar3" name="rating2" value="3" /><label class="full" for="Astar3" title="Meh - 3 stars"></label>
+            <input type="radio" id="Astar2" checked name="rating2" value="2" /><label class="full" for="Astar2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="Astar1" name="rating2" value="1" /><label class="full" for="Astar1" title="Sucks big time - 1 star"></label>
+        </fieldset>
     }
     <input type="submit" value="Rate" />
 }

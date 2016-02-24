@@ -19,5 +19,13 @@
         {
             return this.notificationTypeRepos.All();
         }
+
+        public NotificationType GetByKey(NotificationKey key)
+        {
+            return this.notificationTypeRepos
+                .All()
+                .Where(nt => nt.Key == key)
+                .FirstOrDefault();
+        }
     }
 }
