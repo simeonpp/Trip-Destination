@@ -12,6 +12,7 @@
     using TripDestination.Services.Web.Providers;
     using TripDestination.Services.Web.Providers.Contracts;
     using TripDestination.Services.Web.Services.Contracts;
+
     [TestFixture]
     public class TownProviderTests
     {
