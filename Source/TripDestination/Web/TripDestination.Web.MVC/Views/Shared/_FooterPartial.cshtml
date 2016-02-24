@@ -42,15 +42,15 @@
         <div class="wrapper row">
             <div id="navigationLinks" class="col-md-8">
                 <ul>
-                    <li>Technologies</li>
-                    <li><img src="" alt=""></li>
+                    <li><img src="~/Assets//images/asp-mvc.png" alt="Alternate Text" width="100%" /></li>
                 </ul>
 
                 <ul>
-                    <li>Trips</li>
-                    <li><a href="#">All trips</a></li>
-                    <li><a href="#">Latest trips</a></li>
-                    <li><a href="#">Todays trips</a></li>
+                    <li>Trip Destination</li>
+                    <li><a href="@Url.Action("Index", "Home", new { area = string.Empty })">Home</a></li>
+                    <li><a href="@Url.Action("List", "Trip", new { area = string.Empty })">Trips</a></li>
+                    <li><a href="@Url.Action("Index", "Statistics", new { area = string.Empty })">Statistics</a></li>
+                    <li><a href="@Url.Action("Index", "Contact", new { area = string.Empty })">Contact</a></li>
                 </ul>
             </div>
 

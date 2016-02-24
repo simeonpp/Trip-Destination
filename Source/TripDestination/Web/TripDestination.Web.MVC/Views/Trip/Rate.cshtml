@@ -8,65 +8,130 @@
     @@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 </style>
 
+<div id="ratePage">
 
-@using (Html.BeginForm("Rate", "Trip", FormMethod.Post))
-{
-    @Html.ValidationSummary();
+    <section>
 
-    @Html.AntiForgeryToken();
-
-    <input name="TripId" value="@Model.TripId" hidden="hidden" class="hidden" />
-
-    if (Model.CurrentUserIsDriver)
-    {
-
-        <text>Please rate your passengers for trip: </text>
-
-        for (int i = 0; i < Model.Passengers.Count; i++)
+        @using (Html.BeginForm("Rate", "Trip", FormMethod.Post))
         {
-            <br />
+            @Html.ValidationSummary();
 
-            
+            @Html.AntiForgeryToken();
 
-            <text>For user 
-            @{
-                var passenger = Model.Passengers.ElementAt(i);
+            <input name="TripId" value="@Model.TripId" hidden="hidden" class="hidden" />
+
+            if (Model.CurrentUserIsDriver)
+            {
+
+                <h1>Please rate your passengers</h1>
+                <h2>From - To : date</h2>
+
+                <article>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <ul class="rateUl">
+                                @for (int i = 0; i < Model.Passengers.Count; i++)
+                                {
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-6 col-md-offset-3">
+                                                @{
+                                                    var countNumber = i + 1;
+                                                    var passenger = Model.Passengers.ElementAt(i);
+                                                }
+
+                                                <div class="row">
+                                                    <div class="col-md-1 number">@countNumber</div>
+                                                    <div class="col-md-3"><div class="image"><img src="@passenger.AvatarUrlSmall" alt="@passenger.LastName avatar" /></div></div>
+                                                    <div class="col-md-7 col-md-offset-1">
+                                                        <div class="rateAndNameBox">
+                                                            @passenger.FirstName <span class="bold uppercase">@passenger.LastName</span>
+                                                        </div>
+                                                        <div id="givenRateWrap-@i.ToString()" class="givenRateWrap">
+                                                            Given: <span id="givenRate-@i.ToString()"></span>
+                                                        </div>
+                                                        <div class="rateWrap">
+                                                            <fieldset class="adjustableRating" id="adjustableRating-@i.ToString()" data-selector="PassengerRatings" data-identifier="@i.ToString()">
+                                                                <input type="radio" name="rating2" value="5" /><label class="full rating-input" for="Astar5" data-value="5" title="Awesome - 5 stars"></label>
+                                                                <input type="radio" name="rating2" value="4" /><label class="full rating-input" for="Astar4" data-value="4" title="Pretty good - 4 stars"></label>
+                                                                <input type="radio" name="rating2" value="3" /><label class="full rating-input" for="Astar3" data-value="3" title="Meh - 3 stars"></label>
+                                                                <input type="radio" name="rating2" value="2" /><label class="full rating-input" for="Astar2" data-value="2" title="Kinda bad - 2 stars"></label>
+                                                                <input type="radio" checked name="rating2" value="1" /><label class="full rating-input" for="Astar1" data-value="1" title="Sucks big time - 1 star"></label>
+                                                            </fieldset>
+
+                                                            <input type="number" min="=1" max="5" name="PassengerRatings" id="PassengerRatings-@i.ToString()" hidden="hidden" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="submit" value="Rate" class="btn btn-danger" />
+                        </div>
+                    </div>
+                    
+                </article>
             }
-            @passenger.UserName</text>
+            else
+            {
+                <article>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <ul class="rateUl">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="row">
+                                                <div class="col-md-1 number">1</div>
+                                                <div class="col-md-3"><div class="image"><img src="#" alt="Firstname avatar" /></div></div>
+                                                <div class="col-md-7 col-md-offset-1">
+                                                    <div class="rateAndNameBox">
+                                                        Firsname <span class="bold uppercase">Lastname</span>
+                                                    </div>
+                                                    <div id="givenRateWrap" class="givenRateWrap">
+                                                        Given: <span id="givenRate"></span>
+                                                    </div>
+                                                    <div class="rateWrap">
+                                                        <fieldset class="adjustableRating" id="adjustableRating" data-selector="DriverRating">
+                                                            <input type="radio" name="rating2" value="5" /><label class="full rating-input" for="Astar5" data-value="5" title="Awesome - 5 stars"></label>
+                                                            <input type="radio" name="rating2" value="4" /><label class="full rating-input" for="Astar4" data-value="4" title="Pretty good - 4 stars"></label>
+                                                            <input type="radio" name="rating2" value="3" /><label class="full rating-input" for="Astar3" data-value="3" title="Meh - 3 stars"></label>
+                                                            <input type="radio" name="rating2" value="2" /><label class="full rating-input" for="Astar2" data-value="2" title="Kinda bad - 2 stars"></label>
+                                                            <input type="radio" checked name="rating2" value="1" /><label class="full rating-input" for="Astar1" data-value="1" title="Sucks big time - 1 star"></label>
+                                                        </fieldset>
 
-            <br />
+                                                        <div class="hidden">@Html.EditorFor(m => m.DriverRating)</div>                                                        
+                                                        <input type="number" min="=1" max="5" name="PassengerRatings" id="PassengerRatings" hidden="hidden" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-            <text> asd </text>
-            <fieldset class="adjustableRating-@i.ToString()" data-selector="PassengerRatings" data-identifier="@i.ToString()">
-                <input class='rating-input'type="radio" name="rating2" value="5" /><label class="full" for="Astar5" title="Awesome - 5 stars"></label>
-                <input class='rating-input'type="radio" name="rating2" value="4" /><label class="full" for="Astar4" title="Pretty good - 4 stars"></label>
-                <input class='rating-input'type="radio" name="rating2" value="3" /><label class="full" for="Astar3" title="Meh - 3 stars"></label>
-                <input class='rating-input' type="radio" name="rating2" value="2" /><label class="full" for="Astar2" title="Kinda bad - 2 stars"></label>
-                <input class='rating-input' type="radio" checked name="rating2" value="1" /><label class="full" for="Astar1" title="Sucks big time - 1 star"></label>
-            </fieldset>
-
-            <input type="number" min="=1" max="5" name="PassengerRatings" id="PassengerRatings-@i.ToString()" />
-
-            <br />
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="submit" value="Rate" class="btn btn-danger" />
+                        </div>
+                    </div>
+                    
+                </article>          
+            }
         }
-    }
-    else
-    {
-                <div class="asd">wwwww</div>
 
-        @Html.EditorFor(m => m.DriverRating);
+    </section>
 
-        <text> asd </text>
-        <fieldset class="adjustableRating" data-selector="DriverRating">
-            <input type="radio" name="rating2" value="5" /><label class="full rating-input" for="Astar5" data-value="5" title="Awesome - 5 stars"></label>
-            <input type="radio" name="rating2" value="4" /><label class="full rating-input" for="Astar4" data-value="4"  title="Pretty good - 4 stars"></label>
-            <input type="radio" name="rating2" value="3" /><label class="full rating-input" for="Astar3" data-value="3" title="Meh - 3 stars"></label>
-            <input type="radio" name="rating2" value="2" /><label class="full rating-input" for="Astar2"  data-value="2" title="Kinda bad - 2 stars"></label>
-            <input type="radio" checked name="rating2" value="1" /><label class="full rating-input" for="Astar1" data-value="1"  title="Sucks big time - 1 star"></label>
-        </fieldset>
-    }
-    <input type="submit" value="Rate" />
-}
+</div>
 
 @section scripts {
     @Scripts.Render("~/bundles/rating")

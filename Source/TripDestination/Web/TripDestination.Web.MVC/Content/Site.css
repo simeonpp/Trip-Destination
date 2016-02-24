@@ -9,6 +9,7 @@
 ul.tripsList,
 ul.tripsList li a .infoInIconsWrap,
 ul.ratingUl,
+ul.rateUl,
 ul.statsUl,
 ul.commentsUl li,
 ul.passengersUl,
@@ -25,6 +26,7 @@ footer #footerWrap #navigationLinks {
 ul.tripsList:after,
 ul.tripsList li a .infoInIconsWrap:after,
 ul.ratingUl:after,
+ul.rateUl:after,
 ul.statsUl:after,
 ul.commentsUl li:after,
 ul.passengersUl:after,
@@ -46,6 +48,7 @@ footer #footerWrap #navigationLinks:after {
 .errorBox ul li,
 ul.tripsList,
 ul.ratingUl,
+ul.rateUl,
 ul.statsUl,
 ul.infoBorderedUl,
 ul.infoUl,
@@ -65,6 +68,7 @@ footer #footerWrap #navigationLinks ul {
 .errorBox ul li li,
 ul.tripsList li,
 ul.ratingUl li,
+ul.rateUl li,
 ul.statsUl li,
 ul.infoBorderedUl li,
 ul.infoUl li,
@@ -649,6 +653,37 @@ ul.ratingUl li:last-child {
 }
 ul.ratingUl li img {
   width: 25px;
+}
+ul.rateUl li {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #d3d3d3;
+  padding-bottom: 30px;
+  margin-bottom: 35px;
+}
+ul.rateUl li:last-child {
+  border-bottom: none;
+}
+ul.rateUl li .number {
+  font-size: 4em;
+  font-weight: bold;
+  color: #dfdfdf;
+}
+ul.rateUl li .image {
+  width: 100%;
+}
+ul.rateUl li .image img {
+  width: 100%;
+}
+ul.rateUl li .givenRateWrap {
+  margin-top: 10px;
+}
+ul.rateUl display none .givenRate {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+ul.rateUl .rateWrap {
+  margin-top: 5px;
 }
 ul.statsUl li .description {
   color: #bdbdbd;
@@ -1387,6 +1422,9 @@ table.tripsTable .statusReadyToGo {
 #myNotifications .notSeen {
   color: #51a2ff;
   font-style: italic;
+}
+#ratePage input {
+  width: 100%;
 }
 #cookies OL {
   counter-reset: item;

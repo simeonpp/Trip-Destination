@@ -522,6 +522,43 @@ ul.ratingUl
     img
       width 25px
 
+// WHne rating someone
+ul.rateUl
+  @extends .ulClear
+  @extends .clearFix
+
+  li
+    width 100%
+    display block
+    border-bottom 1px solid lightgrey
+    padding-bottom 30px
+    margin-bottom 35px
+
+    &:last-child
+      border-bottom none
+
+    .number
+      font-size 4em
+      font-weight bold
+      color #dfdfdf
+
+    .image
+      width 100%
+
+      img
+        width 100%
+
+    .givenRateWrap
+      margin-top 10px
+	  display none
+
+      .givenRate
+        font-weight bold
+        font-size 1.2em
+
+    .rateWrap
+      margin-top 5px
+
 // Stats
 ul.statsUl
   @extends .ulClear
@@ -1366,6 +1403,13 @@ table.tripsTable
   .notSeen
     color #51A2FF
     font-style italic
+
+//=============================
+// RAGE PAGE
+//=============================
+#ratePage
+  input
+    width 100%
 
 //=============================
 // Cookies
