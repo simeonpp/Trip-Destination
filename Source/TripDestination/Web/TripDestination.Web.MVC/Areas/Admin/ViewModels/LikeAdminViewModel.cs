@@ -7,6 +7,7 @@
     using System.Web.Mvc;
     using System.Collections;
     using System.Collections.Generic;
+
     [Bind(Exclude = "CreatedOn,TripId,UserName")]
     public class LikeAdminViewModel : IMapFrom<Like>, IHaveCustomMappings
     {
@@ -20,7 +21,7 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public IEnumerable<SelectListItem> LikeValuesSelectLis
+        public IEnumerable<SelectListItem> LikeValuesSelectList
         {
             get
             {

@@ -1,0 +1,3 @@
+﻿@model RatingAdminViewModel
+
+@Html.EditorFor(m => m.Value, "CustomDropDownList", new { selectListItems = Model.RateValueSelectList })

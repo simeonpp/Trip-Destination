@@ -35,7 +35,6 @@
                                 <th class="date">Date of leaving</th>
                                 <th>Driver</th>
                                 <th class="totalPeople center">Total people</th>
-                                @*<th class="rating center">Rating</th>*@
                                 <th class="status center">Status</th>
                             </tr>
                         </thead>
@@ -46,7 +45,6 @@
                                     <td><a href="@trip.Url">@trip.DateOfLeavingFormate</a></td>
                                     <td><a href="@trip.Driver.ProfileUrl">@trip.Driver.FirstName @trip.Driver.LastName</a></td>
                                     <td class="center">@trip.TotalPeople</td>
-                                    @*<td class="rating center">asd</td>*@
                                     <td class="center"><span class="status">@trip.Status</span></td>
                                 </tr>
                             }

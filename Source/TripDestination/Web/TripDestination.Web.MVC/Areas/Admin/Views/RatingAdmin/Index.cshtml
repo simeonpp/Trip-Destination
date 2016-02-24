@@ -1,0 +1,33 @@
+﻿<div class="adminKendoTableWrap">
+
+    <h1>Ratings administration</h1>
+
+    @(Html.Kendo().Grid<TripDestination.Web.MVC.Areas.Admin.ViewModels.RatingAdminViewModel>()
+          .Name("grid")
+          .Columns(columns =>
+          {
+              columns.Bound(c => c.Id);
+              columns.Bound(c => c.FromUserUserName);
+              columns.Bound(c => c.RatedUserUserName);
+              columns.Bound(c => c.Value);
+              columns.Bound(c => c.CreatedOn).Format("{0:yyyy-MM-dd HH:mm}");
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+          })
+          .Editable(editable => editable.Mode(GridEditMode.PopUp))
+          .Pageable()
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable()
+          .Scrollable(scr => scr.Height(650))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("Ratings_Read", "RatingAdmin"))
+              .Update(update => update.Action("Rating_Update", "RatingAdmin"))
+              .Destroy(destroy => destroy.Action("Rating_Destroy", "RatingAdmin"))
+          )
+    )
+
+</div>
