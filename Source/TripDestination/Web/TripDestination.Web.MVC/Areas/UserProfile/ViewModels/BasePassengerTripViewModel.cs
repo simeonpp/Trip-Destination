@@ -7,6 +7,8 @@
 
     public class BasePassengerTripViewModel : IMapFrom<PassengerTrip>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public DateTime DateOfLeaving { get; set; }
 
         public string DateOfLeavingFormate
@@ -22,6 +24,14 @@
         public int TotalPeople { get; set; }
 
         public TripStatus Status { get; set; }
+
+        public string Url
+        {
+            get
+            {
+                return string.Format("/Trip/{0}", this.Id);
+            }
+        }
 
         public void CreateMappings(IConfiguration configuration)
         {

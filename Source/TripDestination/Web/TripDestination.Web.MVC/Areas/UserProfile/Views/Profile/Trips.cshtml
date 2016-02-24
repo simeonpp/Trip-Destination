@@ -43,7 +43,7 @@
                             @foreach (var trip in Model.User.Trips)
                             {
                                 <tr>
-                                    <td>@trip.DateOfLeavingFormate</td>
+                                    <td><a href="@trip.Url">@trip.DateOfLeavingFormate</a></td>
                                     <td><a href="@trip.Driver.ProfileUrl">@trip.Driver.FirstName @trip.Driver.LastName</a></td>
                                     <td class="center">@trip.TotalPeople</td>
                                     @*<td class="rating center">asd</td>*@
