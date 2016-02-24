@@ -8,6 +8,14 @@
     {
         public int TripId { get; set; }
 
+        public BaseUserViewModel Driver { get; set; }
+
+        public string TripFromName { get; set; }
+
+        public string TripToName { get; set; }
+
+        public string DateOfLeavingFormatted { get; set; }
+
         public bool CurrentUserIsDriver { get; set; }
 
         public ICollection<BaseUserViewModel> Passengers { get; set; }

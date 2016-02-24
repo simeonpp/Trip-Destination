@@ -307,9 +307,15 @@
                 CurrentUserIsDriver = trip.DriverId == userId
             };
 
-            var passengers = trip.Passengers.Select(p => p.User);
+            var passengers = trip.Passengers
+                .Where(p => p.IsDeleted == false && p.Approved == true)
+                .Select(p => p.User);
             var mapperdPassnegers = passengers.AsQueryable().To<BaseUserViewModel>().ToList();
             viewModel.Passengers = mapperdPassnegers;
+            viewModel.Driver = this.Mapper.Map<BaseUserViewModel>(trip.Driver);
+            viewModel.TripFromName = trip.From.Name;
+            viewModel.TripToName = trip.To.Name;
+            viewModel.DateOfLeavingFormatted = trip.DateOfLeaving.ToString("dd MMM yyyy HH:mm");
 
             return this.View(viewModel);
         }
@@ -337,7 +343,10 @@
 
             if (trip.DriverId == userId)
             {
-                var passengers = trip.Passengers.Select(p => p.UserId).ToList(); ;
+                var passengers = trip.Passengers
+                    .Where(p => p.IsDeleted == false && p.Approved == true)
+                    .Select(p => p.UserId)
+                    .ToList();
                 for (int i = 0; i < passengers.Count; i++)
                 {
                     string passengerUsername = passengers.ElementAt(i);

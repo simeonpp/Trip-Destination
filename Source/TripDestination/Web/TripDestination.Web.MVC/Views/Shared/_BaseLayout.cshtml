@@ -30,7 +30,7 @@
     <text>
         @if (!string.IsNullOrEmpty((string)this.ViewData["messages"]))
         {
-            <div id="banan">@this.ViewData["messages"]</div>            
+            <script>toastr.info(@this.ViewData["messages"]);</script>
         }
     </text>
 

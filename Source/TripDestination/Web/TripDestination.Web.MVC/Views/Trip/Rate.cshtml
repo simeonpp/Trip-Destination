@@ -24,7 +24,7 @@
             {
 
                 <h1>Please rate your passengers</h1>
-                <h2>From - To : date</h2>
+                <h2>@Model.TripFromName - @Model.TripToName : @Model.DateOfLeavingFormatted</h2>
 
                 <article>
                     <div class="row">
@@ -81,6 +81,9 @@
             }
             else
             {
+                <h1>Please rate your driver</h1>
+                <h2>@Model.TripFromName - @Model.TripToName : @Model.DateOfLeavingFormatted</h2>
+
                 <article>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
@@ -90,10 +93,10 @@
                                         <div class="col-md-6 col-md-offset-3">
                                             <div class="row">
                                                 <div class="col-md-1 number">1</div>
-                                                <div class="col-md-3"><div class="image"><img src="#" alt="Firstname avatar" /></div></div>
+                                                <div class="col-md-3"><div class="image"><img src="@Model.Driver.AvatarUrlSmall" alt="@Model.Driver.FirstName avatar" /></div></div>
                                                 <div class="col-md-7 col-md-offset-1">
                                                     <div class="rateAndNameBox">
-                                                        Firsname <span class="bold uppercase">Lastname</span>
+                                                        @Model.Driver.FirstName <span class="bold uppercase">@Model.Driver.LastName</span>
                                                     </div>
                                                     <div id="givenRateWrap" class="givenRateWrap">
                                                         Given: <span id="givenRate"></span>
