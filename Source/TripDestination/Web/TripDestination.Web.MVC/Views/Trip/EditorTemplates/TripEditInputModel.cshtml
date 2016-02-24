@@ -37,7 +37,7 @@
         {
             <li>
                 <a href="#">
-                    <div class="image" style="background-image: url('images/people/3.jpg')"></div>
+                    <div class="image" style="background-image: url('@passenger.AvatarUrlSmall')"></div>
                     <div class="firstName">@passenger.FirstName</div>
                     <div class="lastName">@passenger.LastName</div>
                 </a>
@@ -47,49 +47,6 @@
     </ul>
     
     @Html.TextBoxFor(m => m.UsernamesToBeRemoved)
-
-    <script>
-        $().ready(function () {
-            var $removePassengerButton = $('.removePassengerButton');
-
-            $removePassengerButton.on('click', function () {
-                var $this = $(this),
-                    $li = $this.parent(),
-                    username = $this.attr('data-username');
-
-                updateUsernamesToBeRemovedInput(username);
-                $li.remove();
-                decreasePassengersCount();
-            })
-        });
-
-        function updateUsernamesToBeRemovedInput(newUsername) {
-            var $usernamesToBeRemoved = $('#UsernamesToBeRemoved'),
-                currentValuesAsString,
-                currentValues,
-                newValueAsStringifiedJSON;
-
-            currentValuesAsString = $usernamesToBeRemoved.val();
-            if (currentValuesAsString) {
-                currentValues = $.parseJSON(currentValuesAsString);
-            } else {
-                currentValues = [];
-            }
-
-            currentValues.push(newUsername);
-            newValueAsStringifiedJSON = JSON.stringify(currentValues);
-            $usernamesToBeRemoved.val(newValueAsStringifiedJSON);
-        }
-
-        function decreasePassengersCount() {
-            var $passengersCount = $('#passengersCount'),
-                currentCount = $passengersCount.text() | 0,
-                newCount;
-
-            newCount = currentCount - 1;
-            $passengersCount.text(newCount);
-        }
-    </script>
 }
 else
 {
@@ -100,6 +57,6 @@ else
 <div id="buttonsFromWrap" class="row">
     <div class="col-md-12">
         <a href="@Url.RouteUrl("TripDetails", new { id = Model.Id, slug = Model.FromTownName + "-" + Model.ToTownName })" class="button2">Cancel</a>
-        <input type="submit" class="button editTripSave" value="Save changes">
+        <input type="submit" class="button editTripSave" value="Save changes" hidden="hidden">
     </div>
 </div>

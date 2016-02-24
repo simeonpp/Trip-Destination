@@ -11,6 +11,7 @@
     <article class="wrapper">
 
         <div id="topInfoProfile">
+
             <div class="row">
                 <div class="col-md-2 col-md-push-1">
                     <div class="image">
@@ -20,39 +21,34 @@
                 <div class="col-md-6">
                     <div class="name">@FirstName @LastName</div>
                     <div class="role">@Role</div>
-                    <div class="rating">
-                        <ul class="ratingUl">
-                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                            <li><img src="images/star-icon.png" alt="Star icon"></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
+
+            <div id="innerNav" class="row">
+                <div class="col-md-12">
+
+                    <a href="@Url.Action("Index", "Profile", new { area = "UserProfile", username = Username })">Profile</a>
+
+                    @if (Role == RoleConstants.DriverRole)
+                    {
+                        <a href="@Url.Action("Car", "Profile", new { area = "UserProfile",  username = Username })">Car</a>
+                    }
+
+                    @if (CurrentUsername == Username)
+                    {
+                        <a href="@Url.Action("Trips", "Profile", new { area = "UserProfile",  username = Username })">My trips</a>
+                        <a href="@Url.Action("EditProfile", "Profile", new { area = "UserProfile",  username = Username })">Edit personal details</a>
+
+                        if (Role == RoleConstants.DriverRole)
+                        {
+                            <a href="@Url.Action("EditCar", "Profile", new { area = "UserProfile", username = Username })">Edit car details</a>
+                        }
+                    }
+
+                </div>
+            </div> @*end #innerNav*@
+
         </div> <!-- end #topInfo -->
-
-        <div id="innerNav" class="row">
-            <a href="@Url.Action("Index", "Profile", new { area = "UserProfile", username = Username })">Profile</a>
-
-            @if (Role == RoleConstants.DriverRole)
-            {
-                <a href="@Url.Action("Car", "Profile", new { area = "UserProfile",  username = Username })">Car</a>
-            }
-
-            @if (CurrentUsername == Username)
-            {
-                <a href="@Url.Action("Trips", "Profile", new { area = "UserProfile",  username = Username })">My trips</a>
-                <a href="@Url.Action("EditProfile", "Profile", new { area = "UserProfile",  username = Username })">Edit personal details</a>
-
-                if (Role == RoleConstants.DriverRole)
-                {
-                    <a href="@Url.Action("EditCar", "Profile", new { area = "UserProfile", username = Username })">Edit car details</a>
-                }
-            }
-
-        </div>
 
     </article>
 

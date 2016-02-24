@@ -75,6 +75,9 @@ namespace TripDestination.Web.MVC
             bundles.Add(new ScriptBundle("~/bundles/pagination").Include(
                 "~/Assets/javascript/src/once/pagination.js",
                 "~/Assets/javascript/lib/urijs/src/URI.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/trip-edit").Include(
+                "~/Assets/javascript/src/once/trip-edit.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

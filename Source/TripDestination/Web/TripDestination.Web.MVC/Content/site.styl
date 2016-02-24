@@ -1003,20 +1003,6 @@ ul.passengersUl
       &:nth-child(3n)
         margin-right 0 !important
 
-  #paginatorWrap
-    width 100%
-    text-align center
-
-    a
-      color black !important
-
-    .pagination
-      .active
-        a
-          background #aa152b
-          color #ffffff !important
-          border-color #7b1221
-
 //=============================
 // TRIP CREATE
 //=============================
@@ -1296,6 +1282,7 @@ article.faq
 //=============================
 #topInfoProfile
   padding 15px 0 0
+  border-bottom 4px solid #aa152b
 
   .image
     width 100%
@@ -1361,12 +1348,24 @@ table.tripsTable
   .statusReadyToGo
     color #0094FF
 
+#innerNav
+  width 100%
+  display block
+  margin-top 15px
+  margin-left 10px
+  text-transform uppercase
+  font-size 1.15em
+
+  a
+    margin-left 15px
+
 //=============================
 // Notifications
 //=============================
 #myNotifications
-  tr.notSeen
-    background #8CFFD6
+  .notSeen
+    color #51A2FF
+    font-style italic
 
 //=============================
 // Cookies
@@ -1381,6 +1380,23 @@ table.tripsTable
     &:before
       content: counters(item, ".") " ";
       counter-increment: item
+
+//=============================
+// Pagination
+//=============================
+#paginatorWrap
+  width 100%
+  text-align center
+
+  a
+    color black !important
+
+  .pagination
+    .active
+      a
+        background #aa152b
+        color #ffffff !important
+        border-color #7b1221
 
 //=============================
 // PAGE 404

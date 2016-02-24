@@ -1089,18 +1089,6 @@ ul.passengersUl li .lastName {
 #tripList ul.tripsList li:nth-child(3n) {
   margin-right: 0 !important;
 }
-#tripList #paginatorWrap {
-  width: 100%;
-  text-align: center;
-}
-#tripList #paginatorWrap a {
-  color: #000 !important;
-}
-#tripList #paginatorWrap .pagination .active a {
-  background: #aa152b;
-  color: #fff !important;
-  border-color: #7b1221;
-}
 #tripCreate ul.statsUl li {
   margin-bottom: 35px;
 }
@@ -1157,7 +1145,7 @@ ul.passengersUl li .lastName {
   margin-bottom: 25px;
   padding-bottom: 25px;
 }
-#tripDetails #tripSummarySection ul.pendingUsersUl lillast-of-type {
+#tripDetails #tripSummarySection ul.pendingUsersUl lilast-of-type {
   border-bottom: none;
 }
 #tripDetails #tripSummarySection ul.pendingUsersUl li .button {
@@ -1327,6 +1315,7 @@ article.faq p {
 }
 #topInfoProfile {
   padding: 15px 0 0;
+  border-bottom: 4px solid #aa152b;
 }
 #topInfoProfile .image {
   width: 100%;
@@ -1384,8 +1373,20 @@ table.tripsTable .statusOpen {
 table.tripsTable .statusReadyToGo {
   color: #0094ff;
 }
-#myNotifications tr.notSeen {
-  background: #8cffd6;
+#innerNav {
+  width: 100%;
+  display: block;
+  margin-top: 15px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-size: 1.15em;
+}
+#innerNav a {
+  margin-left: 15px;
+}
+#myNotifications .notSeen {
+  color: #51a2ff;
+  font-style: italic;
 }
 #cookies OL {
   counter-reset: item;
@@ -1396,6 +1397,18 @@ table.tripsTable .statusReadyToGo {
 #cookies LI:before {
   content: counters(item, ".") " ";
   counter-increment: item;
+}
+#paginatorWrap {
+  width: 100%;
+  text-align: center;
+}
+#paginatorWrap a {
+  color: #000 !important;
+}
+#paginatorWrap .pagination .active a {
+  background: #aa152b;
+  color: #fff !important;
+  border-color: #7b1221;
 }
 #page404 .image img {
   width: 100%;
